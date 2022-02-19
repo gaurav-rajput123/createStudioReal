@@ -1,0 +1,40 @@
+.lineUp {
+    animation: 4s anim-lineUp ease-out infinite;
+  }
+  @keyframes anim-lineUp {
+    0% {
+      opacity: 0;
+      transform: translateY(80%);
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
+.desktop-image img{
+    animation: animate 1s alternate infinite;
+    position: relative;
+}
+
+@keyframes animate{
+    from{
+        bottom:0;
+    }
+    to{
+        bottom:20px;
+    }
+}
+
+
+
+
+
+

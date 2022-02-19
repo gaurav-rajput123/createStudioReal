@@ -1,0 +1,62 @@
+.img1{
+    position: relative;
+    transform: translateX(80px);
+    opacity: 1;
+    transition: 1s all ease-in-out;
+}
+
+.img1.active{
+    transform: translateX(-10px);
+    opacity: 2;
+}
+
+.img2{
+    margin-top: -40%;
+    margin-left: 15%;
+    position: absolute;
+    transform: translateY(50px);
+    opacity: 1;
+    transition: 1s all ease-in-out;
+}
+
+.img2.active{
+    transform: translateY(0);
+    opacity: 2;
+}
+
+.img3{
+    width: 60%;
+    margin-top: -42%;
+    margin-left: -21%;
+    position: absolute;
+}
+
+.img4{
+    width: 18%;
+    margin-top: -30.5%;
+    margin-left: 18.5%;
+    position: absolute;
+    transform: translateY(50px);
+    opacity: 1;
+    transition: 1s all ease-in-out;
+}
+
+.img4.active{
+    transform: translateY(0px);
+    opacity: 2;
+}
+
+.img5{
+    width: 25%;
+    margin-top: -22%;
+    margin-left: -13.75%;
+    position: absolute;
+    transform: translateY(50px);
+    opacity: 1;
+    transition: 1s all ease-in-out;
+}
+
+.img5.active{
+    transform: translateY(0);
+    opacity: 2;
+}
