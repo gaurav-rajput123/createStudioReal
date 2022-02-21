@@ -8,25 +8,36 @@ import generateKey from "../resources/generateKey";
 
 import { formContext } from "../Context";
 import axios from "axios";
-
+// import { courseArray } from "../Context";
+import { courseArray } from "../Context";
+import { useEffect } from "react";
 export default function Middle() {
-  const [courses, setCourses] = useState([])
+  const courseContext = useContext(courseArray)
+  const [courses, setCourses] = useState([...courseContext.data])
+  // let courses = [...courseContext.data]
+  useEffect(()=>{
+    console.log("here")
+    setCourses([...courseContext.data])
+  }, [courseContext.data])
+  useState(()=>{
+    console.log("hello")
+  })
   const addNewSection = () => {
     let newCourses = [...courses]
     newCourses.push({
       id: generateKey(),
       name: "Basic Electrical Engineering"
     })
-    setCourses(newCourses)
+    // setCourses(newCourses)
   }
   const formData = useContext(formContext)
 
-
+  // const courseContext = useContext(courseArray)
 
   const updateCourse = (course, index) => {
     let newCourseObj = [...courses]
     newCourseObj[index] = course
-    setCourses(newCourseObj)
+    // setCourses(newCourseObj)
   }
 
   const changeCourseName = (courseIndex, courseArray, labelVal) => {
@@ -34,11 +45,12 @@ export default function Middle() {
     newCourseObj.name = labelVal
     let newCourseArray = [...courseArray]
     newCourseArray[courseIndex] = newCourseObj
-    setCourses(newCourseArray)
+    // setCourses(newCourseArray)
   }
   const updateCourseArray = (updatedCourseArray) => {
     let newUpdatedCourseArray = [...updatedCourseArray]
-    setCourses(newUpdatedCourseArray)
+    // setCourses(newUpdatedCourseArray)
+    courseContext.setCourseState({...courseContext, data: newUpdatedCourseArray})
   }
  
   return (
@@ -105,6 +117,7 @@ export default function Middle() {
       >
         upload
         </Button>
+        <Button onClick={()=>console.log(courseContext)}>doit</Button>
       </div>
       {/* <Button onClick={() =>{
         let newArr = [1,2,3,4,5,6]
@@ -200,7 +213,7 @@ function TopicTileBox({topic, topicIndex, topicArray, changeTopicName, addNewSub
     }
     addNewSubTopic(newTopicArray)
   }
-  console.log(TopicTile.prototype)
+  // console.log(TopicTile.proc   totype)
   const [expand, setIsExpand] = useState(true)
   return (
     <Box>

@@ -1,9 +1,12 @@
 import { Button, Grid, TextField } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import './add.css'
+// import { v4 as uuidv4 } from 'uuid';
+import { v4 } from 'uuid';
+import { courseArray } from './Context';
 function OutlineForm() {
-
+  const courseContext = useContext(courseArray)
   const [moduleArr, setModuleArray] = useState([
     {
       name: "module 1",
@@ -41,13 +44,16 @@ function OutlineForm() {
   const addNewModule = () => {
     let newModArr = [...moduleArr]
     let newModule = {
+      id: v4(),
       name: "new Module",
       topics: [
         {
           name: "new Topic",
+          id: v4(),
           subTopics: [
             {
-              name: "new subTopic"
+              name: "new subTopic",
+              id: v4()
             }
           ]
         }
@@ -71,9 +77,10 @@ function OutlineForm() {
   const addTopic = ({modIndex})=>{
     let newModArr = [...moduleArr]
     newModArr[modIndex].topics.push({
+      id: v4(),
       name: "new Topic",
       subTopics: [
-        {
+        {id: v4(),
           name: "new subTopic"
         }
       ]
@@ -120,7 +127,7 @@ function OutlineForm() {
           moduleArr.map((mod, modIndex) => {
             console.log("inside mod Arr")
             return (
-              <Grid key={mod.name} item container xs={12}>
+              <Grid key={mod.id} item container xs={12}>
                 <Grid item xs={2} sx={{
                   display: 'flex',
                   flexDirection: "column",
@@ -144,7 +151,7 @@ function OutlineForm() {
                   {
                     mod.topics.map((topic, topicIndex) => {
                       return (
-                        <Grid key={topic.name} item container xs={12}>
+                        <Grid key={topic.id} item container xs={12}>
                           <Grid item xs={4} sx={{
                             display: 'flex',
                             flexDirection: "column",
@@ -178,7 +185,7 @@ function OutlineForm() {
                             {
                               topic.subTopics?.map((subTopic, subTopicIndex) => {
                                 return (
-                                  <Grid key={subTopic.name} item xs={12}>
+                                  <Grid key={subTopic.id} item xs={12}>
                                     <div><TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"subtopic"} updateOutLine={setModuleArray} label={"set title for yout module"} topicIndex={topicIndex} subTopicIndex={subTopicIndex}/></div>
                                    <Button variant="contained" sx={{
                                 background: "red"
@@ -213,23 +220,27 @@ function OutlineForm() {
           })
         }
       </Grid>
-      <Button onClick={()=>console.log(moduleArr)}> see</Button>
+      <Button onClick={()=>{
+        const newModArr = [...moduleArr]
+        courseContext.setCourseState({...courseContext, data: newModArr})
+      }}> see</Button>
     </Grid>
   )
 }
 
 function TitleBox({updateOutLine, outLine, label, moduleIndex, topicIndex, subTopicIndex, type}){
   const [isSet, setIsSet] = useState(true)
-  const [title, setTitle] = useState('title')
-  useEffect((e)=>{
-    console.log("the event element isn" , e)
-    console.log("the isSet is", isSet)
-  },[isSet])
+  const [title, setTitle] = useState('')
+  useEffect(()=>{
+    console.log("The title is ", title)
+    console.log("the isSet is ", isSet)
+  })
   const addModuleTitle = () =>{
     if(!isSet){let newOutLine = [...outLine]
     newOutLine[moduleIndex].name = title
-    updateOutLine(newOutLine)}
-    else{
+    updateOutLine(newOutLine)
+    setIsSet(!isSet)
+  }else{
     setIsSet(!isSet)
   }}
   const addTopicTitle = () =>{
@@ -256,25 +267,41 @@ function TitleBox({updateOutLine, outLine, label, moduleIndex, topicIndex, subTo
   return(
     <div>
       {
-        !isSet ? (<>
-          <TextField variant='filled' placeholder='set name' label={label} value={title} onChange={(e)=>setTitle(e.target.value)}/>
-         
-        </>) : (<label>{title}</label>)
+        !isSet ? 
+        (
+        <>
+          <TextField 
+          variant='filled'
+          placeholder='set name' 
+          label={label} 
+          value={title} 
+          onChange={(e)=>setTitle(e.target.value)}
+          />
+        </>)
+         : 
+         (
+        <span style={{
+          border: "2px solid red", width: "200px !important"
+        }}>
+        {title}
+        </span>
+        )
       }
+      {/* <label>{title}</label> */}
        {
             type === "module" ? (<Button variant='outlined' onClick={()=>{
               addModuleTitle()
-            }}>Update Title</Button>) 
+            }}>Update module Title</Button>) 
             : (
               type === "topic" ?
               (
                 <Button variant='outlined' onClick={()=>{
                   addTopicTitle()
-                }}>Update Title</Button>
+                }}>Update topic Title</Button>
               ) : (
                 <Button variant='outlined' onClick={()=>{
                   addSubTopicTitle()
-                }}>Update Title</Button>
+                }}>Update subtopic Title</Button>
               )
             )
           }

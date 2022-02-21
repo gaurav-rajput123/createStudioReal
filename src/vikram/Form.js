@@ -12,30 +12,55 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { stepNumber } from '../Context';
+import { courseArray } from '../Context';
 
-function Form({closeModal}) {
+function Form({ closeModal }) {
   const counter = React.useContext(stepNumber)
   const [newSkill, setNewSkill] = React.useState('')
   const [skillArr, newSkillArr] = useState([])
+  const courseContext = React.useContext(courseArray)
+  const [courseOut, setCourseOut] = useState({
+    courseId: "",
+    courseNumber: "",
+    courseDescription: "",
+    courseDuration: "",
+    courseOrganisation: "",
+    skillsGained: []
+  })
+
+  const handleNext = ({activeStep, setActiveStep}) => {
+    counter.increment()
+    // closeModal(false)
+    let newC = {...courseContext}
+    newC.courseId = courseOut.courseId
+    newC.courseDesciption = courseOut.courseDescription
+    newC.courseDuration = courseOut.courseDuration
+    newC.courseNumber = courseOut.courseNumber
+    newC.organisation = courseOut.courseOrganisation
+    newC.skillsGained = [...skillArr]
+    courseContext.setCourseState(newC)
+    setActiveStep(2)
+    console.log("here")
+  }
   return (
     <>
-      <Card 
-      // sx={{ background: "white" }}
-      sx={{
-        position: "absolute",
-        width: "80%",
-        height: "80%",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)", 
-        overflowY: 'scroll',
-        borderRadius: "12px",
-        border: "1px solid black",
-    }}
+      <Card
+        // sx={{ background: "white" }}
+        sx={{
+          position: "absolute",
+          width: "80%",
+          height: "80%",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          overflowY: 'scroll',
+          borderRadius: "12px",
+          border: "1px solid black",
+        }}
       >
         <Grid container >
           <Grid xs={12} textAlign={'center'}>
-            <Typography fontSize={"50px"} fontFamily={'Helvetica','Roboto Serif', "sans-serif "}>Course Detail</Typography>
+            <Typography fontSize={"50px"} fontFamily={'Helvetica', 'Roboto Serif', "sans-serif "}>Course Detail</Typography>
           </Grid>
           <Grid xs={8} width={'100%'}>
             <Box
@@ -246,12 +271,11 @@ function Form({closeModal}) {
                     color: "white",
                     // width: "fit-content"
                   }}
-                  fullWidth
-                  variant='contained'
-                  onClick={()=>{
-                    counter.increment()
-                    closeModal(false)
-                  }}
+                    fullWidth
+                    variant='contained'
+                    onClick={() => {
+                      handleNext()
+                    }}
                   >Create course</Button>
                   {/* <Button sx={{
                     fontSize: "16px",
