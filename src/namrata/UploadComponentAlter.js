@@ -17,7 +17,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 const Input = styled('input')({
     display: 'none',
 });
-function UploadComponentAlter({ courseArray, courseIndex, topicIndex, subTopicIndex, setInForm, updateCourseArray, handleClose }) {
+function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, subTopicIndex, setInForm, updateCourseArray, handleClose }) {
     const [imageUrl, setImageUrl] = useState(null)
     const [fileObj, setFileObj] = useState(null)
     const formData = useContext(formContext)
@@ -62,7 +62,7 @@ function UploadComponentAlter({ courseArray, courseIndex, topicIndex, subTopicIn
                                         Icon={<LinkIcon className="attach-icon" />}>
                                     </UploadButton> */}
                                 <label htmlFor="contained-button-file">
-                                    <Input accept="image/*" id="contained-button-files" multiple type="file" />
+                                    <Input accept={accept} id="contained-button-files" multiple type="file" />
                                     <ListItemButton className="upload-button" variant="contained" sx={{ width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }} >
                                         <AttachmentIcon sx={{ paddingRight: "10px" }} />
                                         <Typography>Attach Transcript</Typography>
@@ -77,7 +77,7 @@ function UploadComponentAlter({ courseArray, courseIndex, topicIndex, subTopicIn
                                         Icon={<IosShareIcon className="thumb-icon" />} >
                                     </UploadButton> */}
                                 <label htmlFor="contained-button-file">
-                                    <Input accept="image/*" id="contained-button-file" multiple type="file"
+                                    <Input accept={accept} id="contained-button-file" multiple type="file"
                                         onChange={e => {
                                             // console.log(e.target.files[0])
                                             // setFileObj(e.target.files[0])
@@ -95,7 +95,7 @@ function UploadComponentAlter({ courseArray, courseIndex, topicIndex, subTopicIn
                             <div className="Thumbnail">
                                 <Typography sx={{ paddingBottom: "10px", fontWeight: 500 }}>Upload File</Typography>
                                 <input
-                                    accept="image/*"
+                                    accept={accept}
                                     type="file"
                                     id="select-image"
                                     style={{ display: 'none' }}
