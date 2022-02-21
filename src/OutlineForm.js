@@ -1,4 +1,4 @@
-import { Button, Grid, TextField } from '@mui/material';
+import { Button, Grid, TextField ,Card} from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import './add.css'
@@ -105,6 +105,7 @@ function OutlineForm({activeStep, setActiveStep, setShowModal}) {
 
   return (
     <Grid container>
+      <Card  sx={{backgroundColor:"white"}}>
       <Grid item xs={6}>
         CourseDetails
       </Grid>
@@ -225,6 +226,9 @@ function OutlineForm({activeStep, setActiveStep, setShowModal}) {
         courseContext.setCourseState({...courseContext, data: newModArr})
         setShowModal(false)
       }}> Proceed to create course</Button>
+    
+    
+    </Card>
     </Grid>
   )
 }
