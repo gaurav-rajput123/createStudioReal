@@ -24,7 +24,7 @@ export default function CardAnim({ name }) {
                     () => setShowModal(false)
                 }>
                 {/* <OutlineForm /> */}
-                <CourseForm />
+                <CourseForm setModal={setShowModal}/>
             </Modal>
             <Card sx={{ maxWidth: 1000, minHeight: 300, }} style={{ display: 'flex', backgroundColor: '#5468E7', borderRadius: '30px', position: 'relative', margin: "6px 2px 6px 10px" }}>
                 <div className="text" style={{ margin: '0 5% 0 0', width: '110%', paddingLeft: "14px" }}>
@@ -53,28 +53,15 @@ export default function CardAnim({ name }) {
 }
 
 
-function CourseForm() {
+function CourseForm({setModal}) {
     const counterContext = React.useContext(stepNumber)
     const [stage, setStage] = React.useState(1)
-    const map = [0, 1]
+    // const map = [0, 1]
     return (
         <div>
             {
-                stage === 1 ? (<Form activeStep={stage} setActiveStep={setStage}/>) : (<OutlineForm activeStep={stage} setActiveStep={setStage}/>)
+                stage === 1 ? (<Form activeStep={stage} setActiveStep={setStage}/>) : (<OutlineForm activeStep={stage} setActiveStep={setStage} setShowModal={setModal}/>)
             }
-            {/* <div>
-                <Stepper>
-                    {
-                        map.map((value, index) => {
-                            return (
-                                <Step key={value.toString()} completed={stage === index ? true : false}>
-                                    <StepLabel>{value + 1}</StepLabel>
-                                </Step>
-                            )
-                        })
-                    }
-                </Stepper>
-            </div> */}
         </div>
     )
 }

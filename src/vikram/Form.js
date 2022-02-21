@@ -14,7 +14,7 @@ import { useState } from 'react';
 import { stepNumber } from '../Context';
 import { courseArray } from '../Context';
 
-function Form({ closeModal }) {
+function Form({ closeModal, activeStep, setActiveStep }) {
   const counter = React.useContext(stepNumber)
   const [newSkill, setNewSkill] = React.useState('')
   const [skillArr, newSkillArr] = useState([])
@@ -28,7 +28,7 @@ function Form({ closeModal }) {
     skillsGained: []
   })
 
-  const handleNext = ({activeStep, setActiveStep}) => {
+  const handleNext = () => {
     counter.increment()
     // closeModal(false)
     let newC = {...courseContext}

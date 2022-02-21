@@ -5,7 +5,7 @@ import './add.css'
 // import { v4 as uuidv4 } from 'uuid';
 import { v4 } from 'uuid';
 import { courseArray } from './Context';
-function OutlineForm() {
+function OutlineForm({activeStep, setActiveStep, setShowModal}) {
   const courseContext = useContext(courseArray)
   const [moduleArr, setModuleArray] = useState([
     {
@@ -223,6 +223,7 @@ function OutlineForm() {
       <Button onClick={()=>{
         const newModArr = [...moduleArr]
         courseContext.setCourseState({...courseContext, data: newModArr})
+        setShowModal(false)
       }}> see</Button>
     </Grid>
   )
