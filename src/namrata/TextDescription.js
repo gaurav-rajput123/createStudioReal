@@ -30,7 +30,7 @@ function TextDescription({ getDescription, titleDescription, skipDescription, ad
           marginY: "12px",
           // marginLeft: "12px",
           // marginRight: "24px"
-          width: "40%",
+          width: "20%",
           marginX: "12px"
         }}>Add Description</Button>
         <div style={{flexGrow: 1}}/>

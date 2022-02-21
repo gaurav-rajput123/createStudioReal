@@ -63,7 +63,7 @@ export default function Middle() {
 
 <div style={{ display: "flex", justifyContent:'space-around' }}>
   <Butn Text="Select Course" disabled/>
-  <Butn Text="Add Section" clickHoja={addNewSection} />
+  <Butn Text="Add Module" clickHoja={addNewSection} />
   <Butn Text="Collapse All" disabled/>
   <Butn Text="Live View" disabled/>
   <Butn Text=" Save" disabled/>
@@ -97,7 +97,7 @@ marginRight: "36px",
 variant="contained"
 
 >
-update form
+update course
 </Button>
 <Button onClick={() =>{
 // console.log(courses)
@@ -118,7 +118,7 @@ marginRight: "36px",
 }}
 variant="contained"
 >
-upload
+upload course and save
 </Button>
 <Button onClick={()=>console.log(courseContext)}>doit</Button>
 </div>

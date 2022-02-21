@@ -33,7 +33,7 @@ function SubjectTile(prop) {
 
   const [isTitle, setIsTitle] = useState(false)
 
-  const [label, setLabel] = useState("Section")
+  const [label, setLabel] = useState("Module")
 
   const setLabelController = () => {
     setIsTitle(!isTitle)

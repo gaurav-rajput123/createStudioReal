@@ -23,6 +23,7 @@ function App() {
     }}>
       <div className="App">
       <Routes>
+      {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
       <Route path="/" element={ <Front/>} />
       <Route path="/form" element={ <Form/>} />
       <Route path="/create" element={<Home />} />

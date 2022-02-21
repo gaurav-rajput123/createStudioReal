@@ -15,7 +15,7 @@ const Topbar = () => {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" style={{backgroundColor:'#80808000', color:'black'}}>
                 <Toolbar>
-                <IconButton
+                {/* <IconButton
                     size="large"
                     edge="start"
                     color="inherit"
@@ -24,13 +24,13 @@ const Topbar = () => {
                     
                 >
                     <MenuIcon />
-                </IconButton>
+                </IconButton> */}
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 </Typography>
                 <Typography sx={{ flexGrow: 1 }} style={{display:'flex'}} >
-                <Typography variant="h6" style={{paddingRight:'30px'}}>
+                {/* <Typography variant="h6" style={{paddingRight:'30px'}}>
                         <Button variant='text'>About</Button>
-                </Typography>
+                </Typography> */}
                 <Typography variant="h6"  sx={{ flexGrow: 1 }}>
                 <Button variant='text'>Create Studio</Button>
                     </Typography>

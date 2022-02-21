@@ -88,20 +88,24 @@ const Fstcntnr = () => {
                 Welcome
             </Typography>
             <Typography variant='h1' style={{fontWeight:'700'}}>
-            to Create 
+            to Course
             </Typography>
             <Typography variant='h1' style={{fontWeight:'700'}}>
             Studio
             </Typography>
             <Typography width={'80%'} padding={'2%'}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+            Create your teaching experience into a L-Earning course.
+
             </Typography>
             <Grid paddingTop={'4%'}>
             <NavLink to={"/create"} style={{
-              textDecoration: "none"
+              textDecoration: "none",
+              borderRadius: "24px"
             }}>
-            <Button variant='contained'>
-                Skip Tour
+            <Button variant='contained' sx={{
+              borderRadius: "24px"
+            }}>
+                Skip Tour and go to studio
             </Button>
             </NavLink>
             </Grid>

@@ -18,7 +18,10 @@ export default function CardAnim({ name }) {
     const counterContext = React.useContext(stepNumber)
     return (
         <div className="container">
-            <Modal
+            <Modal sx={{
+                overflow: "scroll",
+
+            }}
                 open={showModal}
                 onClose={
                     () => setShowModal(false)
@@ -37,11 +40,15 @@ export default function CardAnim({ name }) {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="large" variant="outlined" style={{ fontFamily: 'Montserrat', fontSize: '14px', color: '#334155', borderRadius: '25px', backgroundColor: 'white', position: 'absolute', bottom: '10%' }}
+                        <Button size="large" variant="outlined" style={{ fontFamily: 'Montserrat', fontSize: '14px', color: '#334155', borderRadius: '25px', backgroundColor: 'white', position: 'absolute', bottom: '10%', display: courseContext.data.length === 0 ? 'block' : 'none' }}
                             onClick={() => {
                                 setShowModal(true)
                             }}
-                        ><b>NEW COURSE</b></Button>
+                        >
+                            {
+                                courseContext.data.length == 0 ? (<span>Add Course</span>) : null
+                            }
+                        </Button>
                     </CardActions>
                 </div>
                 {/* <div className="group" > */}
@@ -58,7 +65,14 @@ function CourseForm({setModal}) {
     const [stage, setStage] = React.useState(1)
     // const map = [0, 1]
     return (
-        <div>
+        <div style={{
+            // position: "absolute",
+            // top: "50%",
+            // left: "50%",
+            // transform: "translate(-50%, -50%)",
+            // width: "100%",
+            // height: "100vh"
+        }}>
             {
                 stage === 1 ? (<Form activeStep={stage} setActiveStep={setStage}/>) : (<OutlineForm activeStep={stage} setActiveStep={setStage} setShowModal={setModal}/>)
             }

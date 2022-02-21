@@ -78,7 +78,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
   const [isTitle, setIsTitle] = useState(false)
 
-  const [label, setLabel] = useState("Section")
+  const [label, setLabel] = useState("Sub Topic")
 
   const [resourceType, setResourceType] = useState(null)
 
@@ -345,16 +345,24 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
           >
             <SlideshowIcon />
           </Button>
-          <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
-            onClick={() => addAssesment()}
-            color="error"
-            disabled={isDisable.audio}
-          >
-            <TextSnippetIcon />
-          </Button>
+          
         </Stack>
+        <div style={{
+          display: "flex", justifyContent: "center",
+          // paddingX: "25"
+        }}>
+        <Button
+            sx={{ minWidth: "150px", marginX: "30%"}}
+            variant="contained"
+            onClick={() => addAssesment()}
+            fullWidth
+
+            // color="error"
+            // disabled={isDisable.audio}
+          >
+            Add Assesment
+          </Button>
+        </div>
         <div style={{
           // display: "flex",
           // justifyContent: "center"

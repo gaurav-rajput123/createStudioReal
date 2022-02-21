@@ -18,7 +18,7 @@ export default function Home() {
                 <Fstcntnr />
             </Grid>
             <Grid item xs={12} sx={{}} >
-                <Secndcntnr />
+                {/* <Secndcntnr /> */}
             </Grid>
             <Grid item xs={12} sx={{}}>
                 <AnimationGrid />
