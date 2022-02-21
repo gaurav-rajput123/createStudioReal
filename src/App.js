@@ -10,6 +10,7 @@ import Form from './vikram/Form';
 import { stepNumber } from './Context';
 // import { Grid, Grid } from '@mui/material';
 import styled from '@emotion/styled';
+import UploadComponentAlter from './namrata/UploadComponentAlter';
 
 
 // import AnimatedPa from './namrata/AnimationGrid';

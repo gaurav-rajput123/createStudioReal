@@ -25,7 +25,7 @@ import Modal from '@mui/material/Modal';
 import { Box } from "@mui/system";
 import UploadComponentAlter from "./UploadComponentAlter";
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material";
 import generateKey from "../resources/generateKey";
 import CheckboxComponent from "../assesment/components/Checkbox";
 import TextFieldAssesment from "../assesment/assesmentComponents/TextFieldAssesment";
@@ -38,6 +38,7 @@ import Research from '../assesment/assesmentComponents/Research'
 import CaseStudy from '../assesment/assesmentComponents/CaseStudy'
 import BlankProblem from '../assesment/assesmentComponents/BlankProblem'
 import CustomProblem from "../assesment/assesmentComponents/CustomProblem";
+import { type } from "@testing-library/user-event/dist/type";
 const parse = require('html-react-parser');
 
 const style = {
@@ -67,6 +68,7 @@ const style = {
 
 export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, courseArray, updateCourseArray }) {
   const [expanded, setExpanded] = React.useState(false);
+  const [type,setType]=React.useState("");
   const [expandedDescription, setExpandedDescription] = React.useState(false);
   const StyledCard = styled(Card)({
     display: "flex",
@@ -303,25 +305,37 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <UploadComponentAlter courseArray={courseArray} topicIndex={topicIndex} subTopicIndex={subTopicIndex} courseIndex={courseIndex} setInForm={resourceType} updateCourseArray={updateCourseArray} handleClose={handleClose} />
+              <UploadComponentAlter accept={type} courseArray={courseArray} topicIndex={topicIndex} subTopicIndex={subTopicIndex} courseIndex={courseIndex} setInForm={resourceType} updateCourseArray={updateCourseArray} handleClose={handleClose} />
             </Box>
           </Modal>
           <Button
             sx={{ minWidth: "150px", height: "100px" }}
             variant="outlined"
-            onClick={() => handleOpen("audio")}
+            onClick={() => {
+              setType("audio/*");
+              return handleOpen("audio")
+            }}
             color="error"
             disabled={isDisable.audio}
           >
+            <Box>
             <AudioFileIcon />
+            <Typography>Audio</Typography>
+            </Box>
           </Button>
           <Button
             sx={{ minWidth: "150px", height: "100px" }}
             variant="outlined"
-            onClick={() => handleOpen("video")}
+            onClick={() => {
+              setType("video/*");
+              handleOpen("video")}
+            }
             disabled={isDisable.video}
           >
+            <Box>
             <OndemandVideoIcon />
+            <Typography>Video</Typography>
+            </Box>
           </Button>
 
 
@@ -329,10 +343,16 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             sx={{ minWidth: "150px", height: "100px" }}
             variant="outlined"
             color="success"
-            onClick={() => handleOpen("pdf")}
+            onClick={() => {
+              setType("application/pdf");
+              handleOpen("pdf")}
+            }
             disabled={isDisable.pdf}
           >
+            <Box>
             <PictureAsPdfIcon />
+            <Typography>Pdf</Typography>
+            </Box>
           </Button>
 
 
@@ -340,12 +360,29 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             sx={{ minWidth: "150px", height: "100px" }}
             variant="outlined"
             color="warning"
-            onClick={() => handleOpen("ppt")}
+            onClick={() => {
+              setType("application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.slideshow,application/vnd.openxmlformats-officedocument.presentationml.presentation")
+              handleOpen("ppt")}
+            }
             disabled={isDisable.ppt}
           >
+            <Box>
             <SlideshowIcon />
+            <Typography>PPT</Typography>
+            </Box>
           </Button>
-          
+          <Button
+            sx={{ minWidth: "150px", height: "100px" }}
+            variant="outlined"
+            onClick={() => addAssesment()}
+            color="error"
+            disabled={isDisable.audio}
+          >
+            <Box>
+            <TextSnippetIcon />
+            <Typography>Assessment</Typography>
+            </Box>
+          </Button>
         </Stack>
         <div style={{
           display: "flex", justifyContent: "center",
