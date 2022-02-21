@@ -11,7 +11,8 @@ import { stepNumber } from './Context';
 // import { Grid, Grid } from '@mui/material';
 import styled from '@emotion/styled';
 import UploadComponentAlter from './namrata/UploadComponentAlter';
-
+import MetaLogin from './formlogin/MetaLogin';
+import Additionalinfo from './formlogin/Additionalinfo';
 
 // import AnimatedPa from './namrata/AnimationGrid';
 
@@ -25,7 +26,9 @@ function App() {
       <div className="App">
       <Routes>
       {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
-      <Route path="/" element={ <Front/>} />
+      <Route path="/" element={ <MetaLogin/>} />
+      <Route path="/user" element={ <Additionalinfo/>} />
+      <Route path="/land" element={ <Front/>} />
       <Route path="/form" element={ <Form/>} />
       <Route path="/create" element={<Home />} />
       <Route path="/formnew" element={<OutlineForm />} />

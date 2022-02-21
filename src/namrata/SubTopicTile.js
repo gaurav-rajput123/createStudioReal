@@ -461,7 +461,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
                     )
                   }
-                  if (assesment.type === 2) {
+                  if (assesment.type === 2) { 
                     return (
                       <Box sx={{
                         paddingY: "24px"
