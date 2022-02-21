@@ -55,70 +55,76 @@ export default function Middle() {
  
   return (
     <Box className="box-lista" style={{ padding: "6px 0px",margin:"0px 10px 0px 12px", width: "98%", zIndex: 2 }}>
-      <Paper style={{ backgroundColor: "white", alignItems: "flex-start", height: "auto", borderRadius: "15px", paddingBottom:'1%' }}>
+      {
+       courseContext.data.length != 0 ? (
+          <div>
+            <Paper style={{ backgroundColor: "white", alignItems: "flex-start", height: "auto", borderRadius: "15px", paddingBottom:'1%' }}>
 
 
-        <div style={{ display: "flex", justifyContent:'space-around' }}>
-          <Butn Text="Select Course" disabled/>
-          <Butn Text="Add Section" clickHoja={addNewSection} />
-          <Butn Text="Collapse All" disabled/>
-          <Butn Text="Live View" disabled/>
-          <Butn Text=" Save" disabled/>
-        </div>
-        <Card />
-    {courses.map((item, index) => {
-    return (
-      <MainTile key={item.id} course={item} courseIndex={index} courseArray={courses} updateCurrentCourse={updateCourse} 
-        changeCourseName={changeCourseName}
-        updateCourseArray={updateCourseArray}
-      />
-    )
-  })}
-      </Paper>
-      <div style={{
-        marginTop: "24px",
-        marginBottom: "12px"
-      }}>
-        <Button onClick={() =>{
-        const data = {
-          name: "hello",
-          data: courses
-        }
-        formData.set('courseDataa', JSON.stringify(data))
-        console.log(courses)
-      }}
-      sx={{
-        marginRight: "36px",
-        
-      }}
-      variant="contained"
-      
-      >
-        update form
-        </Button>
-        <Button onClick={() =>{
-        // console.log(courses)
-        // formData.forEach(item=>{
-        //   console.log(item)
-        // })
-       
-        axios({
-          url:'http://localhost:8080/get',
-          data: formData,
-          method: "POST"
-        }).then(res=>console.log(res)).catch(r=>console.log(r))
-       
-      }}
-      sx={{
-        marginRight: "36px",
-        
-      }}
-      variant="contained"
-      >
-        upload
-        </Button>
-        <Button onClick={()=>console.log(courseContext)}>doit</Button>
-      </div>
+<div style={{ display: "flex", justifyContent:'space-around' }}>
+  <Butn Text="Select Course" disabled/>
+  <Butn Text="Add Section" clickHoja={addNewSection} />
+  <Butn Text="Collapse All" disabled/>
+  <Butn Text="Live View" disabled/>
+  <Butn Text=" Save" disabled/>
+</div>
+<Card />
+{courses.map((item, index) => {
+return (
+<MainTile key={item.id} course={item} courseIndex={index} courseArray={courses} updateCurrentCourse={updateCourse} 
+changeCourseName={changeCourseName}
+updateCourseArray={updateCourseArray}
+/>
+)    
+})}
+</Paper>
+<div style={{
+marginTop: "24px",
+marginBottom: "12px"
+}}>
+<Button onClick={() =>{
+const data = {
+  name: "hello",
+  data: courses
+}
+formData.set('courseDataa', JSON.stringify(data))
+console.log(courses)
+}}
+sx={{
+marginRight: "36px",
+
+}}
+variant="contained"
+
+>
+update form
+</Button>
+<Button onClick={() =>{
+// console.log(courses)
+// formData.forEach(item=>{
+//   console.log(item)
+// })
+
+axios({
+  url:'http://localhost:8080/get',
+  data: formData,
+  method: "POST"
+}).then(res=>console.log(res)).catch(r=>console.log(r))
+
+}}
+sx={{
+marginRight: "36px",
+
+}}
+variant="contained"
+>
+upload
+</Button>
+<Button onClick={()=>console.log(courseContext)}>doit</Button>
+</div>
+          </div>
+        ): null
+      }
       {/* <Button onClick={() =>{
         let newArr = [1,2,3,4,5,6]
         console.log(newArr.map(item=> uuidv4()))

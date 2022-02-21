@@ -20,7 +20,7 @@ function Form({ closeModal, activeStep, setActiveStep }) {
   const [skillArr, newSkillArr] = useState([])
   const courseContext = React.useContext(courseArray)
   const [courseOut, setCourseOut] = useState({
-    courseId: "",
+    courseTitle: "",
     courseNumber: "",
     courseDescription: "",
     courseDuration: "",
@@ -31,21 +31,21 @@ function Form({ closeModal, activeStep, setActiveStep }) {
   const handleNext = () => {
     counter.increment()
     // closeModal(false)
-    let newC = {...courseContext}
-    newC.courseId = courseOut.courseId
+    let newC = { ...courseContext }
+    newC.courseTitle = courseOut.courseTitle
     newC.courseDesciption = courseOut.courseDescription
     newC.courseDuration = courseOut.courseDuration
     newC.courseNumber = courseOut.courseNumber
     newC.organisation = courseOut.courseOrganisation
-    newC.skillsGained = [...skillArr]
+    newC.skillsGained = [...courseOut.skillsGained]
     courseContext.setCourseState(newC)
     setActiveStep(2)
-    console.log("here")
+    // console.log("here")
   }
+  
   return (
     <>
       <Card
-        // sx={{ background: "white" }}
         sx={{
           position: "absolute",
           width: "80%",
@@ -78,7 +78,7 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                 <div style={{ display: "flex" }}>
                   <div style={{
                     width: "200px",
-                    paddingTop:"15px"
+                    paddingTop: "15px"
                   }}>
                     <Typography fontSize={"16px"} font-family={'Lobster', "cursive"} sx={{ paddingTop: "15px" }}>Course Title*</Typography>
                     <Typography fontSize={"10px"} font-family={'Lobster', "cursive"}>
@@ -86,7 +86,9 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                     </Typography>
                   </div>
                   <TextBox
-
+                    setIn={setCourseOut}
+                    field={'courseTitle'}
+                    outLine={courseOut}
                     InputLabelProps={{
                       sx: {
                         color: "Black !important",
@@ -107,7 +109,7 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                 <div style={{ display: "flex" }}>
                   <div style={{
                     width: "200px",
-                    paddingTop:"20px"
+                    paddingTop: "20px"
                   }}>
                     <Typography fontSize={"16px"} font-family={'Lobster', "cursive"}>Course Number*</Typography>
                     <Typography fontSize={"10px"} font-family={'Lobster', "cursive"}>
@@ -115,7 +117,9 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                     </Typography>
                   </div>
                   <TextBox
-
+                    setIn={setCourseOut}
+                    field={'courseNumber'}
+                    outLine={courseOut}
                     InputLabelProps={{
                       sx: {
                         color: "Black !important",
@@ -135,7 +139,7 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                 <div style={{ display: "flex" }}>
                   <div style={{
                     width: "200px",
-                    paddingTop:"20px"
+                    paddingTop: "20px"
                   }}>
                     <Typography fontSize={"16px"} font-family={'Lobster', "cursive"}>Organisation*</Typography>
                     <Typography fontSize={"10px"} font-family={'Lobster', "cursive"}>
@@ -143,7 +147,9 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                     </Typography>
                   </div>
                   <TextBox
-
+                    setIn={setCourseOut}
+                    field={'courseOrganisation'}
+                    outLine={courseOut}
                     InputLabelProps={{
                       sx: {
                         color: "Black !important",
@@ -162,12 +168,20 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                 <div style={{ display: "flex" }}>
                   <div style={{
                     width: "200px",
-                  
+
                   }}>
-                    <Typography fontSize={"16px"} font-family={'Lobster', "cursive"} sx={{  }}>Course Duration*</Typography>
+                    <Typography fontSize={"16px"} font-family={'Lobster', "cursive"} sx={{}}>Course Duration*</Typography>
 
                   </div>
                   <TextField
+                  value={courseOut.courseDuration}
+                  onChange={
+                    e=>{
+                      let newOut = {...courseOut}
+                      newOut.courseDuration = e.target.value
+                      setCourseOut(newOut)
+                    }
+                  }
                     id="input-with-icon-textfield"
                     label="Duration"
                     InputProps={{
@@ -184,12 +198,14 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                 <div style={{ display: "flex" }}>
                   <div style={{
                     width: "200px",
-                    
+
                   }}>
                     <Typography fontSize={"16px"} font-family={'Lobster', "cursive"} sx={{ paddingTop: "25px" }}>Course Description*</Typography>
                   </div>
                   <TextBox
-
+                    setIn={setCourseOut}
+                    field={'courseDescription'}
+                    outLine={courseOut}
                     InputLabelProps={{
                       sx: {
                         color: "Black !important",
@@ -215,14 +231,20 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                       Skills that you will <br />taught in this course .
                     </Typography>
                   </div>
-                  <TextField variant='outlined' fullWidth value={newSkill} onChange={e => setNewSkill(e.target.value)} sx={{ flexGrow: .4 }} />
+                  <TextField 
+                  variant='outlined' fullWidth 
+                  value={newSkill} 
+                  onChange={e => setNewSkill(e.target.value)} 
+                  sx={{ flexGrow: .4 }}
+                  />
                   <Button
                     variant="contained"
                     onClick={() => {
-                      let newSkillArray = skillArr.length !== 0 ? [...skillArr] : []
-                      newSkillArray.push(newSkill)
-                      newSkillArr(newSkillArray)
-                      setNewSkill("")
+                      let newOutline = {...courseOut}
+                      let newSkillArr = [...newOutline.skillsGained]
+                      newSkillArr.push(newSkill)
+                      newOutline.skillsGained = newSkillArr
+                      setCourseOut(newOutline)
                     }}
                     sx={{
                       padding: "06px",
@@ -230,17 +252,19 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                       fontSize: "16px",
                       alignSelf: "center"
                     }}
-                  >Add Skill</Button>
+                  >
+                    Add Skill
+                    </Button>
 
                 </div>
                 <div style={{ marginLeft: "180px" }}>
                   <div >
                     <ul>
                       {
-                        skillArr.map((item, itemIndex) => {
+                        courseOut.skillsGained.map((item, itemIndex) => {
                           console.log(item)
                           return (
-                            <li style={{
+                            <li key={item} style={{
                               fontSize: "16px",
                               fontWeight: "500",
                               textDecoration: "none",

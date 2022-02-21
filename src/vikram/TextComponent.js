@@ -28,7 +28,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   }
 }));
 
-export default function TextBox({ heading, label, helpertext, handler, name }) {
+export default function TextBox({ heading, label, helpertext, handler, name, setIn, field, outLine }) {
 
   return (
     <Box component="from" display="flex" sx={{ padding: "6px" }}>
@@ -41,7 +41,9 @@ export default function TextBox({ heading, label, helpertext, handler, name }) {
           {heading}
         </InputLabel>
         <BootstrapInput placeholder={label} id="bootstrap-input" onChange={(e) => {
-          handler(name, e.target.value)
+          let newOutLine = {...outLine}
+          newOutLine[field] = e.target.value
+          setIn(newOutLine)
         }} />
         <FormHelperText>
           {helpertext}

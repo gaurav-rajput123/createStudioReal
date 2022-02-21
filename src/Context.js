@@ -17,6 +17,6 @@ let numCon = {
 export let stepNumber = React.createContext(numCon)
 
 export const courseArray = React.createContext({
-    courseId: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
+    courseTitle: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
     data: [], setCourseState: ()=>{}
 })

@@ -224,7 +224,7 @@ function OutlineForm({activeStep, setActiveStep, setShowModal}) {
         const newModArr = [...moduleArr]
         courseContext.setCourseState({...courseContext, data: newModArr})
         setShowModal(false)
-      }}> see</Button>
+      }}> Proceed to create course</Button>
     </Grid>
   )
 }
