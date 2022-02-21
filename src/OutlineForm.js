@@ -234,7 +234,7 @@ function TitleBox({updateOutLine, outLine, label, moduleIndex, topicIndex, subTo
   useEffect(()=>{
     console.log("The title is ", title)
     console.log("the isSet is ", isSet)
-  })
+  }) 
   const addModuleTitle = () =>{
     if(!isSet){let newOutLine = [...outLine]
     newOutLine[moduleIndex].name = title
