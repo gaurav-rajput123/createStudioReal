@@ -61,8 +61,14 @@ function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, sub
                                         name={"Attach Transcript"}
                                         Icon={<LinkIcon className="attach-icon" />}>
                                     </UploadButton> */}
-                                <label htmlFor="contained-button-file">
-                                    <Input accept={accept} id="contained-button-files" multiple type="file" />
+                                <label htmlFor="contained-button-transcript">
+                                    <Input accept=".vtt,.srt"
+                                     id="contained-button-transcript"
+                                      multiple 
+                                      type="file"
+                                      onChange={e => {
+                                        setFileObj(e.target.files[0])
+                                    }} />
                                     <ListItemButton className="upload-button" variant="contained" sx={{ width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }} >
                                         <AttachmentIcon sx={{ paddingRight: "10px" }} />
                                         <Typography>Attach Transcript</Typography>
