@@ -77,7 +77,7 @@ function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, sub
                                         Icon={<IosShareIcon className="thumb-icon" />} >
                                     </UploadButton> */}
                                 <label htmlFor="contained-button-file">
-                                    <Input accept={accept} id="contained-button-file" multiple type="file"
+                                    <Input accept="image/*" id="contained-button-file" multiple type="file"
                                         onChange={e => {
                                             // console.log(e.target.files[0])
                                             // setFileObj(e.target.files[0])
@@ -127,8 +127,7 @@ function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, sub
                                         <img src={img}
                                             alt="asdf"
                                             style={{
-                                                maxWidth: "80%",
-                                                maxHeight: "100%",
+                                                width: "80%",
                                                 objectFit: "cover"
                                             }} />
                                     )
@@ -137,8 +136,7 @@ function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, sub
                                         <img src={imageUrl}
                                             alt="hello"
                                             style={{
-                                                minWidth: "60%",
-                                                minHeight: "320px",
+                                                width: "80%",
                                                 objectFit: "cover"
                                             }} />
                                     )}
