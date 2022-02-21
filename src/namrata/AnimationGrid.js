@@ -22,14 +22,14 @@ export default function AnimationGrid() {
 
             <Grid container rowSpacing={15} columnSpacing={{ xs: 1, sm: 2, md: 3 }} direction='column'>
                 <Grid item xs style={{ position: 'relative', left: '10%' }}>
-                    <h4 className='guidelines'>04. Guidelines</h4>
+                    {/* <h4 className='guidelines'>01. Guidelines</h4> */}
                     <div className="main-head" style={{ display: 'flex', marginTop: '-3%' }}>
                         <div className="bold" style={{ fontSize: '30px' }}>
                             <h1>Uploading Formats</h1>
                         </div>
-                        <div className="btn" style={{ marginLeft: '30%' }}>
+                        {/* <div className="btn" style={{ marginLeft: '30%' }}>
                             <Button variant='contained'>Contact Us</Button>
-                        </div>
+                        </div> */}
                     </div>
                     <Grid item xs={6} style={{ float: 'left', fontSize: '20px', marginTop: '-2%' }}>
                         <p>There are certain guidelines that one must keep in mind while uploading the courses.</p>
