@@ -25,7 +25,7 @@ import Modal from '@mui/material/Modal';
 import { Box } from "@mui/system";
 import UploadComponentAlter from "./UploadComponentAlter";
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material";
 import generateKey from "../resources/generateKey";
 import CheckboxComponent from "../assesment/components/Checkbox";
 import TextFieldAssesment from "../assesment/assesmentComponents/TextFieldAssesment";
@@ -318,7 +318,10 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             color="error"
             disabled={isDisable.audio}
           >
+            <Box>
             <AudioFileIcon />
+            <Typography>Audio</Typography>
+            </Box>
           </Button>
           <Button
             sx={{ minWidth: "150px", height: "100px" }}
@@ -329,7 +332,10 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             }
             disabled={isDisable.video}
           >
+            <Box>
             <OndemandVideoIcon />
+            <Typography>Video</Typography>
+            </Box>
           </Button>
 
 
@@ -343,7 +349,10 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             }
             disabled={isDisable.pdf}
           >
+            <Box>
             <PictureAsPdfIcon />
+            <Typography>Pdf</Typography>
+            </Box>
           </Button>
 
 
@@ -357,7 +366,10 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             }
             disabled={isDisable.ppt}
           >
+            <Box>
             <SlideshowIcon />
+            <Typography>PPT</Typography>
+            </Box>
           </Button>
           <Button
             sx={{ minWidth: "150px", height: "100px" }}
@@ -366,7 +378,10 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             color="error"
             disabled={isDisable.audio}
           >
+            <Box>
             <TextSnippetIcon />
+            <Typography>Assessment</Typography>
+            </Box>
           </Button>
         </Stack>
         <div style={{
