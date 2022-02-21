@@ -66,7 +66,7 @@ function Form({ closeModal, activeStep, setActiveStep }) {
             <Box
               component="form"
               sx={{
-                '& .MuiTextField-root': { m: 1, width: '15ch' },
+                '& .MuiTextField-root': { m: 1, width: '20ch' },
                 paddingLeft: "24px"
               }}
               noValidate
@@ -77,7 +77,8 @@ function Form({ closeModal, activeStep, setActiveStep }) {
               <div style={{ display: 'block', paddingTop: '50px', paddingBottom: '25px', paddingLeft: '25px' }} >
                 <div style={{ display: "flex" }}>
                   <div style={{
-                    width: "200px"
+                    width: "200px",
+                    paddingTop:"15px"
                   }}>
                     <Typography fontSize={"16px"} font-family={'Lobster', "cursive"} sx={{ paddingTop: "15px" }}>Course Title*</Typography>
                     <Typography fontSize={"10px"} font-family={'Lobster', "cursive"}>
@@ -105,7 +106,8 @@ function Form({ closeModal, activeStep, setActiveStep }) {
               <div style={{ display: 'block', paddingTop: '50px', paddingBottom: '25px', paddingLeft: '25px' }} >
                 <div style={{ display: "flex" }}>
                   <div style={{
-                    width: "200px"
+                    width: "200px",
+                    paddingTop:"20px"
                   }}>
                     <Typography fontSize={"16px"} font-family={'Lobster', "cursive"}>Course Number*</Typography>
                     <Typography fontSize={"10px"} font-family={'Lobster', "cursive"}>
@@ -132,7 +134,8 @@ function Form({ closeModal, activeStep, setActiveStep }) {
               <div style={{ display: 'block', paddingTop: '50px', paddingBottom: '25px', paddingLeft: '25px' }} >
                 <div style={{ display: "flex" }}>
                   <div style={{
-                    width: "200px"
+                    width: "200px",
+                    paddingTop:"20px"
                   }}>
                     <Typography fontSize={"16px"} font-family={'Lobster', "cursive"}>Organisation*</Typography>
                     <Typography fontSize={"10px"} font-family={'Lobster', "cursive"}>
@@ -158,9 +161,10 @@ function Form({ closeModal, activeStep, setActiveStep }) {
               <div style={{ display: 'block', paddingTop: '50px', paddingBottom: '25px', paddingLeft: '25px' }} >
                 <div style={{ display: "flex" }}>
                   <div style={{
-                    width: "200px"
+                    width: "200px",
+                  
                   }}>
-                    <Typography fontSize={"16px"} font-family={'Lobster', "cursive"} sx={{ paddingTop: "25px" }}>Course Duration*</Typography>
+                    <Typography fontSize={"16px"} font-family={'Lobster', "cursive"} sx={{  }}>Course Duration*</Typography>
 
                   </div>
                   <TextField
@@ -179,9 +183,10 @@ function Form({ closeModal, activeStep, setActiveStep }) {
               <div style={{ display: 'block', paddingTop: '50px', paddingBottom: '25px', paddingLeft: '25px' }} >
                 <div style={{ display: "flex" }}>
                   <div style={{
-                    width: "200px"
+                    width: "200px",
+                    
                   }}>
-                    <Typography fontSize={"16px"} font-family={'Lobster', "cursive"} sx={{ paddingTop: "15px" }}>Course Description*</Typography>
+                    <Typography fontSize={"16px"} font-family={'Lobster', "cursive"} sx={{ paddingTop: "25px" }}>Course Description*</Typography>
                   </div>
                   <TextBox
 
