@@ -22,7 +22,7 @@ export default function Home() {
                 </Grid>
             <Grid item xs={0.5} />
             <Grid item xs={7} sx={{ backgroundColor: "whitesmoke", borderTopLeftRadius: "12px" }}>
-                <CardAnim name={"Vaibhav"} />
+                <CardAnim name={"Mahaveer"} />
             </Grid>
             <Grid item xs={4} sx={{ backgroundColor: "whitesmoke", borderTopRightRadius: "12px" }}>
                 <Progress />
@@ -41,5 +41,5 @@ export default function Home() {
             </Grid>
         </Grid>
         </courseArray.Provider>
-    )
+    ) 
 }

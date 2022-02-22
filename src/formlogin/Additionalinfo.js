@@ -246,8 +246,14 @@ export default function Additionalinfo() {
         </Grid>
         <Grid xs={5}></Grid>
         </Grid>
-        <Grid item xs={5}>
-          <img src={img}/>
+        <Grid item xs={5} sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center"
+        }}>
+          <img src={img} width="100%" style={{
+            alignSelf: "start"
+          }}/>
         </Grid>
         <Grid item xs={12}>
           <Divider />

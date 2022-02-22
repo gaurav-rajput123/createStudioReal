@@ -18,7 +18,7 @@ export default function Login() {
            </Grid>
            <Grid xs={4}/>
            <Grid  item xs={6} sx={{marginTop:"10px"}}>
-           <NavLink to={'/land'}><Button variant="contained" sx={{backgroundColor:"#660000", borderRadius:'0px'}} >Sign In</Button></NavLink>
+           <NavLink to={'/user'}><Button variant="contained" sx={{backgroundColor:"#660000", borderRadius:'0px'}} >Sign In</Button></NavLink>
                 <Link sx={{color:"#660000", marginLeft: "12px"}}>Forgot Password</Link>
            </Grid>
            <Grid xs={12} sx={{position: 'absolute', bottom: 0, right: 0}}>
