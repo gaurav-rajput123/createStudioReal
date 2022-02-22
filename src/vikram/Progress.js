@@ -12,13 +12,13 @@ import { stepNumber } from '../Context';
 const steps = [
  
   {
-    label: 'Add course Details',
+    label: 'Add Course Details',
     description:
       'Fill up the details for your new course',
   },
   {
-    label: 'Create Outline your course',
-    description: `Make basic structure of how your course is gonna be`,
+    label: 'Add Course Outline',
+    description: `Make Structure of your Course`,
   },
   {
     label: 'Upload All the media and files',

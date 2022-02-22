@@ -22,7 +22,9 @@ function App() {
   const [val, setVal] = useState(0)
   return (
     <stepNumber.Provider value={{
-      val, increment: ()=>setVal(val+1), decrement: ()=>setVal(val-1)
+      val, increment: ()=>setVal(val+1), decrement: ()=>setVal(val-1), setVal: (newVal)=>{
+        setVal(newVal)
+      }
     }}>
       <div className="App">
       <Routes>

@@ -11,13 +11,17 @@ import axios from "axios";
 // import { courseArray } from "../Context";
 import { courseArray } from "../Context";
 import { useEffect } from "react";
+import { stepNumber } from "../Context";
 export default function Middle() {
+  const counter = useContext(stepNumber)
   const courseContext = useContext(courseArray)
   const [courses, setCourses] = useState([...courseContext.data])
   // let courses = [...courseContext.data]
   useEffect(()=>{
-    console.log("here")
-    setCourses([...courseContext.data])
+    if(courseContext.data.length === 0){
+      counter.setVal(1)
+    }
+    setCourses(courseContext.data)
   }, [courseContext.data])
   useState(()=>{
     console.log("hello")

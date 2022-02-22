@@ -29,8 +29,8 @@ export default function Additionalinfo() {
 
 
     <Grid container backgroundColor={"  #f4f6f7 "} >
-      <Grid container height={"70px"} backgroundColor={"#a9f1f1"} direction="row" alignItems="center" justifyContent="center" >
-        <Typography variant="h5" sx={{ paddingTop: "20px" }}>
+      <Grid container height={"70px"} backgroundColor={"#660000"} direction="row" alignItems="center" justifyContent="center" >
+        <Typography variant="h5" sx={{ paddingTop: "20px", color: 'white' }}>
           ADDITIONAL INFORMATION ABOUT YOU
         </Typography>
       </Grid>
