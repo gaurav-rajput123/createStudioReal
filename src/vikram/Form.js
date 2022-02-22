@@ -13,8 +13,9 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { stepNumber } from '../Context';
 import { courseArray } from '../Context';
+import { v4 } from 'uuid';
 
-function Form({ closeModal, activeStep, setActiveStep }) {
+function Form({ closeModal, activeStep, setActiveStep, setShowModal  }) {
   const counter = React.useContext(stepNumber)
   const [newSkill, setNewSkill] = React.useState('')
   const [skillArr, newSkillArr] = useState([])
@@ -31,7 +32,24 @@ function Form({ closeModal, activeStep, setActiveStep }) {
   const handleNext = () => {
     counter.increment()
     // closeModal(false)
-    let newC = { ...courseContext }
+    let newC = { ...courseContext,  data: [{
+      name: "Module 1",
+      id: v4(),
+      topics: [
+        {name: "Topic 1",
+      id: v4(),
+      subTopics: [
+        {
+          name: "subtopic 1",
+          id: v4(),
+          resources: {
+
+          }
+        }
+      ]      
+    }
+      ]
+    }] }
     newC.courseTitle = courseOut.courseTitle
     newC.courseDesciption = courseOut.courseDescription
     newC.courseDuration = courseOut.courseDuration
@@ -304,6 +322,8 @@ function Form({ closeModal, activeStep, setActiveStep }) {
                     variant='contained'
                     onClick={() => {
                       handleNext()
+                      // handleNext()
+                      setShowModal(false)
                     }}
                   >Create course</Button>
                   {/* <Button sx={{

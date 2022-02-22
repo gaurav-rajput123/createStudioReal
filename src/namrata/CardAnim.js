@@ -11,10 +11,12 @@ import OutlineForm from '../OutlineForm';
 import { courseArray } from '../Context';
 import Form from '../vikram/Form';
 import { stepNumber } from '../Context';
+// import { courseArray } from '../Context';
 export default function CardAnim({ name }) {
     // let { name } = props
-    const [showModal, setShowModal] = React.useState(false)
     const courseContext = React.useContext(courseArray)
+    const [showModal, setShowModal] = React.useState(false)
+    // const courseContext = React.useContext(courseArray)
     const counterContext = React.useContext(stepNumber)
     return (
         <div className="container">
@@ -36,7 +38,9 @@ export default function CardAnim({ name }) {
                             Welcome {name}!
                         </Typography>
                         <Typography variant="body1" color="text.secondary" style={{ fontFamily: 'Montserrat', fontSize: '16px', fontWeight: '500', color: 'white' }}>
-                            Start making your first Course or Program by <br /> clicking on the button below.
+                            {
+                                courseContext.data.length === 0 ? <>Start making your Course or Program by <br /> clicking on the button below.</> : <>Add new modules and topics for your course</>
+                            }
                         </Typography>
                     </CardContent>
                     <CardActions>
@@ -74,7 +78,7 @@ function CourseForm({setModal}) {
             // height: "100vh"
         }}>
             {
-                stage === 1 ? (<Form activeStep={stage} setActiveStep={setStage}/>) : (<OutlineForm activeStep={stage} setActiveStep={setStage} setShowModal={setModal}/>)
+                stage === 1 ? (<Form activeStep={stage} setActiveStep={setStage}  setShowModal={setModal}/>) : (<OutlineForm activeStep={stage} setActiveStep={setStage} setShowModal={setModal}/>)
             }
         </div>
     )

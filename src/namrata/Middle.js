@@ -121,7 +121,7 @@ variant="contained"
 >
 upload course and save
 </Button>
-<Button onClick={()=>console.log(courseContext)}>doit</Button>
+{/* <Button onClick={()=>console.log(courseContext)}>doit</Button> */}
 </div>
           </div>
         ): null
