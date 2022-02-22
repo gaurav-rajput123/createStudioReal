@@ -155,7 +155,7 @@ function SubjectTile(prop) {
       </StyledCard>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <Box sx={{
+        {/* <Box sx={{
           backgroundColor: "lightgray",
           borderRadius: "6px",
           width: "90%",
@@ -164,7 +164,7 @@ function SubjectTile(prop) {
 
         }}>
           hello
-        </Box>
+        </Box> */}
         <TextDescription getDescription={getDescription} titleDescription="Module Description" skipDescription={()=>handleExpandClick()} add={()=>addNewTopics()}/>
       </Collapse>
     </div >
