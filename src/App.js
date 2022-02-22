@@ -22,28 +22,27 @@ function App() {
   const [val, setVal] = useState(0)
   return (
     <stepNumber.Provider value={{
-      val, increment: ()=>setVal(val+1), decrement: ()=>setVal(val-1), setVal: (newVal)=>{
+      val, increment: () => setVal(val + 1), decrement: () => setVal(val - 1), setVal: (newVal) => {
         setVal(newVal)
       }
     }}>
       <div className="App">
-      <Routes>
-      {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
-      <Route path="/" element={ <BasicCard/>} />
-      <Route path="/user" element={ <Additionalinfo/>} />
-      <Route path="/land" element={ <Front/>} />
-      <Route path="/form" element={ <Form/>} />
-      <Route path="/create" element={<Home />} />
-      <Route path="/formnew" element={<OutlineForm />} />
-      
-    </Routes>
-    
-    </div>
+        <Routes>
+          {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
+          <Route path="/" element={<BasicCard />} />
+          <Route path="/user" element={<Additionalinfo />} />
+          <Route path="/land" element={<Front />} />
+          <Route path="/form" element={<Form />} />
+          <Route path="/create" element={<Home />} />
+          <Route path="/formnew" element={<OutlineForm />} />
+        </Routes>
+
+      </div>
     </stepNumber.Provider>
   );
 
 
-  
+
 }
 
 
