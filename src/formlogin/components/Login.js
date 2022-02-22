@@ -2,6 +2,7 @@ import React from "react";
 import { Typography, Button, Grid, TextField, Link } from "@mui/material";
 import PasswordBox from "./PasswordBox";
 import img from './crest.png'
+import { NavLink } from "react-router-dom";
 
 
 export default function Login() {
@@ -17,8 +18,8 @@ export default function Login() {
            </Grid>
            <Grid xs={4}/>
            <Grid  item xs={6} sx={{marginTop:"10px"}}>
-              <Button variant="contained" sx={{backgroundColor:"#660000", borderRadius:'0px'}} >Sign In</Button>
-              <Link  sx={{color:"#660000", marginLeft: "12px"}}>Forgot Password</Link>
+           <NavLink to={'/land'}><Button variant="contained" sx={{backgroundColor:"#660000", borderRadius:'0px'}} >Sign In</Button></NavLink>
+                <Link sx={{color:"#660000", marginLeft: "12px"}}>Forgot Password</Link>
            </Grid>
            <Grid xs={12} sx={{position: 'absolute', bottom: 0, right: 0}}>
                <img src={img} width="250px" height={"105px"}/>
