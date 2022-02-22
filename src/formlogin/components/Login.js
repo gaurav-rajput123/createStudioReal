@@ -20,7 +20,7 @@ export default function Login() {
               <Button variant="contained" sx={{backgroundColor:"#660000", borderRadius:'0px'}} >Sign In</Button>
               <Link  sx={{color:"#660000", marginLeft: "12px"}}>Forgot Password</Link>
            </Grid>
-           <Grid xs={12}>
+           <Grid xs={12} sx={{position: 'absolute', bottom: 0, right: 0}}>
                <img src={img} width="250px" height={"105px"}/>
            </Grid>
 
