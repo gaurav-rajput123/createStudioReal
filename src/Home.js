@@ -22,7 +22,7 @@ export default function Home() {
                 </Grid>
             <Grid item xs={0.5} />
             <Grid item xs={7} sx={{ backgroundColor: "whitesmoke", borderTopLeftRadius: "12px" }}>
-                <CardAnim name={"Mahaveer"} />
+                <CardAnim name={"Mahavir"} />
             </Grid>
             <Grid item xs={4} sx={{ backgroundColor: "whitesmoke", borderTopRightRadius: "12px" }}>
                 <Progress />

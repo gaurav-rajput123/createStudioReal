@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { NavLink } from "react-router-dom";
 import img from './Add.jpeg'
+import { FormControl, FormLabel, Box } from "@mui/material";
 
 export default function Additionalinfo() {
   const [textData, setTextData] = useState('')
@@ -30,7 +31,7 @@ export default function Additionalinfo() {
     <Grid container backgroundColor={"  #f4f6f7 "} >
       <Grid container height={"70px"} backgroundColor={"#a9f1f1"} direction="row" alignItems="center" justifyContent="center" >
         <Typography variant="h5" sx={{ paddingTop: "20px" }}>
-          Additional information about you
+          ADDITIONAL INFORMATION ABOUT YOU
         </Typography>
       </Grid>
       <Grid
@@ -245,7 +246,27 @@ export default function Additionalinfo() {
           />
         </Grid>
         <Grid xs={5}></Grid>
+
+{/*  */}
+<Grid item xs={12}>
+         <FormControl>
+           <FormLabel>Please upload your profile picture</FormLabel>
+           <Box>
+           <input type={'file'} style={{
+            //  display: 'none'
+           }}/>
+           {/* <Button >upload</Button> */}
+           </Box>
+         </FormControl>
         </Grid>
+        <Grid xs={5}></Grid>
+
+        {/*  */}
+
+        </Grid>
+        
+        
+
         <Grid item xs={5} sx={{
           display: "flex",
           flexDirection: "column",
