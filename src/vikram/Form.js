@@ -60,7 +60,7 @@ function Form({ closeModal, activeStep, setActiveStep }) {
       >
         <Grid container >
           <Grid xs={12} textAlign={'center'}>
-            <Typography fontSize={"50px"} fontFamily={'Helvetica', 'Roboto Serif', "sans-serif "}>Course Detail</Typography>
+            <Typography fontSize={"50px"} fontFamily={'Helvetica', 'Roboto Serif', "sans-serif "}>Course Details</Typography>
           </Grid>
           <Grid xs={8} width={'100%'}>
             <Box

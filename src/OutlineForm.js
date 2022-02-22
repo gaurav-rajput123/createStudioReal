@@ -1,4 +1,4 @@
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import { Button, Card, Grid, TextField, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import './add.css'
@@ -10,30 +10,40 @@ function OutlineForm({ activeStep, setActiveStep, setShowModal }) {
   const [moduleArr, setModuleArray] = useState([
     {
       name: "module 1",
+      id: v4(),
       topics: [{
         name: "topic1",
+        id: v4(),
         subTopics: [{
+          id: v4(),
           name: "subtoipic 1"
         },
         {
+          id: v4(),
           name: "subtoipic 2"
         },
         {
+          id: v4(),
           name: "subtoipic 3"
         },
         {
+          id: v4(),
           name: "subtoipic 4"
         }]
       },
       {
+        id: v4(),
         name: "topic2",
         subTopics: [{
+          id: v4(),
           name: "subtoipic 1"
         }]
       },
       {
+        id: v4(),
         name: "topic3",
         subTopics: [{
+          id: v4(),
           name: "subtoipic 1"
         }]
       }
@@ -110,48 +120,48 @@ function OutlineForm({ activeStep, setActiveStep, setShowModal }) {
       paddingY: "12px"
     }}>
       <Grid item xs={9} sx={{
-       
+
         border: "1px solid black",
         paddingX: "12px",
         paddingY: "12px",
         display: "flex",
         justifyContent: "space-evenly"
       }}>
-        
+
         <span style={{
           marginX: "12px",
           fontSize: "18px"
         }}>course Title: {courseContext.courseTitle}</span>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <span style={{
           marginX: "12px"
         }}>course Number: {courseContext.courseNumber}</span>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <span style={{
           marginX: "12px"
         }}>course Duration: {courseContext.courseDuration}</span>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <span> skills Gained: </span>
-        
-         
-           { courseContext.skillsGained.map(item=>{
-            return (
-              
-                <span style={{
-                marginX: "12px",
-                // marginRight: "24px",
-                backgroundColor: "#0047ab",
-                borderRadius: "12px",
-                padding: "6px",
-                color: "white"
 
-              }} key={item}>{item}</span>
-              
-            )
-          })
+
+        {courseContext.skillsGained.map(item => {
+          return (
+
+            <span style={{
+              marginX: "12px",
+              // marginRight: "24px",
+              backgroundColor: "#0047ab",
+              borderRadius: "12px",
+              padding: "6px",
+              color: "white"
+
+            }} key={item}>{item}</span>
+
+          )
+        })
         }
         {/* <Typography textAlign={'center'} >
           CourseDetails
@@ -183,157 +193,202 @@ function OutlineForm({ activeStep, setActiveStep, setShowModal }) {
           display: "flex",
           justifyContent: "center"
         }}>
-        {
-          moduleArr.map((mod, modIndex) => {
-            // console.log("inside mod Arr")
-            return (
-              <Grid key={mod.id} item container xs={12} sx={
-                {
-                  boxShadow: "0px 10px 5px #888, 0px -8px 3px #888",
-                  borderRadius: "12px",
-                  padding: "12px",
-                  marginBottom: "6px"
-                }
-              }>
-                <Grid item xs={3} sx={{
-                  display: 'flex',
-                  flexDirection: "column",
-                  border: "0.5px solid gray",
-                }}>
-                  <div><TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"module"} updateOutLine={setModuleArray} label={"set title for your module"} /></div>
-                  <div style={{ flexGrow: 1 }}></div>
-                  <div style={{
-                    textAlign: "center"
-                  }}>
-                    <Button variant="contained" sx={{
-                      background: "#0047ab",
-                      borderRadius: "8px",
-                      fontSize: "16px"
+         {moduleArr.map((mod, modIndex) => {
+                  console.log("inside mod Arr");
+                  return (
+                    <Grid key={mod.id} item container xs={12}
+                    sx={{
+                      marginY: "12px",
+                      // border: "1px solid black",
+                      backgroundColor:"#F0F0F0",
+                      padding: "6px 2px",
+                      
                     }}
-                      onClick={() => {
-                        deleteModule(modIndex)
-                      }}
                     >
-                      DELETE THIS MODULE
-                    </Button>
-                  </div>
-                </Grid>
-                <Grid item container xs={9}>
-                  {
-                    mod.topics.map((topic, topicIndex) => {
-                      return (
-                        <Grid key={topic.id} item container xs={12} >
-                          <Grid item xs={6} sx={{
-                            display: 'flex',
-                            flexDirection: "column",
-                            
-                            border: "0.5px solid gray"
-                          
-                          }}>
-                            {/* <div>{topic.name}</div> */}
-                            <div><TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"topic"} updateOutLine={setModuleArray} label={"set title for your topic"} topicIndex={topicIndex} /></div>
-                            <div style={{ flexGrow: 1 }}></div>
-                            <div style={{
-                              display: "flex",
-                              justifyContent: "space-evenly"
-                            }}>
-                              <Button variant="contained" sx={{
-                                background: "#0047ab",
-                                borderRadius: "8px",
-                                fontSize: "16px"
-                              }}
-                                onClick={() => {
-                                  deleteTopic({ modIndex, topicIndex })
-                                }}
-                              >
-                                DELETE topic
-                              </Button>
-                              <Button variant="contained" sx={{
-                                background: "#0047ab",
-                                borderRadius: "8px",
-                                fontSize: "16px"
-                              }}
-                                onClick={() => {
-                                  addTopic({ modIndex, topicIndex })
-                                }}
-                              >
-                                Add topic
-                              </Button>
-                            </div>
-                          </Grid>
-                          <Grid item container xs={6}>
-                            {
-                              topic.subTopics?.map((subTopic, subTopicIndex) => {
-                                return (
-                                  <Grid key={subTopic.id} item xs={12}
-                                  sx={{
-                                    display: 'flex',
-                                    flexDirection: "column",
-                                    
-                                    border: "0.5px solid gray"
-                                  
-                                  }}
-                                  >
-                                    <div style={{
-                                      display:"flex",
-                                      justifyContent: "space-evenly",
-                                      padddingY :"12px",
-                                      margin: "12px"
-                                    }}>
-                                      <TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"subtopic"} updateOutLine={setModuleArray} label={"set title for your subtopic"} topicIndex={topicIndex} subTopicIndex={subTopicIndex} />
-                                      <Button variant="contained" sx={{
-                                      background: "#0047ab",
-                                      borderRadius: "8px",
-                                      fontSize: "16px",
-                                      paddingY: "4px",
-                                      // line
-                                    }}
-                                    
-                                      onClick={() => {
-                                        deleteSubtopic({ modIndex, topicIndex, subTopicIndex })
-                                      }}
-                                    >
-                                      DELETE subtopic
-                                    </Button>
-                                      </div>
-                                    
-                                  </Grid>
-                                )
-                              })
-                            }
-                            <Button variant="contained" sx={{
-                              background: "#0047ab",
-                              borderRadius: "8px",
-                              fontSize: "16px"
+                      <Grid
+                        item
+                        xs={3}
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <div >
+                          <TitleBox
+                            moduleIndex={modIndex}
+                            outLine={moduleArr}
+                            type={"module"}
+                            updateOutLine={setModuleArray}
+                            label={"set title for yout module"}
+                          />
+                        </div>
+                        <div style={{ flexGrow: 1 }}></div>
+                        <div>
+                          <Button
+                            variant="contained"
+                            sx={{
+                              background: "#1A1A40",
                             }}
-                              onClick={() => {
-                                addSubtopic({ modIndex, topicIndex })
-                              }}
+                            onClick={() => {
+                              deleteModule(modIndex);
+                            }}
+                          >
+                            DELETE THIS MODULE
+                          </Button>
+                        </div>
+                      </Grid>
+                      <Grid item container xs={9} 
+                      
+                      >
+                        {mod.topics.map((topic, topicIndex) => {
+                          return (
+                            <Grid key={topic.id} sx={{marginBottom: "12px"}} item container xs={12}
+                            
+                            
+                      
                             >
-                              add subtopic
-                            </Button>
-                          </Grid>
-                        </Grid>)
-                    })
-                  }
-                </Grid>
-              </Grid>
-
-            )
-          })
-        }
+                              <Grid
+                                item
+                                xs={6}
+                                sx={{
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  
+                                }}
+                              >
+                                {/* <div>{topic.name}</div> */}
+                                <div  style={{
+                                  display: "flex",
+                                  // flexDirection
+                                }}>
+                                <div>
+                                  <TitleBox
+                                    moduleIndex={modIndex}
+                                    outLine={moduleArr}
+                                    type={"topic"}
+                                    updateOutLine={setModuleArray}
+                                    label={"set title for yout module"}
+                                    topicIndex={topicIndex}
+                                  />
+                                </div>
+                               
+                                <div 
+                                  
+                              
+                                   
+                                  >
+                                  <Button
+                                    variant="contained"
+                                    sx={{
+                                      background: "#1A1A40",
+                                      marginLeft:"40px"
+                                      
+                                    }}
+                                    onClick={() => {
+                                      deleteTopic({ modIndex, topicIndex });
+                                    }}
+                                  >
+                                    DELETE topic
+                                  </Button>
+                                 
+                                </div>
+                                </div>
+                                <Button
+                                    variant="contained"
+                                    sx={{
+                                      background: "#1A1A40",
+                                      // margin:"10px",
+                                      width:"150px",
+                                      marginTop:"30px"
+                                    }}
+                                    onClick={() => {
+                                      addTopic({ modIndex, topicIndex });
+                                    }}
+                                  >
+                                    ADD topic
+                                  </Button>
+                              </Grid>
+                              <Grid item container xs={6}
+                            
+                              >
+                                {topic.subTopics?.map(
+                                  (subTopic, subTopicIndex) => {
+                                    return (
+                                      <Grid key={subTopic.id} item xs={12}
+                                      sx={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        marginY:"12px",
+                                        marginTop:"-1px"
+                                      }}
+                                      >
+                                        <div>
+                                          <TitleBox
+                                            moduleIndex={modIndex}
+                                            outLine={moduleArr}
+                                            type={"subtopic"}
+                                            updateOutLine={setModuleArray}
+                                            label={"set title for yout module"}
+                                            topicIndex={topicIndex}
+                                            subTopicIndex={subTopicIndex}
+                                          />
+                                        </div>
+                                        <Button
+                                          variant="contained"
+                                          sx={{
+                                            background: "#1A1A40",
+                                            marginLeft:'100px',
+                                            height:"40px"
+                                            
+                                          }}
+                                          onClick={() => {
+                                            deleteSubtopic({
+                                              modIndex,
+                                              topicIndex,
+                                              subTopicIndex,
+                                            });
+                                          }}
+                                        >
+                                          DELETE subtopic
+                                        </Button>
+                                      </Grid>
+                                    );
+                                  }
+                                )}
+                                <Button
+                                  variant="contained"
+                                  sx={{
+                                    background: "#1A1A40",
+                                    marginLeft:"5px",
+                                    height:"35px",
+                                    marginTop:'15px'
+                                  }}
+                                  onClick={() => {
+                                    addSubtopic({ modIndex, topicIndex });
+                                  }}
+                                >
+                                  add subtopic
+                                </Button>
+                              </Grid>
+                            </Grid>
+                          );
+                        })}
+                      </Grid>
+                    </Grid>
+                  );
+                })}
       </Grid>
       <Button onClick={() => {
         const newModArr = [...moduleArr]
         courseContext.setCourseState({ ...courseContext, data: newModArr })
         setShowModal(false)
       }}
-      fullWidth
-      variant= "contained"
-      sx={{
-        marginX: "25%",
+        fullWidth
+        variant="contained"
+        sx={{
+          marginX: "25%",
 
-      }}> Save Course Outline</Button>
+        }}> Save Course Outline</Button>
     </Grid>
   )
 }
@@ -436,3 +491,147 @@ function TitleBox({ updateOutLine, outLine, label, moduleIndex, topicIndex, subT
 }
 
 export default OutlineForm
+
+// {
+//   moduleArr.map((mod, modIndex) => {
+//     // console.log("inside mod Arr")
+//     return (
+//       <Grid key={mod.id} item container xs={12} sx={
+//         {
+//           boxShadow: "0px 10px 5px #888, 0px -8px 3px #888",
+//           borderRadius: "12px",
+//           padding: "12px",
+//           marginBottom: "6px"
+//         }
+//       }>
+//         <Grid item xs={3} sx={{
+//           display: 'flex',
+//           flexDirection: "column",
+//           border: "0.5px solid gray",
+//         }}>
+//          <Card>
+//             <div style={{ flexGrow: 1                                                                                                                                                                                 }}>
+//             <TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"module"} updateOutLine={setModuleArray} label={"set title for your module"} />
+//           </div>
+//           {/* <div ></div> */}
+//           <div style={{
+//             textAlign: "center"
+//           }}>
+//             <Button variant="contained" sx={{
+//               background: "#0047ab",
+//               borderRadius: "8px",
+//               fontSize: "16px"
+//             }}
+//               onClick={() => {
+//                 deleteModule(modIndex)
+//               }}
+//             >
+//               DELETE THIS MODULE
+//             </Button>
+//           </div>
+//          </Card>
+//         </Grid>
+//         <Grid item container xs={9}>
+//           {
+//             mod.topics.map((topic, topicIndex) => {
+//               return (
+//                 <Grid key={topic.id} item container xs={12} >
+//                   <Grid item xs={6} sx={{
+//                     display: 'flex',
+//                     flexDirection: "column",
+
+//                     border: "0.5px solid gray"
+
+//                   }}>
+//                     {/* <div>{topic.name}</div> */}
+//                     <div><TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"topic"} updateOutLine={setModuleArray} label={"set title for your topic"} topicIndex={topicIndex} /></div>
+//                     <div style={{ flexGrow: 1 }}></div>
+//                     <div style={{
+//                       display: "flex",
+//                       justifyContent: "space-evenly"
+//                     }}>
+//                       <Button variant="contained" sx={{
+//                         background: "#0047ab",
+//                         borderRadius: "8px",
+//                         fontSize: "16px"
+//                       }}
+//                         onClick={() => {
+//                           deleteTopic({ modIndex, topicIndex })
+//                         }}
+//                       >
+//                         DELETE topic
+//                       </Button>
+//                       <Button variant="contained" sx={{
+//                         background: "#0047ab",
+//                         borderRadius: "8px",
+//                         fontSize: "16px"
+//                       }}
+//                         onClick={() => {
+//                           addTopic({ modIndex, topicIndex })
+//                         }}
+//                       >
+//                         Add topic
+//                       </Button>
+//                     </div>
+//                   </Grid>
+//                   <Grid item container xs={6}>
+//                     {
+//                       topic.subTopics?.map((subTopic, subTopicIndex) => {
+//                         return (
+//                           <Grid key={subTopic.id} item xs={12}
+//                             sx={{
+//                               display: 'flex',
+//                               flexDirection: "column",
+
+//                               border: "0.5px solid gray"
+
+//                             }}
+//                           >
+//                             <div style={{
+//                               display: "flex",
+//                               justifyContent: "space-evenly",
+//                               padddingY: "12px",
+//                               margin: "12px"
+//                             }}>
+//                               <TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"subtopic"} updateOutLine={setModuleArray} label={"set title for your subtopic"} topicIndex={topicIndex} subTopicIndex={subTopicIndex} />
+//                               <Button variant="contained" sx={{
+//                                 background: "#0047ab",
+//                                 borderRadius: "8px",
+//                                 fontSize: "16px",
+//                                 paddingY: "4px",
+//                                 // line
+//                               }}
+
+//                                 onClick={() => {
+//                                   deleteSubtopic({ modIndex, topicIndex, subTopicIndex })
+//                                 }}
+//                               >
+//                                 DELETE subtopic
+//                               </Button>
+//                             </div>
+
+//                           </Grid>
+//                         )
+//                       })
+//                     }
+//                     <Button variant="contained" sx={{
+//                       background: "#0047ab",
+//                       borderRadius: "8px",
+//                       fontSize: "16px"
+//                     }}
+//                       onClick={() => {
+//                         addSubtopic({ modIndex, topicIndex })
+//                       }}
+//                     >
+//                       add subtopic
+//                     </Button>
+//                   </Grid>
+//                 </Grid>)
+//             })
+//           }
+//         </Grid>
+//       </Grid>
+
+//     )
+//   })
+// }

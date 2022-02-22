@@ -29,6 +29,7 @@ export default function Middle() {
       name: "Basic Electrical Engineering"
     })
     // setCourses(newCourses)
+    courseContext.setCourseState({...courseContext, data: newCourses})
   }
   const formData = useContext(formContext)
 

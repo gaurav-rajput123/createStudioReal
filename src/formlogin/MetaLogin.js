@@ -13,14 +13,14 @@ class MetaLogin extends Component {
           <div className="appAside" />
           <div className="appForm">
             <div className="pageSwitcher">
-              <NavLink
+              {/* <NavLink
                 to="/"
                 activeClassName="pageSwitcherItem-active"
                 className="pageSwitcherItem"
               >
                 Sign In
               </NavLink>
-             
+              */}
             </div>
 
             <div className="formTitle">

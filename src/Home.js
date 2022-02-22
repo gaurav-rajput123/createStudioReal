@@ -6,6 +6,7 @@ import Header from "./namrata/Topbar";
 import { stepNumber } from "./Context";
 import React, { useContext, useState } from "react";
 import { courseArray } from "./Context";
+import Footer from "./Footer";
 export default function Home() {
     let context = useContext(stepNumber)
     // let courseContext = useContext(courseArray)
@@ -35,7 +36,9 @@ export default function Home() {
                 
             </Grid>
             <Grid item xs={0.5} />
-            
+            <Grid xs={12} item>
+                <Footer/>
+            </Grid>
         </Grid>
         </courseArray.Provider>
     )

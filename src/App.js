@@ -13,6 +13,7 @@ import styled from '@emotion/styled';
 import UploadComponentAlter from './namrata/UploadComponentAlter';
 import MetaLogin from './formlogin/MetaLogin';
 import Additionalinfo from './formlogin/Additionalinfo';
+import BasicCard from './formlogin/components/skewCard';
 
 // import AnimatedPa from './namrata/AnimationGrid';
 
@@ -26,7 +27,7 @@ function App() {
       <div className="App">
       <Routes>
       {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
-      <Route path="/" element={ <MetaLogin/>} />
+      <Route path="/" element={ <BasicCard/>} />
       <Route path="/user" element={ <Additionalinfo/>} />
       <Route path="/land" element={ <Front/>} />
       <Route path="/form" element={ <Form/>} />

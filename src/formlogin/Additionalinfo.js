@@ -6,7 +6,7 @@ import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { NavLink } from "react-router-dom";
-
+import img from './Add.jpeg'
 
 export default function Additionalinfo() {
   const [textData, setTextData] = useState('')
@@ -51,7 +51,7 @@ export default function Additionalinfo() {
             sx={{ width: "100%" }}
             margin="dense"
             variant="outlined"
-            label="Qulification"
+            label="Qualification"
             id="qulafication"
             value={textData}
           />
@@ -107,7 +107,7 @@ export default function Additionalinfo() {
             sx={{ width: "100%" }}
             margin="dense"
             variant="outlined"
-            label=" E-Learning Devloper & Publisher Experience"
+            label=" E-Teaching and Publishing Experience"
             id=" devloper Experienc"
             value={elearningexp}
           />
@@ -121,7 +121,7 @@ export default function Additionalinfo() {
             sx={{ width: "100%" }}
             margin="dense"
             variant="outlined"
-            label=" Online Instructor experience"
+            label=" Online Instructor Experience"
             id=" online Experienc"
             value={onlineexp}
           />
@@ -135,7 +135,7 @@ export default function Additionalinfo() {
             sx={{ width: "100%" }}
             margin="dense"
             variant="outlined"
-            label=" Industry Experience"
+            label="Industry Experience"
             id=" Industry Experienc"
             value={industryexp}
           />
@@ -149,7 +149,7 @@ export default function Additionalinfo() {
             sx={{ width: "100%" }}
             margin="dense"
             variant="outlined"
-            label="Degination"
+            label="Designation"
             id="Dignation"
             value={dignation}
           />
@@ -164,7 +164,7 @@ export default function Additionalinfo() {
             margin="dense"
             multiline
             variant="outlined"
-            label="Area of specialization"
+            label="Area of Specialization"
             id="speicalization"
             value={speicalization}
           />
@@ -179,7 +179,7 @@ export default function Additionalinfo() {
             margin="dense"
             multiline
             variant="outlined"
-            label="No. of book Authored/Co-\Authored"
+            label="No. of book Authored/Co-Authored"
             id="Author"
             value={author}
           />
@@ -194,7 +194,7 @@ export default function Additionalinfo() {
             margin="dense"
             multiline
             variant="outlined"
-            label="No. of workspace attend"
+            label="No. of workshops attend"
             id="Workspace"
             value={workspace}
           />
@@ -209,7 +209,7 @@ export default function Additionalinfo() {
             margin="dense"
             multiline
             variant="outlined"
-            label="No.of research paper published in national journals/international journals(UGC listed/Scopus/SCI etc"
+            label="No.of research papers published in national journals/international journals(UGC listed/Scopus/SCI etc)"
             id="journals"
             value={journals}
           />
@@ -224,7 +224,7 @@ export default function Additionalinfo() {
             margin="dense"
             multiline
             variant="outlined"
-            label="No. of paper present in national/international seminar/conference"
+            label="No. of papers present in national/international seminar/conferences"
             id="papers"
             value={papers}
           />
@@ -239,12 +239,15 @@ export default function Additionalinfo() {
             margin="dense"
             multiline
             variant="outlined"
-            label="No. of book edited"
+            label="No. of books edited"
             id="Books edited"
             value={booksedited}
           />
         </Grid>
         <Grid xs={5}></Grid>
+        </Grid>
+        <Grid item xs={5}>
+          <img src={img}/>
         </Grid>
         <Grid item xs={12}>
           <Divider />
@@ -258,7 +261,7 @@ export default function Additionalinfo() {
             fontSize: "15px",
             background: "#87CEFA ",
             "&:hover": {
-              background: "#e8e6e5   "
+              background: "#e8e6e5"
             },
             marginX: "auto",
 
