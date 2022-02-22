@@ -12,9 +12,13 @@ import { stepNumber } from '../Context';
 const steps = [
  
   {
-    label: 'Create Course Outline',
+    label: 'Add course Details',
     description:
-      'Add Modules and Sub-modules',
+      'Fill up the details for your new course',
+  },
+  {
+    label: 'Create Outline your course',
+    description: `Make basic structure of how your course is gonna be`,
   },
   {
     label: 'Upload All the media and files',
@@ -50,21 +54,21 @@ export default function Progress() {
     console.log("render")
   })
   return (
-    <Box sx={{ maxWidth: "400px" , backgroundImage:'url(${"https://media.istockphoto.com/photos/growth-arrow-up-and-progress-success-business-skill-increase-graph-picture-id1325680818?b=1&k=20&m=1325680818&s=170667a&w=0&h=0QiulvGagV8DPWJcM-iHpzvaL_5WY_iNHhg9xGjbEVM="})',  marginLeft:"70px" , borderRadius: "16px"}}>
-      <Stepper activeStep={counterTracker.val} orientation="vertical"  sx={{paddingLeft:"16px", marginY: "24px"}}>
+    <Box sx={{ maxWidth: "400px", marginTop: "10px" , backgroundImage:'url(${"https://media.istockphoto.com/photos/growth-arrow-up-and-progress-success-business-skill-increase-graph-picture-id1325680818?b=1&k=20&m=1325680818&s=170667a&w=0&h=0QiulvGagV8DPWJcM-iHpzvaL_5WY_iNHhg9xGjbEVM="})',  marginLeft:"70px" , borderRadius: "16px"}}>
+      <Stepper activeStep={counterTracker.val} orientation="vertical"  sx={{paddingLeft:"16px", }}>
         {steps.map((step, index) => (
           <Step key={step.label}>
             <StepLabel sx={{
-              marginY: "12px"
+              marginY: "4px"
             }}
             >
               <Typography sx={{
-                fontSize: "16px"
+                fontSize: "12px"
               }}>{step.label}</Typography>
             </StepLabel>
             <StepContent>
               <Typography sx={{
-                fontSize: "18px"
+                fontSize: "14px"
               }}>{step.description}</Typography>
             </StepContent>
           </Step>
