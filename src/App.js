@@ -30,7 +30,7 @@ function App() {
       <div className="App">
         <Routes>
           {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
-          <Route path="/" element={<Register />} />
+          <Route path="/" element={<BasicCard />} />
           <Route path="/user" element={<Additionalinfo />} />
           <Route path="/land" element={<Front />} />
           <Route path="/form" element={<Form />} />
