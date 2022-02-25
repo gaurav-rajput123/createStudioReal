@@ -25,7 +25,7 @@ import Modal from '@mui/material/Modal';
 import { Box } from "@mui/system";
 import UploadComponentAlter from "./UploadComponentAlter";
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material";
 import generateKey from "../resources/generateKey";
 import CheckboxComponent from "../assesment/components/Checkbox";
 import TextFieldAssesment from "../assesment/assesmentComponents/TextFieldAssesment";
@@ -306,18 +306,19 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
               <UploadComponentAlter courseArray={courseArray} topicIndex={topicIndex} subTopicIndex={subTopicIndex} courseIndex={courseIndex} setInForm={resourceType} updateCourseArray={updateCourseArray} handleClose={handleClose} />
             </Box>
           </Modal>
+          <div  style={{backgroundColor:"#F8F8F8"}}>
           <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
+            sx={{ minWidth: "150px", height: "100px",color:"#000000",padding:"5px 20px 5px 50px" }}
+            
             onClick={() => handleOpen("audio")}
-            color="error"
+            
             disabled={isDisable.audio}
           >
             <AudioFileIcon />
           </Button>
           <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
+            sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 20px 5px 20px"}}
+            
             onClick={() => handleOpen("video")}
             disabled={isDisable.video}
           >
@@ -326,9 +327,9 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
 
           <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
-            color="success"
+            sx={{ minWidth: "150px", height: "100px",color:"#000000" ,padding:"5px 20px 5px 20px"}}
+            
+            
             onClick={() => handleOpen("pdf")}
             disabled={isDisable.pdf}
           >
@@ -337,23 +338,25 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
 
           <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
-            color="warning"
+            sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 20px 5px 20px"}}
+           
+           
             onClick={() => handleOpen("ppt")}
             disabled={isDisable.ppt}
           >
             <SlideshowIcon />
           </Button>
           <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
+            sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 50px 5px 20px"}}
+           
             onClick={() => addAssesment()}
-            color="error"
+            
             disabled={isDisable.audio}
           >
             <TextSnippetIcon />
+            <Typography>errdd</Typography>
           </Button>
+          </div>
         </Stack>
         <div style={{
           // display: "flex",
