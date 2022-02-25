@@ -14,6 +14,7 @@ import UploadComponentAlter from './namrata/UploadComponentAlter';
 import MetaLogin from './formlogin/MetaLogin';
 import Additionalinfo from './formlogin/Additionalinfo';
 import BasicCard from './formlogin/components/skewCard';
+import Register from "./formlogin/components/Register"
 
 // import AnimatedPa from './namrata/AnimationGrid';
 
@@ -29,7 +30,7 @@ function App() {
       <div className="App">
         <Routes>
           {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
-          <Route path="/" element={<BasicCard />} />
+          <Route path="/" element={<Register />} />
           <Route path="/user" element={<Additionalinfo />} />
           <Route path="/land" element={<Front />} />
           <Route path="/form" element={<Form />} />
