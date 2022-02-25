@@ -17,7 +17,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 const Input = styled('input')({
     display: 'none',
 });
-function UploadComponentAlter({ courseArray, courseIndex, topicIndex, subTopicIndex, setInForm, updateCourseArray, handleClose }) {
+function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, subTopicIndex, setInForm, updateCourseArray, handleClose }) {
     const [imageUrl, setImageUrl] = useState(null)
     const [fileObj, setFileObj] = useState(null)
     const formData = useContext(formContext)
@@ -61,8 +61,14 @@ function UploadComponentAlter({ courseArray, courseIndex, topicIndex, subTopicIn
                                         name={"Attach Transcript"}
                                         Icon={<LinkIcon className="attach-icon" />}>
                                     </UploadButton> */}
-                                <label htmlFor="contained-button-file">
-                                    <Input accept="image/*" id="contained-button-files" multiple type="file" />
+                                <label htmlFor="contained-button-transcript">
+                                    <Input accept=".vtt,.srt"
+                                     id="contained-button-transcript"
+                                      multiple 
+                                      type="file"
+                                      onChange={e => {
+                                        setFileObj(e.target.files[0])
+                                    }} />
                                     <ListItemButton className="upload-button" variant="contained" sx={{ width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }} >
                                         <AttachmentIcon sx={{ paddingRight: "10px" }} />
                                         <Typography>Attach Transcript</Typography>
@@ -95,7 +101,7 @@ function UploadComponentAlter({ courseArray, courseIndex, topicIndex, subTopicIn
                             <div className="Thumbnail">
                                 <Typography sx={{ paddingBottom: "10px", fontWeight: 500 }}>Upload File</Typography>
                                 <input
-                                    accept="image/*"
+                                    accept={accept}
                                     type="file"
                                     id="select-image"
                                     style={{ display: 'none' }}
@@ -127,8 +133,7 @@ function UploadComponentAlter({ courseArray, courseIndex, topicIndex, subTopicIn
                                         <img src={img}
                                             alt="asdf"
                                             style={{
-                                                maxWidth: "80%",
-                                                maxHeight: "100%",
+                                                width: "80%",
                                                 objectFit: "cover"
                                             }} />
                                     )
@@ -137,8 +142,7 @@ function UploadComponentAlter({ courseArray, courseIndex, topicIndex, subTopicIn
                                         <img src={imageUrl}
                                             alt="hello"
                                             style={{
-                                                minWidth: "60%",
-                                                minHeight: "320px",
+                                                width: "80%",
                                                 objectFit: "cover"
                                             }} />
                                     )}

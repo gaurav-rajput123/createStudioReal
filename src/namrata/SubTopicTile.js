@@ -38,6 +38,7 @@ import Research from '../assesment/assesmentComponents/Research'
 import CaseStudy from '../assesment/assesmentComponents/CaseStudy'
 import BlankProblem from '../assesment/assesmentComponents/BlankProblem'
 import CustomProblem from "../assesment/assesmentComponents/CustomProblem";
+import { type } from "@testing-library/user-event/dist/type";
 const parse = require('html-react-parser');
 
 const style = {
@@ -67,6 +68,7 @@ const style = {
 
 export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, courseArray, updateCourseArray }) {
   const [expanded, setExpanded] = React.useState(false);
+  const [type,setType]=React.useState("");
   const [expandedDescription, setExpandedDescription] = React.useState(false);
   const StyledCard = styled(Card)({
     display: "flex",
@@ -78,7 +80,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
   const [isTitle, setIsTitle] = useState(false)
 
-  const [label, setLabel] = useState("Section")
+  const [label, setLabel] = useState("Sub Topic")
 
   const [resourceType, setResourceType] = useState(null)
 
@@ -303,48 +305,99 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <UploadComponentAlter courseArray={courseArray} topicIndex={topicIndex} subTopicIndex={subTopicIndex} courseIndex={courseIndex} setInForm={resourceType} updateCourseArray={updateCourseArray} handleClose={handleClose} />
+              <UploadComponentAlter accept={type} courseArray={courseArray} topicIndex={topicIndex} subTopicIndex={subTopicIndex} courseIndex={courseIndex} setInForm={resourceType} updateCourseArray={updateCourseArray} handleClose={handleClose} />
             </Box>
           </Modal>
           <div  style={{backgroundColor:"#F8F8F8"}}>
           <Button
+<<<<<<< HEAD
             sx={{ minWidth: "150px", height: "100px",color:"#000000",padding:"5px 20px 5px 50px" }}
             
             onClick={() => handleOpen("audio")}
             
+=======
+            sx={{ minWidth: "150px", height: "100px" }}
+            variant="outlined"
+            onClick={() => {
+              setType("audio/*");
+              return handleOpen("audio")
+            }}
+            color="error"
+>>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
             disabled={isDisable.audio}
           >
+            <Box>
             <AudioFileIcon />
+            <Typography>Audio</Typography>
+            </Box>
           </Button>
           <Button
+<<<<<<< HEAD
             sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 20px 5px 20px"}}
             
             onClick={() => handleOpen("video")}
+=======
+            sx={{ minWidth: "150px", height: "100px" }}
+            variant="outlined"
+            onClick={() => {
+              setType("video/*");
+              handleOpen("video")}
+            }
+>>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
             disabled={isDisable.video}
           >
+            <Box>
             <OndemandVideoIcon />
+            <Typography>Video</Typography>
+            </Box>
           </Button>
 
 
           <Button
+<<<<<<< HEAD
             sx={{ minWidth: "150px", height: "100px",color:"#000000" ,padding:"5px 20px 5px 20px"}}
             
             
             onClick={() => handleOpen("pdf")}
+=======
+            sx={{ minWidth: "150px", height: "100px" }}
+            variant="outlined"
+            color="success"
+            onClick={() => {
+              setType("application/pdf");
+              handleOpen("pdf")}
+            }
+>>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
             disabled={isDisable.pdf}
           >
+            <Box>
             <PictureAsPdfIcon />
+            <Typography>Pdf</Typography>
+            </Box>
           </Button>
 
 
           <Button
+<<<<<<< HEAD
             sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 20px 5px 20px"}}
            
            
             onClick={() => handleOpen("ppt")}
+=======
+            sx={{ minWidth: "150px", height: "100px" }}
+            variant="outlined"
+            color="warning"
+            onClick={() => {
+              setType("application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.slideshow,application/vnd.openxmlformats-officedocument.presentationml.presentation")
+              handleOpen("ppt")}
+            }
+>>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
             disabled={isDisable.ppt}
           >
+            <Box>
             <SlideshowIcon />
+            <Typography>PPT</Typography>
+            </Box>
           </Button>
           <Button
             sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 50px 5px 20px"}}
@@ -353,11 +406,33 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             
             disabled={isDisable.audio}
           >
+            <Box>
             <TextSnippetIcon />
+<<<<<<< HEAD
             <Typography>errdd</Typography>
+=======
+            <Typography>Assessment</Typography>
+            </Box>
+>>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
           </Button>
           </div>
         </Stack>
+        <div style={{
+          display: "flex", justifyContent: "center",
+          // paddingX: "25"
+        }}>
+        <Button
+            sx={{ minWidth: "150px", marginX: "30%"}}
+            variant="contained"
+            onClick={() => addAssesment()}
+            fullWidth
+
+            // color="error"
+            // disabled={isDisable.audio}
+          >
+            Add Assesment
+          </Button>
+        </div>
         <div style={{
           // display: "flex",
           // justifyContent: "center"
@@ -419,7 +494,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
                     )
                   }
-                  if (assesment.type === 2) {
+                  if (assesment.type === 2) { 
                     return (
                       <Box sx={{
                         paddingY: "24px"

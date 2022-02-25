@@ -11,13 +11,17 @@ import axios from "axios";
 // import { courseArray } from "../Context";
 import { courseArray } from "../Context";
 import { useEffect } from "react";
+import { stepNumber } from "../Context";
 export default function Middle() {
+  const counter = useContext(stepNumber)
   const courseContext = useContext(courseArray)
   const [courses, setCourses] = useState([...courseContext.data])
   // let courses = [...courseContext.data]
   useEffect(()=>{
-    console.log("here")
-    setCourses([...courseContext.data])
+    if(courseContext.data.length === 0){
+      counter.setVal(1)
+    }
+    setCourses(courseContext.data)
   }, [courseContext.data])
   useState(()=>{
     console.log("hello")
@@ -29,6 +33,7 @@ export default function Middle() {
       name: "Basic Electrical Engineering"
     })
     // setCourses(newCourses)
+    courseContext.setCourseState({...courseContext, data: newCourses})
   }
   const formData = useContext(formContext)
 
@@ -63,7 +68,7 @@ export default function Middle() {
 
 <div style={{ display: "flex", justifyContent:'space-around' }}>
   <Butn Text="Select Course" disabled/>
-  <Butn Text="Add Section" clickHoja={addNewSection} />
+  <Butn Text="Add Module" clickHoja={addNewSection} />
   <Butn Text="Collapse All" disabled/>
   <Butn Text="Live View" disabled/>
   <Butn Text=" Save" disabled/>
@@ -97,7 +102,7 @@ marginRight: "36px",
 variant="contained"
 
 >
-update form
+update course
 </Button>
 <Button onClick={() =>{
 // console.log(courses)
@@ -118,9 +123,9 @@ marginRight: "36px",
 }}
 variant="contained"
 >
-upload
+upload course and save
 </Button>
-<Button onClick={()=>console.log(courseContext)}>doit</Button>
+{/* <Button onClick={()=>console.log(courseContext)}>doit</Button> */}
 </div>
           </div>
         ): null

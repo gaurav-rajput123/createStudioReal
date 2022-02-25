@@ -9,8 +9,11 @@ let numCon = {
     increment:()=>{
         this.val += 1
     },
-    increment: ()=>{
+    decrement: ()=>{
         this.val -= 1
+    },
+    setVal: (newVal) => {
+        this.val = newVal
     }
     
 }

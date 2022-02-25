@@ -22,14 +22,14 @@ export default function AnimationGrid() {
 
             <Grid container rowSpacing={15} columnSpacing={{ xs: 1, sm: 2, md: 3 }} direction='column'>
                 <Grid item xs style={{ position: 'relative', left: '10%' }}>
-                    <h4 className='guidelines'>04. Guidelines</h4>
+                    {/* <h4 className='guidelines'>01. Guidelines</h4> */}
                     <div className="main-head" style={{ display: 'flex', marginTop: '-3%' }}>
                         <div className="bold" style={{ fontSize: '30px' }}>
                             <h1>Uploading Formats</h1>
                         </div>
-                        <div className="btn" style={{ marginLeft: '30%' }}>
+                        {/* <div className="btn" style={{ marginLeft: '30%' }}>
                             <Button variant='contained'>Contact Us</Button>
-                        </div>
+                        </div> */}
                     </div>
                     <Grid item xs={6} style={{ float: 'left', fontSize: '20px', marginTop: '-2%' }}>
                         <p>There are certain guidelines that one must keep in mind while uploading the courses.</p>
@@ -39,7 +39,7 @@ export default function AnimationGrid() {
                 <Grid item xs style={{ marginTop: '-7%' }}>
                     <ContentCard
                         heading="Audio Content or Podcast"
-                        content="There are certain guidelines that one must keep in mind while uploading the courses."
+                        content="Upload in MP3  format"
                         imgback={bg1}
                         imgfront={ImgBg1}
                     />
@@ -49,7 +49,7 @@ export default function AnimationGrid() {
                 <Grid item xs style={{ marginTop: '-7%' }}>
                     <ContentCard2
                         heading="Video Content"
-                        content="Agency is a full-service agency, busy designing and building beautiful digital products, brands and experiences."
+                        content="Upload in MP4, MPG format"
                         imgback={bg2}
                         imgfront={ImgBg2}
                     />
@@ -59,7 +59,7 @@ export default function AnimationGrid() {
                 <Grid item xs style={{ marginTop: '-7%' }}>
                     <ContentCard3
                         heading="Content in the form of PDF"
-                        content="Agency is a full-service agency, busy designing and building beautiful digital products, brands and experiences."
+                        content="Upload in .PDF format"
                         imgback={bg3}
                         imgfront={ImgBg3}
                     />
@@ -69,7 +69,7 @@ export default function AnimationGrid() {
                 <Grid item xs style={{ marginTop: '-7%' }}>
                     <ContentCard4
                         heading="Content in the form of Slides"
-                        content="Agency is a full-service agency, busy designing and building beautiful digital products, brands and experiences."
+                        content="Upload in .PPT format."
                         imgback={bg4}
                         imgfront={ImgBg4}
                     />
