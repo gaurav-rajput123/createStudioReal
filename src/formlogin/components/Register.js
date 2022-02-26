@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import {
   Typography,
   Button,
@@ -15,26 +15,112 @@ import { NavLink } from "react-router-dom";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
+  const navigate = useNavigate();
+    
+   
+ 
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [username,setUsername]=useState("");
+  const [password,setPassword]=useState("");
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const onSubmit=event=>{
+    event.preventDefault();
+
+    // useEffect(()=>{
+      axios({
+      url:'http://localhost:8080/user/signup',
+      method:'POST',
+      data:{
+        username:email,
+        password:password
+      }
+    })
+    .then(
+      (response) => {
+        console.log(response.data.user);
+
+         //after submit form redirect user
+    navigate('/verify',{state:{user:response.data.user}});
+      }
+    );
+  // },[]);
+
+    // console.log(user)
+  }
+
   return (
     <Grid container sx={{ width: "auto" }}>
+      <form onSubmit={onSubmit}>
       <Grid item xs={8} sx={{ marginBottom: "10px" }}>
-        <TextField fullWidth label="Full name" id="fullWidth" />
+        <TextField
+        fullWidth
+        label="Full name" 
+        id="fullWidth"
+        value={name}
+        onChange={event=>setName(event.target.value)} />
       </Grid>
       <Grid xs={4} />
       <Grid item xs={8} sx={{ marginBottom: "10px" }}>
-        <TextField fullWidth label="Email" id="fullWidth" />
+        <TextField 
+        fullWidth 
+        label="Email" 
+        id="fullWidth"
+        value={email}
+        onChange={event=>setEmail(event.target.value)} />
       </Grid>
       <Grid xs={4} />
       <Grid item xs={8} sx={{ marginBottom: "10px" }}>
-        <TextField fullWidth label="Public username" id="fullWidth" />
+        <TextField
+        fullWidth 
+        label="Public username" 
+        id="fullWidth"
+        value={username}
+        onChange={event=>setUsername(event.target.value)}
+         />
       </Grid>
       <Grid xs={4} />
       <Grid item xs={8}>
-        <PasswordBox />
+      <InputLabel
+      htmlFor="outlined-adornment-password" 
+      onChange={event=>setPassword(event.target.value)}
+      style={{ fontFamily: " 'Poppins', sans-serif " }}>Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            onChange={event=>setPassword(event.target.value)}
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={()=>{setShowPassword(true)}}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="password"
+          />
       </Grid>
       <Grid xs={4} />
       <Grid item xs={8}>
@@ -55,19 +141,20 @@ export default function Register() {
       <Grid xs={4} />
 
       <Grid item xs={6} sx={{ marginTop: "10px" }}>
-        <NavLink
+        {/* <NavLink
           to={"/land"}
           style={{
             textDecoration: "none",
           }}
-        >
+        > */}
           <Button
+            type="submit"
             variant="contained"
             sx={{ backgroundColor: "#660000", borderRadius: "0px", marginBottom:"10px" }}
           >
             Create Account
           </Button>
-        </NavLink>
+        {/* </NavLink> */}
       </Grid>
       <Grid xs={4} />
       <Grid item xs={6} sx={{ marginBottom: "10px" }}>
@@ -180,6 +267,7 @@ export default function Register() {
       <Grid xs={12} sx={{ position: "absolute", bottom: 0, right: 0 }}>
         <img src={img} width="250px" height={"105px"} />
       </Grid>
+      </form>
     </Grid>
   );
 }
