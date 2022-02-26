@@ -44,8 +44,6 @@ function App() {
       <div className="App">
         <Routes>
           {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
-          
-
           <Route path="/" element={<RegisterCard />} />
           <Route path='/verify' element={<Verification/>}/>
           <Route path="/user" element={<Additionalinfo />} />
