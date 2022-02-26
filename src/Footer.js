@@ -39,23 +39,23 @@ const Footer = () => {
           <Grid item xs={3}>
             
             <Typography variant="h3">Social Media</Typography>
-            <Link href="#"  sx={{fontSize:"20px"}}> 
+            <Link href="https://www.facebook.com/login.php/"  sx={{fontSize:"20px"}}> 
               <i className="fab fa-facebook-f">
                 <FacebookIcon/><br/>
               </i>
             </Link>
-            <Link href="#"  sx={{fontSize:"20px" , color:"red"}}>
+            <Link href="https://www.instagram.com/accounts/login/"  sx={{fontSize:"20px" , color:"red"}}>
               <i className="fab fa-instagram">
                 <InstagramIcon/><br/>
                 
               </i>
             </Link>
-            <Link href="#"  sx={{fontSize:"20px"}}>
+            <Link href="https://twitter.com/i/flow/login"  sx={{fontSize:"20px"}}>
               <i className="fab fa-twitter">
                 <TwitterIcon/><br/>
               </i>
             </Link>
-            <Link href="#"  sx={{fontSize:"20px" , color:"red"}}>
+            <Link href="https://www.youtube.com/"  sx={{fontSize:"20px" , color:"red"}}>
               <i className="fab fa-youtube">
                <YouTubeIcon/><br/> 
               </i>
