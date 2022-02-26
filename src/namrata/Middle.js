@@ -141,24 +141,24 @@ upload course and save
 
 //  For Courses
 function MainTile({course, courseIndex, courseArray, updateCurrentCourse, changeCourseName, updateCourseArray}){
-  const updateCourse = () => {
-    let newCourseObj = { ...course }
-    if (newCourseObj.hasOwnProperty('topics')) {
-      newCourseObj.topics.push({
-        name: "Nortons Theorem",
-        subTopics: [] 
-      })
-    } else {
-      newCourseObj.topics = [
-        {
-          name: "Thevenins Theorem",
-          subTopics: []
-        }
-      ]
-    }
+  // const updateCourse = () => {
+  //   let newCourseObj = { ...course }
+  //   if (newCourseObj.hasOwnProperty('topics')) {
+  //     newCourseObj.topics.push({
+  //       name: "Nortons Theorem",
+  //       subTopics: [] 
+  //     })
+  //   } else {
+  //     newCourseObj.topics = [
+  //       {
+  //         name: "Thevenins Theorem",
+  //         subTopics: []
+  //       }
+  //     ]
+  //   }
  
-    updateCurrentCourse(newCourseObj, courseIndex)
-  }
+  //   updateCurrentCourse(newCourseObj, courseIndex)
+  // }
 
 
   const updateTopicName = (newTopicName, topicIndex, topicArray) => {
