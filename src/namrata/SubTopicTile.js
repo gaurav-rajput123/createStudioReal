@@ -308,14 +308,15 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
               <UploadComponentAlter accept={type} courseArray={courseArray} topicIndex={topicIndex} subTopicIndex={subTopicIndex} courseIndex={courseIndex} setInForm={resourceType} updateCourseArray={updateCourseArray} handleClose={handleClose} />
             </Box>
           </Modal>
+          <div >
           <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
+            sx={{ minWidth: "150px", height: "100px",color:"#000000" ,padding:"5px 50px 5px 50px"}}
+            
             onClick={() => {
               setType("audio/*");
               return handleOpen("audio")
             }}
-            color="error"
+            
             disabled={isDisable.audio}
           >
             <Box>
@@ -324,8 +325,8 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             </Box>
           </Button>
           <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
+            sx={{ minWidth: "150px", height: "100px",color:"#000000" ,padding:"5px 50px 5px 50px" }}
+            
             onClick={() => {
               setType("video/*");
               handleOpen("video")}
@@ -340,9 +341,8 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
 
           <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
-            color="success"
+            sx={{ minWidth: "150px", height: "100px" ,color:"#000000" ,padding:"5px 50px 5px 50px"}}
+            
             onClick={() => {
               setType("application/pdf");
               handleOpen("pdf")}
@@ -357,9 +357,8 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
 
           <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
-            color="warning"
+            sx={{ minWidth: "150px", height: "100px" ,color:"#000000" ,padding:"5px 50px 5px 50px" }}
+          
             onClick={() => {
               setType("application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.slideshow,application/vnd.openxmlformats-officedocument.presentationml.presentation")
               handleOpen("ppt")}
@@ -372,10 +371,10 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             </Box>
           </Button>
           <Button
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
+            sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 50px 5px 50px"}}
+           
             onClick={() => addAssesment()}
-            color="error"
+            
             disabled={isDisable.audio}
           >
             <Box>
@@ -383,13 +382,14 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             <Typography>Assessment</Typography>
             </Box>
           </Button>
+          </div>
         </Stack>
         <div style={{
           display: "flex", justifyContent: "center",
           // paddingX: "25"
         }}>
         <Button
-            sx={{ minWidth: "150px", marginX: "30%"}}
+            sx={{ maxWidth: "100px", marginX: "30%"}}
             variant="contained"
             onClick={() => addAssesment()}
             fullWidth
@@ -397,7 +397,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             // color="error"
             // disabled={isDisable.audio}
           >
-            Add Assesment
+            Save
           </Button>
         </div>
         <div style={{

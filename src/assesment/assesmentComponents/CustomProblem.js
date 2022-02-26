@@ -16,10 +16,9 @@ export default function CustomProblem({color}) {
         <Videoheader title={"Custom Based Problem Solving"} changeQuestion={setQuestion} color={color} />
         <Textinput title={'Custom Based Problem Solving'} question={question}/>
         <Button
-            sx={{ minWidth: "150px", height: "100px" }}
+            sx={{ minWidth: "150px", height: "100px", backgroundColor: 'white', borderColor: 'white' }}
             variant="outlined"
             // onClick={() => handleOpen("audio")}
-            color="error"
             // disabled={isDisable.audio}
           >
             <AudioFileIcon />

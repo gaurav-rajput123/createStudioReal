@@ -58,13 +58,20 @@ export default function Progress() {
       <Stepper activeStep={counterTracker.val} orientation="vertical"  sx={{paddingLeft:"16px", }}>
         {steps.map((step, index) => (
           <Step key={step.label}>
-            <StepLabel sx={{
-              marginY: "4px"
+            <StepLabel 
+            sx={{
+              marginY: "4px",
+              "& .MuiStepLabel-iconContainer": {
+                "& .MuiSvgIcon-root": {
+                  color: "#51e0bf"
+                }
+              }
             }}
             >
               <Typography sx={{
                 fontSize: "12px"
               }}>{step.label}</Typography>
+                
             </StepLabel>
             <StepContent>
               <Typography sx={{
