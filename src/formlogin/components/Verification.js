@@ -31,7 +31,7 @@ export default function Verification() {
     .then(
         (response) => {
         if(response.data==="SUCCESS"){
-            navigate('/land');
+            navigate('/');
         }
         }
     );
