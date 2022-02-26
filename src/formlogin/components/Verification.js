@@ -11,7 +11,7 @@ import VectorNew from "../components/VectorNew.png"
 
 const Verification=() =>  {
 
-    const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto"}
+    const paperStyle={padding :10,height:'80vh',width:400, margin:"40px auto"}
 
 
     const navigate = useNavigate();
