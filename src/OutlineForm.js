@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Button, Grid, TextField ,Card} from '@mui/material';
-=======
 import { Button, Card, Grid, TextField, Typography } from '@mui/material';
->>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
 import { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import './add.css'
@@ -119,12 +115,6 @@ function OutlineForm({ activeStep, setActiveStep, setShowModal }) {
   }
 
   return (
-<<<<<<< HEAD
-    <Grid container>
-      <Card  sx={{backgroundColor:"white"}}>
-      <Grid item xs={6}>
-        CourseDetails
-=======
     <Grid container sx={{
       background: "white",
       paddingY: "12px"
@@ -177,7 +167,6 @@ function OutlineForm({ activeStep, setActiveStep, setShowModal }) {
           CourseDetails
         </Typography> */}
 
->>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
       </Grid>
       <Grid item xs={3}
         sx={{
@@ -393,12 +382,6 @@ function OutlineForm({ activeStep, setActiveStep, setShowModal }) {
         const newModArr = [...moduleArr]
         courseContext.setCourseState({ ...courseContext, data: newModArr })
         setShowModal(false)
-<<<<<<< HEAD
-      }}> Proceed to create course</Button>
-    
-    
-    </Card>
-=======
       }}
         fullWidth
         variant="contained"
@@ -406,7 +389,6 @@ function OutlineForm({ activeStep, setActiveStep, setShowModal }) {
           marginX: "25%",
 
         }}> Save Course Outline</Button>
->>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
     </Grid>
   )
 }

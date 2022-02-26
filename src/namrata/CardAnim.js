@@ -31,20 +31,20 @@ export default function CardAnim({ name }) {
                 {/* <OutlineForm /> */}
                 <CourseForm setModal={setShowModal}/>
             </Modal>
-            <Card sx={{ maxWidth: 1000, minHeight: 300, }} style={{ display: 'flex', backgroundColor: '#5468E7', borderRadius: '30px', position: 'relative', margin: "6px 2px 6px 10px" }}>
-                <div className="text" style={{ margin: '0 5% 0 0', width: '110%', paddingLeft: "14px" }}>
+            <Card sx={{ maxWidth: 1000, minHeight: 300, }} style={{ display: 'flex', background: "linear-gradient(to left, #0978C9 0%, #28465C 100%)", borderRadius: '30px', position: 'relative', margin: "6px 2px 6px 10px" }}>
+                <div className="text" style={{ margin: '0 5% 0 0', width: '110%', paddingLeft: "14px" ,paddingTop:"40px"}}>
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="div" style={{ fontFamily: 'Montserrat', fontSize: '40px', fontWeight: '600', color: 'white' }}>
-                            Welcome {name}!
+                        <Typography gutterBottom  component="div" style={{ fontFamily: 'Montserrat', fontSize: '28px', fontWeight: '600', color: 'white' }}>
+                            Welcome Back, {name}!
                         </Typography>
-                        <Typography variant="body1" color="text.secondary" style={{ fontFamily: 'Montserrat', fontSize: '16px', fontWeight: '500', color: 'white' }}>
+                        <Typography variant="body1" color="text.secondary" style={{ fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '500', color: 'white' }}>
                             {
                                 courseContext.data.length === 0 ? <>Start making your Course or Program by <br /> clicking on the button below.</> : <>Add new modules and topics for your course</>
                             }
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="large" variant="outlined" style={{ fontFamily: 'Montserrat', fontSize: '14px', color: '#334155', borderRadius: '25px', backgroundColor: 'white', position: 'absolute', bottom: '10%', display: courseContext.data.length === 0 ? 'block' : 'none' }}
+                        <Button size="large" variant="outlined" style={{ fontFamily: 'Montserrat', fontSize: '16px', color: '#334155', borderRadius: '25px', backgroundColor: 'white', position: 'absolute', bottom: '18%', display: courseContext.data.length === 0 ? 'block' : 'none' }}
                             onClick={() => {
                                 setShowModal(true)
                             }}

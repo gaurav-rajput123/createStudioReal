@@ -308,22 +308,15 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
               <UploadComponentAlter accept={type} courseArray={courseArray} topicIndex={topicIndex} subTopicIndex={subTopicIndex} courseIndex={courseIndex} setInForm={resourceType} updateCourseArray={updateCourseArray} handleClose={handleClose} />
             </Box>
           </Modal>
-          <div  style={{backgroundColor:"#F8F8F8"}}>
+          <div >
           <Button
-<<<<<<< HEAD
-            sx={{ minWidth: "150px", height: "100px",color:"#000000",padding:"5px 20px 5px 50px" }}
+            sx={{ minWidth: "150px", height: "100px",color:"#000000" ,padding:"5px 50px 5px 50px"}}
             
-            onClick={() => handleOpen("audio")}
-            
-=======
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
             onClick={() => {
               setType("audio/*");
               return handleOpen("audio")
             }}
-            color="error"
->>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
+            
             disabled={isDisable.audio}
           >
             <Box>
@@ -332,18 +325,12 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             </Box>
           </Button>
           <Button
-<<<<<<< HEAD
-            sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 20px 5px 20px"}}
+            sx={{ minWidth: "150px", height: "100px",color:"#000000" ,padding:"5px 50px 5px 50px" }}
             
-            onClick={() => handleOpen("video")}
-=======
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
             onClick={() => {
               setType("video/*");
               handleOpen("video")}
             }
->>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
             disabled={isDisable.video}
           >
             <Box>
@@ -354,20 +341,12 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
 
           <Button
-<<<<<<< HEAD
-            sx={{ minWidth: "150px", height: "100px",color:"#000000" ,padding:"5px 20px 5px 20px"}}
+            sx={{ minWidth: "150px", height: "100px" ,color:"#000000" ,padding:"5px 50px 5px 50px"}}
             
-            
-            onClick={() => handleOpen("pdf")}
-=======
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
-            color="success"
             onClick={() => {
               setType("application/pdf");
               handleOpen("pdf")}
             }
->>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
             disabled={isDisable.pdf}
           >
             <Box>
@@ -378,20 +357,12 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
 
           <Button
-<<<<<<< HEAD
-            sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 20px 5px 20px"}}
-           
-           
-            onClick={() => handleOpen("ppt")}
-=======
-            sx={{ minWidth: "150px", height: "100px" }}
-            variant="outlined"
-            color="warning"
+            sx={{ minWidth: "150px", height: "100px" ,color:"#000000" ,padding:"5px 50px 5px 50px" }}
+          
             onClick={() => {
               setType("application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.slideshow,application/vnd.openxmlformats-officedocument.presentationml.presentation")
               handleOpen("ppt")}
             }
->>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
             disabled={isDisable.ppt}
           >
             <Box>
@@ -400,7 +371,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             </Box>
           </Button>
           <Button
-            sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 50px 5px 20px"}}
+            sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 50px 5px 50px"}}
            
             onClick={() => addAssesment()}
             
@@ -408,12 +379,8 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
           >
             <Box>
             <TextSnippetIcon />
-<<<<<<< HEAD
-            <Typography>errdd</Typography>
-=======
             <Typography>Assessment</Typography>
             </Box>
->>>>>>> d0aa104a01da99b0a1f4da0e60aab392910cf22f
           </Button>
           </div>
         </Stack>
@@ -422,7 +389,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
           // paddingX: "25"
         }}>
         <Button
-            sx={{ minWidth: "150px", marginX: "30%"}}
+            sx={{ maxWidth: "100px", marginX: "30%"}}
             variant="contained"
             onClick={() => addAssesment()}
             fullWidth
@@ -430,7 +397,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             // color="error"
             // disabled={isDisable.audio}
           >
-            Add Assesment
+            Save
           </Button>
         </div>
         <div style={{
