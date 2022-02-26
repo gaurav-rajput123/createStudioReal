@@ -21,7 +21,7 @@ export default function Home() {
                 <Header/>
                 </Grid>
             <Grid item xs={0.5} />
-            <Grid item xs={7} sx={{ backgroundColor: "whitesmoke", borderTopLeftRadius: "12px" }}>
+            <Grid item xs={7} sx={{ backgroundColor: "whitesmoke", borderTopLeftRadius: "12px",paddingTop:"10px" }}>
                 <CardAnim name={"Mahavir"} />
             </Grid>
             <Grid item xs={4} sx={{ backgroundColor: "whitesmoke", borderTopRightRadius: "12px" }}>
