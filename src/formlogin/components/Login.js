@@ -1,15 +1,11 @@
 import React,{useState} from "react";
-import { Typography, Button, Grid, TextField, Link, InputLabel, OutlinedInput, IconButton, InputAdornment } from "@mui/material";
+import { Typography, Button, Grid, TextField, Link, InputLabel, OutlinedInput, IconButton, InputAdornment, FormControl } from "@mui/material";
 import PasswordBox from "./PasswordBox";
 import img from './crest.png'
 import { NavLink, useNavigate } from "react-router-dom";
 import { Visibility } from "@mui/icons-material";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
-
-
-
-
 
 
 export default function Login() {
@@ -63,16 +59,12 @@ export default function Login() {
             <Grid xs={4}/>
            <Grid item xs={8}>
             
-      <InputLabel
-      fullWidth 
-      htmlFor="outlined-adornment-password" 
-      onChange={event=>setPassword(event.target.value)}
-      style={{ fontFamily: " 'Poppins', sans-serif " }}
-      >
-        Password
-      </InputLabel>
+           <FormControl fullWidth variant="outlined">
+      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
+          fullWidth
             id="outlined-adornment-password"
+            label="password"
             onChange={event=>setPassword(event.target.value)}
             type={showPassword ? 'text' : 'password'}
             value={password}
@@ -89,8 +81,9 @@ export default function Login() {
                 </IconButton>
               </InputAdornment>
             }
-            label="password"
+            
           />
+          </FormControl>
            </Grid>
            <Grid xs={4}/>
            <Grid  item xs={6} sx={{marginTop:"30px", marginBottom:"20px"}}>
