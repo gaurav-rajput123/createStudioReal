@@ -1,24 +1,96 @@
-import React from "react";
-import { Typography, Button, Grid, TextField, Link } from "@mui/material";
+import React,{useState} from "react";
+import { Typography, Button, Grid, TextField, Link, InputLabel, OutlinedInput, IconButton, InputAdornment } from "@mui/material";
 import PasswordBox from "./PasswordBox";
 import img from './crest.png'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Visibility } from "@mui/icons-material";
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import axios from "axios";
+
+
+
+
 
 
 export default function Login() {
+  const navigate = useNavigate();
+  const [email,setEmail]=useState("");
+  const [username,setUsername]=useState("");
+  const [password,setPassword]=useState("");
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
     const handleClick = ()=> {
         alert("path not set")
     }
+
+    const onSubmit=event=>{
+      event.preventDefault();
+      axios({
+        url:'http://localhost:8080/user/login',
+        method:'POST',
+        data:{
+          username:email,
+          password:password
+        }
+      })
+      .then(
+        (response) => {
+          console.log(response.data.user);
+          const user=response.data.user;
+          user.getSession()
+          navigate("/land")
+        }
+      );
+      
+    }
     return(
 
         <Grid container sx={{width:"auto"}}>
+          <form onSubmit={onSubmit}>
            <Grid item xs={8} sx={{marginBottom:"20px"}}>
-            <TextField fullWidth label="Username or Email" id="fullWidth" />
+             
+            <TextField 
+            fullWidth 
+            label="Username or Email"
+             id="fullWidth" 
+             value={email}
+             onChange={event=>setEmail(event.target.email)}
+             />
            </Grid>
             <Grid xs={4}/>
            <Grid item xs={8}>
-            <PasswordBox/>
+            
+      <InputLabel
+      fullWidth 
+      htmlFor="outlined-adornment-password" 
+      onChange={event=>setPassword(event.target.value)}
+      style={{ fontFamily: " 'Poppins', sans-serif " }}
+      >
+        Password
+      </InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            onChange={event=>setPassword(event.target.value)}
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={()=>{setShowPassword(true)}}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="password"
+          />
            </Grid>
            <Grid xs={4}/>
            <Grid  item xs={6} sx={{marginTop:"30px", marginBottom:"20px"}}>
@@ -153,7 +225,7 @@ export default function Login() {
            
 
            
-        
+           </form>
         </Grid>
 
     )
