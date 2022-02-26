@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "amazon-cognito-identity-js": "^5.2.6",
     "axios": "^0.26.0",
     "html-react-parser": "^1.4.6",
     "jodit-react": "^1.1.20",

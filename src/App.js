@@ -17,6 +17,7 @@ import BasicCard from './formlogin/components/skewCard';
 import Register from "./formlogin/components/Register";
 import RegisterCard from './formlogin/components/RegisterCard';
 import TabComponent from './formlogin/components/TabComponent copy';
+import Verification from './formlogin/components/Verification';
 
 // import AnimatedPa from './namrata/AnimationGrid';
 
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
           <Route path="/" element={<RegisterCard />} />
+          <Route path='/verify' element={<Verification/>}/>
           <Route path="/user" element={<Additionalinfo />} />
           <Route path="/land" element={<Front />} />
           <Route path="/form" element={<Form />} />
