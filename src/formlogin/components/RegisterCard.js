@@ -5,6 +5,7 @@ import { Grid, Typography } from '@mui/material';
 import Ardss from './Ardss';
 import Register from "./Register";
 import logo from '../MRSSPTU.png'
+import TabComponent from './TabComponent copy';
 
 export default function RegisterCard() {
   return (
@@ -26,10 +27,11 @@ export default function RegisterCard() {
                
             </Grid>
             <Grid xs={1} />
-            <Grid xs={6} paddingTop="30px">
+            <Grid xs={6} >
                 
-                  {/* <TabComponent/> */}
-              <Register/>
+                  <TabComponent/> 
+              
+              
                
             </Grid  >
 

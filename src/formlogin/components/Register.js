@@ -17,16 +17,72 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import google from "./google.png";
+import apple from "./apple.png";
+import facebook from "./facebook.png";
+import microsoft from "./microsoft.png";
+import {useState, useEffect} from "react"
+
 
 export default function Register() {
+
+    const initialValues ={username: "",email:"", password:""};
+    const [formValues, setFormValues] = useState(initialValues);
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+
+    const handleChange = (e) => {
+        
+        const {name, value} = e.target;
+        setFormValues({...formValues, [name]:value});
+        console.log(formValues);
+    }
+    
+    const handleClick = ()=> {
+        alert("path not set")
+    }
+
+    const handleSubmit =(e) => {
+        e.preventDefault();
+        setFormErrors(validate(formValues));
+        setIsSubmit(true);
+
+    }
+
+    useEffect(() => {
+       console.log(formErrors);
+       if(Object.keys(formErrors).length === 0 && isSubmit) {
+          console.log(formValues);
+       }
+    },[formErrors])
+
+    const validate = (values) => {
+        const errors = {}
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        if (!values.username){
+          errors.username = "Username is required";
+        }
+        if (!values.email){
+          errors.email = "Email is required";
+        }
+        if (!values.password){
+          errors.password = "Password is required";
+        }
+
+        return errors;
+    }
+
+
   return (
     <Grid container sx={{ width: "auto" }}>
-      <Grid item xs={8} sx={{ marginBottom: "10px" }}>
-        <TextField fullWidth label="Full name" id="fullWidth" />
+      <Grid item xs={8} sx={{ marginBottom: "10px" }} onSubmit={handleSubmit}>
+        <TextField fullWidth label="Full name" id="fullWidth" value={formValues.username} onChange={handleChange}/>
+        <p>{formErrors.username}</p>
       </Grid>
       <Grid xs={4} />
       <Grid item xs={8} sx={{ marginBottom: "10px" }}>
-        <TextField fullWidth label="Email" id="fullWidth" />
+        <TextField fullWidth label="Email" id="fullWidth" value={formValues.email} onChange={handleChange}/>
+        <p>{formErrors.email}</p>
       </Grid>
       <Grid xs={4} />
       <Grid item xs={8} sx={{ marginBottom: "10px" }}>
@@ -34,7 +90,8 @@ export default function Register() {
       </Grid>
       <Grid xs={4} />
       <Grid item xs={8}>
-        <PasswordBox />
+        <PasswordBox value={formValues.password} onChange={handleChange}/>
+        <p>{formErrors.password}</p>
       </Grid>
       <Grid xs={4} />
       <Grid item xs={8}>
@@ -55,19 +112,15 @@ export default function Register() {
       <Grid xs={4} />
 
       <Grid item xs={6} sx={{ marginTop: "10px" }}>
-        <NavLink
-          to={"/land"}
-          style={{
-            textDecoration: "none",
-          }}
-        >
+        
+        
           <Button
             variant="contained"
             sx={{ backgroundColor: "#660000", borderRadius: "0px", marginBottom:"10px" }}
           >
             Create Account
           </Button>
-        </NavLink>
+       
       </Grid>
       <Grid xs={4} />
       <Grid item xs={6} sx={{ marginBottom: "10px" }}>
@@ -90,7 +143,7 @@ export default function Register() {
           padding: "4px"
       }}>
         <NavLink
-          to={"/land"}
+          to={"/"}
           style={{
             textDecoration: "none",
           }}
@@ -103,7 +156,10 @@ export default function Register() {
               height: "100%",
               width: "100%",
             }}
-          >
+            onClick={()=>{
+                handleClick()
+            }}
+          ><img src={apple} alt="apple"/>
             Apple
           </Button>
         </NavLink>
@@ -113,7 +169,7 @@ export default function Register() {
         padding: "4px"
     }}>
         <NavLink
-          to={"/land"}
+          to={"/"}
           style={{
             textDecoration: "none",
           }}
@@ -126,7 +182,10 @@ export default function Register() {
               height: "100%",
               width: "100%",
             }}
-          >
+            onClick={()=>{
+                handleClick()
+            }}
+          ><img src={facebook} alt="facebook"/>
             Facebook
           </Button>
         </NavLink>
@@ -136,7 +195,7 @@ export default function Register() {
         padding: "4px"
     }}>
         <NavLink
-          to={"/land"}
+          to={"/"}
           style={{
             textDecoration: "none",
           }}
@@ -149,7 +208,10 @@ export default function Register() {
               height: "100%",
               width: "100%",
             }}
-          >
+            onClick={()=>{
+                handleClick()
+            }}
+          ><img src={google} alt="google"/>
             Google
           </Button>
         </NavLink>
@@ -158,7 +220,7 @@ export default function Register() {
         padding: "4px"
     }}>
         <NavLink
-          to={"/land"}
+          to={"/"}
           style={{
             textDecoration: "none",
           }}
@@ -171,7 +233,10 @@ export default function Register() {
               height: "100%",
               width: "100%",
             }}
-          >
+            onClick={()=>{
+                handleClick()
+            }}
+          ><img src={microsoft} alt="microsoft"/>
             Microsoft
           </Button>
         </NavLink>

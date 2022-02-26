@@ -16,6 +16,7 @@ import Additionalinfo from './formlogin/Additionalinfo';
 import BasicCard from './formlogin/components/skewCard';
 import Register from "./formlogin/components/Register";
 import RegisterCard from './formlogin/components/RegisterCard';
+import TabComponent from './formlogin/components/TabComponent copy';
 
 // import AnimatedPa from './namrata/AnimationGrid';
 
