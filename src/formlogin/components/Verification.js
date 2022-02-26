@@ -18,11 +18,12 @@ const Verification=() =>  {
     const [code,setCode]=useState("");
     const location = useLocation();
    if(location.state!=null){
-    console.log(location.state.user)
+    console.log(location.state.user.username)
    }
 
    const onSubmit=event=>{
     event.preventDefault();
+    console.log(code);
     axios({
         url:'http://localhost:8080/user/confirm',
         method:'POST',
@@ -33,6 +34,7 @@ const Verification=() =>  {
     })
     .then(
         (response) => {
+            console.log(response)
         if(response.data==="SUCCESS"){
             navigate('/');
         }
@@ -40,8 +42,8 @@ const Verification=() =>  {
     );
     }
     return(
-        <Grid>
         <Paper elevation={10} style={paperStyle}>
+            <form onSubmit={onSubmit}>
             <Grid align='center'>
                
                 
@@ -51,11 +53,11 @@ const Verification=() =>  {
                 <h2>Verification</h2>
                 <h6>Verification Code send on Email</h6>
             </Grid>
-            <TextField variant="outlined" label='Verify OTP' placeholder='Enter username' fullWidth required/>
+            <TextField 
+            value={code}
+            onChange={event=>setCode(event.target.value)}
+            variant="outlined" label='Verify OTP' fullWidth required/>
             <Button type='submit'  variant="contained" style={{backgroundColor:"#630000", color:"white", height:"56px",fontSize:"20px", marginTop:"10px", marginBottom:"10px"}} fullWidth>VERIFY</Button>
-           
-            
-            
             <Grid align="center" >
             <Typography > Didn't receive OTP?
                  <Link href="#" >
@@ -63,8 +65,8 @@ const Verification=() =>  {
                  </Link>
             </Typography>
             </Grid>
+            </form>
         </Paper>
-    </Grid>
 )
 }
 
