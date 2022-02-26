@@ -98,9 +98,9 @@ function TopicTile({ changeTopicName, topicIndex, topicArray, addSubTopics, upda
           <FileCopy className="Icon1" sx={{ color: "#b7b7b7", }} />
         </IconButton> */}
 
-        <IconButton sx={{ marginRight: "10px" }} onClick={() => setLabelController()}>
+        {/* <IconButton sx={{ marginRight: "10px" }} onClick={() => setLabelController()}>
           <EditIcon className="Icon1" sx={{ color: "#b7b7b7", }} />
-        </IconButton>
+        </IconButton> */}
 
         <IconButton sx={{ marginRight: "10px" }}
           onClick={() => handleExpandClick()}

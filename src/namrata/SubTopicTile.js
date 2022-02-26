@@ -265,9 +265,9 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
         <div style={{ flexGrow: 1 }} />
 
-        <IconButton sx={{ marginRight: "10px" }} onClick={() => setLabelController()}>
+        {/* <IconButton sx={{ marginRight: "10px" }} onClick={() => setLabelController()}>
           <EditIcon className="Icon1" sx={{ color: "#b7b7b7", }} />
-        </IconButton>
+        </IconButton> */}
 
         <IconButton sx={{ marginRight: "10px" }} onClick={() => handleExpandClickDescription()}>
           <FeedIcon className="Icon1" sx={{ color: "#b7b7b7", }} />
