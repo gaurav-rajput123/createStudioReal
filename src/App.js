@@ -18,6 +18,7 @@ import Register from "./formlogin/components/Register";
 import RegisterCard from './formlogin/components/RegisterCard';
 import TabComponent from './formlogin/components/TabComponent copy';
 import Verification from './formlogin/components/Verification';
+import Corseinfo from './Courseinfo';
 
 // import AnimatedPa from './namrata/AnimationGrid';
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/form" element={<Form />} />
           <Route path="/create" element={<Home />} />
           <Route path="/formnew" element={<OutlineForm />} />
+          <Route path="/formnews" element={<Corseinfo/>} />
         </Routes>
 
       </div>

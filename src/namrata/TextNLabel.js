@@ -8,10 +8,7 @@ function TextNLabel({ isLabelShown, setIsLabelShown, setLabel, courseArray, cour
     const [labelIn, setLabelIn] = useState(label)
 
     return (
-        <div onClick={()=>{
-            setLabelIn(labelIn)
-            setIsLabelShown(!isLabelShown)
-        }}>
+       <>
            { isLabelShown ?
             (
                 <div style={{ display: "flex", alignItems: "center" }}>
@@ -34,13 +31,13 @@ function TextNLabel({ isLabelShown, setIsLabelShown, setLabel, courseArray, cour
                         setIsLabelShown(!isLabelShown)
                     }} sx={{ marginLeft: "12px" }} variant='contained'>
                         <Typography>
-                            Set Title
+                            Save
                         </Typography>
 
                     </Button>
                 </div>
             )}
-        </div>
+    </>
     )
 }
 

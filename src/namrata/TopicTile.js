@@ -54,7 +54,10 @@ function TopicTile({ topicIndex,  updateCourseArray, courseArray, courseIndex, e
       "name": "newSubTopic"
     }
     let newCourseArray = [...courseArray]
-    newCourseArray[courseIndex].topics[topicIndex].subTopics.push(newSubTopic)
+    if(newCourseArray[courseIndex].topics[topicIndex].subTopics ){ newCourseArray[courseIndex].topics[topicIndex].subTopics.push(newSubTopic)}else  {
+      newCourseArray[courseIndex].topics[topicIndex].subTopics = []
+      newCourseArray[courseIndex].topics[topicIndex].subTopics.push(newSubTopic)
+    }
     updateCourseArray(newCourseArray)
   }
 
@@ -105,9 +108,9 @@ function TopicTile({ topicIndex,  updateCourseArray, courseArray, courseIndex, e
           <FileCopy className="Icon1" sx={{ color: "#b7b7b7", }} />
         </IconButton> */}
 
-        {/* <IconButton sx={{ marginRight: "10px" }} onClick={() => setLabelController()}>
+        <IconButton sx={{ marginRight: "10px" }} onClick={() => setLabelController()}>
           <EditIcon className="Icon1" sx={{ color: "#b7b7b7", }} />
-        </IconButton> */}
+        </IconButton>
 
         <IconButton sx={{ marginRight: "10px" }}
           onClick={() => handleExpandClick()}
@@ -133,7 +136,7 @@ function TopicTile({ topicIndex,  updateCourseArray, courseArray, courseIndex, e
       </StyledCard>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <TextDescription getDescription={getDescription} titleDescription="Topic Description" skipDescription={()=>handleExpandClick()} add={()=>addSubTopic()}/>
+        <TextDescription getDescription={getDescription} titleDescription="Topic Description" skipDescription={()=>handleExpandClick()} add={()=>addSubTopic()} moduleIndex={courseIndex} topicIndex={topicIndex}/>
       </Collapse>
 
 

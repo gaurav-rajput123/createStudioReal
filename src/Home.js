@@ -7,6 +7,8 @@ import { stepNumber } from "./Context";
 import React, { useContext, useState } from "react";
 import { courseArray } from "./Context";
 import Footer from "./Footer";
+import Corseinfo from "./Courseinfo";
+
 export default function Home() {
     let context = useContext(stepNumber)
     // let courseContext = useContext(courseArray)
@@ -14,6 +16,8 @@ export default function Home() {
         courseId: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
         data: []
     })
+
+    const [showOutlineForm, setShowOutlineForm] = useState(false)
     return (
         <courseArray.Provider value={{...courseState, setCourseState}}>
             <Grid container>
@@ -21,8 +25,8 @@ export default function Home() {
                 <Header/>
                 </Grid>
             <Grid item xs={0.5} />
-            <Grid item xs={7} sx={{ backgroundColor: "whitesmoke", borderTopLeftRadius: "12px" }}>
-                <CardAnim name={"Mahavir"} />
+            <Grid item xs={7} sx={{ backgroundColor: "whitesmoke", borderTopLeftRadius: "12px",paddingTop:"10px" }}>
+                <CardAnim name={"Mahavir"} showOutlineForm={setShowOutlineForm} />
             </Grid>
             <Grid item xs={4} sx={{ backgroundColor: "whitesmoke", borderTopRightRadius: "12px" }}>
                 <Progress />
@@ -32,6 +36,7 @@ export default function Home() {
             <Grid item xs={11}
                 sx={{ backgroundColor: "whitesmoke" ,borderBottomLeftRadius: "12px",borderBottomRightRadius: "12px", marginBottom: "36px"}}
             >
+                {showOutlineForm ? (<Corseinfo setShowOutlineForm={setShowOutlineForm}/>) : null}
                 <Middle />
                 
             </Grid>

@@ -265,9 +265,9 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
         <div style={{ flexGrow: 1 }} />
 
-        {/* <IconButton sx={{ marginRight: "10px" }} onClick={() => setLabelController()}>
+        <IconButton sx={{ marginRight: "10px" }} onClick={() => setLabelController()}>
           <EditIcon className="Icon1" sx={{ color: "#b7b7b7", }} />
-        </IconButton> */}
+        </IconButton>
 
         <IconButton sx={{ marginRight: "10px" }} onClick={() => handleExpandClickDescription()}>
           <FeedIcon className="Icon1" sx={{ color: "#b7b7b7", }} />
@@ -370,34 +370,24 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             <Typography>PPT</Typography>
             </Box>
           </Button>
-          <Button
-            sx={{ minWidth: "150px", height: "100px" ,color:"#000000",padding:"5px 50px 5px 50px"}}
-           
-            onClick={() => addAssesment()}
-            
-            disabled={isDisable.audio}
-          >
-            <Box>
-            <TextSnippetIcon />
-            <Typography>Assessment</Typography>
-            </Box>
-          </Button>
+          
           </div>
+          
         </Stack>
+       
         <div style={{
           display: "flex", justifyContent: "center",
-          // paddingX: "25"
+
         }}>
         <Button
-            sx={{ maxWidth: "100px", marginX: "30%"}}
+            sx={{ marginX: "30%"}}
             variant="contained"
             onClick={() => addAssesment()}
             fullWidth
 
-            // color="error"
-            // disabled={isDisable.audio}
+        
           >
-            Save
+            Add ASSESMENT
           </Button>
         </div>
         <div style={{
@@ -456,7 +446,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                         paddingY: "24px"
                       }}
                       key={assesment.id}>
-                        <TextFieldAssesment {...basicProps} color={"#177ACC"} />
+                        <TextFieldAssesment {...basicProps} color={"#177ACC"} moduleIndex={courseIndex} />
                       </Box>
 
                     )
