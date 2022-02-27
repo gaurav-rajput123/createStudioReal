@@ -1,5 +1,5 @@
 // import './App.css';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Routes, Route, useParams } from "react-router-dom";
 
 import OutlineForm from './OutlineForm';
@@ -25,6 +25,16 @@ import Corseinfo from './Courseinfo';
 // import Home from './Home'
 function App() {
   const [val, setVal] = useState(0)
+  useEffect(()=>{
+    axios({
+    url:'http://localhost:8080/user/currentuser',
+    method:'POST',
+  }).then(
+    (response) => {
+      console.log(response.data);
+  })
+})
+
   return (
     <stepNumber.Provider value={{
       val, increment: () => setVal(val + 1), decrement: () => setVal(val - 1), setVal: (newVal) => {

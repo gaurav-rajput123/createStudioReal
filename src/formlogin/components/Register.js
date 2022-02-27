@@ -80,8 +80,7 @@ export default function Register() {
     }
     const navigate = useNavigate();
     
-   
- 
+
   const [name,setName]=useState("");
   const [email,setEmail]=useState("");
   const [username,setUsername]=useState("");
@@ -156,14 +155,12 @@ export default function Register() {
       </Grid>
       <Grid xs={4} />
       <Grid item xs={8}>
-        <PasswordBox value={formValues.password} onChange={handleChange}/>
-        <p>{formErrors.password}</p>
-      <InputLabel
-      htmlFor="outlined-adornment-password" 
-      onChange={event=>setPassword(event.target.value)}
-      style={{ fontFamily: " 'Poppins', sans-serif " }}>Password</InputLabel>
+      <FormControl fullWidth variant="outlined">
+      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
+          fullWidth
             id="outlined-adornment-password"
+            label="password"
             onChange={event=>setPassword(event.target.value)}
             type={showPassword ? 'text' : 'password'}
             value={password}
@@ -180,8 +177,10 @@ export default function Register() {
                 </IconButton>
               </InputAdornment>
             }
-            label="password"
+            
           />
+          </FormControl>
+          <p>{formErrors.password}</p>
       </Grid>
       <Grid xs={4} />
       <Grid item xs={8}>

@@ -68,7 +68,7 @@ const style = {
 
 export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, courseArray, updateCourseArray }) {
   const [expanded, setExpanded] = React.useState(false);
-  const [type,setType]=React.useState("");
+  const [type, setType] = React.useState("");
   const [expandedDescription, setExpandedDescription] = React.useState(false);
   const StyledCard = styled(Card)({
     display: "flex",
@@ -309,27 +309,95 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             </Box>
           </Modal>
           <div >
-          <Button
-            sx={{ minWidth: "150px", height: "100px",color:"#000000" ,padding:"5px 50px 5px 50px"}}
-            
-            onClick={() => {
-              setType("audio/*");
-              return handleOpen("audio")
-            }}
-            
-            disabled={isDisable.audio}
-          >
-            <Box>
-            <AudioFileIcon />
-            <Typography>Audio</Typography>
-            </Box>
-          </Button>
-          <Button
-            sx={{ minWidth: "150px", height: "100px",color:"#000000" ,padding:"5px 50px 5px 50px" }}
-            
-            onClick={() => {
-              setType("video/*");
-              handleOpen("video")}
+            <Button
+              sx={{ minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px" , backgroundColor: '#fff',
+              '&:hover': {
+                backgroundColor: '#fff',
+                color: "#000000",
+              }}}
+
+              onClick={() => {
+                setType("audio/*");
+                return handleOpen("audio")
+              }}
+
+              disabled={isDisable.audio}
+            >
+              <Box>
+                <AudioFileIcon />
+                <Typography  sx={{width:"75px"}}>Audio</Typography>
+              </Box>
+            </Button>
+            <Button
+              sx={{ minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px", backgroundColor: '#fff',
+              '&:hover': {
+                backgroundColor: '#fff',
+                color: "#000000",
+              } }}
+
+              onClick={() => {
+                setType("video/*");
+                handleOpen("video")
+              }
+              }
+              disabled={isDisable.video}
+            >
+              <Box>
+                <OndemandVideoIcon />
+                <Typography   sx={{width:"75px"}}>  Video  </Typography>
+              </Box>
+            </Button>
+
+
+            <Button
+              sx={{ minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px" , backgroundColor: '#fff',
+              '&:hover': {
+                backgroundColor: '#fff',
+                color: "#000000",
+              }}}
+
+              onClick={() => {
+                setType("application/pdf");
+                handleOpen("pdf")
+              }
+              }
+              disabled={isDisable.pdf}
+            >
+              <Box>
+                <PictureAsPdfIcon />
+                <Typography  sx={{width:"75px"}}>Pdf</Typography>
+              </Box>
+            </Button>
+
+
+            <Button
+              sx={{ minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px" , backgroundColor: '#fff',
+              '&:hover': {
+                backgroundColor: '#fff',
+                color: "#000000",
+              }}}
+
+              onClick={() => {
+                setType("application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.slideshow,application/vnd.openxmlformats-officedocument.presentationml.presentation")
+                handleOpen("ppt")
+              }
+              }
+              disabled={isDisable.ppt}
+            >
+              <Box>
+                <SlideshowIcon />
+                <Typography  sx={{width:"75px"}}>PPT</Typography>
+              </Box>
+            </Button>
+            <Button
+              sx={{
+                minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px",
+                 backgroundColor: '#fff',
+                '&:hover': {
+                  backgroundColor: '#fff',
+                  color: "#000000",
+                }
+              }
             }
             disabled={isDisable.video}
           >
@@ -434,7 +502,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                       <Box sx={{
                         paddingY: "24px"
                       }}
-                      key={assesment.id}>
+                        key={assesment.id}>
                         <CheckBoxAssesment {...basicProps} color={"brown"} />
                       </Box>
 
@@ -451,12 +519,12 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
                     )
                   }
-                  if (assesment.type === 2) { 
+                  if (assesment.type === 2) {
                     return (
                       <Box sx={{
                         paddingY: "24px"
                       }}
-                      key={assesment.id}>
+                        key={assesment.id}>
                         <RadioButtonAssesment {...basicProps} color={"grey"} />
                       </Box>
 
@@ -467,7 +535,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                       <Box sx={{
                         paddingY: "24px"
                       }}
-                      key={assesment.id}>
+                        key={assesment.id}>
                         <DropdownAssesment {...basicProps} color={"#1A50B2"} />
                       </Box>
 
@@ -478,7 +546,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                       <Box sx={{
                         paddingY: "24px"
                       }}
-                      key={assesment.id}>
+                        key={assesment.id}>
                         <DropdownAssesment {...basicProps} color={"#3eeda1"} />
                       </Box>
 
@@ -489,7 +557,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                       <Box sx={{
                         paddingY: "24px"
                       }}
-                      key={assesment.id}>
+                        key={assesment.id}>
                         <TextFieldAssesmentNum {...basicProps} color={"#95c6ed"} />
                       </Box>
 
@@ -500,7 +568,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                       <Box sx={{
                         paddingY: "24px"
                       }}
-                      key={assesment.id}>
+                        key={assesment.id}>
                         <Research {...basicProps} color={"#d1a080"} />
                       </Box>
 
@@ -511,7 +579,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                       <Box sx={{
                         paddingY: "24px"
                       }}
-                      key={assesment.id}>
+                        key={assesment.id}>
                         <CaseStudy {...basicProps} color={"#b5d99c"} />
                       </Box>
 
@@ -522,7 +590,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                       <Box sx={{
                         paddingY: "24px"
                       }}
-                      key={assesment.id}>
+                        key={assesment.id}>
                         <BlankProblem {...basicProps} color={"#eaf7d0"} />
                       </Box>
 
@@ -533,7 +601,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                       <Box sx={{
                         paddingY: "24px"
                       }}
-                      key={assesment.id}>
+                        key={assesment.id}>
                         <CustomProblem {...basicProps} color={"#eaf7d0"} />
                       </Box>
 
@@ -546,7 +614,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
           </Collapse>
         </div>
-        
+
 
       </Collapse>
 
