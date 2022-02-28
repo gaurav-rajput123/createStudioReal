@@ -13,11 +13,12 @@ import Collapsible from "./SubContent";
 import Subsection from './SubTopicTile';
 import convertToString from "../resources/convertToString";
 import { FileCopy } from "@mui/icons-material";
+import generateKey from "../resources/generateKey";
 const parse = require('html-react-parser')
 
 
 
-function TopicTile({ changeTopicName, topicIndex, topicArray, addSubTopics, updateCourseArray, courseArray, courseIndex, expand }) {
+function TopicTile({ topicIndex,  updateCourseArray, courseArray, courseIndex, expand }) {
 
 
   const StyledCard = styled(Card)({
@@ -47,8 +48,17 @@ function TopicTile({ changeTopicName, topicIndex, topicArray, addSubTopics, upda
   }
 
   const addSubTopic = () => {
-    addSubTopics()
-    
+    // addSubTopics()
+    let newSubTopic = {
+      id: generateKey(),
+      "name": "newSubTopic"
+    }
+    let newCourseArray = [...courseArray]
+    if(newCourseArray[courseIndex].topics[topicIndex].subTopics ){ newCourseArray[courseIndex].topics[topicIndex].subTopics.push(newSubTopic)}else  {
+      newCourseArray[courseIndex].topics[topicIndex].subTopics = []
+      newCourseArray[courseIndex].topics[topicIndex].subTopics.push(newSubTopic)
+    }
+    updateCourseArray(newCourseArray)
   }
 
   const handleExpandClick = () => {
@@ -126,7 +136,7 @@ function TopicTile({ changeTopicName, topicIndex, topicArray, addSubTopics, upda
       </StyledCard>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <TextDescription getDescription={getDescription} titleDescription="Topic Description" skipDescription={()=>handleExpandClick()} add={()=>addSubTopic()}/>
+        <TextDescription getDescription={getDescription} titleDescription="Topic Description" skipDescription={()=>handleExpandClick()} add={()=>addSubTopic()} moduleIndex={courseIndex} topicIndex={topicIndex}/>
       </Collapse>
 
 

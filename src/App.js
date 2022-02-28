@@ -18,22 +18,23 @@ import Register from "./formlogin/components/Register";
 import RegisterCard from './formlogin/components/RegisterCard';
 import TabComponent from './formlogin/components/TabComponent copy';
 import Verification from './formlogin/components/Verification';
-import axios from 'axios'
+import Corseinfo from './Courseinfo';
+import axios from 'axios';
 
 // import AnimatedPa from './namrata/AnimationGrid';
 
 // import Home from './Home'
 function App() {
   const [val, setVal] = useState(0)
-  useEffect(()=>{
-    axios({
-    url:'http://localhost:8080/user/currentuser',
-    method:'POST',
-  }).then(
-    (response) => {
-      console.log(response.data);
-  })
-})
+//   useEffect(()=>{
+//     axios({
+//     url:'http://localhost:8080/user/currentuser',
+//     method:'POST',
+//   }).then(
+//     (response) => {
+//       console.log(response.data);
+//   })
+// })
 
   return (
     <stepNumber.Provider value={{
@@ -51,6 +52,7 @@ function App() {
           <Route path="/form" element={<Form />} />
           <Route path="/create" element={<Home />} />
           <Route path="/formnew" element={<OutlineForm />} />
+          <Route path="/formnews" element={<Corseinfo/>} />
         </Routes>
 
       </div>

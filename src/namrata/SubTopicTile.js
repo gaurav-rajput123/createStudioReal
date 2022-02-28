@@ -310,11 +310,13 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
           </Modal>
           <div >
             <Button
-              sx={{ minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px" , backgroundColor: '#fff',
-              '&:hover': {
-                backgroundColor: '#fff',
-                color: "#000000",
-              }}}
+              sx={{
+                minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px", backgroundColor: '#fff',
+                '&:hover': {
+                  backgroundColor: '#fff',
+                  color: "#000000",
+                }
+              }}
 
               onClick={() => {
                 setType("audio/*");
@@ -325,15 +327,17 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             >
               <Box>
                 <AudioFileIcon />
-                <Typography  sx={{width:"75px"}}>Audio</Typography>
+                <Typography sx={{ width: "75px" }}>Audio</Typography>
               </Box>
             </Button>
             <Button
-              sx={{ minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px", backgroundColor: '#fff',
-              '&:hover': {
-                backgroundColor: '#fff',
-                color: "#000000",
-              } }}
+              sx={{
+                minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px", backgroundColor: '#fff',
+                '&:hover': {
+                  backgroundColor: '#fff',
+                  color: "#000000",
+                }
+              }}
 
               onClick={() => {
                 setType("video/*");
@@ -344,17 +348,19 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             >
               <Box>
                 <OndemandVideoIcon />
-                <Typography   sx={{width:"75px"}}>  Video  </Typography>
+                <Typography sx={{ width: "75px" }}>  Video  </Typography>
               </Box>
             </Button>
 
 
             <Button
-              sx={{ minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px" , backgroundColor: '#fff',
-              '&:hover': {
-                backgroundColor: '#fff',
-                color: "#000000",
-              }}}
+              sx={{
+                minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px", backgroundColor: '#fff',
+                '&:hover': {
+                  backgroundColor: '#fff',
+                  color: "#000000",
+                }
+              }}
 
               onClick={() => {
                 setType("application/pdf");
@@ -365,17 +371,19 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             >
               <Box>
                 <PictureAsPdfIcon />
-                <Typography  sx={{width:"75px"}}>Pdf</Typography>
+                <Typography sx={{ width: "75px" }}>Pdf</Typography>
               </Box>
             </Button>
 
 
             <Button
-              sx={{ minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px" , backgroundColor: '#fff',
-              '&:hover': {
-                backgroundColor: '#fff',
-                color: "#000000",
-              }}}
+              sx={{
+                minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px", backgroundColor: '#fff',
+                '&:hover': {
+                  backgroundColor: '#fff',
+                  color: "#000000",
+                }
+              }}
 
               onClick={() => {
                 setType("application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.slideshow,application/vnd.openxmlformats-officedocument.presentationml.presentation")
@@ -386,45 +394,27 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             >
               <Box>
                 <SlideshowIcon />
-                <Typography  sx={{width:"75px"}}>PPT</Typography>
+                <Typography sx={{ width: "75px" }}>PPT</Typography>
               </Box>
             </Button>
-            <Button
-              sx={{
-                minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px",
-                 backgroundColor: '#fff',
-                '&:hover': {
-                  backgroundColor: '#fff',
-                  color: "#000000",
-                }
-              }
-            }
-            onClick={() => addAssesment()}
-
-              disabled={isDisable.audio}
-            >
-              <Box>
-                <TextSnippetIcon />
-                <Typography  sx={{width:"75px"}}>Assessment</Typography>
-              </Box>
-            </Button>
+           
           </div>
+          
         </Stack>
+       
         <div style={{
           display: "flex", justifyContent: "center",
-          // paddingX: "25"
+
         }}>
-          <Button
-            sx={{ maxWidth: "100px", marginX: "30%" }}
+        <Button
+            sx={{ marginX: "30%"}}
             variant="contained"
             onClick={() => addAssesment()}
             fullWidth
 
-
-          // color="error"
-          // disabled={isDisable.audio}
+        
           >
-            Save
+            Add ASSESMENT
           </Button>
         </div>
         <div style={{
@@ -482,8 +472,8 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                       <Box sx={{
                         paddingY: "24px"
                       }}
-                        key={assesment.id}>
-                        <TextFieldAssesment {...basicProps} color={"#177ACC"} />
+                      key={assesment.id}>
+                        <TextFieldAssesment {...basicProps} color={"#177ACC"} moduleIndex={courseIndex} />
                       </Box>
 
                     )
