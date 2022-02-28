@@ -11,7 +11,7 @@ import Navbar from "./Navbar";
 import { stepNumber } from "./Context";
 // import v4 from "uuid/dist/v4";
 import { courseArray } from "./Context";
-import { createTheme } from "@mui/material";
+import { createTheme, duration } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { v4 } from "uuid";
 import { minHeight } from "@mui/system";
@@ -67,7 +67,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
         }
     })
     return (
-        <div style={{marginTop: "12px", marginBottom: "12px", paddingLeft:"40px", borderRadius: "12px", background: "white", width: "90%", marginX: "auto"}} >
+        <div style={{marginTop: "12px", marginBottom: "12px", paddingLeft:"40px",paddingRight:"40px", borderRadius: "12px", background: "white", width: "90%", marginX: "auto"}} >
             <div style={{marginTop: "12px", marginBottom: "12px"}} >
                 <Typography fontSize={"24px"} sx={{ color: "#660000", textAlign: 'center' }}>
                     Course Details
@@ -87,6 +87,54 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     label="E.g.Basic of Python"
                     id="Title"
                     value={title}
+                />
+            </div>
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+                <Typography fontSize={"16px"} >
+                    Course Number*
+                </Typography>
+                <TextField
+                    onChange={(e) => {
+                        setCourseNumber(e.target.value)
+                    }}
+                    sx={{ width: "610px" }}
+                    // margin="dense"
+                    variant="outlined"
+                    label="Course Number"
+                    id="Number"
+                    value={number}
+                />
+            </div>
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+                <Typography fontSize={"16px"} >
+                    Course Organisation*
+                </Typography>
+                <TextField
+                    onChange={(e) => {
+                        setOrganisation(e.target.value)
+                    }}
+                    sx={{ width: "610px" }}
+                    // margin="dense"
+                    variant="outlined"
+                    label="Organisation"
+                    id="Organisation"
+                    value={organisation}
+                />
+            </div>
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+                <Typography fontSize={"16px"} >
+                    Course Duration*
+                </Typography>
+                <TextField
+                    onChange={(e) => {
+                        setTitle(e.target.value)
+                    }}
+                    sx={{ width: "610px" }}
+                    // margin="dense"
+                    variant="outlined"
+                    label="course duration in months"
+                    // id="Title"
+                    value={duration}
                 />
             </div>
             <div style={{marginTop: "12px", marginBottom: "24px"}} >
