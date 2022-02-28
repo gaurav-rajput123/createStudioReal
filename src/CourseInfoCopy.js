@@ -15,6 +15,7 @@ import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { v4 } from "uuid";
 import { minHeight } from "@mui/system";
+import { Description } from "@mui/icons-material";
 export default function Courseinfo({ setShowOutlineForm }) {
 
     const counter = React.useContext(stepNumber)
@@ -52,20 +53,12 @@ export default function Courseinfo({ setShowOutlineForm }) {
 
 
     // states
-    const [textData, setTextData] = useState('')
-    const [department, setDepartment] = useState('')
-    const [email, setEmail] = useState('')
-    const [experience, setExperience] = useState('')
-    const [elearningexp, setElearningexp] = useState('')
-    const [onlineexp, setOnlineexp] = useState('')
-    const [industryexp, setIndustryexp] = useState('')
-    const [dignation, setDignation] = useState('')
-    const [speicalization, setSpeicalization] = useState('')
-    const [author, setAuthor] = useState('')
-    const [workspace, setWorkspace] = useState('')
-    const [journals, setJournals] = useState('')
-    const [papers, setPapers] = useState('')
-    const [booksedited, setBooksedited] = useState('')
+    const [title, setTitle] = useState('')
+    const [taught, setTaught] = useState('')
+    const [skill, setSkill] = useState('')
+    const [requirements, setRequirements] = useState('')
+    const [description, setDescription] = useState('')
+   
     const newTheme = createTheme({
         palette: {
             primary: {
@@ -80,53 +73,53 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     Course Details
                 </Typography>
             </div>
-            <div style={{marginTop: "12px", marginBottom: "12px"}} >
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
                 <Typography fontSize={"16px"} >
                     Course Title*
                 </Typography>
                 <TextField
                     onChange={(e) => {
-                        setTextData(e.target.value)
+                        setTitle(e.target.value)
                     }}
                     sx={{ width: "610px" }}
                     // margin="dense"
                     variant="outlined"
                     label="E.g.Basic of Python"
                     id="Title"
-                    value={textData}
+                    value={title}
                 />
             </div>
-            <div style={{marginTop: "12px", marginBottom: "12px"}} >
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
                 <Typography fontSize={"16px"} sx={{}}>
                     What is primarily taught in your course*
                 </Typography>
                 <TextField
                     onChange={(e) => {
-                        setTextData(e.target.value)
+                        setTaught(e.target.value)
                     }}
                     sx={{ width: "610px" }}
                     margin="dense"
                     variant="outlined"
                     label="E.g.Programming Language"
                     id=" About Course"
-                    value={textData}
+                    value={taught}
                 />
             </div>
-            <div style={{marginTop: "12px", marginBottom: "12px"}} >
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
                 <Typography fontSize={"16px"} >
                     What will the students learn about the course*
                 </Typography>
                 <div style={{marginTop: "12px", marginBottom: "12px"}} >
                     <TextField
                         onChange={(e) => {
-                            setTextData(e.target.value)
+                            setSkill(e.target.value)
                         }}
                         sx={{ width: "610px"}}
                         margin="dense"
                         variant="outlined"
                         label="Type the skills gained here"
-                        id=" 1skill gained"
-                        value={textData}
+                        id=" skill gained"
+                        value={skill}
                     />
                 </div>
                 <div style={{marginTop: "12px", marginBottom: "12px"}} >
@@ -136,42 +129,42 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 </div>
             </div>
 
-            <div style={{marginTop: "12px", marginBottom: "12px"}} >
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
                 <Typography fontSize={"16px"} sx={{}}>
                     What are the requirements or prerequisites for taking your course*
                 </Typography>
                 <TextField
                     onChange={(e) => {
-                        setTextData(e.target.value)
+                        setRequirements(e.target.value)
                     }}
                     sx={{ width: "610px" }}
                     margin="dense"
                     variant="outlined"
                     label="E.g. No programming experience needed.You will learn everything you need need to know"
-                    id=" 1skill gained"
-                    value={textData}
+                    id="requirement"
+                    value={requirements}
                 />
             </div>
 
-            <div style={{marginTop: "12px", marginBottom: "12px"}} >
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
                 <Typography fontSize={"16px"} sx={{}}>
                     Course Description*
                 </Typography>
                 <TextField
                     onChange={(e) => {
-                        setTextData(e.target.value)
+                        setDescription(e.target.value)
                     }}
                     sx={{ width: "610px"}}
                     margin="dense"
                     variant="outlined"
                     label="Write about the course in detail"
                     id=" Description"
-                    value={textData}
+                    value={description}
                 />
             </div>
 
         
-            <div  style={{marginTop: "12px", marginBottom: "12px"}} 
+            <div  style={{marginTop: "12px", marginBottom: "24px"}} 
                 sx={{
                     paddingX: "25%",
                     paddingBottom: "24px",
