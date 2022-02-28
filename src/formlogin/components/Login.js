@@ -6,12 +6,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Visibility } from "@mui/icons-material";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
-import {getUserAttributes,getSession} from 'amazon-cognito-identity-js';
-import { AuthenticationDetails, CognitoUser } from 'amazon-cognito-identity-js';
 
 
 export default function Login() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [email,setEmail]=useState("");
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
@@ -35,20 +33,11 @@ export default function Login() {
         }
       })
       .then((response) => {
-          axios.get('http://localhost:8080/user/currentuser').then((resp)=>{
-            const user=resp.data;
-            console.log(resp.data);
-            user.getSession((err,session)=>{
-              if(err){
-                  console.log(err)
-              }
-              else{
-                  console.log(session.isValid());
-                }
-              })
-            })
-          })
-          // navigate("/land")
+        if(response.data.accessToken != null){
+          navigate("/land")
+        }
+
+          }) 
         }
     return(
 
