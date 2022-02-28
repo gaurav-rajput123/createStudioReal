@@ -58,7 +58,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
     const [skill, setSkill] = useState('')
     const [requirements, setRequirements] = useState('')
     const [description, setDescription] = useState('')
-   
+    const [skillArr, setSkillArr] = useState([])
     const newTheme = createTheme({
         palette: {
             primary: {
@@ -67,7 +67,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
         }
     })
     return (
-        <div style={{marginTop: "12px", marginBottom: "12px", paddingLeft:"40px", borderRadius: "12px", background: "white", width: "90%", marginX: "auto"}} >
+        <div style={{marginTop: "12px", marginBottom: "12px", paddingLeft:"40px",paddingRight: "40px", borderRadius: "12px", background: "white", width: "90%", marginX: "auto"}} >
             <div style={{marginTop: "12px", marginBottom: "12px"}} >
                 <Typography fontSize={"24px"} sx={{ color: "#660000", textAlign: 'center' }}>
                     Course Details
@@ -122,8 +122,22 @@ export default function Courseinfo({ setShowOutlineForm }) {
                         value={skill}
                     />
                 </div>
+                <div>
+                   { skillArr.map((skill, skillIndex)=>{
+                       return (
+                            <span key={skillIndex+skill} style={{ padding: "6px",paddingLeft: "12px", paddingRight: "12px", borderRadius: "8px", background: "#9b3928", fontSize: "18px", marginRight: '12px', color: "white", fontFamily: "Popins"}}>
+                                {skill}
+                            </span>
+                       )
+                   })}
+                </div>
                 <div style={{marginTop: "12px", marginBottom: "12px"}} >
-                    <Button sx={{}} variant="outlined" startIcon={<AddIcon />}>
+                    <Button sx={{}} variant="outlined" startIcon={<AddIcon />} onClick={()=>{
+                        let newSkillArr = [...skillArr]
+                        newSkillArr.push(skill)
+                        setSkillArr(newSkillArr)
+                        setSkill('')
+                    }}>
                         Add more to your response
                     </Button>
                 </div>
@@ -165,16 +179,13 @@ export default function Courseinfo({ setShowOutlineForm }) {
 
         
             <div  style={{marginTop: "12px", marginBottom: "24px"}} 
-                sx={{
-                    paddingX: "25%",
-                    paddingBottom: "24px",
-                    background: "#f0f5f1 !important"
-                }}
+             
             >
                 <Button sx={{
                     background: "#660000",
                     color: "white",
-                    marginTop: "20px"
+                    marginTop: "20px",
+                    
                 }}
                     onClick={handleNext}
                     fullWidth>
