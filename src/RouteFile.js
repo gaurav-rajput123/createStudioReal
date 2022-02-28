@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { useState,useEffect } from 'react';
-import { Routes, Route, useParams } from "react-router-dom";
+import { Routes, Route, useParams, useNavigate } from "react-router-dom";
 
 import OutlineForm from './OutlineForm';
 
@@ -21,8 +21,10 @@ import Verification from './formlogin/components/Verification';
 import Corseinfo from './Courseinfo';
 import axios from 'axios';
 import { userContext } from './App';
+import { Button } from '@mui/material';
 function RouteFile() {
     const userScope = useContext(userContext)
+    const navigate = useNavigate()
   return (
     <div>
         <Routes>
@@ -37,12 +39,16 @@ function RouteFile() {
                 <Route path="/create" element={<Home />} />
                 <Route path="/formnew" element={<OutlineForm />} />
                 <Route path="/formnews" element={<Corseinfo/>} />
+                
                 </>
               ): (
 <Route path="/" element={<RegisterCard />} />
               )
           }
         </Routes>
+        {/* <Button onClick={()=>{
+                    navigate('/')
+                }}>go to "/"</Button> */}
     </div>
   )
 }

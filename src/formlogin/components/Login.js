@@ -6,10 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Visibility } from "@mui/icons-material";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
-import {getUserAttributes,getSession} from 'amazon-cognito-identity-js';
-import { AuthenticationDetails, CognitoUser } from 'amazon-cognito-identity-js';
 import { userContext } from "../../App";
-
 export default function Login() {
   const navigate = useNavigate();
   const userScope = useContext(userContext)
@@ -105,9 +102,9 @@ export default function Login() {
               variant="contained" 
               sx={{backgroundColor:"#660000", 
               borderRadius:'0px', 
-              padding:'10px 30px'}} >Sign In</Button>
+              padding:'10px 15px'}} >Sign In</Button>
              {/* </NavLink> */}
-                <Link sx={{color:"#660000", marginLeft: "12px", textDecoration: "none"}}>Forgot Password</Link>
+              <Link sx={{color:"#660000", marginLeft: "8px", textDecoration: "none",fontSize:"14px"}}>Forgot Password</Link>
            </Grid>
            <Grid xs={4} />
       <Grid item xs={6} sx={{ marginBottom: "20px" }}>

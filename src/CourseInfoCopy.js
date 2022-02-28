@@ -189,11 +189,11 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 </div>
             </div>
 
-            <div style={{marginTop: "12px", marginBottom: "24px"}} >
-                <Typography fontSize={"16px"} sx={{}}>
-                    What are the requirements or prerequisites for taking your course*
-                </Typography>
-                <TextField
+             <div style={{marginTop: "12px", marginBottom: "24px"}} >
+                 <Typography fontSize={"16px"} sx={{}}>
+                     What are the requirements or prerequisites for taking your course*
+                 </Typography>
+                 <TextField
                     onChange={(e) => {
                         setRequirements(e.target.value)
                     }}
@@ -206,11 +206,11 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 />
             </div>
 
-            <div style={{marginTop: "12px", marginBottom: "24px"}} >
-                <Typography fontSize={"16px"} sx={{}}>
-                    Course Description*
-                </Typography>
-                <TextField
+             <div style={{marginTop: "12px", marginBottom: "24px"}} >
+                 <Typography fontSize={"16px"} sx={{}}>
+                     Course Description*
+                 </Typography>
+                 <TextField
                     onChange={(e) => {
                         setDescription(e.target.value)
                     }}
@@ -262,7 +262,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 </Button>
             </div>
 
-        </div>
+         </div>
 
     )
 }
