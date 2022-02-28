@@ -165,7 +165,7 @@ function SubjectTile(prop) {
         }}>
           hello
         </Box> */}
-        <TextDescription getDescription={getDescription} titleDescription="Module Description" skipDescription={()=>handleExpandClick()} add={()=>addNewTopics()}/>
+        <TextDescription getDescription={getDescription} titleDescription="Module Description" moduleIndex={courseIndex} skipDescription={()=>handleExpandClick()} add={()=>addNewTopics()}/>
       </Collapse>
     </div >
   )

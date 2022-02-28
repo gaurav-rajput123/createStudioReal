@@ -157,7 +157,7 @@ function OutlineForm() {
 
                           }}>
                             {/* <div>{topic.name}</div> */}
-                            <div><TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"module"} updateOutLine={setModuleArray} label={"set title for yout module"} topicIndex={topicIndex}/></div>
+                            <div><TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"topic"} updateOutLine={setModuleArray} label={"set title for yout topic"} topicIndex={topicIndex}/></div>
                             <div style={{ flexGrow: 1 }}></div>
                             <div>
                               <Button variant="contained" sx={{
@@ -185,7 +185,7 @@ function OutlineForm() {
                               topic.subTopics?.map((subTopic, subTopicIndex) => {
                                 return (
                                   <Grid key={subTopic.id} item xs={12}>
-                                    <div><TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"subtopic"} updateOutLine={setModuleArray} label={"set title for yout module"} topicIndex={topicIndex} subTopicIndex={subTopicIndex}/></div>
+                                    <div><TitleBox moduleIndex={modIndex} outLine={moduleArr} type={"subtopic"} updateOutLine={setModuleArray} label={"set title for yout subtopic"} topicIndex={topicIndex} subTopicIndex={subTopicIndex}/></div>
                                    <Button variant="contained" sx={{
                                 background: "red"
                               }}
