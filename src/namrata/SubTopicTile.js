@@ -397,56 +397,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                 <Typography sx={{ width: "75px" }}>PPT</Typography>
               </Box>
             </Button>
-            <Button
-              sx={{
-                minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px",
-                backgroundColor: '#fff',
-                '&:hover': {
-                  backgroundColor: '#fff',
-                  color: "#000000",
-                }
-              }}
-            
-            disabled={isDisable.video}
-          >
-            <Box>
-            <OndemandVideoIcon />
-            <Typography>Video</Typography>
-            </Box>
-          </Button>
-
-
-          <Button
-            sx={{ minWidth: "150px", height: "100px" ,color:"#000000" ,padding:"5px 50px 5px 50px"}}
-            
-            onClick={() => {
-              setType("application/pdf");
-              handleOpen("pdf")}
-            }
-            disabled={isDisable.pdf}
-          >
-            <Box>
-            <PictureAsPdfIcon />
-            <Typography>Pdf</Typography>
-            </Box>
-          </Button>
-
-
-          <Button
-            sx={{ minWidth: "150px", height: "100px" ,color:"#000000" ,padding:"5px 50px 5px 50px" }}
-          
-            onClick={() => {
-              setType("application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.slideshow,application/vnd.openxmlformats-officedocument.presentationml.presentation")
-              handleOpen("ppt")}
-            }
-            disabled={isDisable.ppt}
-          >
-            <Box>
-            <SlideshowIcon />
-            <Typography>PPT</Typography>
-            </Box>
-          </Button>
-          
+           
           </div>
           
         </Stack>
