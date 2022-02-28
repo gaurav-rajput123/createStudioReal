@@ -3,7 +3,7 @@ import { useState,useEffect } from 'react';
 import { Routes, Route, useParams } from "react-router-dom";
 
 import OutlineForm from './OutlineForm';
-
+import * as React from 'react'
 import Front from './Front';
 import Home from './Home';
 import Form from './vikram/Form';
@@ -20,7 +20,11 @@ import TabComponent from './formlogin/components/TabComponent copy';
 import Verification from './formlogin/components/Verification';
 import Corseinfo from './Courseinfo';
 import axios from 'axios';
-
+import RouteFile from './RouteFile';
+export const userContext = React.createContext({
+  user: Boolean,
+  setUser: ()=>{}
+})
 // import AnimatedPa from './namrata/AnimationGrid';
 
 // import Home from './Home'
@@ -35,16 +39,19 @@ function App() {
 //       console.log(response.data);
 //   })
 // })
-
+  const [user, setUser] = useState(false)
   return (
     <stepNumber.Provider value={{
       val, increment: () => setVal(val + 1), decrement: () => setVal(val - 1), setVal: (newVal) => {
         setVal(newVal)
       }
     }}>
+      <userContext.Provider value={{
+        user, setUser
+      }}>
       <div className="App">
-        <Routes>
-          {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
+        {/* <Routes>
+          
           <Route path="/" element={<RegisterCard />} />
           <Route path='/verify' element={<Verification/>}/>
           <Route path="/user" element={<Additionalinfo />} />
@@ -53,9 +60,11 @@ function App() {
           <Route path="/create" element={<Home />} />
           <Route path="/formnew" element={<OutlineForm />} />
           <Route path="/formnews" element={<Corseinfo/>} />
-        </Routes>
-
+        </Routes> */}
+        <RouteFile/>
+        
       </div>
+      </userContext.Provider>
     </stepNumber.Provider>
   );
 

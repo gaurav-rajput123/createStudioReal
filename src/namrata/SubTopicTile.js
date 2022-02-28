@@ -10,7 +10,7 @@ import AudioFileIcon from "@mui/icons-material/AudioFile";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import SlideshowIcon from "@mui/icons-material/Slideshow";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import EditIcon from '@mui/icons-material/Edit';
 import FeedIcon from '@mui/icons-material/Feed';
@@ -39,6 +39,7 @@ import CaseStudy from '../assesment/assesmentComponents/CaseStudy'
 import BlankProblem from '../assesment/assesmentComponents/BlankProblem'
 import CustomProblem from "../assesment/assesmentComponents/CustomProblem";
 import { type } from "@testing-library/user-event/dist/type";
+import { courseArray as arrC } from "../Context";
 const parse = require('html-react-parser');
 
 const style = {
@@ -55,6 +56,8 @@ const style = {
 };
 
 
+
+
 // const ExpandMore = styled((props) => {
 //   const { expand, ...other } = props;
 //   return <IconButton {...other} />;
@@ -67,6 +70,8 @@ const style = {
 // }));
 
 export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, courseArray, updateCourseArray }) {
+  const moduleIndex = courseIndex
+  const courseContext = useContext(arrC)
   const [expanded, setExpanded] = React.useState(false);
   const [type, setType] = React.useState("");
   const [expandedDescription, setExpandedDescription] = React.useState(false);
@@ -83,6 +88,8 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
   const [label, setLabel] = useState("Sub Topic")
 
   const [resourceType, setResourceType] = useState(null)
+
+  const [option, setOption] = useState(0)
 
   const [isDisable, setIsDisable] = useState({
     "ppt": false,
@@ -479,7 +486,10 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                   let basicProps = {
                     // color: "blue",
                     updateAssesment: updateAssesment,
-                    index: assesmentIndex
+                    assesIndex: assesmentIndex,
+                    moduleIndex: courseIndex,
+                    topicIndex: topicIndex,
+                    subTopicIndex: subTopicIndex
                   }
                   if (assesment == undefined) {
                     return null
@@ -596,6 +606,71 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                   }
                 })
               }
+            </div>
+
+            <div style={{
+              marginTop: "24px",  
+             display: "flex",
+             justifyContent: "flex-end",
+             paddingRight: "24px"
+            }}>
+            <FormControl sx={{
+          marginY: "12px",
+          maxWidth: "300px"
+        }}
+        fullWidth >
+        <InputLabel id="demo-simple-select-label">Add New Field</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={option}
+          label="Add New Field"
+          onChange={(e)=>{
+            setOption(e.target.value)
+          }}
+          sx={{
+            // width: "150px"
+          }}
+          defaultValue={0}
+        > <MenuItem value={0}>Add Desired Field</MenuItem>
+          <MenuItem value={10} onClick={()=>{
+            let newCourseArray = [...courseContext.data]
+            newCourseArray.push({
+              id: generateKey(),
+              name: "new Module",
+              topics: [
+                
+              ]
+            })
+            courseContext.setCourseState({...courseContext, data: newCourseArray})
+          }}>Add Module</MenuItem>
+          <MenuItem value={20}
+          onClick={()=>{
+            let newCourseArray = [...courseContext.data]
+            newCourseArray[moduleIndex].topics.push({
+              id: generateKey(),
+              name: "new Topic",
+              subTopics: [
+               
+              ]
+            })
+          courseContext.setCourseState({...courseContext, data: newCourseArray})
+          }}
+          >Add Topic</MenuItem>
+          {
+            topicIndex !== undefined ? (
+              <MenuItem value={30} onClick={()=>{
+                let newCourseArray = [...courseContext.data]
+                newCourseArray[moduleIndex].topics[topicIndex].subTopics.push({
+                  id: generateKey(),
+                  name: "new Subtopic"
+                })
+                courseContext.setCourseState({...courseContext, data: newCourseArray})
+              }}>Add Subtopic</MenuItem>
+            ):null
+          }
+        </Select>
+      </FormControl>
             </div>
 
 

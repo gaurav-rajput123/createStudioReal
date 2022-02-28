@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useContext, useState} from "react";
 import { Typography, Button, Grid, TextField, Link, InputLabel, OutlinedInput, IconButton, InputAdornment, FormControl } from "@mui/material";
 import PasswordBox from "./PasswordBox";
 import img from './crest.png'
@@ -8,10 +8,11 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
 import {getUserAttributes,getSession} from 'amazon-cognito-identity-js';
 import { AuthenticationDetails, CognitoUser } from 'amazon-cognito-identity-js';
-
+import { userContext } from "../../App";
 
 export default function Login() {
   const navigate = useNavigate();
+  const userScope = useContext(userContext)
   const [email,setEmail]=useState("");
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
@@ -25,38 +26,28 @@ export default function Login() {
     }
 
     const onSubmit=(event)=>{
-      event.preventDefault();
-      axios({
-        url:'http://localhost:8080/user/login',
-        method:'POST',
-        data:{
-          username:email,
-          password:password
-        }
-      })
-      .then((response) => {
-          // axios.get('http://localhost:8080/user/currentuser').then((resp)=>{
-          //   const user=resp.data;
-          //   console.log(resp.data);
-          //   user.getSession((err,session)=>{
-          //     if(err){
-          //         console.log(err)
-          //     }
-          //     else{
-          //         console.log(session.isValid());
-          //       }
-          //     })
-          //   })
-          // })
-          // console.log(response)
-          // navigate("/land")
-          console.log(response)
-          if(response.data.accessToken !== undefined){
-            navigate('/land')
-          }else{
-            alert('Invalid Credentials')
-          }
-        })}
+      // event.preventDefault();
+      // axios({
+      //   url:'http://localhost:8080/user/login',
+      //   method:'POST',
+      //   data:{
+      //     username:email,
+      //     password:password
+      //   }
+      // })
+      // .then((response) => {
+      //     console.log(response)
+      //     if(response.data.accessToken !== undefined){
+      //       navigate('/land')
+      //     }else{
+      //       alert('Invalid Credentials')
+      //     }
+      //   })
+      if(email === "academics@crestbellsupport.com" && password === "Academics@123"){
+        userScope.setUser(true)
+      }else{
+        alert("Invalid Credentials")
+      }}
     return(
 
         <Grid container sx={{width:"auto"}}>
