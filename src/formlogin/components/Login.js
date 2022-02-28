@@ -6,6 +6,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Visibility } from "@mui/icons-material";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
+import {getUserAttributes,getSession} from 'amazon-cognito-identity-js';
+import { AuthenticationDetails, CognitoUser } from 'amazon-cognito-identity-js';
 
 
 export default function Login() {
@@ -32,34 +34,47 @@ export default function Login() {
           password:password
         }
       })
-      .then(
-        (response) => {
-          console.log(response.data.user);
-          const user=response.data.user;
-          user.getSession()
-          navigate("/land")
-        }
-      );
-
-      // if(email === "balkar123@gmail.com" && password === "Balkar@123"){
-
-      // }
-
-    }
+      .then((response) => {
+          // axios.get('http://localhost:8080/user/currentuser').then((resp)=>{
+          //   const user=resp.data;
+          //   console.log(resp.data);
+          //   user.getSession((err,session)=>{
+          //     if(err){
+          //         console.log(err)
+          //     }
+          //     else{
+          //         console.log(session.isValid());
+          //       }
+          //     })
+          //   })
+          // })
+          // console.log(response)
+          // navigate("/land")
+          console.log(response)
+          if(response.data !== "NotAuthorizedException"){
+            navigate('/land')
+          }else{
+            alert('Invalid Credentials')
+          }
+        })}
     return(
 
         <Grid container sx={{width:"auto"}}>
           <form onSubmit={onSubmit}>
            <Grid item xs={8} sx={{marginBottom:"20px"}}>
-             
-            <TextField 
-            fullWidth 
-            label="Username or Email"
-             id="fullWidth" 
-             value={email}
-             onChange={event=>setEmail(event.target.email)}
-             />
+           <FormControl fullWidth variant="outlined">
+           <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
+          <OutlinedInput
+          fullWidth
+            id="outlined-adornment-password"
+            label="Email"
+            onChange={event=>setEmail(event.target.value)}
+            value={email}
+            
+          />
+             </FormControl>
            </Grid>
+           
             <Grid xs={4}/>
            <Grid item xs={8}>
             
@@ -91,13 +106,17 @@ export default function Login() {
            </Grid>
            <Grid xs={4}/>
            <Grid  item xs={6} sx={{marginTop:"30px", marginBottom:"20px"}}>
-           {/* <NavLink to={'/land'}style={{ */}
-
-           {/* }}> */}
-           <Button variant="contained" sx={{backgroundColor:"#660000", borderRadius:'0px', padding:'10px 30px'}} onClick={onSubmit}>Sign In</Button>
-           {/* </NavLink> */}
-                <Link sx={{color:"#660000", marginLeft: "12px", textDecoration: "none"}}>Forgot Password
-                </Link>
+           {/* <NavLink to={'/land'}style={{
+              textDecoration: "none"
+           }}> */}
+             <Button
+             type="submit"
+              variant="contained" 
+              sx={{backgroundColor:"#660000", 
+              borderRadius:'0px', 
+              padding:'10px 30px'}} >Sign In</Button>
+             {/* </NavLink> */}
+                <Link sx={{color:"#660000", marginLeft: "12px", textDecoration: "none"}}>Forgot Password</Link>
            </Grid>
            <Grid xs={4} />
       <Grid item xs={6} sx={{ marginBottom: "20px" }}>
