@@ -117,7 +117,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     // margin="dense"
                     variant="outlined"
                     label="Organisation"
-                    id="Organisation"
+                    id="Organisationsa"
                     value={organisation}
                 />
             </div>
