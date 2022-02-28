@@ -22,7 +22,7 @@ export default function Login() {
         alert("path not set")
     }
 
-    const onSubmit=event=>{
+    const onSubmit=(event)=>{
       event.preventDefault();
       axios({
         url:'http://localhost:8080/user/login',
@@ -40,7 +40,11 @@ export default function Login() {
           navigate("/land")
         }
       );
-      
+
+      // if(email === "balkar123@gmail.com" && password === "Balkar@123"){
+
+      // }
+
     }
     return(
 
@@ -87,10 +91,13 @@ export default function Login() {
            </Grid>
            <Grid xs={4}/>
            <Grid  item xs={6} sx={{marginTop:"30px", marginBottom:"20px"}}>
-           <NavLink to={'/land'}style={{
-              textDecoration: "none"
-           }}><Button variant="contained" sx={{backgroundColor:"#660000", borderRadius:'0px', padding:'10px 30px'}} >Sign In</Button></NavLink>
-                <Link sx={{color:"#660000", marginLeft: "12px", textDecoration: "none"}}>Forgot Password</Link>
+           {/* <NavLink to={'/land'}style={{ */}
+
+           {/* }}> */}
+           <Button variant="contained" sx={{backgroundColor:"#660000", borderRadius:'0px', padding:'10px 30px'}} onClick={onSubmit}>Sign In</Button>
+           {/* </NavLink> */}
+                <Link sx={{color:"#660000", marginLeft: "12px", textDecoration: "none"}}>Forgot Password
+                </Link>
            </Grid>
            <Grid xs={4} />
       <Grid item xs={6} sx={{ marginBottom: "20px" }}>

@@ -54,6 +54,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
 
 
     // states
+    const [duration, setCourseDuration] = useState('')
     const [courseNumber, setCourseNumber] = useState('')
     const [organisation, setOrganisation] = useState('')
     const [title, setTitle] = useState('')
@@ -84,6 +85,54 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     label="E.g.Basic of Python"
                     id="Title"
                     value={title}
+                />
+            </div>
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+                <Typography fontSize={"16px"} >
+                    Course Number*
+                </Typography>
+                <TextField
+                    onChange={(e) => {
+                        setCourseNumber(e.target.value)
+                    }}
+                    sx={{ width: "610px" }}
+                    // margin="dense"
+                    variant="outlined"
+                    label="Course Number"
+                    id="Number"
+                    value={courseNumber}
+                />
+            </div>
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+                <Typography fontSize={"16px"} >
+                    Course Organisation*
+                </Typography>
+                <TextField
+                    onChange={(e) => {
+                        setOrganisation(e.target.value)
+                    }}
+                    sx={{ width: "610px" }}
+                    // margin="dense"
+                    variant="outlined"
+                    label="Organisation"
+                    id="Organisationsa"
+                    value={organisation}
+                />
+            </div>
+            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+                <Typography fontSize={"16px"} >
+                    Course Duration*
+                </Typography>
+                <TextField
+                    onChange={(e) => {
+                        setCourseDuration(e.target.value)
+                    }}
+                    sx={{ width: "610px" }}
+                    // margin="dense"
+                    variant="outlined"
+                    label="course duration in months"
+                    // id="Title"
+                    value={duration}
                 />
             </div>
             <div style={{marginTop: "12px", marginBottom: "24px"}} >
