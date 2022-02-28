@@ -36,7 +36,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
             organisation.length != 0 &&
             title.length != 0 &&
             taught.length != 0 &&
-            skill.length != 0 &&
+            skillArr.length != 0 &&
             requirements.length != 0 &&
             description.length != 0 ) {
 
