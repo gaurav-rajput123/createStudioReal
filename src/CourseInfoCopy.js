@@ -74,7 +74,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
         }
     })
     return (
-        <div style={{marginTop: "12px", marginBottom: "12px", paddingLeft:"40px"}} >
+        <div style={{marginTop: "12px", marginBottom: "12px", paddingLeft:"40px", borderRadius: "12px", background: "white", width: "90%", marginX: "auto"}} >
             <div style={{marginTop: "12px", marginBottom: "12px"}} >
                 <Typography fontSize={"24px"} sx={{ color: "#660000", textAlign: 'center' }}>
                     Course Details

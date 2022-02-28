@@ -36,7 +36,9 @@ export default function Home() {
                 <Grid item xs={11}
                     sx={{ backgroundColor: "whitesmoke", borderBottomLeftRadius: "12px", borderBottomRightRadius: "12px", marginBottom: "36px" }}
                 >
+                    <div style={{display: "flex", justifyContent: "center"}}>
                     {showOutlineForm ? (<Courseinfo setShowOutlineForm={setShowOutlineForm} />) : null}
+                    </div>
                     <Middle />
 
                 </Grid>
