@@ -141,69 +141,78 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
   }
   const [openAssesment, setOpenAssesment] = useState(false)
   const [assesmentType, setAssesmentType] = useState('')
-  const selectAssesment = (e) => {
+  const selectAssesmentSet = (e) => {
     setAssesmentType(e.target.value)
+  }
+  const selectAssesment = () => {
+
     let newCourseArray = [...courseArray]
     let newAssesmentObj;
-    let newAssesmentArray = newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments ? [...newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments] : []
+    let newAssesmentArray
+    if(newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments) {
+      newAssesmentArray = [...newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments] 
+    }else{
+      newAssesmentArray = []
+    }
     if (assesmentType === 0) {
       newAssesmentObj = {
         name: "CheckBox",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 1) {
       newAssesmentObj = {
         name: "TextInput",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 2) {
       newAssesmentObj = {
         name: "Multiple Choice",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 3) {
       newAssesmentObj = {
         name: "DropDown",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 4) {
       newAssesmentObj = {
         name: "Numerical",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 5) {
       newAssesmentObj = {
         name: "Research",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 6) {
       newAssesmentObj = {
         name: "Case Study",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 7) {
       newAssesmentObj = {
         name: "Blank",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 8) {
       newAssesmentObj = {
         name: "Custom Based Problem Solving",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     }
     newAssesmentArray.push(
       newAssesmentObj
     )
+    // setAssesmentType(e.target.value)
     newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments = newAssesmentArray
     updateCourseArray(newCourseArray)
   }
@@ -245,6 +254,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
       value: 8
     }
   ]
+
   const updateAssesment = (newItem, index) => {
     let newCourseArray = [...courseArray]
     newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments[index].content = newItem
@@ -426,7 +436,8 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             display: "flex",
             justifyContent: "center"
           }}>
-            <FormControl fullWidth>
+            <div style={{display: "flex", marginTop: "24px"}}>
+              <FormControl sx={{width: "60%"}}>
               <InputLabel>Assessment Types</InputLabel>
               <Select
                 sx={{
@@ -434,7 +445,9 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                 }}
                 label='choose an assesment type'
                 value={assesmentType}
-                onChange={selectAssesment}>
+                onChange={selectAssesmentSet}
+                // onSelect={selectAssesment}
+                >
                 {
                   assessmentList.map((assesment, index) => {
                     return (
@@ -444,7 +457,22 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                 }
               </Select>
 
+              
+
             </FormControl>
+            <div style={{
+              display: "flex",
+              justifyContent: 'center',
+              flexGrow: '1'
+            }}>
+            <Button onClick={selectAssesment} sx={{
+              marginX: "auto"
+            }}
+            variant="contained">
+                Add Assesment
+              </Button>
+            </div>
+            </div>
             <div>
               {
                 courseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments?.map((assesment, assesmentIndex, assesmentArray) => {
@@ -462,7 +490,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                         paddingY: "24px"
                       }}
                         key={assesment.id}>
-                        <CheckBoxAssesment {...basicProps} color={"brown"} />
+                        <CheckBoxAssesment {...basicProps} color={"#b0eff9"} />
                       </Box>
 
                     )

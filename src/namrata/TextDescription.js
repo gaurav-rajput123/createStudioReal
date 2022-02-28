@@ -74,12 +74,12 @@ function TextDescription({ getDescription, titleDescription, skipDescription, mo
           maxWidth: "300px"
         }}
         fullWidth >
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-label">Add New Field</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={option}
-          label="Age"
+          label="Add New Field"
           onChange={(e)=>{
             setOption(e.target.value)
           }}

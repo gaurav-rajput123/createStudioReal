@@ -22,7 +22,7 @@ export default function Login() {
         alert("path not set")
     }
 
-    const onSubmit=event=>{
+    const onSubmit=(event)=>{
       event.preventDefault();
       axios({
         url:'http://localhost:8080/user/login',
@@ -33,12 +33,28 @@ export default function Login() {
         }
       })
       .then((response) => {
-        if(response.data.accessToken != null){
-          navigate("/land")
-        }
-
-          }) 
-        }
+          // axios.get('http://localhost:8080/user/currentuser').then((resp)=>{
+          //   const user=resp.data;
+          //   console.log(resp.data);
+          //   user.getSession((err,session)=>{
+          //     if(err){
+          //         console.log(err)
+          //     }
+          //     else{
+          //         console.log(session.isValid());
+          //       }
+          //     })
+          //   })
+          // })
+          // console.log(response)
+          // navigate("/land")
+          console.log(response)
+          if(response.data.accessToken !== undefined){
+            navigate('/land')
+          }else{
+            alert('Invalid Credentials')
+          }
+        })}
     return(
 
         <Grid container sx={{width:"auto"}}>
@@ -96,9 +112,9 @@ export default function Login() {
               variant="contained" 
               sx={{backgroundColor:"#660000", 
               borderRadius:'0px', 
-              padding:'10px 30px'}} >Sign In</Button>
+              padding:'10px 15px'}} >Sign In</Button>
              {/* </NavLink> */}
-                <Link sx={{color:"#660000", marginLeft: "12px", textDecoration: "none"}}>Forgot Password</Link>
+              <Link sx={{color:"#660000", marginLeft: "8px", textDecoration: "none",fontSize:"14px"}}>Forgot Password</Link>
            </Grid>
            <Grid xs={4} />
       <Grid item xs={6} sx={{ marginBottom: "20px" }}>

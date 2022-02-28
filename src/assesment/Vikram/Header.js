@@ -46,26 +46,26 @@ export default function Videoheader({title, changeQuestion, color, textColor}) {
             }}>
               Edit
             </Button>
-            <IconButton
+            {/* <IconButton
               aria-label="Settings"
-              // style={{ padding: "0% 27% 0% 27%" }}
+
             >
               <SettingsIcon />
             </IconButton>
 
             <IconButton
               aria-label="FileCopy"
-              // style={{ padding: "0% 27% 0% 10%" }}
+
             >
               <FileCopyIcon />
             </IconButton>
 
             <IconButton
               aria-label="Delete"
-              // style={{ padding: "0% 27% 0% 10%" }}
+
             >
               <DeleteIcon />
-            </IconButton>
+            </IconButton> */}
           </div>
         }
       />
