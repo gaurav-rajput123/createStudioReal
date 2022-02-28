@@ -11,7 +11,7 @@ import Navbar from "./Navbar";
 import { stepNumber } from "./Context";
 // import v4 from "uuid/dist/v4";
 import { courseArray } from "./Context";
-import { createTheme } from "@mui/material";
+import { createTheme, duration } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { v4 } from "uuid";
 import { minHeight } from "@mui/system";
@@ -41,31 +41,28 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 ]
             }]
         }
-        newC.courseTitle = courseOut.courseTitle
-        newC.courseDesciption = courseOut.courseDescription
-        newC.courseDuration = courseOut.courseDuration
-        newC.courseNumber = courseOut.courseNumber
-        newC.organisation = courseOut.courseOrganisation
-        newC.skillsGained = [...courseOut.skillsGained]
+        newC.courseTitle =title
+        newC.courseDesciption = description
+        newC.courseDuration = duration
+        newC.courseNumber = courseNumber
+        newC.organisation = organisation
+        newC.skillsGained = [...skillArr]
+        newC.requirement = requirements
         courseContext.setCourseState(newC)
         setShowOutlineForm(false)
     }
 
 
     // states
+    const [courseNumber, setCourseNumber] = useState('')
+    const [organisation, setOrganisation] = useState('')
     const [title, setTitle] = useState('')
     const [taught, setTaught] = useState('')
     const [skill, setSkill] = useState('')
     const [requirements, setRequirements] = useState('')
     const [description, setDescription] = useState('')
     const [skillArr, setSkillArr] = useState([])
-    const newTheme = createTheme({
-        palette: {
-            primary: {
-                main: "#000000"
-            }
-        }
-    })
+    
     return (
         <div style={{marginTop: "12px", marginBottom: "12px", paddingLeft:"40px",paddingRight: "40px", borderRadius: "12px", background: "white", width: "90%", marginX: "auto"}} >
             <div style={{marginTop: "12px", marginBottom: "12px"}} >
