@@ -19,9 +19,11 @@ import RegisterCard from './formlogin/components/RegisterCard';
 import TabComponent from './formlogin/components/TabComponent copy';
 import Verification from './formlogin/components/Verification';
 import Corseinfo from './Courseinfo';
+
 import axios from 'axios';
 import { userContext } from './App';
 import { Button } from '@mui/material';
+import TurnOff from "./Turnoff"
 function RouteFile() {
     const userScope = useContext(userContext)
     const navigate = useNavigate()
@@ -45,6 +47,7 @@ function RouteFile() {
 <Route path="/" element={<RegisterCard />} />
               )
           }
+          {/* <Route path="/turnoff" element={<TurnOff/>}/> */}
         </Routes>
         {/* <Button onClick={()=>{
                     navigate('/')

@@ -80,7 +80,7 @@ export default function Login() {
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
-                  onClick={()=>{setShowPassword(true)}}
+                  onClick={()=>{setShowPassword("authed")}}
                   onMouseDown={handleMouseDownPassword}
                   edge="end"
                 >

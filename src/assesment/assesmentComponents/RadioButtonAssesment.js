@@ -11,7 +11,7 @@ export default function RadioButtonAssesment({color, updateAssesment, index, mod
     }, [question])
      return (
         <div>
-            <Videoheader changeQuestion={setQuestion} title={"Check Boxes"} color={color} moduleIndex={moduleIndex} topicIndex={topicIndex} subTopicIndex={subTopicIndex} assesIndex={assesIndex}/>
+            <Videoheader changeQuestion={setQuestion} title={"Multiple Choice Assesment"} color={color} moduleIndex={moduleIndex} topicIndex={topicIndex} subTopicIndex={subTopicIndex} assesIndex={assesIndex}/>
             <CheckCard question={question} updateAssesment={updateAssesment} index={index}/>
             {/* <Button onClick={()=>console.log(question)}>Check</Button> */}
         </div>

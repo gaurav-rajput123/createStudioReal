@@ -500,7 +500,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                         paddingY: "24px"
                       }}
                         key={assesment.id}>
-                        <CheckBoxAssesment {...basicProps} color={"#b0eff9"} />
+                        <CheckBoxAssesment {...basicProps} color={"lightgreen"} />
                       </Box>
 
                     )
@@ -522,7 +522,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                         paddingY: "24px"
                       }}
                         key={assesment.id}>
-                        <RadioButtonAssesment {...basicProps} color={"grey"} />
+                        <RadioButtonAssesment {...basicProps} color={"#b0eff9"} />
                       </Box>
 
                     )

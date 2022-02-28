@@ -8,7 +8,7 @@ function CheckBoxAssesment({color, updateAssesment, index, moduleIndex, topicInd
     let [question, setQuestion] = useState('Add your question By clicking on the edit button')
   return (
     <div>
-      <Videoheader changeQuestion={setQuestion} title={"Multiple Choice Assesment"} color={color} moduleIndex={moduleIndex} topicIndex={topicIndex} subTopicIndex={subTopicIndex} assesIndex={assesIndex}/>
+      <Videoheader changeQuestion={setQuestion} title={"Check Box Assesment"} color={color} moduleIndex={moduleIndex} topicIndex={topicIndex} subTopicIndex={subTopicIndex} assesIndex={assesIndex}/>
       <MainCard question={question}  updateAssesment={updateAssesment} index={index}/>
     
     </div>
