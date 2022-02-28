@@ -25,15 +25,15 @@ import Corseinfo from './Courseinfo';
 // import Home from './Home'
 function App() {
   const [val, setVal] = useState(0)
-  useEffect(()=>{
-    axios({
-    url:'http://localhost:8080/user/currentuser',
-    method:'POST',
-  }).then(
-    (response) => {
-      console.log(response.data);
-  })
-})
+//   useEffect(()=>{
+//     axios({
+//     url:'http://localhost:8080/user/currentuser',
+//     method:'POST',
+//   }).then(
+//     (response) => {
+//       console.log(response.data);
+//   })
+// })
 
   return (
     <stepNumber.Provider value={{
