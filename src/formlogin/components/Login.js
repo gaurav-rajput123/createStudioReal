@@ -51,7 +51,7 @@ export default function Login() {
           // console.log(response)
           // navigate("/land")
           console.log(response)
-          if(response.data !== "NotAuthorizedException"){
+          if(response.data.accessToken !== undefined){
             navigate('/land')
           }else{
             alert('Invalid Credentials')

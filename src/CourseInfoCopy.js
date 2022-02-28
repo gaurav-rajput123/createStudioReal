@@ -224,18 +224,41 @@ export default function Courseinfo({ setShowOutlineForm }) {
             </div>
 
         
-            <div  style={{marginTop: "12px", marginBottom: "24px"}} 
+            <div  style={{marginTop: "12px", marginBottom: "24px", 
+            display: "flex", justifyContent: "space-evenly"}} 
              
             >
                 <Button sx={{
                     background: "#660000",
                     color: "white",
                     marginTop: "20px",
-                    
+                    ":hover": {
+                        background: "#3f8894",
+                        color: "#FFFFFF",
+                        // width: "60%",
+                        // transition: "width 0.5s"
+                    },
+                    width: "40%"
                 }}
                     onClick={handleNext}
                     fullWidth>
                     Create course
+                </Button>
+                <Button sx={{
+                    background: "#660000",
+                    color: "white",
+                    marginTop: "20px",
+                    ":hover": {
+                        background: "#3f8894",
+                        color: "#FFFFFF",
+                        // width: "60%",
+                        // transition: "width 0.5s"
+                    },
+                    width: "40%"
+                }}
+                    onClick={handleNext}
+                    fullWidth>
+                    Cancel Course
                 </Button>
             </div>
 
