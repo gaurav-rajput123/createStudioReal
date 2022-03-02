@@ -16,6 +16,8 @@ import { ThemeProvider } from "@mui/material";
 import { v4 } from "uuid";
 import { minHeight } from "@mui/system";
 import { Description } from "@mui/icons-material";
+import ClearIcon from '@mui/icons-material/Clear';
+import IconButton from '@mui/material/IconButton';
 export default function Courseinfo({ setShowOutlineForm }) {
 
     const counter = React.useContext(stepNumber)
@@ -39,7 +41,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
             skillArr.length != 0 &&
             requirements.length != 0 &&
             description.length != 0 &&
-            price.length !=0) {
+            price.length != 0) {
 
             counter.increment()
             let newC = {
@@ -76,7 +78,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
     const [skill, setSkill] = useState('')
     const [requirements, setRequirements] = useState('')
     const [description, setDescription] = useState('')
-    const [price , setPrice] =useState('')
+    const [price, setPrice] = useState('')
     const [skillArr, setSkillArr] = useState([])
 
     return (
@@ -87,7 +89,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 </Typography>
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }} >
-                <Typography fontSize={"16px"}  sx={{ marginBottom: "12px"}}>
+                <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }}>
                     Course Title*
                 </Typography>
                 <TextField
@@ -103,7 +105,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 />
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }} >
-                <Typography fontSize={"16px"}  sx={{ marginBottom: "12px"}} >
+                <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }} >
                     Course Number*
                 </Typography>
                 <TextField
@@ -119,7 +121,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 />
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }} >
-                <Typography fontSize={"16px"}  sx={{ marginBottom: "12px"}}>
+                <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }}>
                     Course Organisation*
                 </Typography>
                 <TextField
@@ -135,7 +137,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 />
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }} >
-                <Typography fontSize={"16px"}  sx={{ marginBottom: "12px"}} >
+                <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }} >
                     Course Duration*
                 </Typography>
                 <TextField
@@ -188,6 +190,13 @@ export default function Courseinfo({ setShowOutlineForm }) {
                         return (
                             <span key={skillIndex + skill} style={{ padding: "6px", paddingLeft: "12px", paddingRight: "12px", borderRadius: "8px", background: "#9b3928", fontSize: "18px", marginRight: '12px', color: "white", fontFamily: "Popins" }}>
                                 {skill}
+                                <IconButton sx={{color:"white"}} onClick={() => { 
+                                    let newSkillArr = [...skillArr]
+                                    newSkillArr.splice(skillIndex, 1)
+                                    setSkillArr(newSkillArr)
+                                 }}>
+                                    <ClearIcon />
+                                </IconButton>
                             </span>
                         )
                     })}
@@ -278,7 +287,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 }}
                     onClick={handleNext}
                     fullWidth>
-                    Cancel 
+                    Cancel
                 </Button>
                 <Button sx={{
                     background: "#660000",
@@ -296,7 +305,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     fullWidth>
                     Create course
                 </Button>
-                
+
             </div>
 
         </div>
