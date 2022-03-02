@@ -38,7 +38,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
             taught.length != 0 &&
             skillArr.length != 0 &&
             requirements.length != 0 &&
-            description.length != 0 ) {
+            description.length != 0 &&
+            price.length !=0) {
 
             counter.increment()
             let newC = {
@@ -57,6 +58,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
             newC.organisation = organisation
             newC.skillsGained = [...skillArr]
             newC.requirement = requirements
+            newC.price = price
             courseContext.setCourseState(newC)
             setShowOutlineForm(false)
         } else {
@@ -74,6 +76,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
     const [skill, setSkill] = useState('')
     const [requirements, setRequirements] = useState('')
     const [description, setDescription] = useState('')
+    const [price , setPrice] =useState('')
     const [skillArr, setSkillArr] = useState([])
 
     return (
@@ -84,14 +87,14 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 </Typography>
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }} >
-                <Typography fontSize={"16px"} >
+                <Typography fontSize={"16px"}  sx={{ marginBottom: "12px"}}>
                     Course Title*
                 </Typography>
                 <TextField
                     onChange={(e) => {
                         setTitle(e.target.value)
                     }}
-                    sx={{ width: "610px" }}
+                    sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     // margin="dense"
                     variant="outlined"
                     label="E.g.Basic of Python"
@@ -100,14 +103,14 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 />
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }} >
-                <Typography fontSize={"16px"} >
+                <Typography fontSize={"16px"}  sx={{ marginBottom: "12px"}} >
                     Course Number*
                 </Typography>
                 <TextField
                     onChange={(e) => {
                         setCourseNumber(e.target.value)
                     }}
-                    sx={{ width: "610px" }}
+                    sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     // margin="dense"
                     variant="outlined"
                     label="Course Number"
@@ -116,14 +119,14 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 />
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }} >
-                <Typography fontSize={"16px"} >
+                <Typography fontSize={"16px"}  sx={{ marginBottom: "12px"}}>
                     Course Organisation*
                 </Typography>
                 <TextField
                     onChange={(e) => {
                         setOrganisation(e.target.value)
                     }}
-                    sx={{ width: "610px" }}
+                    sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     // margin="dense"
                     variant="outlined"
                     label="Organisation"
@@ -132,14 +135,14 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 />
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }} >
-                <Typography fontSize={"16px"} >
+                <Typography fontSize={"16px"}  sx={{ marginBottom: "12px"}} >
                     Course Duration*
                 </Typography>
                 <TextField
                     onChange={(e) => {
                         setCourseDuration(e.target.value)
                     }}
-                    sx={{ width: "610px" }}
+                    sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     // margin="dense"
                     variant="outlined"
                     label="course duration in months"
@@ -155,7 +158,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     onChange={(e) => {
                         setTaught(e.target.value)
                     }}
-                    sx={{ width: "610px" }}
+                    sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     margin="dense"
                     variant="outlined"
                     label="E.g.Programming Language"
@@ -172,7 +175,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                         onChange={(e) => {
                             setSkill(e.target.value)
                         }}
-                        sx={{ width: "610px" }}
+                        sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                         margin="dense"
                         variant="outlined"
                         label="Type the skills gained here"
@@ -209,7 +212,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     onChange={(e) => {
                         setRequirements(e.target.value)
                     }}
-                    sx={{ width: "610px" }}
+                    sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
+
                     margin="dense"
                     variant="outlined"
                     label="E.g. No programming experience needed.You will learn everything you need need to know"
@@ -226,7 +230,10 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     onChange={(e) => {
                         setDescription(e.target.value)
                     }}
-                    sx={{ width: "610px" }}
+                    sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
+                    fullWidth
+                    multiline
+                    rows="3"
                     margin="dense"
                     variant="outlined"
                     label="Write about the course in detail"
@@ -234,7 +241,22 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     value={description}
                 />
             </div>
-
+            <div style={{ marginTop: "12px", marginBottom: "24px" }} >
+                <Typography fontSize={"16px"} sx={{}}>
+                    Course Price*
+                </Typography>
+                <TextField
+                    onChange={(e) => {
+                        setPrice(e.target.value)
+                    }}
+                    sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
+                    margin="dense"
+                    variant="outlined"
+                    label="Price of this course"
+                    id=" Price"
+                    value={price}
+                />
+            </div>
 
             <div style={{
                 marginTop: "12px", marginBottom: "24px",
@@ -252,11 +274,11 @@ export default function Courseinfo({ setShowOutlineForm }) {
                         // width: "60%",
                         // transition: "width 0.5s"
                     },
-                    width: "40%"
+                    width: "30%"
                 }}
                     onClick={handleNext}
                     fullWidth>
-                    Create course
+                    Cancel 
                 </Button>
                 <Button sx={{
                     background: "#660000",
@@ -268,12 +290,13 @@ export default function Courseinfo({ setShowOutlineForm }) {
                         // width: "60%",
                         // transition: "width 0.5s"
                     },
-                    width: "40%"
+                    width: "30%"
                 }}
                     onClick={handleNext}
                     fullWidth>
-                    Cancel Course
+                    Create course
                 </Button>
+                
             </div>
 
         </div>
