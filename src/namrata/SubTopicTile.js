@@ -10,7 +10,7 @@ import AudioFileIcon from "@mui/icons-material/AudioFile";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import SlideshowIcon from "@mui/icons-material/Slideshow";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import EditIcon from '@mui/icons-material/Edit';
 import FeedIcon from '@mui/icons-material/Feed';
@@ -39,6 +39,7 @@ import CaseStudy from '../assesment/assesmentComponents/CaseStudy'
 import BlankProblem from '../assesment/assesmentComponents/BlankProblem'
 import CustomProblem from "../assesment/assesmentComponents/CustomProblem";
 import { type } from "@testing-library/user-event/dist/type";
+import { courseArray as arrC } from "../Context";
 const parse = require('html-react-parser');
 
 const style = {
@@ -55,6 +56,8 @@ const style = {
 };
 
 
+
+
 // const ExpandMore = styled((props) => {
 //   const { expand, ...other } = props;
 //   return <IconButton {...other} />;
@@ -67,6 +70,8 @@ const style = {
 // }));
 
 export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, courseArray, updateCourseArray }) {
+  const moduleIndex = courseIndex
+  const courseContext = useContext(arrC)
   const [expanded, setExpanded] = React.useState(false);
   const [type, setType] = React.useState("");
   const [expandedDescription, setExpandedDescription] = React.useState(false);
@@ -83,6 +88,8 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
   const [label, setLabel] = useState("Sub Topic")
 
   const [resourceType, setResourceType] = useState(null)
+
+  const [option, setOption] = useState(0)
 
   const [isDisable, setIsDisable] = useState({
     "ppt": false,
@@ -141,69 +148,78 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
   }
   const [openAssesment, setOpenAssesment] = useState(false)
   const [assesmentType, setAssesmentType] = useState('')
-  const selectAssesment = (e) => {
+  const selectAssesmentSet = (e) => {
     setAssesmentType(e.target.value)
+  }
+  const selectAssesment = () => {
+
     let newCourseArray = [...courseArray]
     let newAssesmentObj;
-    let newAssesmentArray = newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments ? [...newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments] : []
+    let newAssesmentArray
+    if(newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments) {
+      newAssesmentArray = [...newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments] 
+    }else{
+      newAssesmentArray = []
+    }
     if (assesmentType === 0) {
       newAssesmentObj = {
         name: "CheckBox",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 1) {
       newAssesmentObj = {
         name: "TextInput",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 2) {
       newAssesmentObj = {
         name: "Multiple Choice",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 3) {
       newAssesmentObj = {
         name: "DropDown",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 4) {
       newAssesmentObj = {
         name: "Numerical",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 5) {
       newAssesmentObj = {
         name: "Research",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 6) {
       newAssesmentObj = {
         name: "Case Study",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 7) {
       newAssesmentObj = {
         name: "Blank",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     } else if (assesmentType === 8) {
       newAssesmentObj = {
         name: "Custom Based Problem Solving",
-        type: e.target.value,
+        type: assesmentType,
         id: generateKey()
       }
     }
     newAssesmentArray.push(
       newAssesmentObj
     )
+    // setAssesmentType(e.target.value)
     newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments = newAssesmentArray
     updateCourseArray(newCourseArray)
   }
@@ -245,6 +261,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
       value: 8
     }
   ]
+
   const updateAssesment = (newItem, index) => {
     let newCourseArray = [...courseArray]
     newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments[index].content = newItem
@@ -426,7 +443,8 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
             display: "flex",
             justifyContent: "center"
           }}>
-            <FormControl fullWidth>
+            <div style={{display: "flex", marginTop: "24px"}}>
+              <FormControl sx={{width: "60%"}}>
               <InputLabel>Assessment Types</InputLabel>
               <Select
                 sx={{
@@ -434,7 +452,9 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                 }}
                 label='choose an assesment type'
                 value={assesmentType}
-                onChange={selectAssesment}>
+                onChange={selectAssesmentSet}
+                // onSelect={selectAssesment}
+                >
                 {
                   assessmentList.map((assesment, index) => {
                     return (
@@ -444,14 +464,32 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                 }
               </Select>
 
+              
+
             </FormControl>
+            <div style={{
+              display: "flex",
+              justifyContent: 'center',
+              flexGrow: '1'
+            }}>
+            <Button onClick={selectAssesment} sx={{
+              marginX: "auto"
+            }}
+            variant="contained">
+                Add Assesment
+              </Button>
+            </div>
+            </div>
             <div>
               {
                 courseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].assesments?.map((assesment, assesmentIndex, assesmentArray) => {
                   let basicProps = {
                     // color: "blue",
                     updateAssesment: updateAssesment,
-                    index: assesmentIndex
+                    assesIndex: assesmentIndex,
+                    moduleIndex: courseIndex,
+                    topicIndex: topicIndex,
+                    subTopicIndex: subTopicIndex
                   }
                   if (assesment == undefined) {
                     return null
@@ -462,7 +500,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                         paddingY: "24px"
                       }}
                         key={assesment.id}>
-                        <CheckBoxAssesment {...basicProps} color={"brown"} />
+                        <CheckBoxAssesment {...basicProps} color={"lightgreen"} />
                       </Box>
 
                     )
@@ -484,7 +522,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                         paddingY: "24px"
                       }}
                         key={assesment.id}>
-                        <RadioButtonAssesment {...basicProps} color={"grey"} />
+                        <RadioButtonAssesment {...basicProps} color={"#b0eff9"} />
                       </Box>
 
                     )
@@ -568,6 +606,71 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                   }
                 })
               }
+            </div>
+
+            <div style={{
+              marginTop: "24px",  
+             display: "flex",
+             justifyContent: "flex-end",
+             paddingRight: "24px"
+            }}>
+            <FormControl sx={{
+          marginY: "12px",
+          maxWidth: "300px"
+        }}
+        fullWidth >
+        <InputLabel id="demo-simple-select-label">Add New Field</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={option}
+          label="Add New Field"
+          onChange={(e)=>{
+            setOption(e.target.value)
+          }}
+          sx={{
+            // width: "150px"
+          }}
+          defaultValue={0}
+        > <MenuItem value={0}>Add Desired Field</MenuItem>
+          <MenuItem value={10} onClick={()=>{
+            let newCourseArray = [...courseContext.data]
+            newCourseArray.push({
+              id: generateKey(),
+              name: "new Module",
+              topics: [
+                
+              ]
+            })
+            courseContext.setCourseState({...courseContext, data: newCourseArray})
+          }}>Add Module</MenuItem>
+          <MenuItem value={20}
+          onClick={()=>{
+            let newCourseArray = [...courseContext.data]
+            newCourseArray[moduleIndex].topics.push({
+              id: generateKey(),
+              name: "new Topic",
+              subTopics: [
+               
+              ]
+            })
+          courseContext.setCourseState({...courseContext, data: newCourseArray})
+          }}
+          >Add Topic</MenuItem>
+          {
+            topicIndex !== undefined ? (
+              <MenuItem value={30} onClick={()=>{
+                let newCourseArray = [...courseContext.data]
+                newCourseArray[moduleIndex].topics[topicIndex].subTopics.push({
+                  id: generateKey(),
+                  name: "new Subtopic"
+                })
+                courseContext.setCourseState({...courseContext, data: newCourseArray})
+              }}>Add Subtopic</MenuItem>
+            ):null
+          }
+        </Select>
+      </FormControl>
             </div>
 
 

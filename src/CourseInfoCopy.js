@@ -31,25 +31,37 @@ export default function Courseinfo({ setShowOutlineForm }) {
     })
 
     const handleNext = () => {
-        counter.increment()
-        let newC = {
-            ...courseContext, data: [{
-                name: "Module 1",
-                id: v4(),
-                topics: [
+        if (duration.length != 0 &&
+            courseNumber.length != 0 &&
+            organisation.length != 0 &&
+            title.length != 0 &&
+            taught.length != 0 &&
+            skillArr.length != 0 &&
+            requirements.length != 0 &&
+            description.length != 0 ) {
 
-                ]
-            }]
+            counter.increment()
+            let newC = {
+                ...courseContext, data: [{
+                    name: "Module 1",
+                    id: v4(),
+                    topics: [
+
+                    ]
+                }]
+            }
+            newC.courseTitle = title
+            newC.courseDesciption = description
+            newC.courseDuration = duration
+            newC.courseNumber = courseNumber
+            newC.organisation = organisation
+            newC.skillsGained = [...skillArr]
+            newC.requirement = requirements
+            courseContext.setCourseState(newC)
+            setShowOutlineForm(false)
+        } else {
+            alert("please complete all the fields")
         }
-        newC.courseTitle =title
-        newC.courseDesciption = description
-        newC.courseDuration = duration
-        newC.courseNumber = courseNumber
-        newC.organisation = organisation
-        newC.skillsGained = [...skillArr]
-        newC.requirement = requirements
-        courseContext.setCourseState(newC)
-        setShowOutlineForm(false)
     }
 
 
@@ -63,15 +75,15 @@ export default function Courseinfo({ setShowOutlineForm }) {
     const [requirements, setRequirements] = useState('')
     const [description, setDescription] = useState('')
     const [skillArr, setSkillArr] = useState([])
-    
+
     return (
-        <div style={{marginTop: "12px", marginBottom: "12px", paddingLeft:"40px",paddingRight: "40px", borderRadius: "12px", background: "white", width: "90%", marginX: "auto"}} >
-            <div style={{marginTop: "12px", marginBottom: "12px"}} >
+        <div style={{ marginTop: "12px", marginBottom: "12px", paddingLeft: "40px", paddingRight: "40px", borderRadius: "12px", background: "white", width: "90%", marginX: "auto" }} >
+            <div style={{ marginTop: "12px", marginBottom: "12px" }} >
                 <Typography fontSize={"24px"} sx={{ color: "#660000", textAlign: 'center' }}>
                     Course Details
                 </Typography>
             </div>
-            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+            <div style={{ marginTop: "12px", marginBottom: "24px" }} >
                 <Typography fontSize={"16px"} >
                     Course Title*
                 </Typography>
@@ -87,7 +99,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     value={title}
                 />
             </div>
-            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+            <div style={{ marginTop: "12px", marginBottom: "24px" }} >
                 <Typography fontSize={"16px"} >
                     Course Number*
                 </Typography>
@@ -103,7 +115,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     value={courseNumber}
                 />
             </div>
-            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+            <div style={{ marginTop: "12px", marginBottom: "24px" }} >
                 <Typography fontSize={"16px"} >
                     Course Organisation*
                 </Typography>
@@ -119,7 +131,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     value={organisation}
                 />
             </div>
-            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+            <div style={{ marginTop: "12px", marginBottom: "24px" }} >
                 <Typography fontSize={"16px"} >
                     Course Duration*
                 </Typography>
@@ -135,7 +147,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     value={duration}
                 />
             </div>
-            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+            <div style={{ marginTop: "12px", marginBottom: "24px" }} >
                 <Typography fontSize={"16px"} sx={{}}>
                     What is primarily taught in your course*
                 </Typography>
@@ -151,16 +163,16 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     value={taught}
                 />
             </div>
-            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+            <div style={{ marginTop: "12px", marginBottom: "24px" }} >
                 <Typography fontSize={"16px"} >
                     What will the students learn about the course*
                 </Typography>
-                <div style={{marginTop: "12px", marginBottom: "12px"}} >
+                <div style={{ marginTop: "12px", marginBottom: "12px" }} >
                     <TextField
                         onChange={(e) => {
                             setSkill(e.target.value)
                         }}
-                        sx={{ width: "610px"}}
+                        sx={{ width: "610px" }}
                         margin="dense"
                         variant="outlined"
                         label="Type the skills gained here"
@@ -169,16 +181,16 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     />
                 </div>
                 <div>
-                   { skillArr.map((skill, skillIndex)=>{
-                       return (
-                            <span key={skillIndex+skill} style={{ padding: "6px",paddingLeft: "12px", paddingRight: "12px", borderRadius: "8px", background: "#9b3928", fontSize: "18px", marginRight: '12px', color: "white", fontFamily: "Popins"}}>
+                    {skillArr.map((skill, skillIndex) => {
+                        return (
+                            <span key={skillIndex + skill} style={{ padding: "6px", paddingLeft: "12px", paddingRight: "12px", borderRadius: "8px", background: "#9b3928", fontSize: "18px", marginRight: '12px', color: "white", fontFamily: "Popins" }}>
                                 {skill}
                             </span>
-                       )
-                   })}
+                        )
+                    })}
                 </div>
-                <div style={{marginTop: "12px", marginBottom: "12px"}} >
-                    <Button sx={{}} variant="outlined" startIcon={<AddIcon />} onClick={()=>{
+                <div style={{ marginTop: "12px", marginBottom: "12px" }} >
+                    <Button sx={{}} variant="outlined" startIcon={<AddIcon />} onClick={() => {
                         let newSkillArr = [...skillArr]
                         newSkillArr.push(skill)
                         setSkillArr(newSkillArr)
@@ -189,7 +201,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 </div>
             </div>
 
-            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+            <div style={{ marginTop: "12px", marginBottom: "24px" }} >
                 <Typography fontSize={"16px"} sx={{}}>
                     What are the requirements or prerequisites for taking your course*
                 </Typography>
@@ -206,7 +218,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 />
             </div>
 
-            <div style={{marginTop: "12px", marginBottom: "24px"}} >
+            <div style={{ marginTop: "12px", marginBottom: "24px" }} >
                 <Typography fontSize={"16px"} sx={{}}>
                     Course Description*
                 </Typography>
@@ -214,7 +226,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     onChange={(e) => {
                         setDescription(e.target.value)
                     }}
-                    sx={{ width: "610px"}}
+                    sx={{ width: "610px" }}
                     margin="dense"
                     variant="outlined"
                     label="Write about the course in detail"
@@ -223,19 +235,44 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 />
             </div>
 
-        
-            <div  style={{marginTop: "12px", marginBottom: "24px"}} 
-             
+
+            <div style={{
+                marginTop: "12px", marginBottom: "24px",
+                display: "flex", justifyContent: "space-evenly"
+            }}
+
             >
                 <Button sx={{
                     background: "#660000",
                     color: "white",
                     marginTop: "20px",
-                    
+                    ":hover": {
+                        background: "#3f8894",
+                        color: "#FFFFFF",
+                        // width: "60%",
+                        // transition: "width 0.5s"
+                    },
+                    width: "40%"
                 }}
                     onClick={handleNext}
                     fullWidth>
                     Create course
+                </Button>
+                <Button sx={{
+                    background: "#660000",
+                    color: "white",
+                    marginTop: "20px",
+                    ":hover": {
+                        background: "#3f8894",
+                        color: "#FFFFFF",
+                        // width: "60%",
+                        // transition: "width 0.5s"
+                    },
+                    width: "40%"
+                }}
+                    onClick={handleNext}
+                    fullWidth>
+                    Cancel Course
                 </Button>
             </div>
 

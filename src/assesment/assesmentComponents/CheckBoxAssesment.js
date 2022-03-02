@@ -4,11 +4,11 @@ import {useState} from "react";
 import MainCard from '../components/MainCarnNAM'
 import React from 'react'
 
-function CheckBoxAssesment({color, updateAssesment, index}) {
-    let [question, setQuestion] = useState('Add your question here')
+function CheckBoxAssesment({color, updateAssesment, index, moduleIndex, topicIndex, subTopicIndex, assesIndex}) {
+    let [question, setQuestion] = useState('Add your question By clicking on the edit button')
   return (
     <div>
-      <Videoheader changeQuestion={setQuestion} title={"Checkbox Assessment"} color={color}/>
+      <Videoheader changeQuestion={setQuestion} title={"Check Box Assesment"} color={color} moduleIndex={moduleIndex} topicIndex={topicIndex} subTopicIndex={subTopicIndex} assesIndex={assesIndex}/>
       <MainCard question={question}  updateAssesment={updateAssesment} index={index}/>
     
     </div>

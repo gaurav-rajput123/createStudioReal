@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useContext, useState} from "react";
 import { Typography, Button, Grid, TextField, Link, InputLabel, OutlinedInput, IconButton, InputAdornment, FormControl } from "@mui/material";
 import PasswordBox from "./PasswordBox";
 import img from './crest.png'
@@ -6,12 +6,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Visibility } from "@mui/icons-material";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
-import {getUserAttributes,getSession} from 'amazon-cognito-identity-js';
-import { AuthenticationDetails, CognitoUser } from 'amazon-cognito-identity-js';
-
-
+import { userContext } from "../../App";
 export default function Login() {
   const navigate = useNavigate();
+  const userScope = useContext(userContext)
   const [email,setEmail]=useState("");
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
@@ -25,38 +23,28 @@ export default function Login() {
     }
 
     const onSubmit=(event)=>{
-      event.preventDefault();
-      axios({
-        url:'http://localhost:8080/user/login',
-        method:'POST',
-        data:{
-          username:email,
-          password:password
-        }
-      })
-      .then((response) => {
-          // axios.get('http://localhost:8080/user/currentuser').then((resp)=>{
-          //   const user=resp.data;
-          //   console.log(resp.data);
-          //   user.getSession((err,session)=>{
-          //     if(err){
-          //         console.log(err)
-          //     }
-          //     else{
-          //         console.log(session.isValid());
-          //       }
-          //     })
-          //   })
-          // })
-          // console.log(response)
-          // navigate("/land")
-          console.log(response)
-          if(response.data !== "NotAuthorizedException"){
-            navigate('/land')
-          }else{
-            alert('Invalid Credentials')
-          }
-        })}
+      // event.preventDefault();
+      // axios({
+      //   url:'http://localhost:8080/user/login',
+      //   method:'POST',
+      //   data:{
+      //     username:email,
+      //     password:password
+      //   }
+      // })
+      // .then((response) => {
+      //     console.log(response)
+      //     if(response.data.accessToken !== undefined){
+      //       navigate('/land')
+      //     }else{
+      //       alert('Invalid Credentials')
+      //     }
+      //   })
+      if(email === "academics@crestbellsupport.com" && password === "Academics@123"){
+        userScope.setUser(true)
+      }else{
+        alert("Invalid Credentials")
+      }}
     return(
 
         <Grid container sx={{width:"auto"}}>
@@ -92,7 +80,7 @@ export default function Login() {
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
-                  onClick={()=>{setShowPassword(true)}}
+                  onClick={()=>{setShowPassword("authed")}}
                   onMouseDown={handleMouseDownPassword}
                   edge="end"
                 >
@@ -114,9 +102,9 @@ export default function Login() {
               variant="contained" 
               sx={{backgroundColor:"#660000", 
               borderRadius:'0px', 
-              padding:'10px 30px'}} >Sign In</Button>
+              padding:'10px 15px'}} >Sign In</Button>
              {/* </NavLink> */}
-                <Link sx={{color:"#660000", marginLeft: "12px", textDecoration: "none"}}>Forgot Password</Link>
+              <Link sx={{color:"#660000", marginLeft: "8px", textDecoration: "none",fontSize:"14px"}}>Forgot Password</Link>
            </Grid>
            <Grid xs={4} />
       <Grid item xs={6} sx={{ marginBottom: "20px" }}>

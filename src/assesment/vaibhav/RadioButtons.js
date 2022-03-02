@@ -30,13 +30,13 @@ export default function CheckCard({ question, updateAssesment, index }) {
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <div>
-          <Typography
+          {/* <Typography
             variant="h4"
             sx={{ padding: "5px 5px 5px 5px" }}
             color="text.secondary"
           >
-            Checkboxes
-          </Typography>
+            Multiple Choice 
+          </Typography> */}
 
 
           <Typography sx={{ padding: "5px 5px 0px 5px" }} variant="h7">

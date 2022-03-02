@@ -26,21 +26,21 @@ export default function MainCard({ question, updateAssesment, index }) {
         <Card sx={{ minWidth: 200, height: "auto" }}>
             <CardContent>
 
-                <Typography style={{ fontFamily: "inter", fontWeight: "bold" }}>
+                <Typography style={{ fontFamily: "inter", fontWeight: "bold", fontSize: "12px" }}>
                     1 point possible (ungraded)
                 </Typography>
-                <Typography style={{ fontFamily: "inter", fontWeight: "bold", fontSize: "24px" }}>
+                <Typography style={{ fontFamily: "inter", fontSize: "24px" }}>
                     {parse(question)}
                 </Typography>
 
-                <Typography style={{ fontFamily: "inter", fontWeight: "bold" }}>
+                {/* <Typography style={{ fontFamily: "inter" }}>
                     Type your question
-                </Typography>
+                </Typography> */}
 
                 <Typography style={{ fontSize: "15px", fontFamily: "inter", fontWeight: "bold" }}>
                     <p>You can add an optional tip or note related to the prompt like this.</p>
                 </Typography>
-                <TextField sx={{ margin: "20px 5px 10px 5px", }} id="standard-basic" label="Add Option" variant="standard" value={newOption} onChange={(e) => {
+                <TextField sx={{ margin: "0px 5px 10px 5px", }} id="standard-basic" label="Add Option" variant="standard" value={newOption} onChange={(e) => {
                     setNewOption(e.target.value)
                 }} />
                 <Button variant="contained" onClick={() => {
@@ -79,12 +79,13 @@ export default function MainCard({ question, updateAssesment, index }) {
 
                 </FormGroup>
 
-
-
-
-                <Button variant="contained" size="medium" style={{ marginTop: "80px" }} onClick={() => {
+                    <div style={{
+                        background: "black", 
+                        height: "1px"
+                    }}></div>
+                <Button variant="contained" size="medium" style={{ marginTop: "20px" }} onClick={() => {
                     updateContent()
-                }}>Submit</Button>
+                }}>Save</Button>
             </CardContent>
 
         </Card>
