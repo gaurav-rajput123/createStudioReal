@@ -70,7 +70,7 @@ export default function Progress() {
             }}
             >
               <Typography sx={{
-                fontSize: "12px"
+                fontSize: "14px"
               }}>{step.label}</Typography>
                 
             </StepLabel>
