@@ -19,7 +19,7 @@ export default function Login() {
   };
 
     const handleClick = ()=> {
-        alert("path not set")
+        
     }
 
     const onSubmit=(event)=>{
@@ -152,8 +152,8 @@ export default function Login() {
       <Grid item xs={6}  sx={{
         padding: "4px"
     }}>
-        <NavLink
-          to={"/"}
+        <a
+          href={"https://www.facebook.com/"}
           style={{
             textDecoration: "none",
           }}
@@ -172,14 +172,14 @@ export default function Login() {
           >
             Facebook
           </Button>
-        </NavLink>
+        </a>
       </Grid>
 
       <Grid item xs={6}  sx={{
         padding: "4px"
     }}>
-        <NavLink
-          to={"/"}
+        <a
+          href={"https://accounts.google.co.in"}
           style={{
             textDecoration: "none",
           }}
@@ -198,7 +198,7 @@ export default function Login() {
           >
             Google
           </Button>
-        </NavLink>
+        </a>
       </Grid>
       <Grid item xs={6}  sx={{
         padding: "4px"
