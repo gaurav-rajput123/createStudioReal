@@ -39,7 +39,7 @@ function App() {
 //       console.log(response.data);
 //   })
 // })
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(true)
   return (
     <stepNumber.Provider value={{
       val, increment: () => setVal(val + 1), decrement: () => setVal(val - 1), setVal: (newVal) => {

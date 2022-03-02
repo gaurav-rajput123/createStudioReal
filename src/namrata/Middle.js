@@ -86,6 +86,20 @@ export default function Middle() {
                 }
                 formData.set('courseDataa', JSON.stringify(data))
                 console.log(courses)
+                const courseMetadata = {
+                  id: generateKey(),
+                  description : courseContext.courseDesciption, 
+                  duration: courseContext.courseDuration,
+                  number: courseContext.courseNumber,
+                  title: courseContext.courseTitle,
+                  organisation: courseContext.organisation,
+                  requirement: courseContext.requirement,
+                  skills: [...courseContext.skillsGained]
+                }
+                formData.set("metadata", JSON.stringify(courseMetadata))
+                formData.set('user', JSON.stringify({
+                  id: "12345"
+                }))
               }}
                 sx={{
                   marginRight: "36px",
@@ -112,7 +126,14 @@ export default function Middle() {
               >
                 upload course and save
               </Button>
-              {/* <Button onClick={() => console.log(courseContext)}>doit</Button> */}
+              <Button onClick={() => console.log(courseContext)}>doit</Button>
+              <Button onClick={() => {
+                console.log("hello")
+                for (var pair of formData.entries()) {
+                  console.log("here")
+                  console.log(pair[0]+ ', ' + pair[1]); 
+              }
+              }}>here</Button>
             </div>
           </div>
         ) : null
