@@ -19,6 +19,8 @@ import RegisterCard from './formlogin/components/RegisterCard';
 import TabComponent from './formlogin/components/TabComponent copy';
 import Verification from './formlogin/components/Verification';
 import axios from 'axios'
+import ForgotPassword from './formlogin/components/ForgotPassword';
+import NewPassword from './formlogin/components/NewPassword';
 
 // import AnimatedPa from './namrata/AnimationGrid';
 
@@ -44,7 +46,7 @@ function App() {
       <div className="App">
         <Routes>
           {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
-          <Route path="/" element={<RegisterCard />} />
+          <Route path="/" element={<NewPassword />} />
           <Route path='/verify' element={<Verification/>}/>
           <Route path="/user" element={<Additionalinfo />} />
           <Route path="/land" element={<Front />} />
