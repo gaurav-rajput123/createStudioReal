@@ -17,20 +17,21 @@ import ListItemButton from '@mui/material/ListItemButton';
 const Input = styled('input')({
     display: 'none',
 });
-function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, subTopicIndex, setInForm, updateCourseArray, handleClose }) {
+function UploadComponentAlter({ accept, courseArray, courseIndex, topicIndex, subTopicIndex, setInForm, updateCourseArray, handleClose }) {
     const [imageUrl, setImageUrl] = useState(null)
     const [fileObj, setFileObj] = useState(null)
     const formData = useContext(formContext)
     const handleUpload = (file) => {
         console.log(file)
-        // setImageUrl(URL.createObjectURL(file))
+
         let newCourseArray = [...courseArray]
-        // newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource = {}
-        if(newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource != undefined){newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource[setInForm] = true
-        }else{
+
+        if (newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource != undefined) {
+            newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource[setInForm] = true
+        } else {
             newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource = {}
             newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource[setInForm] = true
-        } 
+        }
 
         let newName = courseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].id + file.name.substring(file.name.lastIndexOf('.'))
         console.log(newName)
@@ -43,10 +44,7 @@ function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, sub
     }
 
     return (
-        <div style={{
-            // minWidth: "500px",
-            // minHeight: "500px"
-        }}>
+        <div>
             <Grid container columns={12} >
                 <Grid item xs={1} />
                 <Grid item xs={11}>
@@ -57,18 +55,14 @@ function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, sub
                         <Grid item xs={5} >
                             <div className="Transcript">
                                 <Typography sx={{ paddingBottom: "10px", fontWeight: 500 }}>Transcript<Switch /></Typography>
-                                {/* <UploadButton
-                                        name={"Attach Transcript"}
-                                        Icon={<LinkIcon className="attach-icon" />}>
-                                    </UploadButton> */}
                                 <label htmlFor="contained-button-transcript">
                                     <Input accept=".vtt,.srt"
-                                     id="contained-button-transcript"
-                                      multiple 
-                                      type="file"
-                                      onChange={e => {
-                                        setFileObj(e.target.files[0])
-                                    }} />
+                                        id="contained-button-transcript"
+                                        multiple
+                                        type="file"
+                                        onChange={e => {
+                                            setFileObj(e.target.files[0])
+                                        }} />
                                     <ListItemButton className="upload-button" variant="contained" sx={{ width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }} >
                                         <AttachmentIcon sx={{ paddingRight: "10px" }} />
                                         <Typography>Attach Transcript</Typography>
@@ -78,15 +72,9 @@ function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, sub
                             </div>
                             <div className="Thumbnail">
                                 <Typography sx={{ paddingBottom: "10px", fontWeight: 500 }}>Thumbnail</Typography>
-                                {/* <UploadButton
-                                        name={"Upload Thumbnail"}
-                                        Icon={<IosShareIcon className="thumb-icon" />} >
-                                    </UploadButton> */}
                                 <label htmlFor="contained-button-file">
                                     <Input accept="image/*" id="contained-button-file" multiple type="file"
                                         onChange={e => {
-                                            // console.log(e.target.files[0])
-                                            // setFileObj(e.target.files[0])
                                             setImageUrl(URL.createObjectURL(e.target.files[0]))
                                             console.log(imageUrl)
                                         }} />
@@ -124,9 +112,7 @@ function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, sub
                             </div>
                         </Grid>
                         <Grid item xs={7}>
-                            <Typography sx={{ paddingBottom: "10px",paddingTop:"10px" }}>Preview</Typography>
-
-                            {/* <Box> */}
+                            <Typography sx={{ paddingBottom: "10px", paddingTop: "10px" }}>Preview</Typography>
                             {
                                 imageUrl == null ?
                                     (
@@ -146,7 +132,6 @@ function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, sub
                                                 objectFit: "cover"
                                             }} />
                                     )}
-                            {/* </Box> */}
                         </Grid>
 
                     </Grid>
@@ -160,7 +145,7 @@ function UploadComponentAlter({ accept,courseArray, courseIndex, topicIndex, sub
                         fullWidth
                         disabled={fileObj == null ? true : false}
                         sx={{
-                            marginTop:"10px",
+                            marginTop: "10px",
                             padding: "12px",
                             borderRadius: "6px",
                         }}
