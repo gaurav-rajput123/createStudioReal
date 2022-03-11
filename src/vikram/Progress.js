@@ -17,12 +17,12 @@ const steps = [
       'Fill up the details for your new course',
   },
   {
-    label: 'Add Course Outline',
-    description: `Make Structure of your Course`,
+    label: 'Add Course Details',
+    description: `Add details of your Course`,
   },
   {
-    label: 'Upload All the media and files',
-    description: `Upload all the files in desired format`,
+    label: 'Add Course Outline ',
+    description: `Make structure of your course and upload all media files`,
   },
   {
     label: 'Save and Preview the courses',
