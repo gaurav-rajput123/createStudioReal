@@ -47,11 +47,9 @@ function UploadComponentAlter({ accept, courseArray, courseIndex, topicIndex, su
         <div>
             <Grid container columns={12} >
                 <Grid item xs={1} />
-                <Grid item xs={11}>
-                    <Grid container >
-                        <Grid item xs={11} sx={{ direction: "column", paddingTop: "10px", paddingBottom: "10px" }}>
-                            <TextEditor />
-                        </Grid>
+                <Grid item container xs={11}>
+                    <Grid container item xs={12} >
+
                         <Grid item xs={5} >
                             <div className="Transcript">
                                 <Typography sx={{ paddingBottom: "10px", fontWeight: 500 }}>Transcript<Switch /></Typography>
