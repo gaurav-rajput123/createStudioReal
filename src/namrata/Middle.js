@@ -80,6 +80,7 @@ export default function Middle() {
               marginBottom: "12px"
             }}>
               <Button onClick={() => {
+                counter.increment()
                 const data = {
                   name: "hello",
                   data: courses
@@ -111,6 +112,7 @@ export default function Middle() {
                 update course
               </Button>
               <Button onClick={() => {
+                counter.increment()
                 axios({
                   url: 'http://localhost:8080/get',
                   data: formData,
@@ -126,14 +128,14 @@ export default function Middle() {
               >
                 upload course and save
               </Button>
-              <Button onClick={() => console.log(courseContext)}>doit</Button>
+              {/* <Button onClick={() => console.log(courseContext)}>doit</Button>
               <Button onClick={() => {
                 console.log("hello")
                 for (var pair of formData.entries()) {
                   console.log("here")
                   console.log(pair[0]+ ', ' + pair[1]); 
               }
-              }}>here</Button>
+              }}>here</Button> */}
             </div>
           </div>
         ) : null

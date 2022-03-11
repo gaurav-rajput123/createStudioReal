@@ -42,7 +42,9 @@ const Topbar = () => {
                             textDecoration: "none",
                             color: "black",
                         }}>
+                        <Button variant='contained' sx={{borderRadius: 0}}>
                         Let's Create
+                        </Button>
                         </NavLink>
                         </Typography>
                     </Typography>

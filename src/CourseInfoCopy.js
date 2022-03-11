@@ -63,6 +63,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
             newC.price = price
             courseContext.setCourseState(newC)
             setShowOutlineForm(false)
+            counter.increment()
         } else {
             alert("please complete all the fields")
         }

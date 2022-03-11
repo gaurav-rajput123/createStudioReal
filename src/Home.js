@@ -26,7 +26,7 @@ export default function Home() {
                 </Grid>
                 <Grid item xs={0.5} />
                 <Grid item xs={7} sx={{ backgroundColor: "whitesmoke", borderTopLeftRadius: "12px", paddingTop: "10px" }}>
-                    <CardAnim name={"Mahavir"} showOutlineForm={setShowOutlineForm} />
+                    <CardAnim name={""} showOutlineForm={setShowOutlineForm} />
                 </Grid>
                 <Grid item xs={4} sx={{ backgroundColor: "whitesmoke", borderTopRightRadius: "12px" }}>
                     <Progress />

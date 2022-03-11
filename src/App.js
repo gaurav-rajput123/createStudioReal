@@ -39,7 +39,7 @@ function App() {
 //       console.log(response.data);
 //   })
 // })
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(true)
   return (
     <stepNumber.Provider value={{
       val, increment: () => setVal(val + 1), decrement: () => setVal(val - 1), setVal: (newVal) => {
@@ -50,17 +50,7 @@ function App() {
         user, setUser
       }}>
       <div className="App">
-        {/* <Routes>
-          
-          <Route path="/" element={<RegisterCard />} />
-          <Route path='/verify' element={<Verification/>}/>
-          <Route path="/user" element={<Additionalinfo />} />
-          <Route path="/land" element={<Front />} />
-          <Route path="/form" element={<Form />} />
-          <Route path="/create" element={<Home />} />
-          <Route path="/formnew" element={<OutlineForm />} />
-          <Route path="/formnews" element={<Corseinfo/>} />
-        </Routes> */}
+        
         <RouteFile/>
         
       </div>

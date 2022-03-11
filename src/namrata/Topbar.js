@@ -32,13 +32,14 @@ const Topbar = () => {
                         <Button variant='text'>About</Button>
                 </Typography> */}
                 <Typography variant="h6"  sx={{ flexGrow: 1 }}>
-                <Button variant='text' sx={{
-                    fontSize: "18px",
+                {/* <Button disabled variant='containeda' sx={{
+                    fontSize: "16px",
                     fontFamily: 'sans-serif',
-                    ":hover": {
-                        backgroundColor: "white"
-                    }
-                }}>Create Studio</Button>
+                   
+                }}>Create Studio</Button> */}
+                <span>
+                    Create Studio
+                    </span>
                     </Typography>
                 </Typography>
                 {/* <Button color="inherit" variant='contained'>Watch Tutorial</Button> */}

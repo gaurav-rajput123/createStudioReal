@@ -12,7 +12,7 @@ import { stepNumber } from '../Context';
 const steps = [
  
   {
-    label: 'Add Course Details',
+    label: 'Log in to your account',
     description:
       'Fill up the details for your new course',
   },
@@ -63,7 +63,7 @@ export default function Progress() {
               marginY: "4px",
               "& .MuiStepLabel-iconContainer": {
                 "& .MuiSvgIcon-root": {
-                  color: "#51e0bf",
+                  color: counterTracker.val > index ? "#51e0bf" : "rgb(9, 120, 201)", 
                   fontSize: "26px"
                 }
               }
