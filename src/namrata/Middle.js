@@ -114,7 +114,7 @@ export default function Middle() {
               <Button onClick={() => {
                 counter.increment()
                 axios({
-                  url: 'http://localhost:8080/get',
+                  url: 'http://13.233.142.106:8080/get',
                   data: formData,
                   method: "POST"
                 }).then(res => console.log(res)).catch(r => console.log(r))
@@ -230,7 +230,7 @@ function TopicTileBox({ topic, topicIndex, topicArray, changeTopicName, addNewSu
                 updateCourseArray={updateCourseArray}
                 topicIndex={topicIndex}
                 subTopicIndex={subTopicIndex}
-                updateCourseArray={updateCourseArray}
+                // updateCourseArray={updateCourseArray}
               />
             })
           }

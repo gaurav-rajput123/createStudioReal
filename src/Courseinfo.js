@@ -15,7 +15,7 @@ import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { v4 } from "uuid";
 import { minHeight } from "@mui/system";
-export default function Corseinfo({ setShowOutlineForm }) {
+export default function Corseinfo({ setShowOutlineForm }) { 
 
     const counter = React.useContext(stepNumber)
     const [newSkill, setNewSkill] = React.useState('')

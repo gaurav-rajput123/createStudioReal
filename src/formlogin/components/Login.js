@@ -42,6 +42,7 @@ export default function Login() {
       //   })
       if(email === "academics@crestbellsupport.com" && password === "Academics@123"){
         userScope.setUser(true)
+        localStorage.setItem('user', true)
       }else{
         alert("Invalid Credentials")
       }}
@@ -123,9 +124,7 @@ export default function Login() {
       <Grid xs={4} />
 
       <Grid container item xs={8}>
-      <Grid item xs={6} sx={{ marginTop: "10px" }} sx={{
-          padding: "4px"
-      }}>
+      <Grid item xs={6} sx={{ marginTop: "10px",padding: "4px" }} >
         <NavLink
           to={"/"}
           style={{
