@@ -28,7 +28,7 @@ export default function Login() {
     const onSubmit=(event)=>{
       event.preventDefault();
       axios({
-        url:'http://13.233.142.106:8080/user/login',
+        url:'https://3.110.105.240:8080/user/login',
         method:'POST',
         data:{
           username:email,
@@ -142,7 +142,7 @@ export default function Login() {
       <Grid xs={4} />
 
       <Grid container item xs={8}>
-      <Grid item xs={6} sx={{ marginTop: "10px",
+      <Grid item xs={6} sx={{
           padding: "4px"
       }}>
         <NavLink

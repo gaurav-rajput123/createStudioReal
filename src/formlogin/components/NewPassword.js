@@ -92,8 +92,6 @@ const NewPassword=() =>  {
             onChange={event=>setNewpassword(event.target.value)}
             type={showPassword ? 'text' : 'password'}
             value={newpassword}
-            fullWidth
-            
             endAdornment={
               <InputAdornment position="end">
                 <IconButton

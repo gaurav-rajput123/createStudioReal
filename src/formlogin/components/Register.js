@@ -96,7 +96,7 @@ export default function Register() {
 
     // useEffect(()=>{
       axios({
-      url:'http://13.233.142.106:8080/user/signup',
+      url:'https://13.233.142.106:8080/user/signup',
       method:'POST',
       data:{
         username:email,
