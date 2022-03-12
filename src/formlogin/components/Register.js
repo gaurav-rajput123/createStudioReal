@@ -210,7 +210,7 @@ export default function Register() {
             sx={{ backgroundColor: "#660000", borderRadius: "0px", marginBottom:"10px" }}
             onClick={async ()=>{
               try {
-              const res = await axios({url: 'http://13.233.142.106:8080/get',
+              const res = await axios({url: 'http://13.233.142.106:8080/signup',
                 data: {
                   email: email,
                   fullName: name,
@@ -220,11 +220,12 @@ export default function Register() {
                 )
 
                 console.log(res.data)
-                if(res.data.isAuthenticated){
-                  userScope.setUser(true)
+                if(res.data.isAuthenticated == true){
+                  // userScope.setUser(true)
                 }
               } catch (error) {
-                
+                console.log("error")
+                console.log(error)
               }
             }}
           >
