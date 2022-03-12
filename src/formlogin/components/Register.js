@@ -214,7 +214,7 @@ export default function Register() {
        
       </Grid>
       <Grid xs={4} />
-      <Grid item xs={6} sx={{ marginBottom: "10px" }}>
+      <Grid item xs={6} sx={{ marginBottom: "10px" ,visibility: 'hidden'}}>
         <Link
           sx={{
             color: "black",
@@ -229,7 +229,7 @@ export default function Register() {
 
       <Grid xs={4} />
 
-      <Grid container item xs={8}>
+      <Grid container item xs={8} sx={{visibility: 'hidden'}}>
       <Grid item xs={6} sx={{ marginTop: "10px",padding: "4px"}}>
         <NavLink
           to={"/"}

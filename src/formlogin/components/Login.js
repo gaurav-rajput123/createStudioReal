@@ -126,7 +126,7 @@ export default function Login() {
               </Box>
            </Grid>
            <Grid xs={4} />
-      <Grid item xs={6} sx={{ marginBottom: "20px" }}>
+      <Grid item xs={6} sx={{ marginBottom: "20px", visibility: 'hidden' }}>
         <Link
           sx={{
             color: "black",
@@ -141,7 +141,7 @@ export default function Login() {
 
       <Grid xs={4} />
 
-      <Grid container item xs={8}>
+      <Grid container item xs={8} sx={{visibility:"hidden"}}>
       <Grid item xs={6} sx={{
           padding: "4px"
       }}>
