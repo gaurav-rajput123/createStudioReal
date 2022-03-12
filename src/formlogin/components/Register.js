@@ -96,7 +96,7 @@ export default function Register() {
 
     // useEffect(()=>{
       axios({
-      url:'http://localhost:8080/user/signup',
+      url:'http://13.233.142.106:8080/user/signup',
       method:'POST',
       data:{
         username:email,
@@ -105,10 +105,10 @@ export default function Register() {
     })
     .then(
       (response) => {
-        console.log(response.data.user);
+        console.log(response.data.user.username);
 
          //after submit form redirect user
-    navigate('/verify',{state:{user:response.data.user}});
+    navigate('/verify',{state:{user:response.data.user.username}});
       }
     );
   // },[]);
@@ -230,9 +230,7 @@ export default function Register() {
       <Grid xs={4} />
 
       <Grid container item xs={8}>
-      <Grid item xs={6} sx={{ marginTop: "10px" }} sx={{
-          padding: "4px"
-      }}>
+      <Grid item xs={6} sx={{ marginTop: "10px",padding: "4px"}}>
         <NavLink
           to={"/"}
           style={{

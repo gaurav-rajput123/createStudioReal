@@ -8,7 +8,6 @@ import VectorNew from "../components/VectorNew.png"
 
 
 
-
 const Verification=() =>  {
 
     const paperStyle={padding :20,height:'80vh',width:"max-content", margin:"20px auto"}
@@ -18,24 +17,36 @@ const Verification=() =>  {
     const [code,setCode]=useState("");
     const location = useLocation();
    if(location.state!=null){
-    console.log(location.state.user.username)
+    console.log(location.state.user)
    }
+
+   const handleResendCode =()=>{
+    axios({
+        url:'http://13.233.142.106:8080/user/resendconfirmationcode',
+        method:'POST',
+        data:{
+        username:location.state.user
+        }
+    })
+    }
+
 
    const onSubmit=event=>{
     event.preventDefault();
-    console.log(code);
     axios({
-        url:'http://localhost:8080/user/confirm',
+        url:'http://13.233.142.106:8080/user/confirm',
         method:'POST',
         data:{
-        username:location.state.user.username,
+        username:location.state.user,
         code:code
         }
     })
     .then(
         (response) => {
-            console.log(response)
-        if(response.data==="SUCCESS"){
+        if(response.data==="CodeMismatchException"){
+            alert('Verification Code is incorrect')
+        }
+        else if(response.data==="SUCCESS"){
             navigate('/');
         }
         }
@@ -60,9 +71,9 @@ const Verification=() =>  {
             <Button type='submit'  variant="contained" style={{backgroundColor:"#630000", color:"white", height:"56px",fontSize:"20px", marginTop:"10px", marginBottom:"10px"}} fullWidth>VERIFY</Button>
             <Grid align="center" >
             <Typography > Didn't receive OTP?
-                 <Link href="#" >
+                 <Button onClick={handleResendCode} >
                     Resend Again
-                 </Link>
+                 </Button>
             </Typography>
             </Grid>
             </form>

@@ -16,6 +16,10 @@ import { Link, NavLink } from "react-router-dom";
 //   };
 
 const Topbar = () => {
+    const handleLogout=()=>{
+        localStorage.clear();  
+        window.location.reload(true);
+      }
     return <>
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" style={{ backgroundColor: '#80808000', color: 'black' }}>
@@ -42,7 +46,9 @@ const Topbar = () => {
                             textDecoration: "none",
                             color: "black",
                         }}>
+                        <Button variant='contained' sx={{borderRadius: 0}}>
                         Let's Create
+                        </Button>
                         </NavLink>
                         </Typography>
                     </Typography>
@@ -57,6 +63,7 @@ const Topbar = () => {
                     >
                          <Avatar alt="Gaurav" src={profile} />
                     </IconButton >
+                    <Button onClick={handleLogout}>LogOut</Button>
                 </Toolbar>
             </AppBar>
         </Box>

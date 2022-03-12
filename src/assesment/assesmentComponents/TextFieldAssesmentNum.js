@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Videoheader from '../Vikram/Header'
 import Textinput from '../deepak/Text'
 
-function TextFieldAssesmentNum() {
+function TextFieldAssesmentNum({color, updateAssesment,moduleIndex, topicIndex, subTopicIndex, assesIndex}) {
     let [question, setQuestion] = useState(`You can use this template as a guide to the simple editor markdown and OLX markup to use for text input problems. 
     Edit this component to replace this template with your own Numerical Type Assesment.`)
     
@@ -10,7 +10,7 @@ function TextFieldAssesmentNum() {
     <div style={{
         // width: "50%"
     }}>
-        <Videoheader title={"Custom Numerical Questions"} changeQuestion={setQuestion} color="#dcebf1" />
+        <Videoheader title={"Custom Numerical Questions"} changeQuestion={setQuestion} color="#dcebf1" moduleIndex={moduleIndex} topicIndex={topicIndex} subTopicIndex={subTopicIndex} assesIndex={assesIndex} />
         <Textinput title={'Numeric Input Assesment'} question={question}/>
     </div>
   )

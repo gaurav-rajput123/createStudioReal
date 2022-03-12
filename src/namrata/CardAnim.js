@@ -22,7 +22,7 @@ export default function CardAnim({ name, showOutlineForm }) {
                 <div className="text" style={{ margin: '0 5% 0 0', width: '110%', paddingLeft: "14px" ,paddingTop:"40px"}}>
                     <CardContent>
                         <Typography gutterBottom  component="div" style={{ fontFamily: 'Montserrat', fontSize: '28px', fontWeight: '600', color: 'white' }}>
-                            Welcome Back, {name}!
+                            Welcome {name}!
                         </Typography>
                         <Typography variant="body1" color="text.secondary" style={{ fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '500', color: 'white' }}>
                             {

@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useContext, useState} from "react";
 import { Typography,Box, Button, Grid, TextField, Link, InputLabel, OutlinedInput, IconButton, InputAdornment, FormControl } from "@mui/material";
 import PasswordBox from "./PasswordBox";
 import img from './crest.png'
@@ -6,10 +6,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Visibility } from "@mui/icons-material";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
+import { userContext } from "../../App";
 
 
 export default function Login() {
+  const userScope = useContext(userContext)
   const navigate = useNavigate();
+  const [user, setUser] = useState()
   const [email,setEmail]=useState("");
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
@@ -25,7 +28,7 @@ export default function Login() {
     const onSubmit=(event)=>{
       event.preventDefault();
       axios({
-        url:'http://localhost:8080/user/login',
+        url:'http://13.233.142.106:8080/user/login',
         method:'POST',
         data:{
           username:email,
@@ -49,12 +52,22 @@ export default function Login() {
           // console.log(response)
           // navigate("/land")
           console.log(response)
-          if(response.data.accessToken !== undefined){
-            navigate('/land')
+          if(response.data==="UserNotConfirmedException"){
+            navigate("/verify",{state:{user:email}})
+          }
+          else if(response.data.accessToken !== undefined){
+            setUser(response.data)
+            userScope.setUser(true)
+            localStorage.setItem('user', response.data)
+            // navigate('/')
           }else{
             alert('Invalid Credentials')
           }
         })}
+
+        const handleForgotPassword=()=>{
+          navigate('/forgotpassword')
+        }
     return(
 
         <Grid container sx={{width:"auto"}}>
@@ -109,7 +122,7 @@ export default function Login() {
              type="submit"
               variant="contained" 
               sx={{backgroundColor:"#660000", borderRadius:'4px',textTransform: 'none'}} >Sign In</Button>
-              <Button fullWidth sx={{color:"#660000",textTransform: 'none'}}>Forgot Password</Button>
+              <Button onClick={handleForgotPassword} fullWidth sx={{color:"#660000",textTransform: 'none'}}>Forgot Password</Button>
               </Box>
            </Grid>
            <Grid xs={4} />
@@ -129,7 +142,7 @@ export default function Login() {
       <Grid xs={4} />
 
       <Grid container item xs={8}>
-      <Grid item xs={6} sx={{ marginTop: "10px" }} sx={{
+      <Grid item xs={6} sx={{ marginTop: "10px",
           padding: "4px"
       }}>
         <NavLink

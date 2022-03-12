@@ -85,7 +85,7 @@ export default function MainCard({ question, updateAssesment, index }) {
                     }}></div>
                 <Button variant="contained" size="medium" style={{ marginTop: "20px" }} onClick={() => {
                     updateContent()
-                }}>Submit</Button>
+                }}>Save</Button>
             </CardContent>
 
         </Card>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -9,12 +9,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import Button from "@mui/material/Button";
 import TextDescription from '../deepak/TextDescription'
 import {Modal, Box} from '@mui/material'
-
-export default function Videoheader({title, changeQuestion, color, textColor}) {
+import { courseArray } from "../../Context";
+export default function Videoheader({title, changeQuestion, color, textColor, moduleIndex, topicIndex, subTopicIndex, assesIndex}) {
   const [modalState, setModalState] = useState(false)
   const handleModalState = () => {
     setModalState(!modalState)
   }
+  const courseContext = useContext(courseArray)
   const style = {
     position: 'absolute',
     top: '40%',
@@ -59,13 +60,19 @@ export default function Videoheader({title, changeQuestion, color, textColor}) {
             >
               <FileCopyIcon />
             </IconButton>
-
+*/}
             <IconButton
               aria-label="Delete"
-
+              onClick={()=>{
+                console.log(moduleIndex, topicIndex, subTopicIndex, assesIndex)
+                let newCourseArray = [...courseContext.data]
+                let newAssesmentArray = newCourseArray[moduleIndex].topics[topicIndex].subTopics[subTopicIndex].assesments
+                newAssesmentArray.splice(assesIndex, 1)
+                courseContext.setCourseState({...courseContext, data: newCourseArray})
+              }}
             >
               <DeleteIcon />
-            </IconButton> */}
+            </IconButton> 
           </div>
         }
       />
