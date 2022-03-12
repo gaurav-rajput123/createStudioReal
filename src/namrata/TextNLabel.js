@@ -8,7 +8,8 @@ function TextNLabel({ isLabelShown, setIsLabelShown, setLabel, courseArray, cour
     const [labelIn, setLabelIn] = useState(label)
 
     return (
-        isLabelShown ?
+       <>
+           { isLabelShown ?
             (
                 <div style={{ display: "flex", alignItems: "center" }}>
                     <Typography fontSize={20} >
@@ -30,12 +31,13 @@ function TextNLabel({ isLabelShown, setIsLabelShown, setLabel, courseArray, cour
                         setIsLabelShown(!isLabelShown)
                     }} sx={{ marginLeft: "12px" }} variant='contained'>
                         <Typography>
-                            Set Title
+                            Save
                         </Typography>
 
                     </Button>
                 </div>
-            )
+            )}
+    </>
     )
 }
 

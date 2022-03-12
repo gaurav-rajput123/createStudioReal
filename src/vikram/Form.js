@@ -18,7 +18,6 @@ import { v4 } from 'uuid';
 function Form({ closeModal, activeStep, setActiveStep, setShowModal  }) {
   const counter = React.useContext(stepNumber)
   const [newSkill, setNewSkill] = React.useState('')
-  const [skillArr, newSkillArr] = useState([])
   const courseContext = React.useContext(courseArray)
   const [courseOut, setCourseOut] = useState({
     courseTitle: "",
@@ -36,18 +35,7 @@ function Form({ closeModal, activeStep, setActiveStep, setShowModal  }) {
       name: "Module 1",
       id: v4(),
       topics: [
-        {name: "Topic 1",
-      id: v4(),
-      subTopics: [
-        {
-          name: "subtopic 1",
-          id: v4(),
-          resources: {
-
-          }
-        }
-      ]      
-    }
+        
       ]
     }] }
     newC.courseTitle = courseOut.courseTitle
@@ -58,7 +46,6 @@ function Form({ closeModal, activeStep, setActiveStep, setShowModal  }) {
     newC.skillsGained = [...courseOut.skillsGained]
     courseContext.setCourseState(newC)
     setActiveStep(2)
-    // console.log("here")
   }
   
   return (

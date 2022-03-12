@@ -3,7 +3,7 @@ import { useState,useEffect } from 'react';
 import { Routes, Route, useParams } from "react-router-dom";
 
 import OutlineForm from './OutlineForm';
-
+import * as React from 'react'
 import Front from './Front';
 import Home from './Home';
 import Form from './vikram/Form';
@@ -18,44 +18,53 @@ import Register from "./formlogin/components/Register";
 import RegisterCard from './formlogin/components/RegisterCard';
 import TabComponent from './formlogin/components/TabComponent copy';
 import Verification from './formlogin/components/Verification';
-import axios from 'axios'
-import ForgotPassword from './formlogin/components/ForgotPassword';
-import NewPassword from './formlogin/components/NewPassword';
-
+import Corseinfo from './Courseinfo';
+import axios from 'axios';
+import RouteFile from './RouteFile';
+export const userContext = React.createContext({
+  user: Boolean,
+  setUser: ()=>{}
+})
 // import AnimatedPa from './namrata/AnimationGrid';
 
 // import Home from './Home'
 function App() {
   const [val, setVal] = useState(0)
-  useEffect(()=>{
-    axios({
-    url:'http://localhost:8080/user/currentuser',
-    method:'POST',
-  }).then(
-    (response) => {
-      console.log(response.data);
-  })
-})
-
+//   useEffect(()=>{
+//     axios({
+//     url:'http://localhost:8080/user/currentuser',
+//     method:'POST',
+//   }).then(
+//     (response) => {
+//       console.log(response.data);
+//   })
+// })
+  const [user, setUser] = useState(false)
   return (
     <stepNumber.Provider value={{
       val, increment: () => setVal(val + 1), decrement: () => setVal(val - 1), setVal: (newVal) => {
         setVal(newVal)
       }
     }}>
+      <userContext.Provider value={{
+        user, setUser
+      }}>
       <div className="App">
-        <Routes>
-          {/* <Route path="/auth" element={ <MetaLogin/>} />   */}
-          <Route path="/" element={<NewPassword />} />
+        {/* <Routes>
+          
+          <Route path="/" element={<RegisterCard />} />
           <Route path='/verify' element={<Verification/>}/>
           <Route path="/user" element={<Additionalinfo />} />
           <Route path="/land" element={<Front />} />
           <Route path="/form" element={<Form />} />
           <Route path="/create" element={<Home />} />
           <Route path="/formnew" element={<OutlineForm />} />
-        </Routes>
-
+          <Route path="/formnews" element={<Corseinfo/>} />
+        </Routes> */}
+        <RouteFile/>
+        
       </div>
+      </userContext.Provider>
     </stepNumber.Provider>
   );
 

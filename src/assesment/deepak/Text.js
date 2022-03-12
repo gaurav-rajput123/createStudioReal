@@ -7,7 +7,7 @@ import TextDescription from './TextDescription'
 import EditIcon from '@mui/icons-material/Edit';
 import generateKey from "../../resources/generateKey";
 
-const Textinput = ({question, title, updateAssesment, index}) => {
+const  Textinput = ({question, title, updateAssesment, index}) => {
   const [correctOption, setCorrectOption] = useState("")
   const updateContent = () => {
     let newTextInput = {

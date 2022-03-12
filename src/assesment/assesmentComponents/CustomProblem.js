@@ -6,14 +6,14 @@ import AudioFileIcon from '@mui/icons-material/AudioFile'
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo'
 import SlideshowIcon from '@mui/icons-material/Slideshow'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
-export default function CustomProblem({color}) {
+export default function CustomProblem({color,updateAssesment, index, moduleIndex, topicIndex, subTopicIndex, assesIndex}) {
     let [question, setQuestion] = useState(`Design you own custom problem with any kind of media`)
     
   return (
     <div style={{
         // width: "50%"
     }}>
-        <Videoheader title={"Custom Based Problem Solving"} changeQuestion={setQuestion} color={color} />
+        <Videoheader title={"Custom Based Problem Solving"} changeQuestion={setQuestion} color={color}  moduleIndex={moduleIndex} topicIndex={topicIndex} subTopicIndex={subTopicIndex} assesIndex={assesIndex}/>
         <Textinput title={'Custom Based Problem Solving'} question={question}/>
         <Button
             sx={{ minWidth: "150px", height: "100px", backgroundColor: 'white', borderColor: 'white' }}
