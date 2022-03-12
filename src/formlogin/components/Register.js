@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Typography,
   Button,
@@ -29,9 +29,10 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { userContext } from "../../App";
 
 export default function Register() {
+  const userScope = useContext(userContext)
 
     const initialValues ={username: "",email:"", password:""};
     const [formValues, setFormValues] = useState(initialValues);
@@ -83,7 +84,7 @@ export default function Register() {
 
   const [name,setName]=useState("");
   const [email,setEmail]=useState("");
-  const [username,setUsername]=useState("");
+  // const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -123,7 +124,7 @@ export default function Register() {
   
   return (
     <Grid container sx={{ width: "auto" }}>
-      <form onSubmit={onSubmit}>
+      <form >
       <Grid item xs={8} sx={{ marginBottom: "10px" }} onSubmit={handleSubmit}>
         <TextField
         fullWidth
@@ -144,7 +145,7 @@ export default function Register() {
         <p>{formErrors.email}</p>
       </Grid>
       <Grid xs={4} />
-      <Grid item xs={8} sx={{ marginBottom: "10px" }}>
+      {/* <Grid item xs={8} sx={{ marginBottom: "10px" }}>
         <TextField
         fullWidth 
         label="Public username" 
@@ -152,7 +153,7 @@ export default function Register() {
         value={username}
         onChange={event=>setUsername(event.target.value)}
          />
-      </Grid>
+      </Grid> */}
       <Grid xs={4} />
       <Grid item xs={8}>
       <FormControl fullWidth variant="outlined">
@@ -207,6 +208,25 @@ export default function Register() {
             type="submit"
             variant="contained"
             sx={{ backgroundColor: "#660000", borderRadius: "0px", marginBottom:"10px" }}
+            onClick={async ()=>{
+              try {
+              const res = await axios({url: 'http://13.233.142.106:8080/get',
+                data: {
+                  email: email,
+                  fullName: name,
+                  password: password
+                },
+                method: "POST"}
+                )
+
+                console.log(res.data)
+                if(res.data.isAuthenticated){
+                  userScope.setUser(true)
+                }
+              } catch (error) {
+                
+              }
+            }}
           >
             Create Account
           </Button>
@@ -229,9 +249,7 @@ export default function Register() {
       <Grid xs={4} />
 
       <Grid container item xs={8}>
-      <Grid item xs={6} sx={{ marginTop: "10px" }} sx={{
-          padding: "4px"
-      }}>
+      <Grid item xs={6} sx={{ marginTop: "10px", padding: "4px" }} >
         <NavLink
           to={"/"}
           style={{
