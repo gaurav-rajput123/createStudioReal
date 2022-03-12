@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Typography, Button, Grid, TextField, Link, InputLabel, OutlinedInput, IconButton, InputAdornment, FormControl } from "@mui/material";
+import { Typography,Box, Button, Grid, TextField, Link, InputLabel, OutlinedInput, IconButton, InputAdornment, FormControl } from "@mui/material";
 import PasswordBox from "./PasswordBox";
 import img from './crest.png'
 import { NavLink, useNavigate } from "react-router-dom";
@@ -104,17 +104,13 @@ export default function Login() {
            </Grid>
            <Grid xs={4}/>
            <Grid  item xs={6} sx={{marginTop:"30px", marginBottom:"20px"}}>
-           {/* <NavLink to={'/land'}style={{
-              textDecoration: "none"
-           }}> */}
-             <Button
+             <Box display="flex">
+             <Button fullWidth
              type="submit"
               variant="contained" 
-              sx={{backgroundColor:"#660000", 
-              borderRadius:'0px', 
-              padding:'10px 15px'}} >Sign In</Button>
-             {/* </NavLink> */}
-              <Link sx={{color:"#660000", marginLeft: "8px", textDecoration: "none",fontSize:"14px"}}>Forgot Password</Link>
+              sx={{backgroundColor:"#660000", borderRadius:'4px',textTransform: 'none'}} >Sign In</Button>
+              <Button fullWidth sx={{color:"#660000",textTransform: 'none'}}>Forgot Password</Button>
+              </Box>
            </Grid>
            <Grid xs={4} />
       <Grid item xs={6} sx={{ marginBottom: "20px" }}>
@@ -235,13 +231,6 @@ export default function Login() {
           </Button>
         </NavLink>
       </Grid></Grid>
-           <Grid xs={12} sx={{position: 'absolute', bottom: 0, right: 0}}>
-               <img src={img} width="250px" height={"105px"}/>
-           </Grid>
-
-           
-
-           
            </form>
         </Grid>
 

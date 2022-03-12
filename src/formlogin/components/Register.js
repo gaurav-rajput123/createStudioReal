@@ -122,6 +122,7 @@ export default function Register() {
 
   
   return (
+    
     <Grid container sx={{ width: "auto" }}>
       <form onSubmit={onSubmit}>
       <Grid item xs={8} sx={{ marginBottom: "10px" }} onSubmit={handleSubmit}>
@@ -332,7 +333,7 @@ export default function Register() {
         </NavLink>
       </Grid></Grid>
 
-      <Grid xs={12} sx={{ position: "absolute", bottom: 0, right: 0 }}>
+      <Grid item xs sx={{ position: "unset", bottom: 0, right: 0 }}>
         <img src={img} width="250px" height={"105px"} />
       </Grid>
       </form>

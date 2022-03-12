@@ -58,7 +58,7 @@ export default function TabComponent() {
          
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0} >
       <Register/>
       </TabPanel>
       <TabPanel value={value} index={1}>
