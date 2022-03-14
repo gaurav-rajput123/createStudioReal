@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Typography,
   Button,
@@ -29,10 +29,9 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { userContext } from "../../App";
+
 
 export default function Register() {
-  const userScope = useContext(userContext)
 
     const initialValues ={username: "",email:"", password:""};
     const [formValues, setFormValues] = useState(initialValues);
@@ -84,7 +83,7 @@ export default function Register() {
 
   const [name,setName]=useState("");
   const [email,setEmail]=useState("");
-  // const [username,setUsername]=useState("");
+  const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -106,10 +105,10 @@ export default function Register() {
     })
     .then(
       (response) => {
-        console.log(response.data.user);
+        console.log(response.data.user.username);
 
          //after submit form redirect user
-    navigate('/verify',{state:{user:response.data.user}});
+    navigate('/verify',{state:{user:response.data.user.username}});
       }
     );
   // },[]);
@@ -123,8 +122,9 @@ export default function Register() {
 
   
   return (
+    
     <Grid container sx={{ width: "auto" }}>
-      <form >
+      <form onSubmit={onSubmit}>
       <Grid item xs={8} sx={{ marginBottom: "10px" }} onSubmit={handleSubmit}>
         <TextField
         fullWidth
@@ -145,7 +145,7 @@ export default function Register() {
         <p>{formErrors.email}</p>
       </Grid>
       <Grid xs={4} />
-      {/* <Grid item xs={8} sx={{ marginBottom: "10px" }}>
+      <Grid item xs={8} sx={{ marginBottom: "10px" }}>
         <TextField
         fullWidth 
         label="Public username" 
@@ -153,7 +153,7 @@ export default function Register() {
         value={username}
         onChange={event=>setUsername(event.target.value)}
          />
-      </Grid> */}
+      </Grid>
       <Grid xs={4} />
       <Grid item xs={8}>
       <FormControl fullWidth variant="outlined">
@@ -208,33 +208,13 @@ export default function Register() {
             
             variant="contained"
             sx={{ backgroundColor: "#660000", borderRadius: "0px", marginBottom:"10px" }}
-            onClick={async ()=>{
-              try {
-              const res = await axios({url: 'http://13.233.142.106:8080/signup',
-                data: {
-                  email: email,
-                  fullName: name,
-                  password: password
-                },
-                method: "POST"}
-                )
-
-                console.log(res.data)
-                if(res.data.isAuthenticated == true){
-                  // userScope.setUser(true)
-                }
-              } catch (error) {
-                console.log("error")
-                console.log(error)
-              }
-            }}
           >
             Create Account
           </Button>
        
       </Grid>
       <Grid xs={4} />
-      <Grid item xs={6} sx={{ marginBottom: "10px" }}>
+      <Grid item xs={6} sx={{ marginBottom: "10px" ,visibility: 'hidden'}}>
         <Link
           sx={{
             color: "black",
@@ -249,8 +229,8 @@ export default function Register() {
 
       <Grid xs={4} />
 
-      <Grid container item xs={8}>
-      <Grid item xs={6} sx={{ marginTop: "10px", padding: "4px" }} >
+      <Grid container item xs={8} sx={{visibility: 'hidden'}}>
+      <Grid item xs={6} sx={{ marginTop: "10px",padding: "4px"}}>
         <NavLink
           to={"/"}
           style={{
@@ -351,7 +331,7 @@ export default function Register() {
         </NavLink>
       </Grid></Grid>
 
-      <Grid xs={12} sx={{ position: "absolute", bottom: 0, right: 0 }}>
+      <Grid item xs sx={{ position: "unset", bottom: 0, right: 0 }}>
         <img src={img} width="250px" height={"105px"} />
       </Grid>
       </form>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -8,6 +9,7 @@ import RegisterCard from './RegisterCard';
 import Register from './Register';
 import BasicCard from './skewCard';
 import Login from './Login';
+import { useNavigate } from 'react-router-dom';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,27 +44,30 @@ function a11yProps(index) {
   };
 }
 
-export default function TabComponent() {
-  const [value, setValue] = React.useState(1);
+export default function TabComponent(props) {
+  const navigate=useNavigate();
+  const {id}=props
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const handleLogin=()=>{
+    navigate("/login")  
+  }
+  const handleRegister=()=>{
+    navigate("/register")  
+  }
 
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Register" {...a11yProps(0)} />
-          <Tab label="Sign In " {...a11yProps(1)} />
+        <Tabs value={id} aria-label="basic tabs example">
+          <Tab label="Register" onClick={handleRegister} {...a11yProps(id)} />
+          <Tab label="Sign In " onClick={handleLogin} {...a11yProps(id)} />
          
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={id} index={0} >
       <Register/>
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        
+      <TabPanel value={id} index={1}>
         <Login/>
       </TabPanel>
       
