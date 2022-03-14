@@ -108,7 +108,7 @@ export default function Register() {
         console.log(response.data.user.username);
 
          //after submit form redirect user
-    navigate('/verify',{state:{user:response.data.user.username}});
+    navigate('/login',{state:{user:response.data.user.username}});
       }
     );
   // },[]);
@@ -205,7 +205,7 @@ export default function Register() {
         
         
           <Button
-            
+            type="submit"
             variant="contained"
             sx={{ backgroundColor: "#660000", borderRadius: "0px", marginBottom:"10px" }}
           >
