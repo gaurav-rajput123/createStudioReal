@@ -97,7 +97,7 @@ export default function Register() {
 
     // useEffect(()=>{
       axios({
-      url:'http://localhost:8080/user/signup',
+      url:'https://api.keewesolutions.com/user/signup',
       method:'POST',
       data:{
         username:email,
@@ -205,7 +205,7 @@ export default function Register() {
         
         
           <Button
-            type="submit"
+            
             variant="contained"
             sx={{ backgroundColor: "#660000", borderRadius: "0px", marginBottom:"10px" }}
             onClick={async ()=>{

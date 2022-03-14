@@ -40,16 +40,11 @@ export default function Login() {
     //       alert('Invalid Credentials')
     //     }
     //   })
-    // if (email === "academics@crestbellsupport.com" && password === "Academics@123") {
-    //   userScope.setUser(true)
-    //   localStorage.setItem('user', true)
-    // } else {
-    //   alert("Invalid Credentials")
-    // }
+    
  
     e.preventDefault()
   axios({
-    url: 'http://13.233.142.106:8080/signin',
+    url: 'https://api.keewesolutions.com/signin',
     data: {
       email: email,
       // fullName: name,
