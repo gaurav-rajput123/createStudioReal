@@ -59,7 +59,7 @@ export default function Login() {
             setUser(response.data)
             userScope.setUser(true)
             localStorage.setItem('user', response.data)
-            // navigate('/')
+            navigate('/')
           }else{
             alert('Invalid Credentials')
           }
