@@ -23,53 +23,32 @@ export default function Login() {
   }
 
   const onSubmit = (e) => {
-    // event.preventDefault();
-    // axios({
-    //   url:'http://localhost:8080/user/login',
-    //   method:'POST',
-    //   data:{
-    //     username:email,
-    //     password:password
-    //   }
-    // })
-    // .then((response) => {
-    //     console.log(response)
-    //     if(response.data.accessToken !== undefined){
-    //       navigate('/land')
-    //     }else{
-    //       alert('Invalid Credentials')
-    //     }
-    //   })
-    // if (email === "academics@crestbellsupport.com" && password === "Academics@123") {
-    //   userScope.setUser(true)
-    //   localStorage.setItem('user', true)
-    // } else {
-    //   alert("Invalid Credentials")
-    // }
- 
+
+
     e.preventDefault()
-  axios({
-    url: 'http://13.233.142.106:8080/signin',
-    data: {
-      email: email,
-      // fullName: name,
-      password: password
-    },
-    method: "POST"
-  }).then(res=>{
-    console.log(res.data)
-    if(res.data.isAuthenticated == true){
-      userScope.setUser(true)
-      localStorage.setItem("user", JSON.stringify(res.data.userObj))
-    }else{
-      console.log(res)
-    }
-    }).catch(err=>console.log('error', err))}
+    axios({
+      url: 'http://13.233.142.106:8080/signin',
+      data: {
+        email: email,
+        // fullName: name,
+        password: password
+      },
+      method: "POST"
+    }).then(res => {
+      console.log(res.data)
+      if (res.data.isAuthenticated == true) {
+        userScope.setUser(true)
+        localStorage.setItem("user", JSON.stringify(res.data.userObj))
+      } else {
+        console.log(res)
+      }
+    }).catch(err => console.log('error', err))
+  }
   return (
 
     <Grid container sx={{ width: "auto" }}>
       <form >
-        <Grid item xs={8} sx={{ marginBottom: "20px" }}>
+        <Grid item xs={9} sx={{ margin: "40px 0 20px 0 " }}>
           <FormControl fullWidth variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
             <OutlinedInput
@@ -83,13 +62,13 @@ export default function Login() {
           </FormControl>
         </Grid>
 
-        <Grid xs={4} />
-        <Grid item xs={8}>
+        <Grid xs={3} />
+        <Grid item xs={9}>
 
           <FormControl fullWidth variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
             <OutlinedInput
-              fullWidth
+              Width="90%"
               id="outlined-adornment-password"
               label="password"
               onChange={event => setPassword(event.target.value)}
@@ -114,145 +93,28 @@ export default function Login() {
         </Grid>
         <Grid xs={4} />
         <Grid item xs={6} sx={{ marginTop: "30px", marginBottom: "20px" }}>
-          {/* <NavLink to={'/land'}style={{
-              textDecoration: "none"
-           }}> */}
           <Button
             type="submit"
             variant="contained"
             sx={{
               backgroundColor: "#660000",
               borderRadius: '0px',
+              marginTop:"15px",
               padding: '10px 15px'
-            }} 
-            onClick={(e)=>onSubmit(e)}>Sign In</Button>
-          {/* </NavLink> */}
-          <Link sx={{ color: "#660000", marginLeft: "8px", textDecoration: "none", fontSize: "14px" }}>Forgot Password</Link>
-        </Grid>
-        <Grid xs={4} />
-        <Grid item xs={6} sx={{ marginBottom: "20px" }}>
-          <Link
-            sx={{
-              color: "black",
-              fontSize: "20px",
-              fontWeight: "bold",
-              textDecoration: "none",
             }}
-          >
-            Or sign in with:
-          </Link>
+            onClick={(e) => onSubmit(e)}>Sign In</Button>
+            <div style={{marginTop : "40px",marginLeft:"0px"}}>
+          <Link sx={{ color: "#660000",  textDecoration: "none", fontSize: "14px" }}>Forgot Password</Link>
+          </div>
+        </Grid>
+        <Grid xs={4} />
+        <Grid item xs={6} sx={{ margin: "20px" }}>
+
         </Grid>
 
-        <Grid xs={4} />
-
-        <Grid container item xs={8}>
-          <Grid item xs={6} sx={{ marginTop: "10px", padding: "4px" }} >
-            <NavLink
-              to={"/"}
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#000000",
-                  borderRadius: "0px",
-                  height: "100%",
-                  width: "100%",
-                }}
-                onClick={(e) => {
-                  handleClick(e)
-                }}
-              >
-                Apple
-              </Button>
-            </NavLink>
-          </Grid>
-
-          <Grid item xs={6} sx={{
-            padding: "4px"
-          }}>
-            <a
-              href={"https://www.facebook.com/"}
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#1877f2",
-                  borderRadius: "0px",
-                  height: "100%",
-                  width: "100%",
-                }}
-                onClick={() => {
-                  handleClick()
-                }}
-              >
-                Facebook
-              </Button>
-            </a>
-          </Grid>
-
-          <Grid item xs={6} sx={{
-            padding: "4px"
-          }}>
-            <a
-              href={"https://accounts.google.co.in"}
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#4285f4",
-                  borderRadius: "0px",
-                  height: "100%",
-                  width: "100%",
-                }}
-                onClick={() => {
-                  handleClick()
-                }}
-              >
-                Google
-              </Button>
-            </a>
-          </Grid>
-          <Grid item xs={6} sx={{
-            padding: "4px"
-          }}>
-            <NavLink
-              to={"/"}
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#2f2f2f",
-                  borderRadius: "0px",
-                  height: "100%",
-                  width: "100%",
-                }}
-                onClick={() => {
-                  handleClick()
-                }}
-              >
-                Microsoft
-              </Button>
-            </NavLink>
-          </Grid></Grid>
         <Grid xs={12} sx={{ position: 'absolute', bottom: 0, right: 0 }}>
           <img src={img} width="250px" height={"105px"} />
         </Grid>
-
-
-
-
       </form>
     </Grid>
 

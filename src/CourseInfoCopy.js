@@ -155,7 +155,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     // margin="dense"
                     variant="outlined"
-                    label="course duration in months"
+                    label="course duration in months/hrs"
                     // id="Title"
                     value={duration}
                 />
