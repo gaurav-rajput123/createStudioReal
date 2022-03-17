@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
+import Paper from '@mui/material/Paper';
 import { Grid, Typography } from '@mui/material';
 // import Ards from './fullpage';
 import Ardss from './Ardss';
@@ -7,35 +7,20 @@ import Register from "./Register";
 import logo from '../MRSSPTU.png'
 import TabComponent from './TabComponent copy';
 
-export default function RegisterCard() {
+export default function RegisterCard(props) {
   return (
-    <Card sx={{display:"flex",backgroundImage: "-webkit-linear-gradient(10deg, #660000 43%, #FFFFFF 43%)", height: "100vh"
-    }}>
-        <img src={logo} alt="as" style={{
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          height: "96px",
-          width: "96px"
-        }}/>
-        <Grid container>
-            <Grid item xs={1}/>
-            <Grid item xs={4}>
-                <div  style={{paddingTop:"200px"}}>
+        <Grid container sx={{height:"100vh",width:"100%"}}>
+            <Grid item xs={12} md={4} lg={5}>
                 <Ardss />
-                </div>
-               
             </Grid>
-            <Grid xs={1} />
-            <Grid xs={6} >
-                
-                  <TabComponent/> 
-              
-              
-               
+            <Grid item md={1} lg={1} sx={{backgroundImage:"linear-gradient(to bottom right, #660000 50%,white 50%)"}}>
+            </Grid>
+            <Grid item md={0.5} lg={0.5} />
+
+            <Grid item xs={12} md={5} lg={5}>
+                  <TabComponent id={props.id}/>  
             </Grid  >
 
             </Grid>
-    </Card>
   );
 }
