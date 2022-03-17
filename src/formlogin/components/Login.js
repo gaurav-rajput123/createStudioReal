@@ -1,5 +1,5 @@
 import React,{useContext, useState} from "react";
-import { Typography, Button, Grid, TextField, Link, InputLabel, OutlinedInput, IconButton, InputAdornment, FormControl } from "@mui/material";
+import { Typography,Box, Button, Grid, TextField, Link, InputLabel, OutlinedInput, IconButton, InputAdornment, FormControl } from "@mui/material";
 import PasswordBox from "./PasswordBox";
 import img from './crest.png'
 import { NavLink, useNavigate } from "react-router-dom";
@@ -7,9 +7,12 @@ import { Visibility } from "@mui/icons-material";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
 import { userContext } from "../../App";
+
+
 export default function Login() {
-  const navigate = useNavigate();
   const userScope = useContext(userContext)
+  const navigate = useNavigate();
+  const [user, setUser] = useState()
   const [email,setEmail]=useState("");
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
@@ -19,32 +22,52 @@ export default function Login() {
   };
 
     const handleClick = ()=> {
-        
+        alert("path not set")
     }
 
     const onSubmit=(event)=>{
-      // event.preventDefault();
-      // axios({
-      //   url:'http://localhost:8080/user/login',
-      //   method:'POST',
-      //   data:{
-      //     username:email,
-      //     password:password
-      //   }
-      // })
-      // .then((response) => {
-      //     console.log(response)
-      //     if(response.data.accessToken !== undefined){
-      //       navigate('/land')
-      //     }else{
-      //       alert('Invalid Credentials')
-      //     }
-      //   })
-      if(email === "academics@crestbellsupport.com" && password === "Academics@123"){
-        userScope.setUser(true)
-      }else{
-        alert("Invalid Credentials")
-      }}
+      event.preventDefault();
+      axios({
+        url:'https://3.110.105.240:8080/user/login',
+        method:'POST',
+        data:{
+          username:email,
+          password:password
+        }
+      })
+      .then((response) => {
+          // axios.get('http://localhost:8080/user/currentuser').then((resp)=>{
+          //   const user=resp.data;
+          //   console.log(resp.data);
+          //   user.getSession((err,session)=>{
+          //     if(err){
+          //         console.log(err)
+          //     }
+          //     else{
+          //         console.log(session.isValid());
+          //       }
+          //     })
+          //   })
+          // })
+          // console.log(response)
+          // navigate("/land")
+          console.log(response)
+          if(response.data==="UserNotConfirmedException"){
+            navigate("/verify",{state:{user:email}})
+          }
+          else if(response.data.accessToken !== undefined){
+            setUser(response.data)
+            userScope.setUser(true)
+            localStorage.setItem('user', response.data)
+            // navigate('/')
+          }else{
+            alert('Invalid Credentials')
+          }
+        })}
+
+        const handleForgotPassword=()=>{
+          navigate('/forgotpassword')
+        }
     return(
 
         <Grid container sx={{width:"auto"}}>
@@ -80,7 +103,7 @@ export default function Login() {
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
-                  onClick={()=>{setShowPassword("authed")}}
+                  onClick={()=>{setShowPassword(true)}}
                   onMouseDown={handleMouseDownPassword}
                   edge="end"
                 >
@@ -94,20 +117,16 @@ export default function Login() {
            </Grid>
            <Grid xs={4}/>
            <Grid  item xs={6} sx={{marginTop:"30px", marginBottom:"20px"}}>
-           {/* <NavLink to={'/land'}style={{
-              textDecoration: "none"
-           }}> */}
-             <Button
+             <Box display="flex">
+             <Button fullWidth
              type="submit"
               variant="contained" 
-              sx={{backgroundColor:"#660000", 
-              borderRadius:'0px', 
-              padding:'10px 15px'}} >Sign In</Button>
-             {/* </NavLink> */}
-              <Link sx={{color:"#660000", marginLeft: "8px", textDecoration: "none",fontSize:"14px"}}>Forgot Password</Link>
+              sx={{backgroundColor:"#660000", borderRadius:'4px',textTransform: 'none'}} >Sign In</Button>
+              <Button onClick={handleForgotPassword} fullWidth sx={{color:"#660000",textTransform: 'none'}}>Forgot Password</Button>
+              </Box>
            </Grid>
            <Grid xs={4} />
-      <Grid item xs={6} sx={{ marginBottom: "20px" }}>
+      <Grid item xs={6} sx={{ marginBottom: "20px", visibility: 'hidden' }}>
         <Link
           sx={{
             color: "black",
@@ -122,8 +141,8 @@ export default function Login() {
 
       <Grid xs={4} />
 
-      <Grid container item xs={8}>
-      <Grid item xs={6} sx={{ marginTop: "10px" }} sx={{
+      <Grid container item xs={8} sx={{visibility:"hidden"}}>
+      <Grid item xs={6} sx={{
           padding: "4px"
       }}>
         <NavLink
@@ -152,8 +171,8 @@ export default function Login() {
       <Grid item xs={6}  sx={{
         padding: "4px"
     }}>
-        <a
-          href={"https://www.facebook.com/"}
+        <NavLink
+          to={"/"}
           style={{
             textDecoration: "none",
           }}
@@ -172,14 +191,14 @@ export default function Login() {
           >
             Facebook
           </Button>
-        </a>
+        </NavLink>
       </Grid>
 
       <Grid item xs={6}  sx={{
         padding: "4px"
     }}>
-        <a
-          href={"https://accounts.google.co.in"}
+        <NavLink
+          to={"/"}
           style={{
             textDecoration: "none",
           }}
@@ -198,7 +217,7 @@ export default function Login() {
           >
             Google
           </Button>
-        </a>
+        </NavLink>
       </Grid>
       <Grid item xs={6}  sx={{
         padding: "4px"
@@ -225,13 +244,6 @@ export default function Login() {
           </Button>
         </NavLink>
       </Grid></Grid>
-           <Grid xs={12} sx={{position: 'absolute', bottom: 0, right: 0}}>
-               <img src={img} width="250px" height={"105px"}/>
-           </Grid>
-
-           
-
-           
            </form>
         </Grid>
 

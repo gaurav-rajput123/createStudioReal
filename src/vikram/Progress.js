@@ -12,17 +12,17 @@ import { stepNumber } from '../Context';
 const steps = [
  
   {
-    label: 'Add Course Details',
+    label: 'Log in to your account',
     description:
       'Fill up the details for your new course',
   },
   {
-    label: 'Add Course Outline',
-    description: `Make Structure of your Course`,
+    label: 'Add Course Details',
+    description: `Add details of your Course`,
   },
   {
-    label: 'Upload All the media and files',
-    description: `Upload all the files in desired format`,
+    label: 'Add Course Outline ',
+    description: `Make structure of your course and upload all media files`,
   },
   {
     label: 'Save and Preview the courses',
@@ -54,7 +54,7 @@ export default function Progress() {
     console.log("render")
   })
   return (
-    <Box sx={{ maxWidth: "400px", marginTop: "10px" , backgroundImage:'url(${"https://media.istockphoto.com/photos/growth-arrow-up-and-progress-success-business-skill-increase-graph-picture-id1325680818?b=1&k=20&m=1325680818&s=170667a&w=0&h=0QiulvGagV8DPWJcM-iHpzvaL_5WY_iNHhg9xGjbEVM="})',  marginLeft:"50px", paddingLeft: "20px" , borderRadius: "16px", backgroundColor: "white", width :"70%"}}>
+    <Box sx={{ maxWidth: "400px", marginTop: "10px" ,  marginLeft:"50px", paddingLeft: "20px" , borderRadius: "16px", backgroundColor: "white", width :"70%"}}>
       <Stepper activeStep={counterTracker.val} orientation="vertical"  sx={{paddingLeft:"16px", }}>
         {steps.map((step, index) => (
           <Step key={step.label}>
@@ -63,7 +63,7 @@ export default function Progress() {
               marginY: "4px",
               "& .MuiStepLabel-iconContainer": {
                 "& .MuiSvgIcon-root": {
-                  color: "#51e0bf",
+                  color: counterTracker.val > index ? "#51e0bf" : "rgb(9, 120, 201)", 
                   fontSize: "26px"
                 }
               }

@@ -96,7 +96,7 @@ export default function Register() {
 
     // useEffect(()=>{
       axios({
-      url:'http://localhost:8080/user/signup',
+      url:'https://13.233.142.106:8080/user/signup',
       method:'POST',
       data:{
         username:email,
@@ -105,10 +105,10 @@ export default function Register() {
     })
     .then(
       (response) => {
-        console.log(response.data.user);
+        console.log(response.data.user.username);
 
          //after submit form redirect user
-    navigate('/verify',{state:{user:response.data.user}});
+    navigate('/verify',{state:{user:response.data.user.username}});
       }
     );
   // },[]);
@@ -122,6 +122,7 @@ export default function Register() {
 
   
   return (
+    
     <Grid container sx={{ width: "auto" }}>
       <form onSubmit={onSubmit}>
       <Grid item xs={8} sx={{ marginBottom: "10px" }} onSubmit={handleSubmit}>
@@ -214,7 +215,7 @@ export default function Register() {
        
       </Grid>
       <Grid xs={4} />
-      <Grid item xs={6} sx={{ marginBottom: "10px" }}>
+      <Grid item xs={6} sx={{ marginBottom: "10px" ,visibility: 'hidden'}}>
         <Link
           sx={{
             color: "black",
@@ -229,10 +230,8 @@ export default function Register() {
 
       <Grid xs={4} />
 
-      <Grid container item xs={8}>
-      <Grid item xs={6} sx={{ marginTop: "10px" }} sx={{
-          padding: "4px"
-      }}>
+      <Grid container item xs={8} sx={{visibility: 'hidden'}}>
+      <Grid item xs={6} sx={{ marginTop: "10px",padding: "4px"}}>
         <NavLink
           to={"/"}
           style={{
@@ -333,7 +332,7 @@ export default function Register() {
         </NavLink>
       </Grid></Grid>
 
-      <Grid xs={12} sx={{ position: "absolute", bottom: 0, right: 0 }}>
+      <Grid item xs sx={{ position: "unset", bottom: 0, right: 0 }}>
         <img src={img} width="250px" height={"105px"} />
       </Grid>
       </form>

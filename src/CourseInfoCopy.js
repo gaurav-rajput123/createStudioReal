@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from '@mui/material/Typography';
@@ -11,16 +11,19 @@ import Navbar from "./Navbar";
 import { stepNumber } from "./Context";
 // import v4 from "uuid/dist/v4";
 import { courseArray } from "./Context";
-import { createTheme, duration } from "@mui/material";
+import { createTheme, duration, Input } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { v4 } from "uuid";
 import { minHeight } from "@mui/system";
 import { Description } from "@mui/icons-material";
 import ClearIcon from '@mui/icons-material/Clear';
+import imgss from './Previews.jpg'
+import { formContext } from "./Context";
 import IconButton from '@mui/material/IconButton';
 export default function Courseinfo({ setShowOutlineForm }) {
-
+    const formData = useContext(formContext)
     const counter = React.useContext(stepNumber)
+    const [courseImage, setCourseImage] = useState(null)
     const [newSkill, setNewSkill] = React.useState('')
     const courseContext = React.useContext(courseArray)
     const [courseOut, setCourseOut] = useState({
@@ -41,7 +44,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
             skillArr.length != 0 &&
             requirements.length != 0 &&
             description.length != 0 &&
-            price.length != 0) {
+            price.length != 0 &&
+            fileObj.length !=0) {
 
             counter.increment()
             let newC = {
@@ -63,12 +67,14 @@ export default function Courseinfo({ setShowOutlineForm }) {
             newC.price = price
             courseContext.setCourseState(newC)
             setShowOutlineForm(false)
+            counter.increment()
         } else {
             alert("please complete all the fields")
         }
     }
-
-
+    const handleUpload = (file) => {
+        formData.set("courseImage" ,file)
+    }
     // states
     const [duration, setCourseDuration] = useState('')
     const [courseNumber, setCourseNumber] = useState('')
@@ -79,6 +85,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
     const [requirements, setRequirements] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
+    const [imageUrl, setImageUrl] = useState(null)
+    const [fileObj, setFileObj] = useState('')
     const [skillArr, setSkillArr] = useState([])
 
     return (
@@ -190,11 +198,11 @@ export default function Courseinfo({ setShowOutlineForm }) {
                         return (
                             <span key={skillIndex + skill} style={{ padding: "6px", paddingLeft: "12px", paddingRight: "12px", borderRadius: "8px", background: "#9b3928", fontSize: "18px", marginRight: '12px', color: "white", fontFamily: "Popins" }}>
                                 {skill}
-                                <IconButton sx={{color:"white"}} onClick={() => { 
+                                <IconButton sx={{ color: "white" }} onClick={() => {
                                     let newSkillArr = [...skillArr]
                                     newSkillArr.splice(skillIndex, 1)
                                     setSkillArr(newSkillArr)
-                                 }}>
+                                }}>
                                     <ClearIcon />
                                 </IconButton>
                             </span>
@@ -265,6 +273,69 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     id=" Price"
                     value={price}
                 />
+            </div>
+            <div style={{ marginTop: "12px", marginBottom: "24px" }}>
+                <div>
+                    <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }} >
+                        Course Image*
+                    </Typography>
+                    {
+                        imageUrl === null ?
+                            (
+                                <img src={imgss}
+                                    // alt="asdf"
+                                    style={{
+                                        width: "300px",
+                                        height:"200px",
+                                        objectFit: "contain"
+                                    }} />
+                            )
+                            :
+                            (
+                                <img src={imageUrl}
+                                    // alt="asdf"
+                                    style={{
+                                        width: "300px",
+                                        height:"200px",
+                                        objectFit: "contain"
+                                    }} />
+                            )
+                    }
+                </div>
+                <div>
+                    <label>
+                    <input accept="image/*" type="file" style={{
+                        display: 'none'
+                    }}
+                    onChange={e=>{
+                        setImageUrl(URL.createObjectURL(e.target.files[0]))
+                        setFileObj(e.target.files[0])
+                    }}
+                    
+                    />
+                    <Button
+                   
+                    onClick={() => {
+                        console.log(imageUrl)
+                        handleUpload(fileObj)
+                    }}  
+                        
+                        disabled={fileObj == null ? true : false}
+                        sx={{
+                            marginTop: "10px",
+                            padding: "12px",
+                            borderRadius: "6px",
+                            width: "25px"
+                        }}
+                        // variant="contained"
+                        component="span"
+
+                    >
+                        <Typography>Upload</Typography>
+
+                    </Button>
+                    </label>
+                </div>
             </div>
 
             <div style={{

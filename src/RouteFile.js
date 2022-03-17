@@ -19,6 +19,8 @@ import RegisterCard from './formlogin/components/RegisterCard';
 import TabComponent from './formlogin/components/TabComponent copy';
 import Verification from './formlogin/components/Verification';
 import Corseinfo from './Courseinfo';
+import ForgotPassword from './formlogin/components/ForgotPasswordEmail'
+import NewPassword from './formlogin/components/NewPassword'
 
 import axios from 'axios';
 import { userContext } from './App';
@@ -34,17 +36,23 @@ function RouteFile() {
           
           {
               userScope.user ? (<>
-                <Route path='/verify' element={<Verification/>}/>
                 <Route path="/user" element={<Additionalinfo />} />
                 <Route path="/" element={<Front />} />
                 <Route path="/form" element={<Form />} />
                 <Route path="/create" element={<Home />} />
                 <Route path="/formnew" element={<OutlineForm />} />
                 <Route path="/formnews" element={<Corseinfo/>} />
+                <Route path="/verify" element={<Verification />}/>
+                <Route path="/changepassword" element={<NewPassword />} />
                 
                 </>
-              ): (
-<Route path="/" element={<RegisterCard />} />
+              ): (<>
+              <Route path="/login" element={<RegisterCard id={1} />}/>
+              <Route path="/register" element={<RegisterCard id={0} />}/>
+              <Route path="/forgotpassword" element={<ForgotPassword />}/>
+              <Route path='/changepassword' element={<NewPassword />}/>
+              <Route path="/" element={<RegisterCard id={1} />} />
+</>
               )
           }
           {/* <Route path="/turnoff" element={<TurnOff/>}/> */}
