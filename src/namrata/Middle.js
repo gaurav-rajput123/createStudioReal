@@ -114,7 +114,7 @@ export default function Middle() {
               <Button onClick={() => {
                 counter.increment()
                 axios({
-                  url: 'http://13.233.142.106:8080/get',
+                  url: 'https://api.keewesolutions.com/get',
                   data: formData,
                   method: "POST"
                 }).then(res => console.log(res)).catch(r => console.log(r))

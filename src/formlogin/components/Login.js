@@ -28,7 +28,7 @@ export default function Login() {
     const onSubmit=(event)=>{
       event.preventDefault();
       axios({
-        url:'https://3.110.105.240:8080/user/login',
+        url:'https://api.keewesolutions.com/user/login',
         method:'POST',
         data:{
           username:email,
@@ -59,7 +59,7 @@ export default function Login() {
             setUser(response.data)
             userScope.setUser(true)
             localStorage.setItem('user', response.data)
-            // navigate('/')
+            navigate('/')
           }else{
             alert('Invalid Credentials')
           }

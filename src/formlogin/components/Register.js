@@ -96,7 +96,7 @@ export default function Register() {
 
     // useEffect(()=>{
       axios({
-      url:'https://13.233.142.106:8080/user/signup',
+      url:'https://api.keewesolutions.com/user/signup',
       method:'POST',
       data:{
         username:email,
@@ -108,7 +108,7 @@ export default function Register() {
         console.log(response.data.user.username);
 
          //after submit form redirect user
-    navigate('/verify',{state:{user:response.data.user.username}});
+    navigate('/login',{state:{user:response.data.user.username}});
       }
     );
   // },[]);
