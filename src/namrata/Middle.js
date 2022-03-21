@@ -117,6 +117,7 @@ export default function Middle() {
                 update course
               </Button>
               <Button onClick={() => {
+                setShow("block")
                 counter.increment()
                 axios({
                   url: 'https://api.keewesolutions.com/get',
