@@ -14,7 +14,7 @@ export default function Home() {
     // let courseContext = useContext(courseArray)
     const [courseState, setCourseState] = useState({
         courseId: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
-        data: []
+        data: [], 
     })
 
     const [showOutlineForm, setShowOutlineForm] = useState(false)

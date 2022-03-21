@@ -25,7 +25,8 @@ function Form({ closeModal, activeStep, setActiveStep, setShowModal  }) {
     courseDescription: "",
     courseDuration: "",
     courseOrganisation: "",
-    skillsGained: []
+    skillsGained: [],
+    courseThumbnail: null
   })
 
   const handleNext = () => {
@@ -329,9 +330,9 @@ function Form({ closeModal, activeStep, setActiveStep, setShowModal  }) {
 
             </Box>
           </Grid>
-          <Grid xs={3} marginLeft={'-10%'} sx={{ paddingTop: "95px", }} style={{ flexGrow: 1 }}  >
+          {/* <Grid xs={3} marginLeft={'-10%'} sx={{ paddingTop: "95px", }} style={{ flexGrow: 1 }}  >
             <img src={img1} alt='' />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Card>
     </>

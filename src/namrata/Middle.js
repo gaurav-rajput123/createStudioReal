@@ -93,7 +93,7 @@ export default function Middle() {
                 formData.set('courseDataa', JSON.stringify(data))
                 console.log(courses)
                 const courseMetadata = {
-                  id: generateKey(),
+                  id: courseContext.courseId,
                   description : courseContext.courseDesciption, 
                   duration: courseContext.courseDuration,
                   number: courseContext.courseNumber,
