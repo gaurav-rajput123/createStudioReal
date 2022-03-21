@@ -20,20 +20,14 @@ import ClearIcon from '@mui/icons-material/Clear';
 import imgss from './Previews.jpg'
 import { formContext } from "./Context";
 import IconButton from '@mui/material/IconButton';
+import generateKey from "./resources/generateKey";
 export default function Courseinfo({ setShowOutlineForm }) {
     const formData = useContext(formContext)
     const counter = React.useContext(stepNumber)
     const [courseImage, setCourseImage] = useState(null)
     const [newSkill, setNewSkill] = React.useState('')
     const courseContext = React.useContext(courseArray)
-    const [courseOut, setCourseOut] = useState({
-        courseTitle: "",
-        courseNumber: "",
-        courseDescription: "",
-        courseDuration: "",
-        courseOrganisation: "",
-        skillsGained: []
-    })
+    
 
     const handleNext = () => {
         if (duration.length != 0 &&
@@ -45,7 +39,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
             requirements.length != 0 &&
             description.length != 0 &&
             price.length != 0 &&
-            fileObj.length !=0) {
+            courseImageFile.length !=0) {
 
             counter.increment()
             let newC = {
@@ -68,12 +62,20 @@ export default function Courseinfo({ setShowOutlineForm }) {
             courseContext.setCourseState(newC)
             setShowOutlineForm(false)
             counter.increment()
+            console.log(courseContext)
         } else {
             alert("please complete all the fields")
         }
     }
     const handleUpload = (file) => {
-        formData.set("courseImage" ,file)
+        let newId = generateKey()
+        let newFileName = newId + file.name.substring(file.name.lastIndexOf('.'))
+
+        let newFile = new File([file], newFileName, { type: file.type })
+        let newContext = {...courseContext, courseId: newId}
+        // console.log(newFileName + newContext)
+        courseContext.setCourseState(newContext)
+        formData.set("courseImage" ,newFile)
     }
     // states
     const [duration, setCourseDuration] = useState('')
@@ -82,12 +84,13 @@ export default function Courseinfo({ setShowOutlineForm }) {
     const [title, setTitle] = useState('')
     const [taught, setTaught] = useState('')
     const [skill, setSkill] = useState('')
-    const [requirements, setRequirements] = useState('')
+    const [requirements, setRequirements] = useState('') 
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [imageUrl, setImageUrl] = useState(null)
     const [fileObj, setFileObj] = useState('')
     const [skillArr, setSkillArr] = useState([])
+    const [courseImageFile, setCourseImageFile] = useState('')
 
     return (
         <div style={{ marginTop: "12px", marginBottom: "12px", paddingLeft: "40px", paddingRight: "40px", borderRadius: "12px", background: "white", width: "90%", marginX: "auto" }} >
@@ -309,7 +312,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     }}
                     onChange={e=>{
                         setImageUrl(URL.createObjectURL(e.target.files[0]))
-                        setFileObj(e.target.files[0])
+                        setCourseImageFile(e.target.files[0])
+                        handleUpload(e.target.files[0])
                     }}
                     
                     />
@@ -317,10 +321,10 @@ export default function Courseinfo({ setShowOutlineForm }) {
                    
                     onClick={() => {
                         console.log(imageUrl)
-                        handleUpload(fileObj)
+                        
                     }}  
                         
-                        disabled={fileObj == null ? true : false}
+                        disabled={courseImageFile == null ? true : false}
                         sx={{
                             marginTop: "10px",
                             padding: "12px",
