@@ -345,7 +345,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
 
             >
                 <Button sx={{
-                    background: "#660000",
+                    background: "rgb(9, 120, 201)",
                     color: "white",
                     marginTop: "20px",
                     ":hover": {
@@ -361,7 +361,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     Cancel
                 </Button>
                 <Button sx={{
-                    background: "#660000",
+                    background: "rgb(9, 120, 201)",
                     color: "white",
                     marginTop: "20px",
                     ":hover": {

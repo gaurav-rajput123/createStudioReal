@@ -39,27 +39,44 @@ const Footer = () => {
           <Grid item xs={3}>
             
             <Typography variant="h3">Social Media</Typography>
+
+            <div style={{display:'flex'}}>
             <Link href="https://www.facebook.com/login.php/"  sx={{fontSize:"20px"}}> 
               <i className="fab fa-facebook-f">
                 <FacebookIcon/><br/>
               </i>
             </Link>
+            <Link href="https://www.facebook.com/login.php/" sx={{textDecoration:'none', marginLeft:'2%'}}><a>Facebook</a></Link>
+            </div>
+
+            <div style={{display:'flex'}}>
             <Link href="https://www.instagram.com/accounts/login/"  sx={{fontSize:"20px" , color:"red"}}>
               <i className="fab fa-instagram">
                 <InstagramIcon/><br/>
                 
               </i>
             </Link>
+            <Link href="https://www.instagram.com/accounts/login/" sx={{textDecoration:'none', marginLeft:'2%'}}><a>Instagram</a></Link>
+            </div>
+
+             <div style={{display:'flex'}}>
             <Link href="https://twitter.com/i/flow/login"  sx={{fontSize:"20px"}}>
               <i className="fab fa-twitter">
                 <TwitterIcon/><br/>
               </i>
             </Link>
+            <Link href="https://twitter.com/i/flow/login" sx={{textDecoration:'none', marginLeft:'2%'}}><a>Twitter</a></Link>
+            </div>
+
+             <div style={{display:'flex'}}>
             <Link href="https://www.youtube.com/"  sx={{fontSize:"20px" , color:"red"}}>
               <i className="fab fa-youtube">
                <YouTubeIcon/><br/> 
               </i>
             </Link>
+            <Link href="https://www.youtube.com/" sx={{textDecoration:'none', marginLeft:'2%'}}><a>YouTube</a></Link>
+            </div>
+
           </Grid>
           <Grid item xs={1.5}/>
         </Grid>
