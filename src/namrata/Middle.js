@@ -10,7 +10,12 @@ import axios from "axios";
 import { courseArray } from "../Context";
 import { useEffect } from "react";
 import { stepNumber } from "../Context";
+import { LinearProgress } from "@mui/material";
+
+
 export default function Middle() {
+  const [show, setShow] = useState('none')
+  const [uploaded, setUploaded] = useState(0)
   const counter = useContext(stepNumber)
   const courseContext = useContext(courseArray)
   const [courses, setCourses] = useState([...courseContext.data])
@@ -112,11 +117,17 @@ export default function Middle() {
                 update course
               </Button>
               <Button onClick={() => {
+                setShow("block")
                 counter.increment()
                 axios({
                   url: 'https://api.keewesolutions.com/get',
                   data: formData,
-                  method: "POST"
+                  method: "POST",
+                  onUploadProgress: (data) => {
+                    setUploaded(Math.round((data.loaded/data.total)* 100));
+                 
+                    console.log(Math.round((data.loaded/data.total)* 100));
+                  }
                 }).then(res => console.log(res)).catch(r => console.log(r))
 
               }}
@@ -128,6 +139,12 @@ export default function Middle() {
               >
                 upload course and save
               </Button>
+
+              <Box display={show} sx={{marginTop:'2%'}}>
+              <LinearProgress variant="determinate" value={uploaded} />
+              {`${uploaded}%`}
+              </Box>
+
               {/* <Button onClick={() => console.log(courseContext)}>doit</Button>
               <Button onClick={() => {
                 console.log("hello")

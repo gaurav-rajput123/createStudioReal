@@ -165,6 +165,7 @@ export default function Register() {
             onChange={event=>setPassword(event.target.value)}
             type={showPassword ? 'text' : 'password'}
             value={password}
+            fullWidth
             
             endAdornment={
               <InputAdornment position="end">

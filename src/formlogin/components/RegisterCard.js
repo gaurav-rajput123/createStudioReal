@@ -1,11 +1,23 @@
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Card } from '@mui/material';
 // import Ards from './fullpage';
 import Ardss from './Ardss';
 import Register from "./Register";
 import logo from '../MRSSPTU.png'
 import TabComponent from './TabComponent copy';
+import "./register.css";
+import { styled } from '@mui/material';
+
+const StyledCard = styled(Card)(({theme})=>({
+  [theme.breakpoints.up('lg')]: {
+    backgroundImage: "-webkit-linear-gradient(10deg, #660000 43%, #FFFFFF 43%)"
+  }
+  ,
+  [theme.breakpoints.down('lg')]: {
+    backgroundImage: "white"
+  }
+}))
 
 export default function RegisterCard(props) {
   return (
