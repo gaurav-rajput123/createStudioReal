@@ -74,9 +74,27 @@ function SubjectTile(prop) {
 
 
   const getDescription = (description) => {
+
     const newArr = [...courseArray]
-    const stArr = parse(description)
-    newArr[courseIndex].description = convertToString(stArr)
+
+    let emptyStr = ''
+    if(!Array.isArray(description)){
+    let descriptionArr = []
+    descriptionArr.push(description)
+    description = descriptionArr
+  
+  }
+    description.forEach(item=>{
+      if(typeof item.props.children === 'string'){
+        emptyStr += item.props.children + '\n'
+      }else{
+        emptyStr += '\n'
+      }
+      
+    })
+    console.log(emptyStr)
+    
+    newArr[courseIndex].description = emptyStr
     updateCourseArray(newArr)
   }
 

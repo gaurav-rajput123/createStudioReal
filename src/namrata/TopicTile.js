@@ -68,8 +68,25 @@ function TopicTile({ topicIndex,  updateCourseArray, courseArray, courseIndex, e
 
   const getDescription = (description) => {
     const newArr = [...courseArray]
-    const stArr = parse(description)
-    newArr[courseIndex].topics[topicIndex].description = convertToString(stArr)
+    let emptyStr = ''
+    if(!Array.isArray(description)){
+    let descriptionArr = []
+    descriptionArr.push(description)
+    description = descriptionArr
+  
+  }
+    description.forEach(item=>{
+      if(typeof item.props.children === 'string'){
+        emptyStr += item.props.children + '\n'
+      }else{
+        emptyStr += '\n'
+      }
+      
+    })
+    console.log(emptyStr)
+    
+    // newArr[courseIndex].description = emptyStr
+    newArr[courseIndex].topics[topicIndex].description = emptyStr
     updateCourseArray(newArr)
   }
 

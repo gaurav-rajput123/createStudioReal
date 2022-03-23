@@ -34,7 +34,7 @@ function TextDescription({ getDescription, titleDescription, skipDescription, mo
           display: "flex"
         }}>
         <Button variant="contained" 
-        // onClick={() => getDescription(value)}
+        onClick={() => getDescription(value)}
          fullWidth sx={{
           padding: "12px",
           marginY: "12px",
