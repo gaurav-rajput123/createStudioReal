@@ -18,8 +18,9 @@ export default function CheckCard({ question, updateAssesment, index }) {
   let [options, setOptions] = useState([])
   const [correctOption, setCorrectOption] = useState('')
   const updateContent = () => {
+    console.log(question)
     let newMCQ = {
-      question: parse(question).props.children,
+      question: parse(question),
       options: options,
       correctOption: correctOption,
       id: generateKey()
@@ -30,13 +31,7 @@ export default function CheckCard({ question, updateAssesment, index }) {
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <div>
-          {/* <Typography
-            variant="h4"
-            sx={{ padding: "5px 5px 5px 5px" }}
-            color="text.secondary"
-          >
-            Multiple Choice 
-          </Typography> */}
+          
 
 
           <Typography sx={{ padding: "5px 5px 0px 5px" }} variant="h7">

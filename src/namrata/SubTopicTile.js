@@ -539,7 +539,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                         paddingY: "24px"
                       }}
                         key={assesment.id}>
-                        <RadioButtonAssesment {...basicProps} color={"#b0eff9"} />
+                        <RadioButtonAssesment {...basicProps} color={"#b0eff9"} index={assesmentIndex} />
                       </Box>
 
                     )
