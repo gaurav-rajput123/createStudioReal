@@ -10,7 +10,7 @@ import AudioFileIcon from "@mui/icons-material/AudioFile";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import SlideshowIcon from "@mui/icons-material/Slideshow";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import EditIcon from '@mui/icons-material/Edit';
 import FeedIcon from '@mui/icons-material/Feed';
@@ -97,7 +97,12 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
     "audio": false,
     'pdf': false
   })
-
+  useEffect(()=>{
+    let array = courseContext.data
+    if(array[courseIndex].topics[topicIndex].subTopics[subTopicIndex].name != "newSubTopic"){
+      setLabel(array[courseIndex].topics[topicIndex].subTopics[subTopicIndex].name)
+    }
+  })
   const setLabelController = () => {
     setIsTitle(!isTitle)
   }
@@ -347,9 +352,11 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
               sx={{
                 minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px", backgroundColor: '#fff',
                 '&:hover': {
-                  backgroundColor: '#fff',
+                  
                   color: "#000000",
-                }
+
+                },
+                backgroundColor: courseContext.data[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource.audio === true  ? "green" : '#fff',
               }}
 
               onClick={() => {
@@ -368,9 +375,10 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
               sx={{
                 minWidth: "150px", height: "100px", color: "#000000", padding: "5px 50px 5px 50px", backgroundColor: '#fff',
                 '&:hover': {
-                  backgroundColor: '#fff',
+               
                   color: "#000000",
-                }
+                },
+                backgroundColor: courseContext.data[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource.video === true  ? "#90EE90" : '#fff',
               }}
 
               onClick={() => {
@@ -701,4 +709,3 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
   )
 }
-

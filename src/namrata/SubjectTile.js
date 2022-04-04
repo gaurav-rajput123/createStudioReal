@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Card, IconButton, Box, Button, Collapse } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import EditIcon from '@mui/icons-material/Edit';
 import FeedIcon from '@mui/icons-material/Feed';
@@ -14,13 +14,15 @@ import TopicTile from './TopicTile';
 import convertToString from "../resources/convertToString";
 // import Subsection from './Subsection';
 // import parse from 'html-react-parser'
+import { courseArray as courseArrayContext } from "../Context";
 import generateKey from "../resources/generateKey";
 import FileCopyIcon from '@mui/icons-material/FileCopy';
+import { useEffect } from "react";
 const parse = require('html-react-parser')
 
 function SubjectTile(prop) {
   let { name, changeCourseName, courseIndex, courseArray, addTopics, updateCourseArray, expand } = prop
-
+  const courseContext = useContext(courseArrayContext)
   const StyledCard = styled(Card)({
     display: "flex",
     margin: '12px 10px',
@@ -50,20 +52,25 @@ function SubjectTile(prop) {
     setExpanded(!expanded);
 
   };
-
+  useEffect(()=>{
+    let array = courseContext.data
+    if(array[courseIndex].name !=  "Module"){
+      setLabel(array[courseIndex].name)
+    }
+  })
 
   const addNewTopics = () => {
     let newCourseArray = [...courseArray]
     if (newCourseArray[courseIndex].topics !== undefined) {
       newCourseArray[courseIndex].topics.push({
         id: generateKey(),
-        name: "Hello Sweetie"
+        name: "New Topic"
       })
     } else {
       newCourseArray[courseIndex].topics = [
         {
           id: generateKey(),
-          name: "Hello Sweetie"
+          name: "New Topic"
         }
       ]
     }

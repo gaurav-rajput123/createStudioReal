@@ -4,7 +4,7 @@ import Progress from './vikram/Progress';
 import CardAnim from "./namrata/CardAnim";
 import Header from "./namrata/Topbar";
 import { stepNumber } from "./Context";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { courseArray } from "./Context";
 import Footer from "./Footer";
 import Corseinfo from "./Courseinfo";
@@ -12,14 +12,16 @@ import Courseinfo from "./CourseInfoCopy";
 export default function Home() {
     let context = useContext(stepNumber)
     // let courseContext = useContext(courseArray)
-    const [courseState, setCourseState] = useState({
-        courseId: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
-        data: [], 
-    })
+    // const [courseState, setCourseState] = useState({
+    //     courseId: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
+    //     data: [], 
+    // })
 
     const [showOutlineForm, setShowOutlineForm] = useState(false)
+
+    
     return (
-        <courseArray.Provider value={{ ...courseState, setCourseState }}>
+        
             <Grid container>
                 <Grid item xs={12} sx={{ paddingBottom: "30px" }}>
                     <Header />
@@ -47,6 +49,6 @@ export default function Home() {
                     <Footer />
                 </Grid>
             </Grid>
-        </courseArray.Provider>
+        
     )
 }

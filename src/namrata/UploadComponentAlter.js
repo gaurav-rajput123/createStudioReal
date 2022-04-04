@@ -59,7 +59,21 @@ function UploadComponentAlter({ accept, courseArray, courseIndex, topicIndex, su
                                         multiple
                                         type="file"
                                         onChange={e => {
-                                            setFileObj(e.target.files[0])
+                                            console.log(e.target.files)
+                                            let transfileName = courseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].id + '.srt'
+                                            let newFile = new File(e.target.files, transfileName)
+                                            console.log(newFile)
+                                            formData.append('transcript', newFile, transfileName)
+                                            let newCourseArray = [...courseArray]
+
+                                            if (newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource != undefined) {
+                                                newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource["transcript"] = true
+                                            } else {
+                                                newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource = {}
+                                                newCourseArray[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource["transcript"] = true
+                                            }
+
+                                            updateCourseArray(newCourseArray)
                                         }} />
                                     <ListItemButton className="upload-button" variant="contained" sx={{ width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }} >
                                         <AttachmentIcon sx={{ paddingRight: "10px" }} />

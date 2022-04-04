@@ -13,7 +13,8 @@ import { stepNumber } from "../Context";
 import { LinearProgress } from "@mui/material";
 
 
-export default function Middle({ myCourses }) {
+export default function MiddleMyCourses() {
+  
   const [show, setShow] = useState('none')
   const [uploaded, setUploaded] = useState(0)
   const counter = useContext(stepNumber)
@@ -32,7 +33,7 @@ export default function Middle({ myCourses }) {
     let newCourses = [...courses]
     newCourses.push({
       id: generateKey(),
-      name: "New Module"
+      name: "Basic Electrical Engineering"
     })
     courseContext.setCourseState({ ...courseContext, data: newCourses })
   }
@@ -55,42 +56,22 @@ export default function Middle({ myCourses }) {
     courseContext.setCourseState({ ...courseContext, data: newUpdatedCourseArray })
   }
 
-
-  const resetCourse = () => {
-    let newCourseContent = {...courseContext}
-    newCourseContent.courseDesciption = ''
-    newCourseContent.courseDuration = ''
-    newCourseContent.courseId = ''
-    newCourseContent.courseNumber = ''
-    newCourseContent.courseTitle = ''
-    newCourseContent.data = []
-    newCourseContent.organisation = ''
-    newCourseContent.skillsGained = []
-    localStorage.removeItem('courseContext')
-    courseContext.setCourseState(newCourseContent)
-  }
   return (
     <Box className="box-lista" style={{ padding: "6px 0px", margin: "0px 10px 0px 12px", width: "98%", zIndex: 2 }}>
-
-      <div style={{ display: "flex", justifyContent: 'space-around' }}>
-        <Butn Text="Select Course" disabled />
-        <Butn Text="Add Module" clickHoja={addNewSection} />
-        <Butn Text="Reset" clickHoja={()=>{
-          resetCourse()
-        }} />
-        <Butn Text="Live View" disabled />
-        <Butn Text=" Save" disabled />
-      </div>
-
-
-
       {
         courseContext.data.length != 0 ? (
           <div>
-            <Paper style={{ backgroundColor: "white", alignItems: "flex-start", height: "auto", borderRadius: "15px", paddingBottom: '1%', paddingTop: "1%" }}>
+            <Paper style={{ backgroundColor: "white", alignItems: "flex-start", height: "auto", borderRadius: "15px", paddingBottom: '1%' }}>
 
 
-
+              <div style={{ display: "flex", justifyContent: 'space-around' }}>
+                <Butn Text="Select Course" disabled />
+                <Butn Text="Add Module" clickHoja={addNewSection} />
+                <Butn Text="Collapse All" disabled />
+                <Butn Text="Live View" disabled />
+                <Butn Text=" Save" disabled />
+              </div>
+              <Card />
               {courses.map((item, index) => {
                 return (
                   <MainTile key={item.id} course={item} courseIndex={index} courseArray={courses} updateCurrentCourse={updateCourse}
@@ -105,9 +86,6 @@ export default function Middle({ myCourses }) {
               marginBottom: "12px"
             }}>
               <Button onClick={() => {
-
-                let localCourseContext = JSON.stringify(courseContext)
-                localStorage.setItem('courseContext', localCourseContext)
                 counter.increment()
                 const data = {
                   name: "hello",
@@ -117,7 +95,7 @@ export default function Middle({ myCourses }) {
                 console.log(courses)
                 const courseMetadata = {
                   id: courseContext.courseId,
-                  description: courseContext.courseDesciption,
+                  description : courseContext.courseDesciption, 
                   duration: courseContext.courseDuration,
                   number: courseContext.courseNumber,
                   title: courseContext.courseTitle,
@@ -148,9 +126,9 @@ export default function Middle({ myCourses }) {
                   data: formData,
                   method: "POST",
                   onUploadProgress: (data) => {
-                    setUploaded(Math.round((data.loaded / data.total) * 100));
-
-                    console.log(Math.round((data.loaded / data.total) * 100));
+                    setUploaded(Math.round((data.loaded/data.total)* 100));
+                 
+                    console.log(Math.round((data.loaded/data.total)* 100));
                   }
                 }).then(res => console.log(res)).catch(r => console.log(r))
 
@@ -163,10 +141,10 @@ export default function Middle({ myCourses }) {
               >
                 upload course and save
               </Button>
-                <Button onClick={()=>console.log(courseContext)}>see context</Button>
-              <Box display={show} sx={{ marginTop: '2%' }}>
-                <LinearProgress variant="determinate" value={uploaded} />
-                {`${uploaded}%`}
+
+              <Box display={show} sx={{marginTop:'2%'}}>
+              <LinearProgress variant="determinate" value={uploaded} />
+              {`${uploaded}%`}
               </Box>
 
               {/* <Button onClick={() => console.log(courseContext)}>doit</Button>
@@ -179,111 +157,7 @@ export default function Middle({ myCourses }) {
               }}>here</Button> */}
             </div>
           </div>
-        ) :
-          null
-        // (
-        //   <div>
-        //     <Paper style={{ backgroundColor: "white", alignItems: "flex-start", height: "auto", borderRadius: "15px", paddingBottom: '1%' }}>
-
-
-        //       <div style={{ display: "flex", justifyContent: 'space-around' }}>
-        //         <Butn Text="Select Course" disabled />
-        //         <Butn Text="Add Module" clickHoja={addNewSection} />
-        //         <Butn Text="Collapse All" disabled />
-        //         <Butn Text="Live View" disabled />
-        //         <Butn Text=" Save" disabled />
-        //       </div>
-        //       <Card />
-        //       {courses.map((item, index) => {
-        //         return (
-        //           <MainTile key={item.id} course={item} courseIndex={index} courseArray={courses} updateCurrentCourse={updateCourse}
-        //             changeCourseName={changeCourseName}
-        //             updateCourseArray={updateCourseArray}
-        //           />
-        //         )
-        //       })}
-        //     </Paper>
-        //     <div style={{
-        //       marginTop: "24px",
-        //       marginBottom: "12px"
-        //     }}>
-        //       <Button onClick={() => {
-
-        //         let localCourseContext = JSON.stringify(courseContext)
-        //         localStorage.setItem('courseContext', localCourseContext)
-        //         counter.increment()
-        //         const data = {
-        //           name: "hello",
-        //           data: courses
-        //         }
-        //         formData.set('courseDataa', JSON.stringify(data))
-        //         console.log(courses)
-        //         const courseMetadata = {
-        //           id: courseContext.courseId,
-        //           description : courseContext.courseDesciption, 
-        //           duration: courseContext.courseDuration,
-        //           number: courseContext.courseNumber,
-        //           title: courseContext.courseTitle,
-        //           organisation: courseContext.organisation,
-        //           requirement: courseContext.requirement,
-        //           skills: [...courseContext.skillsGained]
-        //         }
-        //         formData.set("metadata", JSON.stringify(courseMetadata))
-        //         formData.set('user', JSON.stringify({
-        //           id: "12345"
-        //         }))
-        //       }}
-        //         sx={{
-        //           marginRight: "36px",
-
-        //         }}
-        //         variant="contained"
-
-        //       >
-        //         update course
-        //       </Button>
-        //       <Button onClick={() => {
-        //         // localStorage.removeItem('courseContext')
-        //         setShow("block")
-        //         counter.increment()
-        //         axios({
-        //           url: 'https://api.keewesolutions.com/get',
-        //           // url: "http://localhost:8080/get",
-        //           data: formData,
-        //           method: "POST",
-        //           onUploadProgress: (data) => {
-        //             setUploaded(Math.round((data.loaded/data.total)* 100));
-
-        //             console.log(Math.round((data.loaded/data.total)* 100));
-        //           }
-        //         }).then(res => console.log(res)).catch(r => console.log(r))
-
-        //       }}
-        //         sx={{
-        //           marginRight: "36px",
-
-        //         }}
-        //         variant="contained"
-        //       >
-        //         upload course and save
-        //       </Button>
-
-        //       <Box display={show} sx={{marginTop:'2%'}}>
-        //       <LinearProgress variant="determinate" value={uploaded} />
-        //       {`${uploaded}%`}
-        //       </Box>
-
-        //       {/* <Button onClick={() => console.log(courseContext)}>doit</Button>
-        //       <Button onClick={() => {
-        //         console.log("hello")
-        //         for (var pair of formData.entries()) {
-        //           console.log("here")
-        //           console.log(pair[0]+ ', ' + pair[1]); 
-        //       }
-        //       }}>here</Button> */}
-        //     </div>
-        //   </div>
-        // )
+        ) : null
       }
 
     </Box>
@@ -375,7 +249,7 @@ function TopicTileBox({ topic, topicIndex, topicArray, changeTopicName, addNewSu
                 updateCourseArray={updateCourseArray}
                 topicIndex={topicIndex}
                 subTopicIndex={subTopicIndex}
-              // updateCourseArray={updateCourseArray}
+                // updateCourseArray={updateCourseArray}
               />
             })
           }

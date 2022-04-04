@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Card, IconButton, Typography, Box, Collapse } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import EditIcon from '@mui/icons-material/Edit';
 import FeedIcon from '@mui/icons-material/Feed';
@@ -13,13 +13,15 @@ import Collapsible from "./SubContent";
 import Subsection from './SubTopicTile';
 import convertToString from "../resources/convertToString";
 import { FileCopy } from "@mui/icons-material";
+import { useEffect } from "react";
+import { courseArray as courseArrayContext } from "../Context";
 import generateKey from "../resources/generateKey";
 const parse = require('html-react-parser')
 
 
 
 function TopicTile({ topicIndex,  updateCourseArray, courseArray, courseIndex, expand }) {
-
+  const courseContext = useContext(courseArrayContext)
 
   const StyledCard = styled(Card)({
     display: "flex",
@@ -51,7 +53,13 @@ function TopicTile({ topicIndex,  updateCourseArray, courseArray, courseIndex, e
     // addSubTopics()
     let newSubTopic = {
       id: generateKey(),
-      "name": "newSubTopic"
+      "name": "newSubTopic",
+      resource: {
+        'ppt': false,
+        'audio': false,
+        "video": false,
+        'pdf': false
+      }
     }
     let newCourseArray = [...courseArray]
     if(newCourseArray[courseIndex].topics[topicIndex].subTopics ){ newCourseArray[courseIndex].topics[topicIndex].subTopics.push(newSubTopic)}else  {
@@ -64,7 +72,12 @@ function TopicTile({ topicIndex,  updateCourseArray, courseArray, courseIndex, e
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+  useEffect(()=>{
+    let array = courseContext.data
+    if(array[courseIndex].topics[topicIndex].name != "New Topic"){
+      setLabel(array[courseIndex].topics[topicIndex].name)
+    }
+  })
 
   const getDescription = (description) => {
     const newArr = [...courseArray]
