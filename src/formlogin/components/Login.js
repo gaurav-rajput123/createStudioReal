@@ -6,11 +6,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Visibility } from "@mui/icons-material";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
-import { userContext } from "../../App";
 
+import { UserContext } from "../../Context";
 
 export default function Login() {
-  const userScope = useContext(userContext)
+  
+  
   const navigate = useNavigate();
   const [user, setUser] = useState()
   const [email,setEmail]=useState("");
@@ -20,6 +21,7 @@ export default function Login() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const contextUser = useContext(UserContext)
 
     const handleClick = ()=> {
         alert("path not set")
@@ -36,34 +38,35 @@ export default function Login() {
         }
       })
       .then((response) => {
-          // axios.get('http://localhost:8080/user/currentuser').then((resp)=>{
-          //   const user=resp.data;
-          //   console.log(resp.data);
-          //   user.getSession((err,session)=>{
-          //     if(err){
-          //         console.log(err)
-          //     }
-          //     else{
-          //         console.log(session.isValid());
-          //       }
-          //     })
-          //   })
-          // })
-          // console.log(response)
-          // navigate("/land")
           console.log(response)
           if(response.data==="UserNotConfirmedException"){
             navigate("/verify",{state:{user:email}})
           }
           else if(response.data.accessToken !== undefined){
-            setUser(response.data)
-            userScope.setUser(true)
-            localStorage.setItem('user', response.data)
+            let userData = response.data
+            let newUserContext = {...contextUser}
+            newUserContext.authenticated = true
+            let newUser = {
+              id: userData.idToken.payload['cognito:username'],
+              email: userData.idToken.payload.email,
+              idToken: userData.idToken.jwtToken,
+              refreshToken: userData.refreshToken
+            }
+            newUserContext.user = newUser
+            contextUser.setNewUser(newUserContext)
+            
+            let localStorageObject = JSON.stringify({
+              isAuthenticated: true,
+              user: newUser
+            })
+            localStorage.setItem("keewe.cmsStorage", localStorageObject)
+            
             navigate('/')
           }else{
             alert('Invalid Credentials')
           }
-        })}
+        })
+      }
 
         const handleForgotPassword=()=>{
           navigate('/forgotpassword')

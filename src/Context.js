@@ -23,3 +23,8 @@ export const courseArray = React.createContext({
     courseTitle: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
     data: [], setCourseState: ()=>{}, courseId: ''
 })
+export const UserContext = React.createContext({
+    authenticated: false,
+    user:{},
+    setNewUser : ()=>{},
+})

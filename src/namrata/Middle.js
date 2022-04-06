@@ -5,7 +5,7 @@ import SubjectTile from "./SubjectTile";
 import TopicTile from "./TopicTile";
 import SubTopicTile from './SubTopicTile';
 import generateKey from "../resources/generateKey";
-import { formContext } from "../Context";
+import { formContext, UserContext } from "../Context";
 import axios from "axios";
 import { courseArray } from "../Context";
 import { useEffect } from "react";
@@ -14,6 +14,7 @@ import { LinearProgress } from "@mui/material";
 
 
 export default function Middle({ myCourses }) {
+  const userContext = useContext(UserContext)
   const [show, setShow] = useState('none')
   const [uploaded, setUploaded] = useState(0)
   const counter = useContext(stepNumber)
@@ -127,7 +128,7 @@ export default function Middle({ myCourses }) {
                 }
                 formData.set("metadata", JSON.stringify(courseMetadata))
                 formData.set('user', JSON.stringify({
-                  id: "12345"
+                  id: userContext.user.id
                 }))
               }}
                 sx={{

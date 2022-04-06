@@ -24,10 +24,11 @@ import NewPassword from './formlogin/components/NewPassword'
 import { courseArray } from './Context';
 import axios from 'axios';
 import { userContext } from './App';
+import { UserContext } from './Context';
 import { Button } from '@mui/material';
 import TurnOff from "./Turnoff"
 function RouteFile() {
-  const userScope = useContext(userContext)
+  // const userScope = useContext(userContext)
   const navigate = useNavigate()
   const [courseState, setCourseState] = useState({
     courseId: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
@@ -42,14 +43,53 @@ function RouteFile() {
       console.log(course)
     }
   },[])
+
+  const [authState, setAuthState] = useState({
+    authenticated: false,
+    user: {},
+  })
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("keewe.cmsStorage");
+    if (loggedInUser) {
+        const foundUser = JSON.parse(loggedInUser);
+        axios({
+            url: "https://lmsapi.keewesolutions.com/check",
+            // url: 'http://localhost:8081/check',
+            method: "POST",
+            data: {
+                token: foundUser.user.idToken
+            }
+        }).then(res=>{
+            if(res.data.callStatusCode === 200){
+                let newAuthState = {...authState}
+                newAuthState.authenticated = true
+                let newPayload = res.data.response
+                let newUser = {
+                    id: newPayload['cognito:username'],
+                    email: newPayload.email,
+                    idToken: foundUser.user.idToken,
+                    refreshToken: foundUser.user.refreshToken.token
+                  }
+                  newAuthState.user = newUser
+                setAuthState(newAuthState)
+            }else{
+                navigate('/login')
+            }
+        })
+        
+  
+    }
+  }, []);
   return (
 
     <div>
       <courseArray.Provider value={{ ...courseState, setCourseState }}>
+      
+      <UserContext.Provider value={{ ...authState, setNewUser: setAuthState }}>
+        
       <Routes>
-
         {
-          userScope.user ? (<>
+          authState.authenticated ? (<>
             <Route path="/user" element={<Additionalinfo />} />
             <Route path="/" element={<Front />} />
             <Route path="/form" element={<Form />} />
@@ -70,8 +110,10 @@ function RouteFile() {
           </>
           )
         }
+        </Routes>
+        </UserContext.Provider>
 
-      </Routes>
+      
 
     </courseArray.Provider>
     </div> 
