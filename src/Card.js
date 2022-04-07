@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import { courseArray } from './Context';
 import { NavLink } from 'react-router-dom';
 import { Button, Grid, Card } from '@mui/material';
+import logo from './formlogin/MRSSPTU.png';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -51,12 +52,12 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
                         style={{ padding: '2% 5% 2% 0%', margin: "5% 5% 5% 0%", fontSize: '16px' }}
 
                         avatar={
-                            <Avatar sx={{ bgcolor: [100], height: '44px', width: '37px' }} aria-label="recipe" elementStyle={{ padding: '%' }}>
-                                <img src={""} alt='AP'></img>
+                            <Avatar sx={{ bgcolor: [100], height: '44px', width: '40px' }} aria-label="recipe" elementStyle={{ padding: '%' }}>
+                                <img src={logo} alt='AP'></img>
                             </Avatar>
 
                         }
-                        title="Lady Hinata"
+                        title="MRSPTU"
                         subheader={title}
 
                     />

@@ -62,12 +62,12 @@ export default function MyCourses(props) {
            
                 <Grid container>
                     <Grid container>
-                        <Typography variant="h3" color={'#1a50b2'} paddingTop={'8%'}>
+                        <Typography variant="h4" color={'#1a50b2'} paddingTop={'8%'}>
                             COURSES
                         </Typography>
                         <Grid display={'flex'} sx={{ justifyContent: 'space-between' }} container>
                             <Grid>
-                                <Typography variant="h1" paddingTop={'8%'}>
+                                <Typography variant="h3" paddingTop={'8%'}>
                                     Your Course Library
                                 </Typography>
                             </Grid>
