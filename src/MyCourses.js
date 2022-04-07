@@ -32,6 +32,7 @@ export default function MyCourses(props) {
                 url: process.env.REACT_APP_localURL + "/db/fetchcoursedata",
                 method: "POST",
                 data: {
+                    token: userContext.user.idToken,
                     courseIds: JSON.stringify(courseIds.data.data)
                 }
 
