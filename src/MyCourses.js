@@ -1,10 +1,10 @@
 import {  Grid, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import './CurrentLAnding.css';
 
 import RecipeReviewCard from './Card';
-
+import {UserContext} from './Context'
 
 import './CourseLAyout.css';
 import axios from 'axios';
@@ -14,7 +14,7 @@ import axios from 'axios';
 
 
 export default function MyCourses(props) {
-
+    const userContext = useContext(UserContext)
     const [dataArr, setDataArr] = useState([])
     const sendPostRequest = async (event) => 
     {
@@ -23,7 +23,8 @@ export default function MyCourses(props) {
                 url: process.env.REACT_APP_localURL + '/db/getcourses',
                 method: "POST",
                 data: {
-                    id: "12345"
+                    token: userContext.user.idToken,
+                    id: userContext.user.id
                 }
             })
             console.log(courseIds.data.data)
@@ -72,7 +73,7 @@ export default function MyCourses(props) {
 
                         </Grid>
                         <Grid display={'flex'} container sx={{ justifyContent: 'flex-start'}}>
-                            {dataArr.map(product =>{ 
+                            {dataArr?.map(product =>{ 
                                 
                                 
                                 return (

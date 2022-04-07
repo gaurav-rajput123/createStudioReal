@@ -1,0 +1,16 @@
+@media (min-width: 800px) and (max-width: 1196px) {
+    .imgcoin{
+        opacity: 0.5;
+    }
+    /* .create{
+
+    } */
+}
+@media (min-width: 300px) and (max-width: 799px) {
+    .imgcoin{
+        z-index: -1;
+    }
+    /* .create{
+
+    } */
+}

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './CardAnim.css';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -24,7 +25,7 @@ export default function CardAnim({ name, showOutlineForm }) {
                         <Typography gutterBottom  component="div" style={{ fontFamily: 'Montserrat', fontSize: '28px', fontWeight: '600', color: 'white' }}>
                             Welcome {name}!
                         </Typography>
-                        <Typography variant="body1" color="text.secondary" style={{ fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '500', color: 'white' }}>
+                        <Typography variant="body1" className='create' color="text.secondary" style={{ fontFamily: 'Montserrat', fontSize: '14px', fontWeight: '500', color: 'white' }}>
                             {
                                 courseContext.data.length === 0 ? <>Start making your Course or Program by <br /> clicking on the button below.</> : <>Add new modules and topics for your course</>
                             }
@@ -43,7 +44,7 @@ export default function CardAnim({ name, showOutlineForm }) {
                     </CardActions>
                 </div>
                 {/* <div className="group" > */}
-                <img src={GroupImg} alt="qwerty" style={{ position: 'absolute', right: '05%', bottom: '0%', width: "330px", height: "260px" }} />
+                <img src={GroupImg} alt="qwerty" className='imgcoin' style={{ position: 'absolute', right: '05%', bottom: '0%', width: "330px", height: "260px" }} />
                 {/* </div> */}
             </Card>
         </div>

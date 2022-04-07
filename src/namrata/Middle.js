@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Butn from "./Butn";
-import { Paper, Box, Button, Card, Collapse } from "@mui/material";
+import { Paper, Box, Button, Card, Collapse, Grid } from "@mui/material";
 import SubjectTile from "./SubjectTile";
 import TopicTile from "./TopicTile";
 import SubTopicTile from './SubTopicTile';
@@ -73,7 +73,7 @@ export default function Middle({ myCourses }) {
   return (
     <Box className="box-lista" style={{ padding: "6px 0px", margin: "0px 10px 0px 12px", width: "98%", zIndex: 2 }}>
 
-      <div style={{ display: "flex", justifyContent: 'space-around' }}>
+      <Grid container style={{ display: "flex", justifyContent: 'space-around' }}>
         <Butn Text="Select Course" disabled />
         <Butn Text="Add Module" clickHoja={addNewSection} />
         <Butn Text="Reset" clickHoja={()=>{
@@ -81,7 +81,7 @@ export default function Middle({ myCourses }) {
         }} />
         <Butn Text="Live View" disabled />
         <Butn Text=" Save" disabled />
-      </div>
+      </Grid>
 
 
 
