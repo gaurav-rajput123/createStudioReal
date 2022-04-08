@@ -72,12 +72,7 @@ function TopicTile({ topicIndex,  updateCourseArray, courseArray, courseIndex, e
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  useEffect(()=>{
-    let array = courseContext.data
-    if(array[courseIndex].topics[topicIndex].name != "New Topic"){
-      setLabel(array[courseIndex].topics[topicIndex].name)
-    }
-  })
+  
 
   const getDescription = (description) => {
     const newArr = [...courseArray]

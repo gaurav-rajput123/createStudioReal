@@ -34,15 +34,9 @@ function RouteFile() {
     courseId: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
     data: [],
   })
-  // useEffect(()=>{
-  //   const courseState = localStorage.getItem("courseContext")
-  //   if(courseState != null){
-  //     let course = JSON.parse(courseState)
-  //     setCourseState(course)
-  //     console.log("here is the course context")
-  //     console.log(course)
-  //   }
-  // },[])
+  useEffect(()=>{
+    document.title = "MRSPTU"
+  })
 
   const [authState, setAuthState] = useState({
     authenticated: false,

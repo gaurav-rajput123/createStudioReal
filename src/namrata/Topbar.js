@@ -25,22 +25,18 @@ const Topbar = () => {
                 
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 </Typography>
-                <Typography sx={{ flexGrow: 1 }} style={{display:'flex'}} >
-                {/* <Typography variant="h6" style={{paddingRight:'30px'}}>
-                        <Button variant='text'>About</Button>
-                </Typography> */}
-                <Typography variant="h6"  sx={{ flexGrow: 1 }} >
-                {/* <Button disabled variant='containeda' sx={{
-                    fontSize: "16px",
-                    fontFamily: 'sans-serif',
-                   
-                }}>Create Studio</Button> */}
+                <Typography sx={{ flexGrow: 1 }} style={{display:'flex', alignItems: "center"}} >
+                
+                
+                
                     <Button variant='outlined' onClick={()=>navigate('/create')}>
                         Create Studio
                     </Button>
+                    <div style={{flexGrow: 0.02}}/>  
                     <Button variant='contained' onClick={()=>navigate('/mycourses')}>
                         My Courses
                     </Button>
+                    <div style={{flexGrow: 1}}/>
                     <IconButton
 
                         size="large"
@@ -53,7 +49,7 @@ const Topbar = () => {
                          <Avatar alt="Gaurav" src={profile} />
                     </IconButton >
                     <Button onClick={handleLogout}>LogOut</Button>
-                    </Typography>
+                   
                 </Typography>
                 {/* <Button color="inherit" variant='contained'>Watch Tutorial</Button> */}
                 </Toolbar>

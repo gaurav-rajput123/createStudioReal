@@ -97,12 +97,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
     "audio": false,
     'pdf': false
   })
-  useEffect(()=>{
-    let array = courseContext.data
-    if(array[courseIndex].topics[topicIndex].subTopics[subTopicIndex].name != "newSubTopic"){
-      setLabel(array[courseIndex].topics[topicIndex].subTopics[subTopicIndex].name)
-    }
-  })
+  
   const setLabelController = () => {
     setIsTitle(!isTitle)
   }
