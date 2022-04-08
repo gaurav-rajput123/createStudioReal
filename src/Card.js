@@ -40,10 +40,10 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
     };
 
     return (
-        <Grid sx={{ maxWidth: "300px", minHeight: "300px", margin: '1%', boxShadow: '5px 5px 5px #E5E5E5', borderRadius: '12px' }}>
+        <Grid sx={{ width: "300px", minHeight: "300px", margin: '1%', boxShadow: '5px 5px 5px #E5E5E5', borderRadius: '12px' }}>
             <Card >
                 <CardMedia className='yourcourse' component="img" height="170" image={"https://storage-mediaoutput.s3.ap-south-1.amazonaws.com//thumbnails/" + id + '.png'} alt="Paella dish" sx={{ borderRadius: '10px' }} />
-                <div style={{ display: 'flex' }}>
+                {/* <div style={{ display: 'flex' }}> */}
                     <CardHeader
                         action={<IconButton aria-label="settings"></IconButton>}
 
@@ -88,7 +88,7 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
                             </Button>
                         </NavLink>
                     </CardActions>
-                </div>
+                {/* </div> */}
             </Card>
         </Grid>
     );

@@ -8,6 +8,7 @@ import {UserContext} from './Context'
 
 import './CourseLAyout.css';
 import axios from 'axios';
+import Topbar from './namrata/Topbar';
 
 // import image from '../../../assets/images/DashImage/Ladka2.png'
 
@@ -59,7 +60,7 @@ export default function MyCourses(props) {
 
     return (
         <>
-           
+           <Topbar/>
                 <Grid container>
                     <Grid container>
                         <Typography variant="h4" color={'#1a50b2'} paddingTop={'8%'}>
