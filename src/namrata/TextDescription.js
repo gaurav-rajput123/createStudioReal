@@ -95,7 +95,9 @@ function TextDescription({ getDescription, titleDescription, skipDescription, mo
                 topicIndex !== undefined ? (
                   <MenuItem value={30} onClick={() => {
                     let newCourseArray = [...courseContext.data]
-                    newCourseArray[moduleIndex].topics[topicIndex].subTopics = []
+                    if(newCourseArray[moduleIndex].topics[topicIndex].subTopics === undefined){
+                      newCourseArray[moduleIndex].topics[topicIndex].subTopics = []
+                    }
                     newCourseArray[moduleIndex].topics[topicIndex].subTopics.push({
                       id: generateKey(),
                       name: "new Subtopic",
