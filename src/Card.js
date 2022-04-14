@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import { courseArray } from './Context';
 import { NavLink } from 'react-router-dom';
 import { Button, Grid, Card } from '@mui/material';
+import logo from './formlogin/MRSSPTU.png';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -39,10 +40,10 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
     };
 
     return (
-        <Grid sx={{ maxWidth: "300px", minHeight: "300px", margin: '1%', boxShadow: '5px 5px 5px #E5E5E5', borderRadius: '12px' }}>
+        <Grid sx={{ width: "300px", minHeight: "300px", margin: '1%', boxShadow: '5px 5px 5px #E5E5E5', borderRadius: '12px' }}>
             <Card >
                 <CardMedia className='yourcourse' component="img" height="170" image={"https://storage-mediaoutput.s3.ap-south-1.amazonaws.com//thumbnails/" + id + '.png'} alt="Paella dish" sx={{ borderRadius: '10px' }} />
-                <div style={{ display: 'flex' }}>
+                {/* <div style={{ display: 'flex' }}> */}
                     <CardHeader
                         action={<IconButton aria-label="settings"></IconButton>}
 
@@ -51,12 +52,12 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
                         style={{ padding: '2% 5% 2% 0%', margin: "5% 5% 5% 0%", fontSize: '16px' }}
 
                         avatar={
-                            <Avatar sx={{ bgcolor: [100], height: '44px', width: '37px' }} aria-label="recipe" elementStyle={{ padding: '%' }}>
-                                <img src={""} alt='AP'></img>
+                            <Avatar sx={{ bgcolor: [100], height: '44px', width: '40px' }} aria-label="recipe" elementStyle={{ padding: '%' }}>
+                                <img src={logo} alt='AP'></img>
                             </Avatar>
 
                         }
-                        title="Lady Hinata"
+                        title="MRSPTU"
                         subheader={title}
 
                     />
@@ -87,7 +88,7 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
                             </Button>
                         </NavLink>
                     </CardActions>
-                </div>
+                {/* </div> */}
             </Card>
         </Grid>
     );

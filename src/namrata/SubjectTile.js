@@ -52,12 +52,7 @@ function SubjectTile(prop) {
     setExpanded(!expanded);
 
   };
-  useEffect(()=>{
-    let array = courseContext.data
-    if(array[courseIndex].name !=  "Module"){
-      setLabel(array[courseIndex].name)
-    }
-  })
+  
 
   const addNewTopics = () => {
     let newCourseArray = [...courseArray]
@@ -108,8 +103,10 @@ function SubjectTile(prop) {
   const handleDelete = () => {
     // let newCourseArray = [...courseArray.slice(0, courseIndex), ...courseArray.slice(courseIndex + 1)]
     let newCourseArray = [...courseArray]
+    console.log(courseIndex)
     newCourseArray.splice(courseIndex, 1)
     console.log(newCourseArray)
+    // console.log(newCourseArray)
     updateCourseArray(newCourseArray)
 
   }
