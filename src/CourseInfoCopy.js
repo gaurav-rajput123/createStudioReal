@@ -21,6 +21,9 @@ import imgss from './Previews.jpg'
 import { formContext } from "./Context";
 import IconButton from '@mui/material/IconButton';
 import generateKey from "./resources/generateKey";
+
+
+
 export default function Courseinfo({ setShowOutlineForm }) {
     const formData = useContext(formContext)
     const counter = React.useContext(stepNumber)
