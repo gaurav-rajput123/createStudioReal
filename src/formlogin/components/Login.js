@@ -124,8 +124,8 @@ export default function Login() {
              <Button fullWidth
              type="submit"
               variant="contained" 
-              sx={{backgroundColor:"#660000", borderRadius:'4px',textTransform: 'none'}} >Sign In</Button>
-              <Button onClick={handleForgotPassword} fullWidth sx={{color:"#660000",textTransform: 'none'}}>Forgot Password</Button>
+              sx={{backgroundColor:"#06213F", borderRadius:'4px',textTransform: 'none'}} >Sign In</Button>
+              <Button onClick={handleForgotPassword} fullWidth sx={{color:"#06213F",textTransform: 'none'}}>Forgot Password</Button>
               </Box>
            </Grid>
            <Grid xs={4} />

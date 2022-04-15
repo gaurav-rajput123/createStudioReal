@@ -1,6 +1,7 @@
 import { Button, Grid, Box, Typography, Switch } from '@mui/material'
 import React, { useContext, useState } from 'react'
 import styled from '@emotion/styled';
+import './UploadComponentAlter.css';
 import UploadButton from './Button'
 // import LinkIcon from 
 import LinkIcon from '@mui/icons-material/Link';

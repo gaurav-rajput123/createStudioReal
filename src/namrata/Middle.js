@@ -3,7 +3,7 @@ import Butn from "./Butn";
 import { Paper, Box, Button, Card, Collapse, Grid } from "@mui/material";
 import SubjectTile from "./SubjectTile";
 import TopicTile from "./TopicTile";
-import SubTopicTile from './SubTopicTile';
+import SubTopicTile from "./SubTopicTile";
 import generateKey from "../resources/generateKey";
 import { formContext, UserContext } from "../Context";
 import axios from "axios";
@@ -12,160 +12,189 @@ import { useEffect } from "react";
 import { stepNumber } from "../Context";
 import { LinearProgress } from "@mui/material";
 
-
 export default function Middle({ myCourses }) {
-  const userContext = useContext(UserContext)
-  const [show, setShow] = useState('none')
-  const [uploaded, setUploaded] = useState(0)
-  const counter = useContext(stepNumber)
-  const courseContext = useContext(courseArray)
-  const [courses, setCourses] = useState([...courseContext.data])
+  const userContext = useContext(UserContext);
+  const [show, setShow] = useState("none");
+  const [uploaded, setUploaded] = useState(0);
+  const counter = useContext(stepNumber);
+  const courseContext = useContext(courseArray);
+  const [courses, setCourses] = useState([...courseContext.data]);
   useEffect(() => {
     if (courseContext.data.length === 0) {
-      counter.setVal(1)
+      counter.setVal(1);
     }
-    setCourses(courseContext.data)
-  }, [courseContext.data])
+    setCourses(courseContext.data);
+  }, [courseContext.data]);
   useState(() => {
-    console.log("hello")
-  })
+    console.log("hello");
+  });
   const addNewSection = () => {
-    let newCourses = [...courses]
+    let newCourses = [...courses];
     newCourses.push({
       id: generateKey(),
-      name: "New Module"
-    })
-    courseContext.setCourseState({ ...courseContext, data: newCourses })
-  }
-  const formData = useContext(formContext)
+      name: "New Module",
+    });
+    courseContext.setCourseState({ ...courseContext, data: newCourses });
+  };
+  const formData = useContext(formContext);
 
   const updateCourse = (course, index) => {
-    let newCourseObj = [...courses]
-    newCourseObj[index] = course
-  }
+    let newCourseObj = [...courses];
+    newCourseObj[index] = course;
+  };
 
   const changeCourseName = (courseIndex, courseArray, labelVal) => {
-    let newCourseObj = { ...courseArray[courseIndex] }
-    newCourseObj.name = labelVal
-    let newCourseArray = [...courseArray]
-    newCourseArray[courseIndex] = newCourseObj
-  }
+    let newCourseObj = { ...courseArray[courseIndex] };
+    newCourseObj.name = labelVal;
+    let newCourseArray = [...courseArray];
+    newCourseArray[courseIndex] = newCourseObj;
+  };
 
   const updateCourseArray = (updatedCourseArray) => {
-    let newUpdatedCourseArray = [...updatedCourseArray]
-    courseContext.setCourseState({ ...courseContext, data: newUpdatedCourseArray })
-  }
-
+    let newUpdatedCourseArray = [...updatedCourseArray];
+    courseContext.setCourseState({
+      ...courseContext,
+      data: newUpdatedCourseArray,
+    });
+  };
 
   const resetCourse = () => {
-    let newCourseContent = {...courseContext}
-    newCourseContent.courseDesciption = ''
-    newCourseContent.courseDuration = ''
-    newCourseContent.courseId = ''
-    newCourseContent.courseNumber = ''
-    newCourseContent.courseTitle = ''
-    newCourseContent.data = []
-    newCourseContent.organisation = ''
-    newCourseContent.skillsGained = []
-    localStorage.removeItem('courseContext')
-    courseContext.setCourseState(newCourseContent)
-  }
+    let newCourseContent = { ...courseContext };
+    newCourseContent.courseDesciption = "";
+    newCourseContent.courseDuration = "";
+    newCourseContent.courseId = "";
+    newCourseContent.courseNumber = "";
+    newCourseContent.courseTitle = "";
+    newCourseContent.data = [];
+    newCourseContent.organisation = "";
+    newCourseContent.skillsGained = [];
+    localStorage.removeItem("courseContext");
+    courseContext.setCourseState(newCourseContent);
+  };
   return (
-    <Box className="box-lista" style={{ padding: "6px 0px", margin: "0px 10px 0px 12px", width: "98%", zIndex: 2 }}>
-
-      <Grid container style={{ display: "flex", justifyContent: 'space-around' }}>
-        <Butn Text="Select Course" disabled />
-        <Butn Text="Add Module" clickHoja={addNewSection} />
-        <Butn Text="Reset" clickHoja={()=>{
-          resetCourse()
-        }} />
-        <Butn Text="Live View" disabled />
-        <Butn Text=" Save" disabled />
-      </Grid>
-
-
-
+    <Box
+      className="box-lista"
+      style={{
+        padding: "6px 0px",
+        margin: "0px 10px 0px 12px",
+        width: "98%",
+        zIndex: 2,
+      }}
+    >
       {
         courseContext.data.length != 0 ? (
           <div>
-            <Paper style={{ backgroundColor: "white", alignItems: "flex-start", height: "auto", borderRadius: "15px", paddingBottom: '1%', paddingTop: "1%" }}>
-
-
-
+            <Grid
+              container
+              style={{ display: "flex", justifyContent: "space-around" }}
+            >
+              <Butn Text="Select Course" disabled />
+              <Butn Text="Add Module" clickHoja={addNewSection} />
+              <Butn
+                Text="Reset"
+                clickHoja={() => {
+                  resetCourse();
+                }}
+              />
+              <Butn Text="Live View" disabled />
+              <Butn Text=" Save" disabled />
+            </Grid>
+            <Paper
+              style={{
+                backgroundColor: "white",
+                alignItems: "flex-start",
+                height: "auto",
+                borderRadius: "15px",
+                paddingBottom: "1%",
+                paddingTop: "1%",
+              }}
+            >
               {courses.map((item, index) => {
                 return (
-                  <MainTile key={item.id} course={item} courseIndex={index} courseArray={courses} updateCurrentCourse={updateCourse}
+                  <MainTile
+                    key={item.id}
+                    course={item}
+                    courseIndex={index}
+                    courseArray={courses}
+                    updateCurrentCourse={updateCourse}
                     changeCourseName={changeCourseName}
                     updateCourseArray={updateCourseArray}
                   />
-                )
+                );
               })}
             </Paper>
-            <div style={{
-              marginTop: "24px",
-              marginBottom: "12px"
-            }}>
-              <Button onClick={() => {
 
-                let localCourseContext = JSON.stringify(courseContext)
-                localStorage.setItem('courseContext', localCourseContext)
-                counter.increment()
-                const data = {
-                  name: "hello",
-                  data: courses
-                }
-                formData.set('courseDataa', JSON.stringify(data))
-                console.log(courses)
-                const courseMetadata = {
-                  id: courseContext.courseId,
-                  description: courseContext.courseDesciption,
-                  duration: courseContext.courseDuration,
-                  number: courseContext.courseNumber,
-                  title: courseContext.courseTitle,
-                  organisation: courseContext.organisation,
-                  requirement: courseContext.requirement,
-                  skills: [...courseContext.skillsGained]
-                }
-                formData.set("metadata", JSON.stringify(courseMetadata))
-                formData.set('user', JSON.stringify({
-                  id: userContext.user.id
-                }))
+            <div
+              style={{
+                marginTop: "24px",
+                marginBottom: "12px",
               }}
+            >
+              <Button
+                onClick={() => {
+                  let localCourseContext = JSON.stringify(courseContext);
+                  localStorage.setItem("courseContext", localCourseContext);
+                  counter.increment();
+                  const data = {
+                    name: "hello",
+                    data: courses,
+                  };
+                  formData.set("courseDataa", JSON.stringify(data));
+                  console.log(courses);
+                  const courseMetadata = {
+                    id: courseContext.courseId,
+                    description: courseContext.courseDesciption,
+                    duration: courseContext.courseDuration,
+                    number: courseContext.courseNumber,
+                    title: courseContext.courseTitle,
+                    organisation: courseContext.organisation,
+                    requirement: courseContext.requirement,
+                    skills: [...courseContext.skillsGained],
+                  };
+                  formData.set("metadata", JSON.stringify(courseMetadata));
+                  formData.set(
+                    "user",
+                    JSON.stringify({
+                      id: userContext.user.id,
+                    })
+                  );
+                }}
                 sx={{
                   marginRight: "36px",
-
                 }}
                 variant="contained"
-
               >
                 update course
               </Button>
-              <Button onClick={() => {
-                setShow("block")
-                counter.increment()
-                axios({
-                  url: 'https://api.keewesolutions.com/get',
-                  // url: "http://localhost:8080/get",
-                  data: formData,
-                  method: "POST",
-                  onUploadProgress: (data) => {
-                    setUploaded(Math.round((data.loaded / data.total) * 100));
+              <Button
+                onClick={() => {
+                  setShow("block");
+                  counter.increment();
+                  axios({
+                    url: "https://api.keewesolutions.com/get",
+                    // url: "http://localhost:8080/get",
+                    data: formData,
+                    method: "POST",
+                    onUploadProgress: (data) => {
+                      setUploaded(Math.round((data.loaded / data.total) * 100));
 
-                    console.log(Math.round((data.loaded / data.total) * 100));
-                  }
-                }).then(res => console.log(res)).catch(r => console.log(r))
-
-              }}
+                      console.log(Math.round((data.loaded / data.total) * 100));
+                    },
+                  })
+                    .then((res) => console.log(res))
+                    .catch((r) => console.log(r));
+                }}
                 sx={{
                   marginRight: "36px",
-
                 }}
                 variant="contained"
               >
                 upload course and save
               </Button>
-                <Button onClick={()=>console.log(courseContext)}>see context</Button>
-              <Box display={show} sx={{ marginTop: '2%' }}>
+              <Button onClick={() => console.log(courseContext)}>
+                see context
+              </Button>
+              <Box display={show} sx={{ marginTop: "2%" }}>
                 <LinearProgress variant="determinate" value={uploaded} />
                 {`${uploaded}%`}
               </Box>
@@ -180,12 +209,10 @@ export default function Middle({ myCourses }) {
               }}>here</Button> */}
             </div>
           </div>
-        ) :
-          null
+        ) : null
         // (
         //   <div>
         //     <Paper style={{ backgroundColor: "white", alignItems: "flex-start", height: "auto", borderRadius: "15px", paddingBottom: '1%' }}>
-
 
         //       <div style={{ display: "flex", justifyContent: 'space-around' }}>
         //         <Butn Text="Select Course" disabled />
@@ -221,7 +248,7 @@ export default function Middle({ myCourses }) {
         //         console.log(courses)
         //         const courseMetadata = {
         //           id: courseContext.courseId,
-        //           description : courseContext.courseDesciption, 
+        //           description : courseContext.courseDesciption,
         //           duration: courseContext.courseDuration,
         //           number: courseContext.courseNumber,
         //           title: courseContext.courseTitle,
@@ -279,50 +306,58 @@ export default function Middle({ myCourses }) {
         //         console.log("hello")
         //         for (var pair of formData.entries()) {
         //           console.log("here")
-        //           console.log(pair[0]+ ', ' + pair[1]); 
+        //           console.log(pair[0]+ ', ' + pair[1]);
         //       }
         //       }}>here</Button> */}
         //     </div>
         //   </div>
         // )
       }
-
     </Box>
-  )
+  );
 }
 
-
 //  For Courses
-function MainTile({ course, courseIndex, courseArray, updateCurrentCourse, changeCourseName, updateCourseArray }) {
-
+function MainTile({
+  course,
+  courseIndex,
+  courseArray,
+  updateCurrentCourse,
+  changeCourseName,
+  updateCourseArray,
+}) {
   const updateTopicName = (newTopicName, topicIndex, topicArray) => {
-    let newTopicObject = { ...topicArray[topicIndex] }
-    newTopicObject.name = newTopicName
-    let newTopicArray = [...topicArray]
-    newTopicArray[topicIndex] = newTopicObject
-    let newCourseObject = { ...course }
-    newCourseObject.topics = newTopicArray
-    updateCurrentCourse(newCourseObject, courseIndex)
-  }
+    let newTopicObject = { ...topicArray[topicIndex] };
+    newTopicObject.name = newTopicName;
+    let newTopicArray = [...topicArray];
+    newTopicArray[topicIndex] = newTopicObject;
+    let newCourseObject = { ...course };
+    newCourseObject.topics = newTopicArray;
+    updateCurrentCourse(newCourseObject, courseIndex);
+  };
 
   const addNewSubTopic = (newTopicArray) => {
-    let newCourseObject = { ...course }
-    newCourseObject.topics = newTopicArray
-    updateCurrentCourse(newCourseObject, courseIndex)
-  }
+    let newCourseObject = { ...course };
+    newCourseObject.topics = newTopicArray;
+    updateCurrentCourse(newCourseObject, courseIndex);
+  };
 
-  const [expanded, setExpanded] = useState(true)
+  const [expanded, setExpanded] = useState(true);
 
   return (
     <Box>
-      <SubjectTile changeCourseName={changeCourseName} courseIndex={courseIndex} courseArray={courseArray}
-        updateCourseArray={updateCourseArray} expand={() => setExpanded(!expanded)}
+      <SubjectTile
+        changeCourseName={changeCourseName}
+        courseIndex={courseIndex}
+        courseArray={courseArray}
+        updateCourseArray={updateCourseArray}
+        expand={() => setExpanded(!expanded)}
       />
       <Collapse in={expanded}>
         <Box sx={{ width: "98%" }}>
-          {
-            course.topics?.map((topic, topicIndex, topicArr) => {
-              return <TopicTileBox
+          {course.topics?.map((topic, topicIndex, topicArr) => {
+            return (
+              <TopicTileBox
                 key={topic.id}
                 topic={topic}
                 topicIndex={topicIndex}
@@ -333,40 +368,56 @@ function MainTile({ course, courseIndex, courseArray, updateCurrentCourse, chang
                 courseArray={courseArray}
                 updateCourseArray={updateCourseArray}
               />
-            })
-          }
+            );
+          })}
         </Box>
       </Collapse>
     </Box>
-  )
+  );
 }
 
-
-function TopicTileBox({ topic, topicIndex, topicArray, changeTopicName, addNewSubTopic, courseIndex, courseArray, updateCourseArray }) {
+function TopicTileBox({
+  topic,
+  topicIndex,
+  topicArray,
+  changeTopicName,
+  addNewSubTopic,
+  courseIndex,
+  courseArray,
+  updateCourseArray,
+}) {
   const updateSubTopic = () => {
-
     let newSubTopic = {
       id: generateKey(),
-      "name": "newSubTopic"
-    }
+      name: "newSubTopic",
+    };
 
-    let newTopicArray = [...topicArray]
-    if (newTopicArray[topicIndex].hasOwnProperty('subTopics')) {
-      newTopicArray[topicIndex].subTopics.push(newSubTopic)
+    let newTopicArray = [...topicArray];
+    if (newTopicArray[topicIndex].hasOwnProperty("subTopics")) {
+      newTopicArray[topicIndex].subTopics.push(newSubTopic);
     } else {
-      newTopicArray[topicIndex].subTopics = [newSubTopic]
+      newTopicArray[topicIndex].subTopics = [newSubTopic];
     }
-    addNewSubTopic(newTopicArray)
-  }
-  const [expand, setIsExpand] = useState(true)
+    addNewSubTopic(newTopicArray);
+  };
+  const [expand, setIsExpand] = useState(true);
   return (
     <Box>
-      <TopicTile changeTopicName={changeTopicName} topicIndex={topicIndex} topicArray={topicArray} addSubTopics={updateSubTopic} updateCourseArray={updateCourseArray} courseArray={courseArray} courseIndex={courseIndex} expand={() => setIsExpand(!expand)} />
+      <TopicTile
+        changeTopicName={changeTopicName}
+        topicIndex={topicIndex}
+        topicArray={topicArray}
+        addSubTopics={updateSubTopic}
+        updateCourseArray={updateCourseArray}
+        courseArray={courseArray}
+        courseIndex={courseIndex}
+        expand={() => setIsExpand(!expand)}
+      />
       <Collapse in={expand}>
-        <Box sx={{ width: "98%", marginLeft: '1%' }}>
-          {
-            topic.subTopics?.map((subTopic, subTopicIndex, subTopicArray) => {
-              return <SubTopicTile
+        <Box sx={{ width: "98%", marginLeft: "1%" }}>
+          {topic.subTopics?.map((subTopic, subTopicIndex, subTopicArray) => {
+            return (
+              <SubTopicTile
                 key={subTopic.id}
                 subTopic={subTopic}
                 topicArray={topicArray}
@@ -376,12 +427,12 @@ function TopicTileBox({ topic, topicIndex, topicArray, changeTopicName, addNewSu
                 updateCourseArray={updateCourseArray}
                 topicIndex={topicIndex}
                 subTopicIndex={subTopicIndex}
-              // updateCourseArray={updateCourseArray}
+                // updateCourseArray={updateCourseArray}
               />
-            })
-          }
+            );
+          })}
         </Box>
       </Collapse>
     </Box>
-  )
+  );
 }

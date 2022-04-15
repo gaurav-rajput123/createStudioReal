@@ -21,6 +21,7 @@ import imgss from './Previews.jpg'
 import { formContext } from "./Context";
 import IconButton from '@mui/material/IconButton';
 import generateKey from "./resources/generateKey";
+import Middle from "./namrata/Middle";
 
 
 
@@ -202,7 +203,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 <div>
                     {skillArr.map((skill, skillIndex) => {
                         return (
-                            <span key={skillIndex + skill} style={{ padding: "6px", paddingLeft: "12px", paddingRight: "12px", borderRadius: "8px", background: "#9b3928", fontSize: "18px", marginRight: '12px', color: "white", fontFamily: "Popins" }}>
+                            <span key={skillIndex + skill} style={{ padding: "6px", paddingLeft: "12px", paddingRight: "12px", borderRadius: "8px", background: "#1976d2", fontSize: "18px", marginRight: '12px', color: "white", fontFamily: "Popins" }}>
                                 {skill}
                                 <IconButton sx={{ color: "white" }} onClick={() => {
                                     let newSkillArr = [...skillArr]
@@ -282,14 +283,14 @@ export default function Courseinfo({ setShowOutlineForm }) {
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }}>
                 <div>
-                    <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }} >
+                    <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }}>
                         Course Image*
                     </Typography>
                     {
                         imageUrl === null ?
                             (
                                 <img src={imgss}
-                                    // alt="asdf"
+                                    alt="asdf"
                                     style={{
                                         width: "300px",
                                         height:"200px",
@@ -299,7 +300,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                             :
                             (
                                 <img src={imageUrl}
-                                    // alt="asdf"
+                                    alt="asdf"
                                     style={{
                                         width: "300px",
                                         height:"200px",
@@ -385,7 +386,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 </Button>
 
             </div>
-
+            <Middle/>
         </div>
 
     )

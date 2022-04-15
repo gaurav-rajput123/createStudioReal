@@ -54,7 +54,7 @@ const ForgotPassword=() =>  {
             value={email}
             onChange={event=>setEmail(event.target.value)}
             variant="outlined" label='Enter Email' fullWidth required/>
-            <Button type='submit'  variant="contained" style={{backgroundColor:"#630000", color:"white", height:"56px",fontSize:"20px", marginTop:"10px", marginBottom:"10px"}} fullWidth>SEND CODE</Button>
+            <Button type='submit'  variant="contained" style={{backgroundColor:"#06213F", color:"white", height:"56px",fontSize:"20px", marginTop:"10px", marginBottom:"10px"}} fullWidth>SEND CODE</Button>
             </form>
         </Paper>
 )

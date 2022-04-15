@@ -54,6 +54,7 @@ export default function CheckCard({ question, updateAssesment, index }) {
                 id: generateKey(),
                 // question: question.toString()
               }
+              
               newOptionArr.push(newOptionObject)
               setOptions(newOptionArr)
               setNewOption("")

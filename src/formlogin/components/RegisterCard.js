@@ -11,7 +11,7 @@ import { styled } from '@mui/material';
 
 const StyledCard = styled(Card)(({theme})=>({
   [theme.breakpoints.up('lg')]: {
-    backgroundImage: "-webkit-linear-gradient(10deg, #660000 43%, #FFFFFF 43%)"
+    backgroundImage: "-webkit-linear-gradient(10deg, #06213F 43%, #FFFFFF 43%)"
   }
   ,
   [theme.breakpoints.down('lg')]: {
@@ -25,7 +25,7 @@ export default function RegisterCard(props) {
             <Grid item xs={12} md={4} lg={5}>
                 <Ardss />
             </Grid>
-            <Grid item md={1} lg={1} sx={{backgroundImage:"linear-gradient(to bottom right, #660000 50%,white 50%)"}}>
+            <Grid item md={1} lg={1} sx={{backgroundImage:"linear-gradient(to bottom right, #06213F 50%,white 50%)"}}>
             </Grid>
             <Grid item md={0.5} lg={0.5} />
 

@@ -165,7 +165,6 @@ export default function Register() {
             onChange={event=>setPassword(event.target.value)}
             type={showPassword ? 'text' : 'password'}
             value={password}
-            fullWidth
             
             endAdornment={
               <InputAdornment position="end">
@@ -208,7 +207,7 @@ export default function Register() {
           <Button
             type="submit"
             variant="contained"
-            sx={{ backgroundColor: "#660000", borderRadius: "0px", marginBottom:"10px" }}
+            sx={{ backgroundColor: "#06213F", borderRadius: "0px", marginBottom:"10px" }}
           >
             Create Account
           </Button>

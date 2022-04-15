@@ -7,7 +7,7 @@ import logo from '../MRSSPTU.png'
 
 export default function Ardss() {
     return (
-        <Grid container direction="column" sx={{background: "#660000",height:"100%"}}>
+        <Grid container direction="column" sx={{background: "#06213F",height:"100%", padding: '15% 0 0 15%'}}>
             <Grid item >
             <img src={logo} alt="as" style={{
           position: "unset",
@@ -15,18 +15,18 @@ export default function Ardss() {
           bottom: 0,
           padding:"0px",
           height:"fit-content",
-          width: "100px"
+          width: "30%"
 
         }}/>
-        </Grid>
-        <Grid item lg={2} />
-        <Grid item alignSelf="center">
                <Typography  alignSelf= "center" color={"white"}  fontWeight={"bold"}  fontSize={"50px"} fontFamily= {"'Poppins', sans-serif"}>
            Start <br/>
            L-Earning<br/>
            With MRSPTU
             </Typography>
             </Grid>
+        {/* </Grid>
+        <Grid item lg={2} />
+        <Grid item alignSelf="center"> */}
             
             </Grid>
     );
