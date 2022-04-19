@@ -76,7 +76,7 @@ function UploadComponentAlter({ accept, courseArray, courseIndex, topicIndex, su
 
                                             updateCourseArray(newCourseArray)
                                         }} />
-                                    <ListItemButton className="upload-button" variant="contained" sx={{ width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }} >
+                                    <ListItemButton className="upload-button" variant="contained" sx={{ '&:hover':{backgroundColor: 'rgb(20, 100, 200)'}, width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }} >
                                         <AttachmentIcon sx={{ paddingRight: "10px" }} />
                                         <Typography>Attach Transcript</Typography>
 
@@ -91,7 +91,7 @@ function UploadComponentAlter({ accept, courseArray, courseIndex, topicIndex, su
                                             setImageUrl(URL.createObjectURL(e.target.files[0]))
                                             console.log(imageUrl)
                                         }} />
-                                    <ListItemButton className="upload-button" sx={{ width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }}
+                                    <ListItemButton className="upload-button" sx={{ '&:hover':{backgroundColor: 'rgb(20, 100, 200)'}, width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }}
                                     >
                                         <PlayCircleFilledSharpIcon sx={{ paddingRight: "10px" }} />
                                         <Typography>Upload Thumbnail</Typography>
@@ -116,7 +116,7 @@ function UploadComponentAlter({ accept, courseArray, courseIndex, topicIndex, su
 
 
                                 <label htmlFor="select-image">
-                                    <ListItemButton className="upload-image" variant="contained" color="primary" sx={{ width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }}>
+                                    <ListItemButton className="upload-image" variant="contained" color="primary" sx={{ '&:hover':{backgroundColor: 'rgb(20, 100, 200)'}, width: "250px", background: "rgb(25, 118, 210)", color: "white", borderRadius: "10px" }}>
                                         <FileUploadSharpIcon sx={{ paddingRight: "10px" }} />
                                         <Typography>Upload</Typography>
 
