@@ -53,7 +53,7 @@ function UploadComponentAlter({ accept, courseArray, courseIndex, topicIndex, su
 
                         <Grid item xs={5} >
                             <div className="Transcript">
-                                <Typography sx={{ paddingBottom: "10px", fontWeight: 500 }}>Transcript<Switch /></Typography>
+                                <Typography sx={{ paddingBottom: "10px", fontWeight: 500 }}>Transcript</Typography>
                                 <label htmlFor="contained-button-transcript">
                                     <Input accept=".vtt,.srt"
                                         id="contained-button-transcript"

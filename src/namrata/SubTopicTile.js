@@ -354,12 +354,12 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                 backgroundColor: courseContext.data[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource.audio === true  ? "green" : '#fff',
               }}
 
-              onClick={() => {
-                setType("audio/*");
-                return handleOpen("audio")
-              }}
-
-              disabled={isDisable.audio}
+              // onClick={() => {
+              //   setType("audio/*");
+              //   return handleOpen("audio")
+              // }}
+              // disabled={isDisable.audio}
+              disabled
             >
               <Box>
                 <AudioFileIcon />
@@ -399,12 +399,13 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                 }
               }}
 
-              onClick={() => {
-                setType("application/pdf");
-                handleOpen("pdf")
-              }
-              }
-              disabled={isDisable.pdf}
+              // onClick={() => {
+              //   setType("application/pdf");
+              //   handleOpen("pdf")
+              // }
+              // }
+              // disabled={isDisable.pdf}
+              disabled
             >
               <Box>
                 <PictureAsPdfIcon />
@@ -422,12 +423,13 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                 }
               }}
 
-              onClick={() => {
-                setType("application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.slideshow,application/vnd.openxmlformats-officedocument.presentationml.presentation")
-                handleOpen("ppt")
-              }
-              }
-              disabled={isDisable.ppt}
+              // onClick={() => {
+              //   setType("application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.slideshow,application/vnd.openxmlformats-officedocument.presentationml.presentation")
+              //   handleOpen("ppt")
+              // }
+              // }
+              // disabled={isDisable.ppt}
+              disabled
             >
               <Box>
                 <SlideshowIcon />
@@ -451,7 +453,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
         
           >
-            Add ASSESMENT
+            Add ASSESSMENT
           </Button>
         </div>
         <div style={{
@@ -496,7 +498,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
               marginX: "auto"
             }}
             variant="contained">
-                Add Assesment
+                Add Assessment
               </Button>
             </div>
             </div>
