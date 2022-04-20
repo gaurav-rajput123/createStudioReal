@@ -22,6 +22,7 @@ const parse = require('html-react-parser')
 
 function SubjectTile(prop) {
   let { name, changeCourseName, courseIndex, courseArray, addTopics, updateCourseArray, expand } = prop
+  
   const courseContext = useContext(courseArrayContext)
   const StyledCard = styled(Card)({
     display: "flex",
@@ -33,9 +34,16 @@ function SubjectTile(prop) {
 
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const [isTitle, setIsTitle] = useState(false)
+  const [isTitle, setIsTitle] = useState(true)
 
-  const [label, setLabel] = useState("Module")
+  const [label, setLabel] = useState(()=>{
+    let courseData = courseContext.data
+    if(courseData[courseIndex].name != undefined || courseData[courseIndex].name != ''){
+      return courseData[courseIndex].name 
+    }else{
+      return "Module"
+    }
+  })
 
   const setLabelController = () => {
     setIsTitle(!isTitle)

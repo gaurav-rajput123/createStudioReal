@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 function TextNLabel({ isLabelShown, setIsLabelShown, setLabel, courseArray, courseIndex, label }) {
 
     const [labelIn, setLabelIn] = useState(label)
+    console.log(isLabelShown)
 
     return (
        <>
