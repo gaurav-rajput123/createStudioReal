@@ -32,7 +32,7 @@ export default function MyCourses(props) {
             const courseData = await axios({
                 url: process.env.REACT_APP_localURL + "/db/fetchcoursedata",
                 method: "POST",
-                data: {
+                data: { 
                     token: userContext.user.idToken,
                     courseIds: JSON.stringify(courseIds.data.data)
                 }
