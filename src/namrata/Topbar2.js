@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Avatar from '@mui/material/Avatar';
 import profile from './images/profile.jpg';
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 
 // const handleMenuprofile = (event) => {
@@ -16,10 +16,11 @@ import { Link, NavLink } from "react-router-dom";
 //   };
 
 const Topbar = () => {
-    const handleLogout=()=>{
-        localStorage.clear();  
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        localStorage.clear();
         window.location.reload(true);
-      }
+    }
     return <>
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" style={{ backgroundColor: '#80808000', color: 'black' }}>
@@ -40,16 +41,20 @@ const Topbar = () => {
                         {/* <Typography variant="h6" style={{ paddingRight: '30px' }}>
                             <Button sx={{color:"black"}} variant='text'>About</Button>
                         </Typography> */}
-                        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                        {/* Create Studio */}
-                        <NavLink to={'/create'} style={{
+                        <Typography variant="h6" sx={{ flexGrow: 1 }} style={{ display: 'flex', alignItems: "center" }}>
+                            {/* Create Studio */}
+                            {/* <NavLink to={'/mycourses'} style={{
                             textDecoration: "none",
                             color: "black",
-                        }}>
-                        <Button variant='contained' sx={{borderRadius: 0}}>
-                        Let's Create
-                        </Button>
-                        </NavLink>
+                        }}> */}
+                            <Button variant='contained' onClick={() => navigate('/mycourses')} sx={{ borderRadius: 0 }}>
+                                My Courses
+                            </Button>
+                            {/* </NavLink> */}
+                            <div style={{ flexGrow: 0.02 }} />
+                            <Button variant='outlined' onClick={() => navigate('/create')} sx={{ borderRadius: 0 }}>
+                                Let's Create
+                            </Button>
                         </Typography>
                     </Typography>
                     <IconButton
@@ -61,7 +66,7 @@ const Topbar = () => {
                         // onClick={handleMenuprofile }
                         color="inherit"
                     >
-                         <Avatar alt="Gaurav" src={profile} />
+                        <Avatar alt="Gaurav" src={profile} />
                     </IconButton >
                     <Button onClick={handleLogout}>LogOut</Button>
                 </Toolbar>

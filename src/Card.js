@@ -40,8 +40,8 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
     };
 
     return (
-        <Grid sx={{ width: "300px", minHeight: "300px", margin: '1%', boxShadow: '5px 5px 5px #E5E5E5', borderRadius: '12px' }}>
-            <Card >
+        <Grid sx={{ width: "300px", minHeight: "300px", margin: '1%', boxShadow: '5px 5px 5px 4px #e5e5e5', borderRadius: '12px' }}>
+            <Card>
                 <CardMedia className='yourcourse' component="img" height="170" image={"https://storage-mediaoutput.s3.ap-south-1.amazonaws.com//thumbnails/" + id + '.png'} alt="Paella dish" sx={{ borderRadius: '10px' }} />
                 {/* <div style={{ display: 'flex' }}> */}
                     <CardHeader
@@ -69,7 +69,7 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
                             courseId: id
 
                         }} style={{ textDecoration: 'none' }}>
-                            <Button variant="outlined" className='btn' sx={{ borderRadius: "16px" }}
+                            <Button variant="outlined" className='btn' sx={{ borderRadius: "16px", "&:hover":{backgroundColor: '#1976d2'} }}
                                 onClick={() => {
                                     
                                     let newCourseContext = {...courseContext}
