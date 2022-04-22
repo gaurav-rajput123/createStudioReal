@@ -62,11 +62,8 @@ export default function MyCourses(props) {
         <>
            <Topbar/>
                             <Grid sx={{textAlign: 'center'}}>
-                                <Typography variant="h4" color={'#1a50b2'}>
-                                    COURSES
-                                </Typography>
                                 <Typography variant="h3">
-                                    Your Course Library
+                                    Course Library
                                 </Typography>
                             </Grid>
                 <Grid container sx={{marginTop: '3%'}}>
