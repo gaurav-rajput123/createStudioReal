@@ -229,9 +229,9 @@ export default function Middle({ myCourses, isOnCoursePage }) {
               >
                 upload course and save
               </Button>
-              <Button onClick={() => console.log(courseContext)}>
+              {/* <Button onClick={() => console.log(courseContext)}>
                 see context
-              </Button>
+              </Button> */}
               <Box display={show} sx={{ marginTop: "2%" }}>
                 <LinearProgress variant="determinate" value={uploaded} />
                 {`${uploaded}%`}
