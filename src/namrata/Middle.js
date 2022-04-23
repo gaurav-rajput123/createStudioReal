@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Butn from "./Butn";
-import { Paper, Box, Button, Card, Collapse, Grid } from "@mui/material";
+import { Paper, Box, Button, Card, Collapse, Grid, Typography, Modal } from "@mui/material";
 import SubjectTile from "./SubjectTile";
 import TopicTile from "./TopicTile";
 import SubTopicTile from "./SubTopicTile";
@@ -11,14 +11,16 @@ import { courseArray } from "../Context";
 import { useEffect } from "react";
 import { stepNumber } from "../Context";
 import { LinearProgress } from "@mui/material";
+import EditBasicDetails from "./EditBasicDetail";
 
-export default function Middle({ myCourses }) {
+export default function Middle({ myCourses, isOnCoursePage }) {
   const userContext = useContext(UserContext);
   const [show, setShow] = useState("none");
   const [uploaded, setUploaded] = useState(0);
   const counter = useContext(stepNumber);
   const courseContext = useContext(courseArray);
   const [courses, setCourses] = useState([...courseContext.data]);
+  const [isModalOpen, setIsModalOpen] = useState(false)
   useEffect(() => {
     if (courseContext.data.length === 0) {
       counter.setVal(1);
@@ -57,6 +59,10 @@ export default function Middle({ myCourses }) {
       data: newUpdatedCourseArray,
     });
   };
+
+  const closeModal = () =>{
+    setIsModalOpen(false)
+  }
 
   const resetCourse = () => {
     let newCourseContent = { ...courseContext };
@@ -99,6 +105,38 @@ export default function Middle({ myCourses }) {
               <Butn Text="Live View" disabled />
               <Butn Text=" Save" disabled />
             </Grid>
+            <>
+            {isOnCoursePage ? (
+              <Box>
+                <Typography fontSize={'24px'} fontWeight={800}>
+                  Basic Course Details
+                </Typography>
+
+                <Box display={'flex'} justifyContent={'flex-end'}>
+                  <Button variant="contained" sx={{marginRight: "24px"}} onClick={()=>setIsModalOpen(true)}>
+                    EDIT
+                  </Button>
+                  <Modal
+                    open={isModalOpen}
+                    onClose={closeModal}
+                    sx={{
+                      overflowY: "scroll",
+                      marginX: "24px"
+                    }}>
+                      <EditBasicDetails closeModal={closeModal}/>
+                    </Modal>
+                </Box>
+                <b>Course Title : </b>{courseContext.courseTitle}
+                <br/>
+                <br/>
+                <b>Course Description : </b>{courseContext.courseDesciption}
+                <br/>
+                <br/>
+                <b>Course Id : </b>{courseContext.courseId}
+                
+              </Box>
+            ): null}
+            </>
             <Paper
               style={{
                 backgroundColor: "white",

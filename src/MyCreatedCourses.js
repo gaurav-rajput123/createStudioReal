@@ -13,7 +13,7 @@ export default function MyCreatedCourses(){
         <>  
             <Topbar/>
             <Typography>My Courses</Typography>
-            <Middle myCourses={true}/>
+            <Middle myCourses={true} isOnCoursePage={true}/>
         </>
     )
 }
