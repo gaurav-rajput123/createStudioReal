@@ -23,7 +23,7 @@ export default function Home() {
         newCourseContext.organisation = []
         newCourseContext.skillsGained = []
         courseContext.setCourseState(newCourseContext)
-    })
+    },[])
 
     const [showOutlineForm, setShowOutlineForm] = useState(false)
 
