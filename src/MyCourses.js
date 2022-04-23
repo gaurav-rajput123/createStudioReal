@@ -10,7 +10,6 @@ import './CourseLAyout.css';
 import axios from 'axios';
 import Topbar from './namrata/Topbar';
 
-// import image from '../../../assets/images/DashImage/Ladka2.png'
 
 
 

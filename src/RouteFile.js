@@ -8,7 +8,6 @@ import Front from './Front';
 import Home from './Home';
 import Form from './vikram/Form';
 import { stepNumber } from './Context';
-// import { Grid, Grid } from '@mui/material';
 import styled from '@emotion/styled';
 import UploadComponentAlter from './namrata/UploadComponentAlter';
 import MetaLogin from './formlogin/MetaLogin';
@@ -28,7 +27,7 @@ import { UserContext } from './Context';
 import { Button } from '@mui/material';
 import TurnOff from "./Turnoff"
 function RouteFile() {
-  // const userScope = useContext(userContext)
+
   const navigate = useNavigate()
   const [courseState, setCourseState] = useState({
     courseId: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
