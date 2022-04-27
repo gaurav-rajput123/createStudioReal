@@ -17,7 +17,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import jake from './jake.png';
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const Input = styled('input')({
   display: 'none',
@@ -122,17 +122,20 @@ const TeacherDetails = () => {
   
   return (
     <Grid conatiner sx={{ padding: "2%" }}>
-      <Grid item  xs={12} lg={8} >
+      <Grid item  xs={12} lg={12} >
         <form onSubmit={handleSubmit}>
-            <Grid item xs={12} justifyContent={"center"} display={"flex"} marginTop={"2%"}>
-              
+        
+            <Grid item xs={12} justifyContent={"left"} display={"flex"} >
+                <IconButton>
+             <ArrowBackIcon sx={{color:'black'}}/>
+          </IconButton>
               <label>
               
                 <Input accept="image/*"  multiple type="file" />
                   <Avatar  component="span"
                   src={jake}
                   alt="jake"
-                  sx={{ width: "100px", height: "100px",zIndex:'2','&:hover':{zIndex:'-1'} }}
+                  sx={{ marginLeft:'10%',width: "100px", height: "100px",zIndex:'2','&:hover':{zIndex:'-1'} }}
                 />
               </label>
           
@@ -140,10 +143,10 @@ const TeacherDetails = () => {
                 return (
                 <Grid item xs={12}>
                
-                   <Typography  sx={{ fontWeight: "500", fontSize: "20px",fontFamily:'poppins',textAlign:'center',marginTop:'2%' }}>
+                   <Typography  sx={{ fontWeight: "500", fontSize: "20px",fontFamily:'poppins',textAlign:'left',marginTop:'1%',marginLeft:'3%' }}>
                  {item.name}
                  </Typography>
-                 <Typography  sx={{ fontWeight: "400", fontSize: "18px",fontFamily:'poppins',color:'#9fa8b9',textAlign:'center' }}>
+                 <Typography  sx={{ fontWeight: "400", fontSize: "18px",fontFamily:'poppins',color:'#9fa8b9',textAlign:'left',marginLeft:'3%' }}>
                  {item.mail}
                  </Typography>
                 
