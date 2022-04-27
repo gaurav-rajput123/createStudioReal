@@ -8,6 +8,7 @@ import { stepNumber } from './Context';
 
 
 import RouteFile from './RouteFile';
+import TeacherDetails from './Neha/TeacherDetails';
 
 export const userContext = React.createContext({
   user: Boolean,
