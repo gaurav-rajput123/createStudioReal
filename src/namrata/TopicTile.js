@@ -33,9 +33,16 @@ function TopicTile({ topicIndex,  updateCourseArray, courseArray, courseIndex, e
 
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const [isTitle, setIsTitle] = useState(false)
+  const [isTitle, setIsTitle] = useState(true)
 
-  const [label, setLabel] = useState("Topic")
+  const [label, setLabel] = useState(()=>{
+    let courseData = courseContext.data[courseIndex].topics
+    if(courseData[topicIndex].name != undefined || courseData[topicIndex].name != ''){
+      return courseData[topicIndex].name 
+    }else{
+      return "Topic"
+    }
+  })
 
   const setLabelController = () => {
     setIsTitle(!isTitle)

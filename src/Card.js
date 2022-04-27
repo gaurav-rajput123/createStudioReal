@@ -40,19 +40,19 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
     };
 
     return (
-        <Grid sx={{ width: "300px", minHeight: "300px", margin: '1%', boxShadow: '5px 5px 5px #E5E5E5', borderRadius: '12px' }}>
-            <Card >
-                <CardMedia className='yourcourse' component="img" height="170" image={"https://storage-mediaoutput.s3.ap-south-1.amazonaws.com//thumbnails/" + id + '.png'} alt="Paella dish" sx={{ borderRadius: '10px' }} />
+        <Grid sx={{ width: "320px", minHeight: "230px", margin: '1.5%', boxShadow: '5px 5px 5px 4px #e5e5e5', borderRadius: '12px' }}>
+            <Card sx={{padding:"4% 4% 0 4%", borderRadius: '12px'}}>
+                <CardMedia className='yourcourse' component="img" height="200" image={"https://storage-mediaoutput.s3.ap-south-1.amazonaws.com//thumbnails/" + id + '.png'} alt="Paella dish" sx={{ borderRadius: '12px', border: '1px solid #e5e5e5' }} />
                 {/* <div style={{ display: 'flex' }}> */}
                     <CardHeader
                         action={<IconButton aria-label="settings"></IconButton>}
 
 
 
-                        style={{ padding: '2% 5% 2% 0%', margin: "5% 5% 5% 0%", fontSize: '16px' }}
+                        style={{ padding: '2% 2% 0 2%', margin: "3% 0 0 0", fontSize: '14px', fontWeight: '600' }}
 
                         avatar={
-                            <Avatar sx={{ bgcolor: [100], height: '44px', width: '40px' }} aria-label="recipe" elementStyle={{ padding: '%' }}>
+                            <Avatar sx={{ bgcolor: [100], height: '36px', width: '36px' }} aria-label="recipe" elementStyle={{ padding: '%' }}>
                                 <img src={logo} alt='AP'></img>
                             </Avatar>
 
@@ -69,7 +69,7 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
                             courseId: id
 
                         }} style={{ textDecoration: 'none' }}>
-                            <Button variant="outlined" className='btn' sx={{ borderRadius: "16px" }}
+                            <Button variant="outlined" className='btn' sx={{ borderRadius: "12px", "&:hover":{backgroundColor: '#1976d2'} }}
                                 onClick={() => {
                                     
                                     let newCourseContext = {...courseContext}
@@ -84,7 +84,7 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
                                     console.log(newCourseContext)
                                     courseContext.setCourseState(newCourseContext)
                                 }}>
-                                <Typography sx={{ fontSize: '12px' }}>Start Learning</Typography>
+                                <Typography sx={{ fontSize: '12px' }}>Edit/Update Course</Typography>
                             </Button>
                         </NavLink>
                     </CardActions>

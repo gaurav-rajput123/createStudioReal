@@ -24,21 +24,17 @@ import Alternate from './Alternate';
 import Modal from '@mui/material/Modal';
 import { Box } from "@mui/system";
 import UploadComponentAlter from "./UploadComponentAlter";
-import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material";
 import generateKey from "../resources/generateKey";
-import CheckboxComponent from "../assesment/components/Checkbox";
 import TextFieldAssesment from "../assesment/assesmentComponents/TextFieldAssesment";
 import TextFieldAssesmentNum from "../assesment/assesmentComponents/TextFieldAssesmentNum";
 import CheckBoxAssesment from "../assesment/assesmentComponents/CheckBoxAssesment";
 import RadioButtonAssesment from "../assesment/assesmentComponents/RadioButtonAssesment";
 import DropdownAssesment from "../assesment/assesmentComponents/DropdownAssesment";
-// import {Research, CaseStudy, BlankProblem} from '../assesment/assesmentComponents/TextFieldAssesmentNum'
 import Research from '../assesment/assesmentComponents/Research'
 import CaseStudy from '../assesment/assesmentComponents/CaseStudy'
 import BlankProblem from '../assesment/assesmentComponents/BlankProblem'
 import CustomProblem from "../assesment/assesmentComponents/CustomProblem";
-import { type } from "@testing-library/user-event/dist/type";
 import { courseArray as arrC } from "../Context";
 const parse = require('html-react-parser');
 
@@ -83,9 +79,16 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
 
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const [isTitle, setIsTitle] = useState(false)
+  const [isTitle, setIsTitle] = useState(true)
 
-  const [label, setLabel] = useState("Sub Topic")
+  const [label, setLabel] = useState(()=>{
+    let courseData = courseContext.data[courseIndex].topics[topicIndex].subTopics
+    if(courseData[subTopicIndex].name != undefined || courseData[subTopicIndex].name != ''){
+      return courseData[subTopicIndex].name 
+    }else{
+      return "Sub Topic"
+    }
+  })
 
   const [resourceType, setResourceType] = useState(null)
 

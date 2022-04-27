@@ -11,11 +11,19 @@ import Corseinfo from "./Courseinfo";
 import Courseinfo from "./CourseInfoCopy";
 export default function Home() {
     let context = useContext(stepNumber)
-    // let courseContext = useContext(courseArray)
-    // const [courseState, setCourseState] = useState({
-    //     courseId: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
-    //     data: [], 
-    // })
+    const courseContext = useContext(courseArray)
+    useEffect(()=>{
+        const newCourseContext = {...courseContext}
+        newCourseContext.courseDesciption = ''
+        newCourseContext.courseDuration = ''
+        newCourseContext.courseId = ''
+        newCourseContext.courseNumber=''
+        newCourseContext.courseTitle = ''
+        newCourseContext.data = []
+        newCourseContext.organisation = []
+        newCourseContext.skillsGained = []
+        courseContext.setCourseState(newCourseContext)
+    },[])
 
     const [showOutlineForm, setShowOutlineForm] = useState(false)
 

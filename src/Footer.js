@@ -31,9 +31,9 @@ const Footer = () => {
           <Grid item xs={1}/>
           <Grid item xs={3}>
           <Typography variant="h4" paddingBottom="10px">About Us</Typography>
-            <Typography>Aim</Typography>
-            <Typography>Help Desk</Typography>
-            <Typography>Cookie policy</Typography>
+            <Typography sx={{ "&:hover":{textDecoration:'underline'}, cursor: 'pointer' }}>Aim</Typography>
+            <Typography sx={{ "&:hover":{textDecoration:'underline'}, cursor: 'pointer' }}>Help Desk</Typography>
+            <Typography sx={{ "&:hover":{textDecoration:'underline'}, cursor: 'pointer' }}>Cookie policy</Typography>
           </Grid>
           <Grid item xs={1}/>
           <Grid item xs={3}>
@@ -46,7 +46,7 @@ const Footer = () => {
                 <FacebookIcon/><br/>
               </i>
             </Link>
-            <Link href="https://www.facebook.com/login.php/" sx={{textDecoration:'none', marginLeft:'2%'}}><a>Facebook</a></Link>
+            <Link href="https://www.facebook.com/login.php/" sx={{ '&:hover':{textDecoration: 'underline'}, textDecoration:'none', marginLeft:'2%'}}><a>Facebook</a></Link>
             </div>
 
             <div style={{display:'flex'}}>
@@ -56,7 +56,7 @@ const Footer = () => {
                 
               </i>
             </Link>
-            <Link href="https://www.instagram.com/accounts/login/" sx={{textDecoration:'none', marginLeft:'2%'}}><a>Instagram</a></Link>
+            <Link href="https://www.instagram.com/accounts/login/" sx={{ '&:hover':{textDecoration: 'underline'}, textDecoration:'none', marginLeft:'2%'}}><a>Instagram</a></Link>
             </div>
 
              <div style={{display:'flex'}}>
@@ -65,7 +65,7 @@ const Footer = () => {
                 <TwitterIcon/><br/>
               </i>
             </Link>
-            <Link href="https://twitter.com/i/flow/login" sx={{textDecoration:'none', marginLeft:'2%'}}><a>Twitter</a></Link>
+            <Link href="https://twitter.com/i/flow/login" sx={{ '&:hover':{textDecoration: 'underline'}, textDecoration:'none', marginLeft:'2%'}}><a>Twitter</a></Link>
             </div>
 
              <div style={{display:'flex'}}>
@@ -74,7 +74,7 @@ const Footer = () => {
                <YouTubeIcon/><br/> 
               </i>
             </Link>
-            <Link href="https://www.youtube.com/" sx={{textDecoration:'none', marginLeft:'2%'}}><a>YouTube</a></Link>
+            <Link href="https://www.youtube.com/" sx={{ '&:hover':{textDecoration: 'underline'}, textDecoration:'none', marginLeft:'2%'}}><a>YouTube</a></Link>
             </div>
 
           </Grid>

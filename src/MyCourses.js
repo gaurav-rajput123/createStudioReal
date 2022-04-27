@@ -10,7 +10,6 @@ import './CourseLAyout.css';
 import axios from 'axios';
 import Topbar from './namrata/Topbar';
 
-// import image from '../../../assets/images/DashImage/Ladka2.png'
 
 
 
@@ -32,7 +31,7 @@ export default function MyCourses(props) {
             const courseData = await axios({
                 url: process.env.REACT_APP_localURL + "/db/fetchcoursedata",
                 method: "POST",
-                data: {
+                data: { 
                     token: userContext.user.idToken,
                     courseIds: JSON.stringify(courseIds.data.data)
                 }
@@ -61,17 +60,14 @@ export default function MyCourses(props) {
     return (
         <>
            <Topbar/>
-                <Grid container>
-                    <Grid container>
-                        <Typography variant="h4" color={'#1a50b2'} paddingTop={'8%'}>
-                            COURSES
-                        </Typography>
-                        <Grid display={'flex'} sx={{ justifyContent: 'space-between' }} container>
-                            <Grid>
-                                <Typography variant="h3" paddingTop={'8%'}>
-                                    Your Course Library
+                            <Grid sx={{textAlign: 'center'}}>
+                                <Typography variant="h3">
+                                    Course Library
                                 </Typography>
                             </Grid>
+                <Grid container sx={{marginTop: '3%'}}>
+                    <Grid container>
+                        <Grid display={'flex'} sx={{ justifyContent: 'space-between' }} container>
 
                         </Grid>
                         <Grid display={'flex'} container sx={{ justifyContent: 'flex-start'}}>
