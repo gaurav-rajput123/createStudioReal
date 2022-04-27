@@ -55,14 +55,12 @@ const TeacherDetails = () => {
     Email: "",
     Mobilenumber: "",
     Dateofbirth: "",
-    Fathername: "",
-    Mothername: "",
     Currentaddress: "",
     Permanentaddress: "",
     Degree: "",
     Yearofcompletion: "",
     University: "",
-    Nameoforganization: "",
+    NameofOrganization: "",
     Workfrom: "",
     Workto: "",
     Address: "",
@@ -70,7 +68,7 @@ const TeacherDetails = () => {
     Name1: "",
     Contactdetails1: "",
     Name2: "",
-    Conatctdetails2: "",
+    Contactdetails2: "",
     Description: ""
   };
   const [formValues, setFormValues] = useState(initialValues);
@@ -181,7 +179,7 @@ const TeacherDetails = () => {
                   name="Firstname"
                   value={formValues.Firstname}
                   onChange={handleChange}
-                  style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
                 <p style={{ color: "red" }}>{formErrors.Firstname}</p>
               </FormControl>
@@ -206,7 +204,7 @@ const TeacherDetails = () => {
                   name="Middlename"
                   value={formValues.Middlename}
                   onChange={handleChange}
-                  style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>{" "}
             </Grid>
@@ -232,7 +230,7 @@ const TeacherDetails = () => {
                   name="Lastname"
                   value={formValues.Lastname}
                   onChange={handleChange}
-                  style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
                 <p style={{ color: "red" }}>{formErrors.Lastname}</p>
               </FormControl>{" "}
@@ -257,7 +255,7 @@ const TeacherDetails = () => {
                   name="Email"
                   value={formValues.Email}
                   onChange={handleChange}
-                  style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
                 <p style={{ color: "red" }}>{formErrors.Email}</p>
               </FormControl>{" "}
@@ -285,7 +283,7 @@ const TeacherDetails = () => {
                   placeholder="9999999999"
                   value={formValues.Mobilenumber}
                   onChange={handleChange}
-                  style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
                 <p style={{ color: "red" }}>{formErrors.Mobilenumber}</p>
               </FormControl>
@@ -320,7 +318,7 @@ const TeacherDetails = () => {
                     name="Dateofbirth"
                     value={formValues.Dateofbirth}
                     onChange={handleChange}
-                    style={{ width: "99.4%", height: '42px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }} />
+                    style={{ width: "99.4%", height: '42px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}} />
                 </div>
 
 
@@ -346,7 +344,7 @@ const TeacherDetails = () => {
                 name="Description"
                 value={formValues.Description}
                 onChange={handleChange}
-                sx={{ width: "100%" }}
+                sx={{ width: "100%" ,fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}}
               />
             </FormControl>
           </Grid>
@@ -378,7 +376,7 @@ const TeacherDetails = () => {
                   value={formValues.Currentaddress}
                   onChange={handleChange}
                   rows={1.5}
-                  sx={{ width: "101%" }}
+                  sx={{ width: "101%",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
             </Grid>
@@ -406,7 +404,7 @@ const TeacherDetails = () => {
                   name="Permanentaddress"
                   value={formValues.Permanentaddress}
                   onChange={handleChange}
-                  sx={{ width: "100%" }}
+                  sx={{ width: "100%" ,fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}}
                 />
               </FormControl>
             </Grid>
@@ -436,7 +434,7 @@ const TeacherDetails = () => {
                   name="Degree"
                   value={formValues.Degree}
                   onChange={handleChange}
-                  style={{ width: "98%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "98%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
             </Grid>
@@ -470,6 +468,7 @@ const TeacherDetails = () => {
                       name="Yearofcompletion"
                       value={formValues.Yearofcompletion}
                       onChange={handleChange}
+                      sx={{fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}}
                     />
                   )}
                 />
@@ -503,7 +502,7 @@ const TeacherDetails = () => {
                   name="University"
                   value={formValues.University}
                   onChange={handleChange}
-                  style={{ width: "98%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "98%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}}
                 />
               </FormControl>
             </Grid>
@@ -566,9 +565,9 @@ const TeacherDetails = () => {
                 <input
                   type="text"
                   name="NameofOrganization"
-                  value={formValues.Nameoforganization}
+                  value={formValues.NameofOrganization}
                   onChange={handleChange}
-                  style={{ width: "98%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "98%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
             </Grid>
@@ -595,7 +594,7 @@ const TeacherDetails = () => {
                     name="Workfrom"
                     value={formValues.Workfrom}
                     onChange={handleChange}
-                    style={{ width: "99%", height: '42px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }} />
+                    style={{ width: "99%", height: '42px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }} />
                 </div>
               </FormControl>
             </Grid>
@@ -621,7 +620,7 @@ const TeacherDetails = () => {
                     name="Workto"
                     value={formValues.Workto}
                     onChange={handleChange}
-                    style={{ width: "99%", height: '42px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }} />
+                    style={{ width: "99%", height: '42px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }} />
                 </div>
               </FormControl>
             </Grid>
@@ -650,7 +649,7 @@ const TeacherDetails = () => {
                   value={formValues.Address}
                   onChange={handleChange}
                   rows={1.5}
-                  sx={{ width: "100%" }}
+                  sx={{ width: "100%",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
             </Grid>
@@ -678,7 +677,7 @@ const TeacherDetails = () => {
                   name="Jobresponsibilities"
                   value={formValues.Jobresponsibilities}
                   onChange={handleChange}
-                  sx={{ width: "100%" }}
+                  sx={{ width: "100%" ,fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}}
                 />
               </FormControl>
             </Grid>
@@ -746,7 +745,7 @@ const TeacherDetails = () => {
                   name="Name1"
                   value={formValues.Name1}
                   onChange={handleChange}
-                  style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
             </Grid>
@@ -770,7 +769,7 @@ const TeacherDetails = () => {
                   name="Contactdetails1"
                   value={formValues.Contactdetails1}
                   onChange={handleChange}
-                  style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
             </Grid>
@@ -795,7 +794,7 @@ const TeacherDetails = () => {
                   name="Name2"
                   value={formValues.Name2}
                   onChange={handleChange}
-                  style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
             </Grid>
@@ -819,7 +818,7 @@ const TeacherDetails = () => {
                   name="Contactdetails2"
                   value={formValues.Contactdetails2}
                   onChange={handleChange}
-                  style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px", fontSize: '18px', color: 'rgba(0, 0, 0, 0.23)' }}
+                  style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
             </Grid>
