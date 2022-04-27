@@ -16,7 +16,7 @@ export const userContext = React.createContext({
 })
 
 function App() {
-  const [val, setVal] = useState(0)
+  // const [val, setVal] = useState(0)
 
 
 
