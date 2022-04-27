@@ -1,15 +1,10 @@
-import React from "react";
-import Final from "./mylib/Final";
+import TeacherDetails from '../Neha/TeacherDetails';
 
 
 
 const App = () => {
     return(
-        <div>
-        <div >
-      <Final />
-        </div>
-        </div>
+       <TeacherDetails/>
     )
 }
 

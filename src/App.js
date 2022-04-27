@@ -1,37 +1,37 @@
 // import './App.css';
-import { useState, useEffect } from 'react';
-import { Routes, Route, useParams } from "react-router-dom";
+// import { useState, useEffect } from 'react';
+// import { Routes, Route, useParams } from "react-router-dom";
 
-import OutlineForm from './OutlineForm';
-import * as React from 'react'
-import Front from './Front';
-import Home from './Home';
-import Form from './vikram/Form';
-import { stepNumber } from './Context';
+// import OutlineForm from './OutlineForm';
+// import * as React from 'react'
+// import Front from './Front';
+// import Home from './Home';
+// import Form from './vikram/Form';
+// import { stepNumber } from './Context';
 // import { Grid, Grid } from '@mui/material';
-import styled from '@emotion/styled';
-import UploadComponentAlter from './namrata/UploadComponentAlter';
-import MetaLogin from './formlogin/MetaLogin';
-import Additionalinfo from './formlogin/Additionalinfo';
-import BasicCard from './formlogin/components/skewCard';
-import Register from "./formlogin/components/Register";
-import RegisterCard from './formlogin/components/RegisterCard';
-import TabComponent from './formlogin/components/TabComponent copy';
-import Verification from './formlogin/components/Verification';
-import Corseinfo from './Courseinfo';
-import axios from 'axios';
-import RouteFile from './RouteFile';
+// import styled from '@emotion/styled';
+// import UploadComponentAlter from './namrata/UploadComponentAlter';
+// import MetaLogin from './formlogin/MetaLogin';
+// import Additionalinfo from './formlogin/Additionalinfo';
+// import BasicCard from './formlogin/components/skewCard';
+// import Register from "./formlogin/components/Register";
+// import RegisterCard from './formlogin/components/RegisterCard';
+// import TabComponent from './formlogin/components/TabComponent copy';
+// import Verification from './formlogin/components/Verification';
+// import Corseinfo from './Courseinfo';
+// import axios from 'axios';
+// import RouteFile from './RouteFile';
 
-export const userContext = React.createContext({
-  user: Boolean,
-  setUser: () => { }
-})
+// export const userContext = React.createContext({
+//   user: Boolean,
+//   setUser: () => { }
+// })
 // import AnimatedPa from './namrata/AnimationGrid';
-
+import TeacherDetails from "./Neha/TeacherDetails";
 
 // import Home from './Home'
 function App() {
-  const [val, setVal] = useState(0)
+  // const [val, setVal] = useState(0)
   //   useEffect(()=>{
   //     axios({
   //     url:'http://localhost:8080/user/currentuser',
@@ -80,19 +80,20 @@ function App() {
 
   
   return (
-    <stepNumber.Provider value={{
-      val, increment: () => setVal(val + 1), decrement: () => setVal(val - 1), setVal: (newVal) => {
-        setVal(newVal)
-      }
-    }}>
+    // <stepNumber.Provider value={{
+    //   val, increment: () => setVal(val + 1), decrement: () => setVal(val - 1), setVal: (newVal) => {
+    //     setVal(newVal)
+    //   }
+    // }}>
       
-        <div className="App">
+    //     <div className="App">
 
-          <RouteFile />
+    //       <RouteFile />
 
-        </div>
+    //     </div>
       
-    </stepNumber.Provider>
+    // </stepNumber.Provider>
+    <TeacherDetails/>
   );
 
 
