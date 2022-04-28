@@ -34,12 +34,12 @@ function App() {
       
         <div className="App">
 
-          <RouteFile />
+           <RouteFile />
 
         </div>
       
     </stepNumber.Provider>
-    // <TeacherDetails/>
+    
   );
 
 
