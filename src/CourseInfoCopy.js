@@ -9,9 +9,10 @@ import { NavLink } from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
 import Navbar from "./Navbar";
 import { stepNumber } from "./Context";
+import Select from '@mui/material/Select';
 // import v4 from "uuid/dist/v4";
 import { courseArray } from "./Context";
-import { createTheme, duration, Input } from "@mui/material";
+import { createTheme, duration, FormControl, Input, InputLabel, MenuItem } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { v4 } from "uuid";
 import { minHeight } from "@mui/system";
@@ -31,7 +32,18 @@ export default function Courseinfo({ setShowOutlineForm }) {
     const [courseImage, setCourseImage] = useState(null)
     const [newSkill, setNewSkill] = React.useState('')
     const courseContext = React.useContext(courseArray)
-    
+    const categoryList = [
+        {label:"IT & Software Development", value:"IT & Software Development"},
+        {label:"Designing", value:"Designing"},
+        {label:"Networking", value:"Networking"},
+        {label:"Business", value:"Business"},
+        {label:"Civil Engineering", value:"Civil Engineering"},
+        {label:"Programming Language", value:"Programming Language"},
+        {label:"Data Science", value:"Data Science"},
+        {label:"Mechanical Engineering", value:"Mechanical Engineering"},
+        {label:"Patents & Intellectual Property Rights", value:"Patents & Intellectual Property Rights"}
+    ]
+
 
     const handleNext = () => {
         if (duration.length != 0 &&
@@ -43,7 +55,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
             requirements.length != 0 &&
             description.length != 0 &&
             price.length != 0 &&
-            courseImageFile.length !=0) {
+            courseImageFile.length != 0) {
 
             counter.increment()
             let newC = {
@@ -76,10 +88,10 @@ export default function Courseinfo({ setShowOutlineForm }) {
         let newFileName = newId + file.name.substring(file.name.lastIndexOf('.'))
 
         let newFile = new File([file], newFileName, { type: file.type })
-        let newContext = {...courseContext, courseId: newId}
+        let newContext = { ...courseContext, courseId: newId }
         // console.log(newFileName + newContext)
         courseContext.setCourseState(newContext)
-        formData.set("courseImage" ,newFile)
+        formData.set("courseImage", newFile)
     }
     // states
     const [duration, setCourseDuration] = useState('')
@@ -88,7 +100,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
     const [title, setTitle] = useState('')
     const [taught, setTaught] = useState('')
     const [skill, setSkill] = useState('')
-    const [requirements, setRequirements] = useState('') 
+    const [requirements, setRequirements] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [imageUrl, setImageUrl] = useState(null)
@@ -114,11 +126,25 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     // margin="dense"
                     variant="outlined"
-                    label="E.g.Basic of Python"
+                    label="E.g.Basics of Python"
                     id="Title"
                     value={title}
                 />
             </div>
+            <FormControl style={{ marginTop: "12px", marginBottom: "24px" }} >
+                <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }}>
+                    Category*
+                </Typography>
+                <Select id="demo-simple-select-autowidth" label="Category*" sx={{width: '610px'}}>
+                    {categoryList?.map(category => {
+                        return (
+                            <MenuItem key={category.value} value={category.value}>
+                                { category.value}
+                            </MenuItem>
+                        );
+                    })}
+                </Select>
+            </FormControl>
             <div style={{ marginTop: "12px", marginBottom: "24px" }} >
                 <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }} >
                     Course Number*
@@ -293,7 +319,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                                     alt="asdf"
                                     style={{
                                         width: "300px",
-                                        height:"200px",
+                                        height: "200px",
                                         objectFit: "contain"
                                     }} />
                             )
@@ -303,7 +329,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                                     alt="asdf"
                                     style={{
                                         width: "300px",
-                                        height:"200px",
+                                        height: "200px",
                                         objectFit: "contain"
                                     }} />
                             )
@@ -311,37 +337,37 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 </div>
                 <div>
                     <label>
-                    <input accept="image/*" type="file" style={{
-                        display: 'none'
-                    }}
-                    onChange={e=>{
-                        setImageUrl(URL.createObjectURL(e.target.files[0]))
-                        setCourseImageFile(e.target.files[0])
-                        handleUpload(e.target.files[0])
-                    }}
-                    
-                    />
-                    <Button
-                   
-                    onClick={() => {
-                        console.log(imageUrl)
-                        
-                    }}  
-                        
-                        disabled={courseImageFile == null ? true : false}
-                        sx={{
-                            marginTop: "10px",
-                            padding: "12px",
-                            borderRadius: "6px",
-                            width: "25px"
+                        <input accept="image/*" type="file" style={{
+                            display: 'none'
                         }}
-                        // variant="contained"
-                        component="span"
+                            onChange={e => {
+                                setImageUrl(URL.createObjectURL(e.target.files[0]))
+                                setCourseImageFile(e.target.files[0])
+                                handleUpload(e.target.files[0])
+                            }}
 
-                    >
-                        <Typography>Upload</Typography>
+                        />
+                        <Button
 
-                    </Button>
+                            onClick={() => {
+                                console.log(imageUrl)
+
+                            }}
+
+                            disabled={courseImageFile == null ? true : false}
+                            sx={{
+                                marginTop: "10px",
+                                padding: "12px",
+                                borderRadius: "6px",
+                                width: "25px"
+                            }}
+                            // variant="contained"
+                            component="span"
+
+                        >
+                            <Typography>Upload</Typography>
+
+                        </Button>
                     </label>
                 </div>
             </div>
@@ -386,7 +412,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 </Button>
 
             </div>
-            <Middle/>
+            <Middle />
         </div>
 
     )

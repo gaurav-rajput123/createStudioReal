@@ -44,7 +44,7 @@ const Topbar = () => {
                             color="inherit"
                         >
                             <Avatar alt="Gaurav" src={profile} />
-                        </IconButton >
+                        </IconButton>
                         <Button onClick={handleLogout}>LogOut</Button>
 
                     </Typography>
