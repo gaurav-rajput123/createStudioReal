@@ -95,6 +95,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
     }
     // states
     const [duration, setCourseDuration] = useState('')
+    const [category, setCategory] = useState('')
     const [courseNumber, setCourseNumber] = useState('')
     const [organisation, setOrganisation] = useState('')
     const [title, setTitle] = useState('')
@@ -135,7 +136,9 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }}>
                     Category*
                 </Typography>
-                <Select id="demo-simple-select-autowidth" label="Category*" sx={{width: '610px'}}>
+                <Select id="demo-simple-select-autowidth" label="Category" sx={{width: '610px', backgroundColor: "#F8F8F8"}} onChange={(e) => {setCategory(e.target.value)
+                        // console.log(e.target.value)
+                }}>
                     {categoryList?.map(category => {
                         return (
                             <MenuItem key={category.value} value={category.value}>

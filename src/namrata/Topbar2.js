@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 // import Menu from '@mui/material/Menu';
 import { MenuItem, Tooltip, Menu } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
+import PersonIcon from '@mui/icons-material/Person';
 import Avatar from '@mui/material/Avatar';
 import profile from './images/profile.jpg';
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -95,7 +96,7 @@ const Topbar = () => {
                             
                             
                         >
-                            <Link to={'/Profile'} style={{textDecoration:'none',color:'black'}}><MenuItem sx={{':hover':{backgroundColor:'#edf1fd'}}}><SettingsIcon sx={{marginRight:'10px'}}/>Profile</MenuItem></Link>
+                            <Link to={'/Profile'} style={{textDecoration:'none',color:'black'}}><MenuItem sx={{':hover':{backgroundColor:'#edf1fd'}}}><PersonIcon sx={{marginRight:'10px'}}/>Profile</MenuItem></Link>
 
                             <MenuItem sx={{':hover':{backgroundColor:'#edf1fd'}}} onClick={handleLogout}><LogoutIcon sx={{marginRight:'10px'}}/>Logout</MenuItem>
                         </Menu>
