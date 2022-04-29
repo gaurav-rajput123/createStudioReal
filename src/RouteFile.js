@@ -107,13 +107,12 @@ function RouteFile() {
               )
             }
           </Routes>
-          </UserContext.Provider>
 
-      
+        </UserContext.Provider>
 
-    </courseArray.Provider>
-        </div>
-        )
+      </courseArray.Provider>
+    </div>
+  )
 }
 
-        export default RouteFile
+export default RouteFile;
