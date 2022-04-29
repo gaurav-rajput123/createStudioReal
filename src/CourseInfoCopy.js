@@ -55,7 +55,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
             requirements.length != 0 &&
             description.length != 0 &&
             price.length != 0 &&
-            courseImageFile.length != 0) {
+            courseImageFile.length != 0 &&
+            category.length != 0) {
 
             counter.increment()
             let newC = {
@@ -74,6 +75,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
             newC.organisation = organisation
             newC.skillsGained = [...skillArr]
             newC.requirement = requirements
+            newC.category = category
             newC.price = price
             courseContext.setCourseState(newC)
             setShowOutlineForm(false)

@@ -174,7 +174,7 @@ export default function Middle({ myCourses, isOnCoursePage }) {
                   localStorage.setItem("courseContext", localCourseContext);
                   counter.increment();
                   const data = {
-                    name: "hello",
+                    name: courseContext.courseTitle,
                     data: courses,
                   };
                   formData.set("courseDataa", JSON.stringify(data));
@@ -188,6 +188,8 @@ export default function Middle({ myCourses, isOnCoursePage }) {
                     organisation: courseContext.organisation,
                     requirement: courseContext.requirement,
                     skills: [...courseContext.skillsGained],
+                    category: courseContext.category,
+
                   };
                   formData.set("metadata", JSON.stringify(courseMetadata));
                   formData.set(
