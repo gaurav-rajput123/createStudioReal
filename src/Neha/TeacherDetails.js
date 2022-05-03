@@ -51,6 +51,7 @@ const rows1 = [
 ];
 
 const TeacherDetails = () => {
+  var formData=new FormData();
   const initialValues = {
     Firstname: "",
     Middlename: "",
@@ -88,7 +89,7 @@ const TeacherDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
-    var formData=new FormData();
+    
     for(let key in formValues){
       formData.append(key.toString(),formValues[key])
     }
@@ -153,8 +154,10 @@ const TeacherDetails = () => {
             <label>
 
               <Input accept="image/*" multiple type="file" 
-              value={formValues.Image}
-              onChange={e=>setFormValues({...formValues,Image:e.target.value})}
+              onChange={e=>{
+                formData.set("Image", e.target.files[0])
+                setFormValues({...formValues,Image:e.target.files[0]})}
+              }
               />
               <Avatar component="span"
                 src={jake}
