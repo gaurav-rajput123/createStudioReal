@@ -95,7 +95,7 @@ const TeacherDetails = () => {
     }
     axios({
       method:"post",
-      url:"http://localhost:8080/teacher/add",
+      url:"https://api.keewesolutions.com/teacher/add",
       data:formData
     }).then(res=>{
       console.log(res)
