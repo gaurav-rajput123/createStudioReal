@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import {
   Grid,
 
@@ -21,9 +21,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FormatAlignLeftSharp } from "@mui/icons-material";
-import { useContext } from "react";
+import { UserContext } from "../Context";
 import { userContext } from "../App";
-
 const Input = styled('input')({
   display: 'none',
 });
@@ -52,21 +51,11 @@ const rows1 = [
 
 ];
 
+const user_Context = useContext(userContext)
+
 const TeacherDetails = () => {
-  const loggedInUser = localStorage.getItem("keewe.cmsStorage");
-  if(loggedInUser){
-    var foundUser = JSON.parse(loggedInUser);
-  }
-  else{
-    var foundUser={
-      user:{
-        id:"1"
-      }
-    }
-  }
   var formData=new FormData();
   const initialValues = {
-    id:foundUser.user.id,
     Firstname: "",
     Middlename: "",
     Lastname: "",
@@ -107,6 +96,7 @@ const TeacherDetails = () => {
     for(let key in formValues){
       formData.append(key.toString(),formValues[key])
     }
+    formData.append("id", user_Context.user.id)
     axios({
       method:"post",
       url:"https://api.keewesolutions.com/teacher/add",
