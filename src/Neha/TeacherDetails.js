@@ -21,6 +21,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FormatAlignLeftSharp } from "@mui/icons-material";
+import { useContext } from "react";
+import { userContext } from "../App";
 
 const Input = styled('input')({
   display: 'none',
@@ -51,8 +53,20 @@ const rows1 = [
 ];
 
 const TeacherDetails = () => {
+  const loggedInUser = localStorage.getItem("keewe.cmsStorage");
+  if(loggedInUser){
+    var foundUser = JSON.parse(loggedInUser);
+  }
+  else{
+    var foundUser={
+      user:{
+        id:"1"
+      }
+    }
+  }
   var formData=new FormData();
   const initialValues = {
+    id:foundUser.user.id,
     Firstname: "",
     Middlename: "",
     Lastname: "",
