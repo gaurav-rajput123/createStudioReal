@@ -22,7 +22,7 @@ const Verification=() =>  {
 
    const handleResendCode =()=>{
     axios({
-        url:'http://13.233.142.106:8080/user/resendconfirmationcode',
+        url:'https://api.keewesolutions.com/user/resendconfirmationcode',
         method:'POST',
         data:{
         username:location.state.user
@@ -34,7 +34,7 @@ const Verification=() =>  {
    const onSubmit=event=>{
     event.preventDefault();
     axios({
-        url:'http://13.233.142.106:8080/user/confirm',
+        url:'https://api.keewesolutions.com/user/confirm',
         method:'POST',
         data:{
         username:location.state.user,

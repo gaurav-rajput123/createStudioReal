@@ -19,6 +19,8 @@ import Paper from '@mui/material/Paper';
 import jake from './jake.png';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { FormatAlignLeftSharp } from "@mui/icons-material";
 
 const Input = styled('input')({
   display: 'none',
@@ -47,7 +49,9 @@ const rows1 = [
   createData1('Glss', 'Sector 34', '2021', '2022', 'Developer'),
 
 ];
+
 const TeacherDetails = () => {
+  var formData=new FormData();
   const initialValues = {
     Firstname: "",
     Middlename: "",
@@ -69,7 +73,8 @@ const TeacherDetails = () => {
     Contactdetails1: "",
     Name2: "",
     Contactdetails2: "",
-    Description: ""
+    Description: "",
+    Image:""
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -110,7 +115,19 @@ const TeacherDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
-    setIsSubmit(true);
+    
+    for(let key in formValues){
+      formData.append(key.toString(),formValues[key])
+    }
+    axios({
+      method:"post",
+      url:"https://api.keewesolutions.com/teacher/add",
+      data:formData
+    }).then(res=>{
+      console.log(res)
+      setIsSubmit(true);
+    })
+    
   };
   useEffect(() => {
     console.log(formErrors);
@@ -144,6 +161,10 @@ const TeacherDetails = () => {
     return errors;
   };
 
+  const Submit=()=>{
+    
+  }
+
 
   return (
     <Grid conatiner sx={{ padding: "2%" }}>
@@ -158,7 +179,12 @@ const TeacherDetails = () => {
             </Link>
             <label>
 
-              <Input accept="image/*" multiple type="file" />
+              <Input accept="image/*" multiple type="file" 
+              onChange={e=>{
+                formData.set("Image", e.target.files[0])
+                setFormValues({...formValues,Image:e.target.files[0]})}
+              }
+              />
               <Avatar component="span"
                 src={jake}
                 alt="jake"
@@ -203,10 +229,8 @@ const TeacherDetails = () => {
                 <input
                   type="text"
                   name="Firstname"
-                  value={fname}
-                  onChange={(e) => {
-                    setFname(e.target.value)
-                }}
+                  value={formValues.Firstname}
+                  onChange={e=>setFormValues({...formValues,Firstname:e.target.value})}
                   style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
                 <p style={{ color: "red" }}>{formErrors.Firstname}</p>
@@ -230,10 +254,8 @@ const TeacherDetails = () => {
                 <input
                   type="text"
                   name="Middlename"
-                  value={mname}
-                  onChange={(e) => {
-                    setMname(e.target.value)
-                }}
+                  value={formValues.Middlename}
+                  onChange={e=>setFormValues({...formValues,Middlename:e.target.value})}
                   style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>{" "}
@@ -258,10 +280,8 @@ const TeacherDetails = () => {
                 <input
                   type="text"
                   name="Lastname"
-                  value={lname}
-                  onChange={(e) => {
-                    setLname(e.target.value)
-                }}
+                  value={formValues.Lastname}
+                  onChange={e=>setFormValues({...formValues,Lastname:e.target.value})}
                   style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
                 <p style={{ color: "red" }}>{formErrors.Lastname}</p>
@@ -285,10 +305,8 @@ const TeacherDetails = () => {
                 <input
                   type="text"
                   name="Email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value)
-                }}
+                  value={formValues.Email}
+                  onChange={e=>setFormValues({...formValues,Email:e.target.value})}
                   style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
                 <p style={{ color: "red" }}>{formErrors.Email}</p>
@@ -315,10 +333,8 @@ const TeacherDetails = () => {
                   type="text"
                   name="Mobilenumber"
                   placeholder="9999999999"
-                  value={mobileno}
-                  onChange={(e) => {
-                    setMobileno(e.target.value)
-                }}
+                  value={formValues.Mobilenumber}
+                  onChange={e=>setFormValues({...formValues,Mobilenumber:e.target.value})}
                   style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
                 <p style={{ color: "red" }}>{formErrors.Mobilenumber}</p>
@@ -352,10 +368,8 @@ const TeacherDetails = () => {
                     label=""
 
                     name="Dateofbirth"
-                    value={dateobirth}
-                    onChange={(e) => {
-                      setDateofbirth(e.target.value)
-                  }}
+                    value={formValues.Dateofbirth}
+                    onChange={e=>setFormValues({...formValues,Dateofbirth:e.target.value})}
                     style={{ width: "99.4%", height: '42px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}} />
                 </div>
 
@@ -380,10 +394,8 @@ const TeacherDetails = () => {
                 rows={4}
                 type="text"
                 name="Description"
-                value={description}
-                onChange={(e) => {
-                  setDescription(e.target.value)
-              }}
+                value={formValues.Description}
+                onChange={e=>setFormValues({...formValues,Description:e.target.value})}
                 sx={{ width: "100%" ,fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}}
               />
             </FormControl>
@@ -413,10 +425,8 @@ const TeacherDetails = () => {
                   multiline
                   type="text"
                   name="Currentaddress"
-                  value={currentaddress}
-                  onChange={(e) => {
-                    setCurrentaddress(e.target.value)
-                }}
+                  value={formValues.Currentaddress}
+                  onChange={e=>setFormValues({...formValues,Currentaddress:e.target.value})}
                   rows={1.5}
                   sx={{ width: "101%",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
@@ -444,10 +454,8 @@ const TeacherDetails = () => {
                   rows={1.5}
                   type="text"
                   name="Permanentaddress"
-                  value={permanentaddress}
-                  onChange={(e) => {
-                    setPermanentaddress(e.target.value)
-                }}
+                  value={formValues.Permanentaddress}
+                  onChange={e=>setFormValues({...formValues,Permanentaddress:e.target.value})}
                   sx={{ width: "100%" ,fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}}
                 />
               </FormControl>
@@ -477,9 +485,7 @@ const TeacherDetails = () => {
                   type="text"
                   name="Degree"
                   value={formValues.Degree}
-                  onChange={(e) => {
-                    setDegree(e.target.value)
-                }}
+                  onChange={e=>setFormValues({...formValues,Degree:e.target.value})}
                   style={{ width: "98%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
@@ -513,9 +519,7 @@ const TeacherDetails = () => {
                       type="text"
                       name="Yearofcompletion"
                       value={formValues.Yearofcompletion}
-                      onChange={(e) => {
-                        setYearofcompletion(e.target.value)
-                    }}
+                      onChange={e=>setFormValues({...formValues,Yearofcompletion:e.target.value})}
                       sx={{fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}}
                     />
                   )}
@@ -549,9 +553,7 @@ const TeacherDetails = () => {
                   type="text"
                   name="University"
                   value={formValues.University}
-                  onChange={(e) => {
-                    setUniorcollage(e.target.value)
-                }}
+                  onChange={e=>setFormValues({...formValues,University:e.target.value})}
                   style={{ width: "98%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}}
                 />
               </FormControl>
@@ -616,9 +618,7 @@ const TeacherDetails = () => {
                   type="text"
                   name="NameofOrganization"
                   value={formValues.NameofOrganization}
-                  onChange={(e) => {
-                    setNameoforgnaisation(e.target.value)
-                }}
+                  onChange={e=>setFormValues({...formValues,NameofOrganization:e.target.value})}
                   style={{ width: "98%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
@@ -645,9 +645,7 @@ const TeacherDetails = () => {
 
                     name="Workfrom"
                     value={formValues.Workfrom}
-                    onChange={(e) => {
-                      setWorkfrom(e.target.value)
-                  }}
+                    onChange={e=>setFormValues({...formValues,Workfrom:e.target.value})}
                     style={{ width: "99%", height: '42px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }} />
                 </div>
               </FormControl>
@@ -673,9 +671,7 @@ const TeacherDetails = () => {
 
                     name="Workto"
                     value={formValues.Workto}
-                    onChange={(e) => {
-                      setWorkfrom(e.target.value)
-                  }}
+                    onChange={e=>setFormValues({...formValues,Workto:e.target.value})}
                     style={{ width: "99%", height: '42px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }} />
                 </div>
               </FormControl>
@@ -703,9 +699,7 @@ const TeacherDetails = () => {
                   type="text"
                   name="Address"
                   value={formValues.Address}
-                  onChange={(e) => {
-                    setAddress(e.target.value)
-                }}
+                  onChange={e=>setFormValues({...formValues,Address:e.target.value})}
                   rows={1.5}
                   sx={{ width: "100%",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
@@ -734,9 +728,7 @@ const TeacherDetails = () => {
                   type="text"
                   name="Jobresponsibilities"
                   value={formValues.Jobresponsibilities}
-                  onChange={(e) => {
-                    setJobresponsibilites(e.target.value)
-                }}
+                  onChange={e=>setFormValues({...formValues,Jobresponsibilities:e.target.value})}
                   sx={{ width: "100%" ,fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400'}}
                 />
               </FormControl>
@@ -804,9 +796,7 @@ const TeacherDetails = () => {
                   type="text"
                   name="Name1"
                   value={formValues.Name1}
-                  onChange={(e) => {
-                    setName1(e.target.value)
-                }}
+                  onChange={e=>setFormValues({...formValues,Name1:e.target.value})}
                   style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
@@ -830,9 +820,7 @@ const TeacherDetails = () => {
                   type="text"
                   name="Contactdetails1"
                   value={formValues.Contactdetails1}
-                  onChange={(e) => {
-                    setAddress1(e.target.value)
-                }}
+                  onChange={e=>setFormValues({...formValues,Contactdetails1:e.target.value})}
                   style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
@@ -857,9 +845,7 @@ const TeacherDetails = () => {
                   type="text"
                   name="Name2"
                   value={formValues.Name2}
-                  onChange={(e) => {
-                    setName2(e.target.value)
-                }}
+                  onChange={e=>setFormValues({...formValues,Name2:e.target.value})}
                   style={{ width: "100%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>
@@ -883,9 +869,7 @@ const TeacherDetails = () => {
                   type="text"
                   name="Contactdetails2"
                   value={formValues.Contactdetails2}
-                  onChange={(e) => {
-                    setAddress2(e.target.value)
-                }}
+                  onChange={e=>setFormValues({...formValues,Contactdetails2:e.target.value})}
                   style={{ width: "98.8%", height: '40px', border: '1px solid rgba(0, 0, 0, 0.23)', borderRadius: "4px",fontSize:'16px',color:'rgba(0, 0, 0, 0.87)',fontWeight:'400' }}
                 />
               </FormControl>

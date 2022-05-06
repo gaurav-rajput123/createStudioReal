@@ -83,7 +83,7 @@ const Topbar = () => {
                         >
                             <Box sx={{ width: '80px', borderRadius: '30px', ':hover':{backgroundColor: '#2196f3',color:'white'}, display: 'flex', height: '40px',justifyContent:'center' }}>
                                 <Avatar sx={{ width: '30px', height: '30px', marginTop: '5px' }} src={profile} />
-                                <SettingsIcon fontSize='medium' sx={{ marginTop:'7px',marginLeft:'5px' }} />
+                                <SettingsIcon fontSize='small' sx={{ marginTop:'7px',marginLeft:'5px' }} />
                             </Box>
                         </IconButton>
                        <Box >

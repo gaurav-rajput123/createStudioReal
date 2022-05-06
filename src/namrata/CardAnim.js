@@ -29,7 +29,7 @@ export default function CardAnim({ name, showOutlineForm }) {
                             {
                                 courseContext.data.length === 0 ? <>Start making your Course or Program by <br /> clicking on the button below.</> : <>Add new modules and topics for your course</>
                             }
-                        </Typography>
+                        </Typography>               
                     </CardContent>
                     <CardActions>
                         <Button size="large" variant="outlined" style={{ fontFamily: 'Montserrat', fontSize: '16px', color: '#334155', borderRadius: '25px', backgroundColor: 'white', position: 'absolute', bottom: '18%', display: courseContext.data.length === 0 ? 'block' : 'none' }}

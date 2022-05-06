@@ -55,7 +55,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
             requirements.length != 0 &&
             description.length != 0 &&
             price.length != 0 &&
-            courseImageFile.length != 0) {
+            courseImageFile.length != 0 &&
+            category.length != 0) {
 
             counter.increment()
             let newC = {
@@ -74,6 +75,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
             newC.organisation = organisation
             newC.skillsGained = [...skillArr]
             newC.requirement = requirements
+            newC.category = category
             newC.price = price
             courseContext.setCourseState(newC)
             setShowOutlineForm(false)
@@ -127,7 +129,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     // margin="dense"
                     variant="outlined"
-                    label="E.g.Basics of Python"
+                    // label="E.g.Basics of Python"
+                    placeholder="E.g.Basics of Python"
                     id="Title"
                     value={title}
                 />
@@ -136,7 +139,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                 <Typography fontSize={"16px"} sx={{ marginBottom: "12px" }}>
                     Category*
                 </Typography>
-                <Select id="demo-simple-select-autowidth" label="Category" sx={{width: '610px', backgroundColor: "#F8F8F8"}} onChange={(e) => {setCategory(e.target.value)
+                <Select sx={{width: '610px', backgroundColor: "#F8F8F8"}} placeholder="Category" onChange={(e) => {setCategory(e.target.value)
                         // console.log(e.target.value)
                 }}>
                     {categoryList?.map(category => {
@@ -159,7 +162,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     // margin="dense"
                     variant="outlined"
-                    label="Course Number"
+                    // label="Course Number"
+                    placeholder="Course Number"
                     id="Number"
                     value={courseNumber}
                 />
@@ -175,7 +179,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     // margin="dense"
                     variant="outlined"
-                    label="Organisation"
+                    // label="Organisation"
+                    placeholder="Organisation"
                     id="Organisationsa"
                     value={organisation}
                 />
@@ -191,7 +196,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     // margin="dense"
                     variant="outlined"
-                    label="course duration in months/hrs"
+                    // label="course duration in months/hrs"
+                    placeholder="Course duration in months/hrs"
                     // id="Title"
                     value={duration}
                 />
@@ -207,7 +213,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     margin="dense"
                     variant="outlined"
-                    label="E.g.Programming Language"
+                    // label="E.g.Programming Language"
+                    placeholder="E.g.Programming Language"
                     id=" About Course"
                     value={taught}
                 />
@@ -224,7 +231,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
                         sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                         margin="dense"
                         variant="outlined"
-                        label="Type the skills gained here"
+                        // label="Type the skills gained here"
+                        placeholder="Write the skills gained here"
                         id=" skill gained"
                         value={skill}
                     />
@@ -269,7 +277,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
 
                     margin="dense"
                     variant="outlined"
-                    label="E.g. No programming experience needed.You will learn everything you need need to know"
+                    // label="E.g. No programming experience needed.You will learn everything you need need to know"
+                    placeholder="E.g.No programming experience required"
                     id="requirement"
                     value={requirements}
                 />
@@ -289,7 +298,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     rows="3"
                     margin="dense"
                     variant="outlined"
-                    label="Write about the course in detail"
+                    // label="Write about the course in detail"
+                    placeholder="Write about the course in detail"
                     id=" Description"
                     value={description}
                 />
@@ -305,7 +315,8 @@ export default function Courseinfo({ setShowOutlineForm }) {
                     sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     margin="dense"
                     variant="outlined"
-                    label="Price of this course"
+                    // label="Price of this course"
+                    placeholder="Price of this course"
                     id=" Price"
                     value={price}
                 />
