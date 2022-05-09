@@ -29,8 +29,8 @@ const Input = styled('input')({
 const arr = [
   {
 
-    name: "Ms. Rajni Bala",
-    mail: " rajnibala@gku.ac.in"
+    name: "Edit Profile",
+    mail: ""
   }
 
 ];
@@ -164,7 +164,7 @@ const TeacherDetails = () => {
               }
               />
               <Avatar component="span"
-                src={jake}
+                src={""}
                 alt="jake"
                 sx={{ marginLeft: '10%', width: "100px", height: "100px", zIndex: '2', '&:hover': { zIndex: '-1' } }}
               />
