@@ -51,9 +51,9 @@ const rows1 = [
 
 ];
 
-const user_Context = useContext(userContext)
 
 const TeacherDetails = () => {
+  const user_Context = useContext(userContext)
   var formData=new FormData();
   const initialValues = {
     Firstname: "",
