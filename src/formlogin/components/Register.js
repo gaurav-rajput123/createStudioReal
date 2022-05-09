@@ -108,7 +108,7 @@ export default function Register() {
         console.log(response.data.user.username);
 
          //after submit form redirect user
-    navigate('/login',{state:{user:response.data.user.username}});
+    navigate('/verify',{state:{user:response.data.user.username}});
       }
     );
   // },[]);

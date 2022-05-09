@@ -91,7 +91,6 @@ function RouteFile() {
                   <Route path="/create" element={<Home />} />
                   <Route path="/formnew" element={<OutlineForm />} />
                   <Route path="/formnews" element={<Corseinfo />} />
-                  <Route path="/verify" element={<Verification />} />
                   <Route path="/changepassword" element={<NewPassword />} />
                   <Route path='/mycourses' element={<MyCourses />} />
                   <Route path='/mycoursecreate' element={<MyCreatedCourses />} />
@@ -100,6 +99,7 @@ function RouteFile() {
               ) : (<>
                 <Route path="/login" element={<RegisterCard id={1} />} />
                 <Route path="/register" element={<RegisterCard id={0} />} />
+                <Route path="/verify" element={<Verification />} />
                 <Route path="/forgotpassword" element={<ForgotPassword />} />
                 <Route path='/changepassword' element={<NewPassword />} />
                 <Route path="/" element={<RegisterCard id={1} />} />
