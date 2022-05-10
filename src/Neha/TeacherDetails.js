@@ -54,11 +54,14 @@ const rows1 = [
 
 const TeacherDetails = () => {
   const loggedInUser = localStorage.getItem("keewe.cmsStorage");
+  var foundUser;
   if(loggedInUser){
-    var foundUser = JSON.parse(loggedInUser);
+    foundUser = JSON.parse(loggedInUser);
+    console.log(foundUser)
   }
   else{
-    var foundUser={
+
+    foundUser={
       user:{
         id:"1"
       }
