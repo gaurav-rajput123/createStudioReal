@@ -201,14 +201,14 @@ export default function Register() {
       </Grid>
       {/* <Grid xs={4} /> */}
       <Grid item lg={8} xs={8} sm={8} md={8}>
-      <FormControl
+      {/* <FormControl
       sx={{
         marginY: "12px",
       }}
       fullWidth
     >
-      <InputLabel>Country</InputLabel>
-      <Select label="countries" sx={{ width: "100%" }} value={data.country}>
+      <InputLabel>Country</InputLabel> */}
+      {/* <Select label="countries" sx={{ width: "100%" }} value={data.country}>
         {countryList.map((country) => {
           return (
             <MenuItem value={country.toString()} key={country.toString()}>
@@ -217,7 +217,7 @@ export default function Register() {
           );
         })}
       </Select>
-    </FormControl>
+    </FormControl> */}
       </Grid>
       {/* <Grid xs={4} /> */}
       <Grid item lg={8} xs={8} sm={8} md={8}>
