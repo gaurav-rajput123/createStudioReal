@@ -201,7 +201,23 @@ export default function Register() {
       </Grid>
       {/* <Grid xs={4} /> */}
       <Grid item lg={8} xs={8} sm={8} md={8}>
-        <DropCountries />
+      <FormControl
+      sx={{
+        marginY: "12px",
+      }}
+      fullWidth
+    >
+      <InputLabel>Country</InputLabel>
+      <Select label="countries" sx={{ width: "100%" }}>
+        {countryList.map((country) => {
+          return (
+            <MenuItem value={country.toString()} key={country.toString()}>
+              {country}
+            </MenuItem>
+          );
+        })}
+      </Select>
+    </FormControl>
       </Grid>
       {/* <Grid xs={4} /> */}
       <Grid item lg={8} xs={8} sm={8} md={8}>
@@ -357,7 +373,6 @@ export default function Register() {
   );
 }
 
-function DropCountries() {
   const countryList = [
     "Afghanistan",
     "Albania",
@@ -609,26 +624,6 @@ function DropCountries() {
     "Zimbabwe",
     "Åland Islands",
   ];
-  return (
-    <FormControl
-      sx={{
-        marginY: "12px",
-      }}
-      fullWidth
-    >
-      <InputLabel>Country</InputLabel>
-      <Select label="countries" sx={{ width: "100%" }}>
-        {countryList.map((country) => {
-          return (
-            <MenuItem value={country.toString()} key={country.toString()}>
-              {country}
-            </MenuItem>
-          );
-        })}
-      </Select>
-    </FormControl>
-  );
-}
 
 function FormControlLabelPosition() {
   return (
