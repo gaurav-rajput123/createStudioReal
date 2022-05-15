@@ -208,7 +208,7 @@ export default function Register() {
       fullWidth
     >
       <InputLabel>Country</InputLabel>
-      <Select label="countries" sx={{ width: "100%" }}>
+      <Select label="countries" sx={{ width: "100%" }} value={data.country}>
         {countryList.map((country) => {
           return (
             <MenuItem value={country.toString()} key={country.toString()}>
