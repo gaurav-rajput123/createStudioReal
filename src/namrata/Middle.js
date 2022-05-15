@@ -319,7 +319,7 @@ export default function Middle({ myCourses, isOnCoursePage }) {
         //           // url: "http://localhost:8080/get",
         //           data: formData,
         //           method: "POST",
-        //           onUploadProgress: (data) => {
+        //           onProgress: (data) => {
         //             setUploaded(Math.round((data.loaded/data.total)* 100));
 
         //             console.log(Math.round((data.loaded/data.total)* 100));
