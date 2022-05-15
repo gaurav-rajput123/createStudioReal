@@ -95,7 +95,6 @@ export default function Register() {
     setdata({...data,showPassword:!data.showPassword})
   }
 
-  console.log(location.search);
   const onSubmit=event=>{
     event.preventDefault();
 
@@ -117,7 +116,7 @@ export default function Register() {
         console.log(response.data);
 
          //after submit form redirect user
-         navigate('/verify/', { state: {user:response.data.user.username,password:data.password,search:location.search}},{search:location.search});
+         navigate('/verify/', { state: {user:response.data.user.username,password:data.password}});
     })
   // },[]);
 
