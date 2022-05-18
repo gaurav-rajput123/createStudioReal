@@ -34,7 +34,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
     const courseContext = React.useContext(courseArray)
     const categoryList = [
         {label:"IT & Software Development", value:"IT & Software Development"},
-        {label:"Designing", value:"Designing"},
+        {label:"Marketing", value:"Marketing"},
         {label:"Networking", value:"Networking"},
         {label:"Business", value:"Business"},
         {label:"Civil Engineering", value:"Civil Engineering"},

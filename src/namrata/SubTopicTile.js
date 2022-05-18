@@ -354,7 +354,7 @@ export default function SubTopicTile({ subTopicIndex, topicIndex, courseIndex, c
                   color: "#000000",
 
                 },
-                backgroundColor: courseContext.data[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource.audio === true  ? "green" : '#fff',
+                backgroundColor: courseContext.data[courseIndex].topics[topicIndex]? (courseContext.data[courseIndex].topics[topicIndex].subTopics[subTopicIndex].resource.audio === true  ? "green" : '#fff') : null
               }}
 
               // onClick={() => {
