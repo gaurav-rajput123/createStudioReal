@@ -16,18 +16,19 @@ import Topbar from './namrata/Topbar';
 export default function MyCourses(props) {
     const userContext = useContext(UserContext)
     const [dataArr, setDataArr] = useState([])
+    console.log(userContext);
     const sendPostRequest = async (event) => 
     {
         try {
             const courseIds = await axios({
-                url: process.env.REACT_APP_localURL + '/db/getcourses',
+                url: process.env.REACT_APP_localURL +'/db/getcourses',
                 method: "POST",
                 data: {
                     token: userContext.user.idToken,
                     id: userContext.user.id
                 }
             })
-            console.log(courseIds.data.data)
+            console.log(courseIds.data)
             const courseData = await axios({
                 url: process.env.REACT_APP_localURL + "/db/fetchcoursedata",
                 method: "POST",

@@ -50,13 +50,7 @@ export default function Courseinfo({ setShowOutlineForm , closeModal}) {
 
             counter.increment()
             let newC = {
-                ...courseContext, data: [{
-                    name: "Module 1",
-                    id: v4(),
-                    topics: [
-
-                    ]
-                }]
+                ...courseContext
             }
             newC.courseTitle = title
             newC.courseDesciption = description

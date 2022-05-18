@@ -81,15 +81,19 @@ export default function Register() {
     const navigate = useNavigate();
     
 
-  const [name,setName]=useState("");
-  const [email,setEmail]=useState("");
-  const [username,setUsername]=useState("");
-  const [password,setPassword]=useState("");
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [data,setdata]=useState({
+    name:"",
+    email:"",
+    username:"",
+    phone:"",
+    country:"",
+    password:"",
+    showPassword:false
+  });
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const togglePassword = () => {
+    setdata({...data,showPassword:!data.showPassword})
+  }
 
   const onSubmit=event=>{
     event.preventDefault();
@@ -99,18 +103,21 @@ export default function Register() {
       url:'https://api.keewesolutions.com/user/signup',
       method:'POST',
       data:{
-        username:email,
-        password:password
+        name:data.name,
+        email:data.email,
+        username:data.username,
+        password:data.password,
+        phone:'+91' + data.phone,
+        country:"India"
       }
     })
     .then(
       (response) => {
-        console.log(response.data.user.username);
+        console.log(response.data);
 
          //after submit form redirect user
-    navigate('/verify',{state:{user:response.data.user.username}});
-      }
-    );
+         navigate('/verify/', { state: {user:response.data.user.username,password:data.password}});
+    })
   // },[]);
 
     // console.log(user)
@@ -125,56 +132,56 @@ export default function Register() {
     
     <Grid container sx={{ width: "auto" }}>
       <form onSubmit={onSubmit}>
-      <Grid item xs={8} sx={{ marginBottom: "10px" }} onSubmit={handleSubmit}>
+      <Grid item lg={8} xs={8} sm={8} md={8} sx={{ marginBottom: "10px" }} onSubmit={handleSubmit}>
         <TextField
         fullWidth
         label="Full name" 
         id="fullWidth"
-        value={name}
-        onChange={event=>setName(event.target.value)} />
+        value={data.name}
+        onChange={event=>setdata({...data,name:event.target.value})} />
         <p>{formErrors.username}</p>
       </Grid>
-      <Grid xs={4} />
-      <Grid item xs={8} sx={{ marginBottom: "10px" }}>
+      {/* <Grid xs={4} /> */}
+      <Grid item lg={8} xs={8} sm={8} md={8} sx={{ marginBottom: "10px" }}>
         <TextField 
         fullWidth 
         label="Email" 
         id="fullWidth"
-        value={email}
-        onChange={event=>setEmail(event.target.value)} />
+        value={data.email}
+        onChange={event=>setdata({...data,email:event.target.value})} />
         <p>{formErrors.email}</p>
       </Grid>
-      <Grid xs={4} />
-      <Grid item xs={8} sx={{ marginBottom: "10px" }}>
+      {/* <Grid xs={4} /> */}
+      <Grid item lg={8} xs={8} sm={8} md={8} sx={{ marginBottom: "10px" }}>
         <TextField
         fullWidth 
         label="Public username" 
         id="fullWidth"
-        value={username}
-        onChange={event=>setUsername(event.target.value)}
-         />
+        value={data.username}
+        onChange={event=>setdata({...data,username:event.target.value})} />
       </Grid>
-      <Grid xs={4} />
-      <Grid item xs={8}>
+      {/* <Grid xs={4} /> */}
+      <Grid item lg={8} xs={8} sm={8} md={8}>
       <FormControl fullWidth variant="outlined">
       <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
           fullWidth
             id="outlined-adornment-password"
             label="password"
-            onChange={event=>setPassword(event.target.value)}
-            type={showPassword ? 'text' : 'password'}
-            value={password}
+            onChange={event=>setdata({...data,password:event.target.value})}
+            type={data.showPassword ? 'text' : 'password'}
+            value={data.password}
             
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
-                  onClick={()=>{setShowPassword(true)}}
-                  onMouseDown={handleMouseDownPassword}
+                  // onClick={()=>{setShowPassword(true)}}
+                  // onMouseDown={handleMouseDownPassword}
+                  onClick={togglePassword}
                   edge="end"
                 >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                  {data.showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             }
@@ -183,17 +190,42 @@ export default function Register() {
           </FormControl>
           <p>{formErrors.password}</p>
       </Grid>
-      <Grid xs={4} />
-      <Grid item xs={8}>
-        <DropCountries />
+      <Grid item lg={8} xs={8} sm={8} md={8} sx={{ marginBottom: "10px" }}>
+        <TextField
+        fullWidth 
+        label="10 digit Phone Number" 
+        id="fullWidth"
+        value={data.phone}
+        onChange={event=>setdata({...data,phone:event.target.value})}
+         />
       </Grid>
-      <Grid xs={4} />
-      <Grid item xs={8}>
+      {/* <Grid xs={4} /> */}
+      <Grid item lg={8} xs={8} sm={8} md={8}>
+      {/* <FormControl
+      sx={{
+        marginY: "12px",
+      }}
+      fullWidth
+    >
+      <InputLabel>Country</InputLabel> */}
+      {/* <Select label="countries" sx={{ width: "100%" }} value={data.country}>
+        {countryList.map((country) => {
+          return (
+            <MenuItem value={country.toString()} key={country.toString()}>
+              {country}
+            </MenuItem>
+          );
+        })}
+      </Select>
+    </FormControl> */}
+      </Grid>
+      {/* <Grid xs={4} /> */}
+      <Grid item lg={8} xs={8} sm={8} md={8}>
         <FormControlLabelPosition />
       </Grid>
-      <Grid xs={4} />
-      <Grid item xs={8}>
-        <Typography sx={{fontSize:"12px", marginBottom:"10px"}}>
+      {/* <Grid xs={4} /> */}
+      <Grid item lg={8} xs={8} sm={8} md={8} sx={{textAlign: 'justify'}}>
+        <Typography sx={{fontSize:"12px", marginBottom:"10px", textAlign: 'justify'}}>
           By creating an account, you agree to the Terms of Service and Honor
           Code and you acknowledge that MRSPTU and each Member process your
           personal data in accordance with the Privacy Policy.
@@ -213,8 +245,8 @@ export default function Register() {
           </Button>
        
       </Grid>
-      <Grid xs={4} />
-      <Grid item xs={6} sx={{ marginBottom: "10px" ,visibility: 'hidden'}}>
+      {/* <Grid xs={4} /> */}
+      {/* <Grid item xs={6} sx={{ marginBottom: "10px" }}>
         <Link
           sx={{
             color: "black",
@@ -229,8 +261,10 @@ export default function Register() {
 
       <Grid xs={4} />
 
-      <Grid container item xs={8} sx={{visibility: 'hidden'}}>
-      <Grid item xs={6} sx={{ marginTop: "10px",padding: "4px"}}>
+      <Grid container item xs={8}>
+      <Grid item xs={6} sx={{ marginTop: "10px" }} sx={{
+          padding: "4px 4px 4px 0"
+      }}>
         <NavLink
           to={"/"}
           style={{
@@ -255,7 +289,7 @@ export default function Register() {
       </Grid>
 
       <Grid item xs={6}  sx={{
-        padding: "4px"
+        padding: "4px 4px 4px 0"
     }}>
         <NavLink
           to={"/"}
@@ -281,7 +315,7 @@ export default function Register() {
       </Grid>
 
       <Grid item xs={6}  sx={{
-        padding: "4px"
+        padding: "4px 4px 4px 0"
     }}>
         <NavLink
           to={"/"}
@@ -306,7 +340,7 @@ export default function Register() {
         </NavLink>
       </Grid>
       <Grid item xs={6}  sx={{
-        padding: "4px"
+        padding: "4px 4px 4px 0"
     }}>
         <NavLink
           to={"/"}
@@ -329,17 +363,16 @@ export default function Register() {
             Microsoft
           </Button>
         </NavLink>
-      </Grid></Grid>
+      </Grid></Grid> */}
 
-      <Grid item xs sx={{ position: "unset", bottom: 0, right: 0 }}>
+      {/* <Grid item xs sx={{ position: "unset", bottom: 0, right: 0 }}>
         <img src={img} width="250px" height={"105px"} />
-      </Grid>
+      </Grid> */}
       </form>
     </Grid>
   );
 }
 
-function DropCountries() {
   const countryList = [
     "Afghanistan",
     "Albania",
@@ -591,26 +624,6 @@ function DropCountries() {
     "Zimbabwe",
     "Åland Islands",
   ];
-  return (
-    <FormControl
-      sx={{
-        marginY: "12px",
-      }}
-      fullWidth
-    >
-      <InputLabel>Country</InputLabel>
-      <Select label="countries" sx={{ width: "100%" }}>
-        {countryList.map((country) => {
-          return (
-            <MenuItem value={country.toString()} key={country.toString()}>
-              {country}
-            </MenuItem>
-          );
-        })}
-      </Select>
-    </FormControl>
-  );
-}
 
 function FormControlLabelPosition() {
   return (

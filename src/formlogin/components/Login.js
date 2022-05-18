@@ -13,9 +13,7 @@ export default function Login() {
   
   
   const navigate = useNavigate();
-  const [user, setUser] = useState()
   const [email,setEmail]=useState("");
-  const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
   const [showPassword, setShowPassword] = React.useState(false);
   const handleMouseDownPassword = (event) => {
