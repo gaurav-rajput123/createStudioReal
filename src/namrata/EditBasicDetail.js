@@ -60,6 +60,7 @@ export default function Courseinfo({ setShowOutlineForm , closeModal}) {
             newC.skillsGained = [...skillArr]
             newC.requirement = requirements
             newC.price = price
+            
             courseContext.setCourseState(newC)
             setShowOutlineForm(false)
             counter.increment()
