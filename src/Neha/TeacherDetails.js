@@ -96,6 +96,32 @@ const TeacherDetails = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [fname , setFname ] = useState("");
+  const [mname , setMname] = useState("");
+  const [ lname, setLname] = useState("");
+  const [ email , setEmail] = useState("");
+  const [ mobileno, setMobileno] = useState("");
+  const [ dateobirth, setDateofbirth] = useState("");
+  const [ department , setDepartment] = useState("");
+  const [description, setDescription] = useState("");
+  const [currentaddress, setCurrentaddress] = useState("");
+  const [permanentaddress, setPermanentaddress] = useState("");
+  const [degree, setDegree] = useState("");
+  const [yearofcompletion, setYearofcompletion] = useState("");
+  const [uniorcollage, setUniorcollage] = useState("");
+  const [nameoforgnaisation, setNameoforgnaisation] = useState("");
+  const [workfrom, setWorkfrom] = useState("");
+  const [workto, setWorkto] = useState("");
+  const [address, setAddress] = useState("");
+  const [jobresponsibilities, setJobresponsibilites] = useState("");
+  const [name1, setName1] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [name2, setName2] = useState("");
+  const [address2, setAddress2] = useState("");
+
+
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
