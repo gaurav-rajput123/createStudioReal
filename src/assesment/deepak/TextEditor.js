@@ -12,6 +12,7 @@ return(
      ref={editor}
      onChange={content => getDescription(content)}
      config= {config}
+    // config={[]}
      value={initialValue}
      />
     // <div>ads</div>

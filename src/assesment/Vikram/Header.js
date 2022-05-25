@@ -16,7 +16,7 @@ export default function Videoheader({title, changeQuestion, color, textColor, mo
     setModalState(!modalState)
   }
   const courseContext = useContext(courseArray)
-  const style = {
+  const style = { 
     position: 'absolute',
     top: '40%',
     left: '50%',

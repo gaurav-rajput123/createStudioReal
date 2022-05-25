@@ -20,7 +20,11 @@ export default function CheckCard({ question, updateAssesment, index }) {
   const updateContent = () => {
     console.log(question)
     let newMCQ = {
-      question: parse(question),
+      question: function(){
+        let question1 = question
+        console.log(question1)
+        return question1
+      }(),
       options: options,
       correctOption: correctOption,
       id: generateKey()
