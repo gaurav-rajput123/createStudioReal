@@ -73,6 +73,8 @@ export default function Middle({ myCourses, isOnCoursePage }) {
     newCourseContent.courseTitle = "";
     newCourseContent.data = [];
     newCourseContent.organisation = "";
+    newCourseContent.orginal = "";
+    newCourseContent.selling = "";
     newCourseContent.skillsGained = [];
     localStorage.removeItem("courseContext");
     courseContext.setCourseState(newCourseContent);
@@ -186,6 +188,8 @@ export default function Middle({ myCourses, isOnCoursePage }) {
                     number: courseContext.courseNumber,
                     title: courseContext.courseTitle,
                     organisation: courseContext.organisation,
+                    orginal: courseContext.orginal,
+                    selling: courseContext.selling,
                     requirement: courseContext.requirement,
                     skills: [...courseContext.skillsGained],
                     category: courseContext.category,

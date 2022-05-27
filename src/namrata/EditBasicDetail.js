@@ -45,7 +45,8 @@ export default function Courseinfo({ setShowOutlineForm , closeModal}) {
             skillArr.length != 0 &&
             requirements.length != 0 &&
             description.length != 0 &&
-            price.length != 0 &&
+            orginal.length != 0 &&
+            selling.length != 0 &&
             courseImageFile.length !=0) {
 
             counter.increment()
@@ -59,7 +60,9 @@ export default function Courseinfo({ setShowOutlineForm , closeModal}) {
             newC.organisation = organisation
             newC.skillsGained = [...skillArr]
             newC.requirement = requirements
-            newC.price = price
+            newC.orginal = orginal
+            newC.selling = selling
+
             
             courseContext.setCourseState(newC)
             setShowOutlineForm(false)
@@ -88,7 +91,8 @@ export default function Courseinfo({ setShowOutlineForm , closeModal}) {
     const [skill, setSkill] = useState('')
     const [requirements, setRequirements] = useState('') 
     const [description, setDescription] = useState('')
-    const [price, setPrice] = useState('')
+    const [orginal, setorginal] = useState('')
+    const [selling, setselling] = useState('')
     const [imageUrl, setImageUrl] = useState(null)
     const [fileObj, setFileObj] = useState('')
     const [skillArr, setSkillArr] = useState([])
@@ -265,18 +269,35 @@ export default function Courseinfo({ setShowOutlineForm , closeModal}) {
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }} >
                 <Typography fontSize={"16px"} sx={{}}>
-                    Course Price*
+                    orginal Price*
                 </Typography>
                 <TextField
                     onChange={(e) => {
-                        setPrice(e.target.value)
+                        setorginal(e.target.value)
                     }}
                     sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
                     margin="dense"
                     variant="outlined"
                     label="Price of this course"
                     id=" Price"
-                    value={price}
+                    value={orginal}
+                />
+            </div>
+
+            <div style={{ marginTop: "12px", marginBottom: "24px" }} >
+                <Typography fontSize={"16px"} sx={{}}>
+                    Selling Price*
+                </Typography>
+                <TextField
+                    onChange={(e) => {
+                        setselling(e.target.value)
+                    }}
+                    sx={{ width: "610px", backgroundColor: "#F8F8F8" }}
+                    margin="dense"
+                    variant="outlined"
+                    label="Price of this course"
+                    id=" Price"
+                    value={selling}
                 />
             </div>
             <div style={{ marginTop: "12px", marginBottom: "24px" }}>

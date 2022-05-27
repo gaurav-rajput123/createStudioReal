@@ -17,6 +17,8 @@ export default function Home() {
         newCourseContext.courseDesciption = ''
         newCourseContext.courseDuration = ''
         newCourseContext.courseId = ''
+        newCourseContext.orginal = ''
+        newCourseContext.selling = ''
         newCourseContext.courseNumber=''
         newCourseContext.courseTitle = ''
         newCourseContext.data = []

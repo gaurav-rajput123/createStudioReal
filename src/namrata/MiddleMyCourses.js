@@ -100,6 +100,8 @@ export default function MiddleMyCourses() {
                   number: courseContext.courseNumber,
                   title: courseContext.courseTitle,
                   organisation: courseContext.organisation,
+                  orginal: courseContext.orginal,
+                  selling: courseContext.selling,
                   requirement: courseContext.requirement,
                   skills: [...courseContext.skillsGained]
                 }

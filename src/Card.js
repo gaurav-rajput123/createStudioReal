@@ -1,10 +1,8 @@
 import * as React from 'react';
 import './Card.css';
 import { styled } from '@mui/material/styles';
-
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
-
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
@@ -81,6 +79,9 @@ export default function RecipeReviewCard({ courseDetails, data, id }) {
                                     newCourseContext.organisation = courseDetails.organisation
                                     newCourseContext.skillsGained = courseDetails.skills
                                     newCourseContext.courseNumber = courseDetails.number
+                                    newCourseContext.orginal= courseDetails.orginal
+                                    newCourseContext.selling= courseDetails.selling
+
                                     console.log(newCourseContext)
                                     courseContext.setCourseState(newCourseContext)
                                 }}>

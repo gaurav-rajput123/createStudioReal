@@ -32,8 +32,8 @@ function RouteFile() {
   const navigate = useNavigate()
   const [courseState, setCourseState] = useState({
     courseId: '', courseNumber: "", organisation: "", courseDuration: "", courseDesciption: "", skillsGained: [],
-    data: [], price: ""
-  })
+    data: [], orginal: "" , selling: "" 
+   })
   useEffect(() => {
     document.title = "MRSPTU"
   })
