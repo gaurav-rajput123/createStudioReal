@@ -41,7 +41,11 @@ export default function Courseinfo({ setShowOutlineForm }) {
         {label:"Programming Language", value:"Programming Language"},
         {label:"Data Science", value:"Data Science"},
         {label:"Mechanical Engineering", value:"Mechanical Engineering"},
-        {label:"Patents & Intellectual Property Rights", value:"Patents & Intellectual Property Rights"}
+        {label:"Patents & Intellectual Property Rights", value:"Patents & Intellectual Property Rights"},
+        {label:"Cyber Security", value:"Cyber Security"},
+        {label:"Cloud Computing", value:"Cloud Computing"},
+        {label:"Designing", value:"Designing"},
+        {label:"Personality Development", value:"Personality Development"},
     ]
 
 
@@ -146,6 +150,7 @@ export default function Courseinfo({ setShowOutlineForm }) {
                         // console.log(e.target.value)
                 }}>
                     {categoryList?.map(category => {
+                        console.log(category.value)
                         return (
                             <MenuItem key={category.value} value={category.value}>
                                 { category.value}
